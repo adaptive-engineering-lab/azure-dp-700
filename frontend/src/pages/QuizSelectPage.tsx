@@ -48,9 +48,9 @@ export default function QuizSelectPage() {
       <Fieldset legend="Module">
         <div className="grid grid-cols-1 gap-2">
           {modules.map((m) => (
-            <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)}>
-              {m.topic}{' '}
-              <span className="opacity-70">({m.count})</span>
+            <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)} align="left">
+              {m.order != null && <span className="opacity-60">{m.order}. </span>}
+              {m.topic} <span className="opacity-70">({m.count})</span>
             </Pill>
           ))}
           {!modulesLoading && modules.length === 0 && (
@@ -58,7 +58,7 @@ export default function QuizSelectPage() {
           )}
           {/* Rendered after the map, not as part of it, so it stays last as
               modules are added. */}
-          <Pill active={topic === 'all'} onClick={() => setTopic('all')}>
+          <Pill active={topic === 'all'} onClick={() => setTopic('all')} align="left">
             All modules
           </Pill>
         </div>
@@ -109,10 +109,14 @@ function Pill({
   active,
   onClick,
   children,
+  align = 'center',
 }: {
   active: boolean;
   onClick: () => void;
   children: React.ReactNode;
+  /** Module titles wrap to two lines, and centred wrapped text is hard to
+   *  scan, so those pills align left. Short pills stay centred. */
+  align?: 'center' | 'left';
 }) {
   return (
     <button
@@ -121,6 +125,7 @@ function Pill({
       aria-pressed={active}
       className={[
         'flex-1 rounded-md px-3 py-2 text-sm font-medium',
+        align === 'left' ? 'text-left' : 'text-center',
         active ? 'bg-accent text-accent-fg' : 'bg-bg text-fg',
       ].join(' ')}
     >
