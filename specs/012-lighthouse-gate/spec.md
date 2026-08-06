@@ -3,7 +3,7 @@
 **Feature Branch**: `012-lighthouse-gate`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "Performance audit + Lighthouse score ≥ 90" (Phase 4 of AI300-Game-Spec.md §13, enforcing constitution Principle V)
+**Input**: User description: "Performance audit + Lighthouse score ≥ 90" (Phase 4 of DP700-Game-Spec.md §13, enforcing constitution Principle V)
 
 ## User Scenarios & Testing *(mandatory)*
 

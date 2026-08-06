@@ -14,10 +14,10 @@ Spec 012 was already implemented in the AZ-104 fork in compact form. The Lightho
 - `netlify.toml` — production deploy config with SPA fallback redirect, immutable cache headers on `/assets/*`, no-cache on `index.html` and `sw.js` so the service worker can refresh manifests.
 
 **Closed gaps in this PR (2026-05-18)**:
-- Replaced the stale `http://localhost/learn/product-id` URL in `.lighthouserc.json` with `http://localhost/learn/code-review` so the gate audits the route that actually exists in the AI-300 fork.
+- Replaced the stale `http://localhost/learn/product-id` URL in `.lighthouserc.json` with `http://localhost/learn/code-review` so the gate audits the route that actually exists in the DP-700 fork.
 
 **Known deltas from spec**:
-- `categories:performance` threshold is **0.8**, not the spec's **0.9**. The AZ-104 fork softened this to absorb known LCP flakiness on the radar chart route; the AI-300 fork inherits the same setting. Bumping to 0.9 should be paired with verifying every page hits the bar on a clean CI run — out of scope here.
+- `categories:performance` threshold is **0.8**, not the spec's **0.9**. The AZ-104 fork softened this to absorb known LCP flakiness on the radar chart route; the DP-700 fork inherits the same setting. Bumping to 0.9 should be paired with verifying every page hits the bar on a clean CI run — out of scope here.
 - No `audit/` directory; the lighthouse config lives at `.lighthouserc.json` and the bundle script at `scripts/check-bundle-budget.mjs`. The same coverage in a flatter layout.
 - No local `pnpm audit:perf` script (T030/T031). Contributors run lighthouse via the CI gate, not locally.
 - No reduced-motion variant runs (T040/T041), no delta-vs-main reporting (T060/T061), no `audit/main-scores.json` baseline tracking. Polish work that the v1 gate doesn't enforce.

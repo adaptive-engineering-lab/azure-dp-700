@@ -3,7 +3,7 @@
 **Feature Branch**: `004-flashcard-mode`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "Flashcard mode (static, no AI)" (Phase 1 of AI300-Game-Spec.md §13, expanded per §6.1)
+**Input**: User description: "Flashcard mode (static, no AI)" (Phase 1 of DP700-Game-Spec.md §13, expanded per §6.1)
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -76,7 +76,7 @@ Each rating a learner gives advances the affected card's progress entry in line 
 - **FR-005**: Flipping a card MUST be triggered by a tap on the card or by an explicit "Show answer" control.
 - **FR-006**: After the back is shown, the learner MUST see three rating controls: "Got it ✓," "Almost," and "Missed ✗."
 - **FR-007**: On mobile breakpoints, swipe right MUST be interpreted as "Got it ✓" and swipe left as "Missed ✗"; equivalent on-screen buttons MUST always be available.
-- **FR-008**: Each rating MUST result in a write to the progress store: `times_seen` incremented, `times_correct` incremented only on "Got it ✓," `last_rating` set, and `next_review` advanced per the policy in AI300-Game-Spec.md §9.
+- **FR-008**: Each rating MUST result in a write to the progress store: `times_seen` incremented, `times_correct` incremented only on "Got it ✓," `last_rating` set, and `next_review` advanced per the policy in DP700-Game-Spec.md §9.
 - **FR-009**: When a learner with prior progress starts a session, cards whose `next_review` is today or earlier MUST be served before unseen cards in the chosen topic.
 - **FR-010**: A session MUST end automatically after the chosen number of cards have been rated; results MUST be shown immediately.
 - **FR-011**: The results screen MUST show counts for "Got it," "Almost," and "Missed," the session duration, and a CTA to start another session.
@@ -105,9 +105,9 @@ Each rating a learner gives advances the affected card's progress entry in line 
 ## Assumptions
 
 - The flashcard data shape is the one defined in feature 001's contract (`flashcard.schema.json`).
-- The spaced-repetition policy is the simplified SM-2 variant described in AI300-Game-Spec.md §9; tuning the parameters is out of scope.
+- The spaced-repetition policy is the simplified SM-2 variant described in DP700-Game-Spec.md §9; tuning the parameters is out of scope.
 - No runtime AI is invoked per Principle III — there are no on-demand generated cards. The 50-item seed bank is sufficient for this feature.
-- "Random mix" is the union of all topics across all five AI-300 domains, filtered to `type='flashcard'`.
+- "Random mix" is the union of all topics across all three DP-700 domains, filtered to `type='flashcard'`.
 - Card text is plain text in v1; rich content (code blocks, images, links inside the back) is out of scope.
 - The session is not interrupted by external events (push notifications, app updates). If interrupted, ratings already submitted are persisted but the session does not resume.
 - This feature does not implement the "daily review" home-screen surface — that is feature 008. It does, however, write the data that feature 008 will read.

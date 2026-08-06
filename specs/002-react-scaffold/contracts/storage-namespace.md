@@ -5,10 +5,10 @@ All guest-mode state in feature 002 lives under a single namespaced key. This co
 ## Key
 
 ```
-ai300game.v1.state
+dp700game.v1.state
 ```
 
-- `ai300game` — the project's namespace prefix; reserves the entire `ai300game.*` keyspace.
+- `dp700game` — the project's namespace prefix; reserves the entire `dp700game.*` keyspace.
 - `v1` — schema version; bumps when the persisted shape changes incompatibly.
 - `state` — the slice name. Only one key today; reserved for additional buckets if a future feature needs a separate persistence cadence.
 
@@ -50,7 +50,7 @@ On read, migrators run in ascending version order until the payload matches the 
 
 If the on-disk `__version` is greater than `CURRENT_VERSION`, the app:
 
-1. Clears the entire `ai300game.*` namespace.
+1. Clears the entire `dp700game.*` namespace.
 2. Reinitializes with defaults.
 3. Surfaces a one-time, dismissible notice: "Your saved progress was created by a newer version of the app and has been reset."
 
@@ -61,7 +61,7 @@ This is a deliberate trade-off: silent loss is safer than crashing.
 At module load (synchronous), the storage adapter probes `window.localStorage` by writing and reading a sentinel:
 
 ```
-ai300game.probe = "ok"
+dp700game.probe = "ok"
 ```
 
 If the write throws (Safari private mode), the read returns a different value, or any step is unsupported, the adapter sets an `available = false` flag and switches to an in-memory `Map`-backed fallback that conforms to the Web Storage API. The probe key is deleted after the test, succeed or fail.
@@ -78,8 +78,8 @@ When `setItem` throws `QuotaExceededError`:
 
 ## What's reserved but not used in this feature
 
-- `ai300game.probe` — availability probe.
-- `ai300game.v1.queue` — pending writes for offline-authenticated mode (feature 010).
+- `dp700game.probe` — availability probe.
+- `dp700game.v1.queue` — pending writes for offline-authenticated mode (feature 010).
 
 Both are reserved here to prevent later features from accidentally colliding.
 

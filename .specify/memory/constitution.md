@@ -25,7 +25,7 @@ Sections updated:
 
 Templates: no template edits required. CLAUDE.md unchanged.
 
-Spec sync: AI300-Game-Spec.md updated in same change set
+Spec sync: DP700-Game-Spec.md updated in same change set
 (§3.2 backend table, §6.1/§6.2 AI Enhancement blocks, §7 rewritten as
 "AI-Assisted Content Authoring (Offline)", §13 Phase 3 repurposed).
 
@@ -33,7 +33,7 @@ Deferred / TODOs: §15 open questions still being walked through
 interactively; will land in spec as decisions are made.
 -->
 
-# AI-300 Learning Game Constitution
+# DP-700 Learning Game Constitution
 
 ## Core Principles
 
@@ -54,7 +54,7 @@ breaks the habit-forming loop the product depends on.
 
 Every question, flashcard, and product-ID item MUST carry an explicit
 `domain`, `topic`, `difficulty`, and `source` field as defined in the spec's
-data model. The domain set is fixed to the five official AI-300 exam
+data model. The domain set is fixed to the three official DP-700 exam
 domains; new domains require a constitution amendment. AI-generated content
 MUST be tagged `source: "ai-generated"` and MUST NOT be promoted into the
 seeded bank without human review.
@@ -68,7 +68,7 @@ weak-area dashboard, and the level-progression gates.
 The production runtime MUST NOT make outbound calls to any AI provider.
 Claude is used **only** by the maintainer, offline, to draft and refine
 question-bank entries. All AI-authored items MUST be validated against
-the JSON schemas in AI300-Game-Spec.md §8, reviewed by a human, tagged
+the JSON schemas in DP700-Game-Spec.md §8, reviewed by a human, tagged
 `source: "ai-generated"`, and committed to the seed bank before reaching
 users. Any future proposal to add a runtime AI feature ("Explain more",
 on-demand generation, weak-area summaries) requires an amendment of
@@ -129,7 +129,7 @@ requires a MAJOR version bump of this constitution:
 ## Development Workflow & Quality Gates
 
 - **Phased delivery**: Work proceeds in the four phases defined in
-  AI300-Game-Spec.md §13. A later phase MUST NOT consume scope from
+  DP700-Game-Spec.md §13. A later phase MUST NOT consume scope from
   an earlier phase without rebaselining the spec.
 - **Specs precede code**: Every feature branch MUST originate from a
   spec under `specs/###-feature-name/` produced by `/speckit-specify`,

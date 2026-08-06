@@ -164,7 +164,7 @@ pnpm seed
 pnpm test
 ```
 
-The tests will create and clean up disposable `test+*@ai300game.test` auth users via the admin API. They do not touch your real users.
+The tests will create and clean up disposable `test+*@dp700game.test` auth users via the admin API. They do not touch your real users.
 
 ---
 

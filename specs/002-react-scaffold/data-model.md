@@ -137,7 +137,7 @@ Stored as a chronological array (newest first), capped at 500 entries with FIFO 
 All four slices are persisted together under a single localStorage key:
 
 ```
-ai300game.v1.state
+dp700game.v1.state
 ```
 
 The value is a JSON object:

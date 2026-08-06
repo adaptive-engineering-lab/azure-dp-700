@@ -57,7 +57,7 @@ No `[NEEDS CLARIFICATION]` markers remain in the spec. This document captures th
 
 ## 4. localStorage availability detection
 
-**Decision**: A one-time probe at module load — write a short string to `__ai300game.probe`, read it back, delete it. If any step throws or returns the wrong value, mark storage unavailable and switch the adapter to the in-memory fallback.
+**Decision**: A one-time probe at module load — write a short string to `__dp700game.probe`, read it back, delete it. If any step throws or returns the wrong value, mark storage unavailable and switch the adapter to the in-memory fallback.
 
 **Rationale**:
 
@@ -73,7 +73,7 @@ No `[NEEDS CLARIFICATION]` markers remain in the spec. This document captures th
 
 ## 5. Theme apply timing (FOUC prevention)
 
-**Decision**: A short synchronous script in `index.html` that reads `localStorage["ai300game.v1.preferences"]`, extracts `theme`, and sets `document.documentElement.classList` to `dark` or `light` before the React bundle parses. The React-side `ThemeProvider` then takes over and stays in sync with subsequent toggles.
+**Decision**: A short synchronous script in `index.html` that reads `localStorage["dp700game.v1.preferences"]`, extracts `theme`, and sets `document.documentElement.classList` to `dark` or `light` before the React bundle parses. The React-side `ThemeProvider` then takes over and stays in sync with subsequent toggles.
 
 **Rationale**:
 

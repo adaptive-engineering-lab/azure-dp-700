@@ -20,7 +20,7 @@ Build maintainer-side CLI tooling under `tools/author/` that uses Claude to draf
 | Principle | Status | Notes |
 |---|---|---|
 | I. Mobile-First UX | N/A | Tooling has no UI. |
-| II. Domain-Aligned Content | Pass | Every drafted item is tagged with one of the five AI-300 domains from `exams.config.json`. |
+| II. Domain-Aligned Content | Pass | Every drafted item is tagged with one of the three DP-700 domains from `exams.config.json`. |
 | III. AI as Authoring Tool | Pass | This is *the* implementation of Principle III. No production code imports anything from `tools/author/` (SC-005, verified by static analysis). |
 | IV. Secrets Stay Server-Side | Pass | API key sourced from a maintainer-local env var; never appears in repo, CI logs, or draft contents (SC-006). |
 | V. Measurable Quality Gates | Pass | Output is JSON validated against the same schemas the seed CLI consumes; SC-004 verifies idempotency after promote + seed. |

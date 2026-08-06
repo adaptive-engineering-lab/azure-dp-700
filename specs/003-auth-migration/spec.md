@@ -3,7 +3,7 @@
 **Feature Branch**: `003-auth-migration`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "Supabase Auth (email magic link) + guest→authenticated progress migration" (Phase 1 of AI300-Game-Spec.md §13, closing resolved decision #1)
+**Input**: User description: "Supabase Auth (email magic link) + guest→authenticated progress migration" (Phase 1 of DP700-Game-Spec.md §13, closing resolved decision #1)
 
 ## User Scenarios & Testing *(mandatory)*
 

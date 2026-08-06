@@ -81,7 +81,7 @@ frontend/
     │   │   └── sessions.ts    # GuestSession slice (mirror shape)
     │   ├── storage/
     │   │   ├── adapter.ts     # storage abstraction (localStorage OR session-only memory)
-    │   │   ├── namespace.ts   # `ai300game.v1.*` prefix; version constant
+    │   │   ├── namespace.ts   # `dp700game.v1.*` prefix; version constant
     │   │   ├── migrate.ts     # version-to-version migrators
     │   │   └── available.ts   # detect localStorage availability
     │   ├── theme/

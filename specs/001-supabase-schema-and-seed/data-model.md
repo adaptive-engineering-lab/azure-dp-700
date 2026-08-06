@@ -36,11 +36,7 @@ CREATE TABLE public.questions (
 
   CONSTRAINT questions_domain_chk
     CHECK (domain IN (
-      'mlops-infra',
-      'ml-lifecycle',
-      'genaiops-infra',
-      'genai-quality',
-      'genai-optimization'
+      'implement-manage', 'ingest-transform', 'monitor-optimize'
     )),
 
   CONSTRAINT questions_source_chk
@@ -76,7 +72,7 @@ CREATE INDEX questions_topic_idx      ON public.questions (topic);
 **Mapping to functional requirements**:
 
 - FR-001 (shared envelope + type-specific payload): columns + `content jsonb`.
-- FR-002 (five-domain whitelist): `questions_domain_chk`.
+- FR-002 (three-domain whitelist): `questions_domain_chk`.
 - FR-003 (three types): `questions_type_chk`.
 - FR-004 (audit invariant): `questions_ai_audit_chk`.
 - FR-005 (payload structure): `questions_content_shape_chk` provides the database-level guard; full structural validation lives in the JSON Schemas under `contracts/`.

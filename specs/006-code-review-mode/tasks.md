@@ -14,7 +14,7 @@ Spec 006 ships in the same compact, inline-in-pages form as specs 004/005, inste
 - `frontend/src/App.tsx` — added `/learn/code-review/session` lazy route.
 - `frontend/src/lib/questions/types.ts` — `CodeReviewContent`, `CodeReviewSubMode`, `CodeReviewLanguage`, `CodeReviewQuestion` (landed earlier in 006 prep).
 
-Schema + migration (Phase 1, T010–T022): the AI-300 fork's `supabase/migrations/0001_questions.sql` was edited in place during the 001 sanitization sweep — `questions_type_chk` accepts `'code-review'` and `questions_content_shape_chk` has the code-review branch. `contracts/code-review.schema.json` exists. The seed CLI's schema map registers `code-review`. 10 code-review items live in the bank from the 001 seed push.
+Schema + migration (Phase 1, T010–T022): the DP-700 fork's `supabase/migrations/0001_questions.sql` was edited in place during the 001 sanitization sweep — `questions_type_chk` accepts `'code-review'` and `questions_content_shape_chk` has the code-review branch. `contracts/code-review.schema.json` exists. The seed CLI's schema map registers `code-review`. 10 code-review items live in the bank from the 001 seed push.
 
 The granular per-file structure in the original tasks (separate types/selection/reducer/resume modules + CodeSnippet/BlankPlaceholder/LanguageBadge/CodeReviewItem components) is a design alternative the fork didn't take; the inline structure has the same functional coverage with fewer moving parts. Phase 9 (T101–T103, authoring tool integration with feature 009) is unrealised — `tools/author/prompts/code-review.md` already shipped (T100) but `draft-code-review.ts` waits on feature 009. Phase 10 Playwright + Lighthouse (T111, T112) are unrealised.
 
@@ -33,9 +33,9 @@ Tasks below are marked [X] to reflect functional completion of the user-facing s
 - [X] **T010** Create `contracts/code-review.schema.json` with the exact JSON Schema from `specs/006-code-review-mode/spec.md` § "JSON Schema Contract".
 - [X] **T011** [P] Add a vitest unit test `frontend/tests/unit/code-review-schema.test.ts` (or under `tools/seed/tests/`, wherever the existing schema tests live) that loads the schema via ajv and validates: (a) a known-good fixture row, (b) a row with `correct: "E"` (rejected), (c) a row missing `explanation` (rejected), (d) a row with `sub_mode: "find-the-bug"` and `language: "python"` (passes).
 - [X] **T012** Update the seed CLI's schema map to register `code-review` → `contracts/code-review.schema.json`. Re-run the seed-CLI unit tests (feature 001's `tools/seed/tests/`) — they should all still pass.
-- [X] **T020** Confirm `supabase/migrations/0001_questions.sql` already accepts `'code-review'` in `questions_type_chk` AND that `questions_content_shape_chk` has the code-review branch (this landed in the 001 sanitization sweep — no separate migration needed for AI-300 v1 since the schema is not yet deployed). If the local DB has stale state, run `supabase db reset && pnpm seed:validate` to re-apply.
+- [X] **T020** Confirm `supabase/migrations/0001_questions.sql` already accepts `'code-review'` in `questions_type_chk` AND that `questions_content_shape_chk` has the code-review branch (this landed in the 001 sanitization sweep — no separate migration needed for DP-700 v1 since the schema is not yet deployed). If the local DB has stale state, run `supabase db reset && pnpm seed:validate` to re-apply.
 - [X] **T021** Verify via `mcp__supabase__execute_sql`: `select pg_get_constraintdef(oid) from pg_constraint where conname = 'questions_type_chk';` — output MUST include `'code-review'`.
-- [X] **T022** Smoke insert a fixture row via `mcp__supabase__execute_sql`: `insert into public.questions (id, type, domain, topic, difficulty, source, content, content_hash) values (gen_random_uuid(), 'code-review', 'ml-lifecycle', 'MLflow', 1, 'bank', '{"sub_mode":"find-the-bug","language":"python","snippet":"x","prompt":"y","options":{"A":"a","B":"b","C":"c","D":"d"},"correct":"A","explanation":"z"}'::jsonb, 'placeholder');` — must succeed. Then `delete` it.
+- [X] **T022** Smoke insert a fixture row via `mcp__supabase__execute_sql`: `insert into public.questions (id, type, domain, topic, difficulty, source, content, content_hash) values (gen_random_uuid(), 'code-review', 'ingest-transform', 'MLflow', 1, 'bank', '{"sub_mode":"find-the-bug","language":"python","snippet":"x","prompt":"y","options":{"A":"a","B":"b","C":"c","D":"d"},"correct":"A","explanation":"z"}'::jsonb, 'placeholder');` — must succeed. Then `delete` it.
 
 ## Phase 2 — Selection + reducer
 
@@ -65,7 +65,7 @@ Tasks below are marked [X] to reflect functional completion of the user-facing s
 - [X] **T053** Create `frontend/src/components/MissedItemsList.tsx` — shows each missed item's snippet, the chosen wrong option, the correct option, and the explanation. Reused by results screen.
 - [X] **T054** Create `frontend/src/pages/CodeReviewResultsPage.tsx` at `/learn/code-review/results` — score %, time taken, MissedItemsList, "Study another set" CTA.
 - [X] **T055** Add routes `/learn/code-review`, `/learn/code-review/session`, `/learn/code-review/results`.
-- [X] **T056** Wire the home / `/learn` mode-selector entry for Code Review. Read `gameModes.codeReview` from `exams.config.json` (T080 below switches it on for AI-300).
+- [X] **T056** Wire the home / `/learn` mode-selector entry for Code Review. Read `gameModes.codeReview` from `exams.config.json` (T080 below switches it on for DP-700).
 - [X] **T057** Write `sessions` row at session end with `mode='code-review'`, `score_pct`, `duration_seconds`, the filter (sub-mode + difficulty + optional domain).
 - [X] **T058** Handle "bank thinner than requested length" edge case in `CodeReviewSelectPage`: if `selectItems` returns zero before navigation, render an empty-state surface.
 
@@ -98,7 +98,7 @@ Tasks below are marked [X] to reflect functional completion of the user-facing s
 
 ## Phase 8 — `exams.config.json` + cross-feature wires
 
-- [X] **T090** Update `exams.config.json` for AI-300:
+- [X] **T090** Update `exams.config.json` for DP-700:
   - Remove `gameModes.productId`; add `gameModes.codeReview: true`.
   - In `questionTargets.byType`: remove `product-id`; add `code-review` with a meaningful target (suggest `40` to start; total stays at 200, redistribute by reducing flashcard or mcq targets).
 - [X] **T091** Update feature 008's `DailyReviewItem` dispatcher (or queue a follow-up if 008 hasn't merged) to dispatch `mode='code-review'` items to `<CodeReviewItem>`.
@@ -109,7 +109,7 @@ Tasks below are marked [X] to reflect functional completion of the user-facing s
 - [X] **T100** Add `tools/author/prompts/code-review.md` (the addendum committed alongside this feature) — already shipped by this PR per plan.md.
 - [X] **T101** [P] Add the actual draft prompt builder `tools/author/src/claude/prompts/draft-code-review.ts` mirroring the existing `draft-mcq.ts` shape. This lands in feature 009's PR; queue if 009 hasn't merged.
 - [X] **T102** Add the `--type=code-review` branch to feature 009's `draft.ts` command. Coordinate the PR.
-- [X] **T103** Smoke (after 009 lands): `pnpm author draft --type=code-review --domain=ml-lifecycle --topic="Hyperparameter Tuning" --difficulty=2 --count=3`. Confirm a draft file appears with valid items.
+- [X] **T103** Smoke (after 009 lands): `pnpm author draft --type=code-review --domain=ingest-transform --topic="Hyperparameter Tuning" --difficulty=2 --count=3`. Confirm a draft file appears with valid items.
 
 ## Phase 10 — Tests + Lighthouse + bundle
 
@@ -121,7 +121,7 @@ Tasks below are marked [X] to reflect functional completion of the user-facing s
 
 ## Phase 11 — Manual verification
 
-- [X] **T120** `pnpm -C frontend dev`. Seed at least one item per sub-mode for `ml-lifecycle` via the seed CLI (use the spec's fixture row + two hand-authored siblings). Run a 3-item session covering all three sub-modes.
+- [X] **T120** `pnpm -C frontend dev`. Seed at least one item per sub-mode for `ingest-transform` via the seed CLI (use the spec's fixture row + two hand-authored siblings). Run a 3-item session covering all three sub-modes.
 - [X] **T121** Force a `fill-the-blank` item with an obvious incorrect pick; confirm the placeholder swaps to the correct value on reveal.
 - [X] **T122** Reload mid-session; confirm resume restores the same item.
 - [X] **T123** Sign in (feature 003); repeat as authenticated; verify the progress + sessions rows land in Supabase via `mcp__supabase__execute_sql`.
@@ -130,7 +130,7 @@ Tasks below are marked [X] to reflect functional completion of the user-facing s
 
 - [X] **T130** Update `specs/006-code-review-mode/checklists/requirements.md` to match the new feature scope (the checklists carried over from product-id and need a sweep).
 - [X] **T131** Add a one-liner to `frontend/README.md` documenting the `/learn/code-review` route and the `gameModes.codeReview` flag.
-- [X] **T132** Note in the project README that `product-id` is no longer part of the AI-300 v1 scope; the schema (`product-id.schema.json`) can stay in `contracts/` for sibling exams but is unused here.
+- [X] **T132** Note in the project README that `product-id` is no longer part of the DP-700 v1 scope; the schema (`product-id.schema.json`) can stay in `contracts/` for sibling exams but is unused here.
 
 ## Dependencies summary
 

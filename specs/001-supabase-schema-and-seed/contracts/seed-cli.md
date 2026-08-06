@@ -72,4 +72,4 @@ A successful no-op re-run produces `0 inserted, 0 updated, <M> unchanged`. This 
 - It does not create or run migrations. Schema changes go through `supabase/migrations/`.
 - It does not generate IDs. Every item in the source JSON must already carry a UUID (see spec clarification Q1).
 - It does not write to `profiles`, `user_progress`, or `sessions`.
-- It does not call any AI API. AI-authored items arrive in the source JSON via the offline workflow described in AI300-Game-Spec.md §7.
+- It does not call any AI API. AI-authored items arrive in the source JSON via the offline workflow described in DP700-Game-Spec.md §7.

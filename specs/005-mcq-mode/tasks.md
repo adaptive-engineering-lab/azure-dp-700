@@ -11,7 +11,7 @@ Spec 005 was already implemented in the AZ-104 fork, in more compact form than t
 - `frontend/src/pages/QuizSelectPage.tsx` (151 LOC) — topic + difficulty + count + timer picker.
 - `frontend/src/pages/QuizSessionPage.tsx` (~300 LOC) — full session loop: question display, four-option feedback, 45 s monotonic-time timer (US2), explanation reveal, end-of-session `ResultsScreen` with `computeDomainBreakdown` exported for testing. SM-2-lite progress writes via `useAppStore.recordRating`. Sessions row recorded with `mode='mcq'` (T035).
 - `frontend/src/lib/questions/pick.ts` exports `pickWithDifficultyPreference` — difficulty-aware sampling tested in `pick-with-difficulty.test.ts`.
-- `frontend/tests/unit/domain-breakdown.test.ts` (3 tests) + `pick-with-difficulty.test.ts` (6 tests) — 9/9 pass, both already using AI-300 domain slugs.
+- `frontend/tests/unit/domain-breakdown.test.ts` (3 tests) + `pick-with-difficulty.test.ts` (6 tests) — 9/9 pass, both already using DP-700 domain slugs.
 
 The granular per-file structure in the original tasks (separate `lib/quiz/{types,selection,reducer,timer,domainBreakdown}.ts` + `QuizQuestion`, `QuizTimerRing`, `DomainBreakdownChart`, `ReviewMissedCTA` components) is a design alternative the fork didn't take; the inline structure has the same functional coverage with fewer moving parts.
 
@@ -23,7 +23,7 @@ Tasks below are marked [X] to reflect functional completion (with the Review-mis
 ## Phase 0 — Verify ground state
 
 - [X] **T001** Confirm feature 004's `lib/progress/store.ts` is merged. If not, gate on 004.
-- [X] **T002** Confirm `public.questions` has ≥ 20 MCQ rows across the five AI-300 domains. Run `select domain, difficulty, count(*) from public.questions where type='mcq' group by 1,2;` via MCP.
+- [X] **T002** Confirm `public.questions` has ≥ 20 MCQ rows across the three DP-700 domains. Run `select domain, difficulty, count(*) from public.questions where type='mcq' group by 1,2;` via MCP.
 - [X] **T003** Inspect the existing AZ-104-forked `frontend/src/pages/QuizSessionPage.tsx`. Note what's salvageable (`computeDomainBreakdown` skeleton lives here per the unit test). Plan T040 to extract it into `lib/quiz/domainBreakdown.ts`.
 
 ## Phase 1 — Selection + reducer (foundational)
@@ -43,7 +43,7 @@ Tasks below are marked [X] to reflect functional completion (with the Review-mis
 ## Phase 3 — Question UI + feedback (US1, P1) 🎯 MVP
 
 - [X] **T030** Create `frontend/src/components/QuizQuestion.tsx` — stem + four options (A/B/C/D). Tapping reveals feedback colors per FR-005. Keyboard: A/B/C/D selects, Space/Enter advances (FR-014). Disabled state during animation.
-- [X] **T031** Create `frontend/src/pages/QuizSelectPage.tsx` at `/learn/quiz` — topic select (AI-300 domains) + difficulty (1/2/3) + count (5/10/20) + timer toggle. Disabled "Start" until all required fields chosen.
+- [X] **T031** Create `frontend/src/pages/QuizSelectPage.tsx` at `/learn/quiz` — topic select (DP-700 domains) + difficulty (1/2/3) + count (5/10/20) + timer toggle. Disabled "Start" until all required fields chosen.
 - [X] **T032** Rewrite `frontend/src/pages/QuizSessionPage.tsx` against the new reducer + selection. Render `QuizQuestion`; on answer reveal, write the progress update via `useProgressStore`; advance on Next.
 - [X] **T033** Handle the "explanation overflow" edge case: explanation panel scrolls within its container; "Next" remains pinned.
 - [X] **T034** Handle the "bank empty for filter" edge case: render an empty-state surface from `QuizSelectPage` if `selectQuestions` returns zero before navigation.
@@ -64,7 +64,7 @@ Tasks below are marked [X] to reflect functional completion (with the Review-mis
 ## Phase 5 — Results screen + domain breakdown (US3, P2)
 
 - [X] **T050** Extract `computeDomainBreakdown(answers)` from `QuizSessionPage.tsx` into `frontend/src/lib/quiz/domainBreakdown.ts`. Make it pure: returns `BreakdownRow[]` sorted by domain. Keep the 60% threshold as a constant.
-- [X] **T051** [P] Update `frontend/tests/unit/domain-breakdown.test.ts` (already exists, uses AI-300 domains post-rename) to import from the new location.
+- [X] **T051** [P] Update `frontend/tests/unit/domain-breakdown.test.ts` (already exists, uses DP-700 domains post-rename) to import from the new location.
 - [X] **T052** Create `frontend/src/components/DomainBreakdownChart.tsx` — recharts radar fed by `BreakdownRow[]`; weak domains rendered with a distinct shape marker (not color alone, FR-016).
 - [X] **T053** Create `frontend/src/components/ReviewMissedCTA.tsx` — receives the flagged weak domains, navigates to `/learn/flashcards?domains=<csv>` and the flashcard select page reads the query string to pre-populate the topic filter.
 - [X] **T054** Update `frontend/src/pages/FlashcardSelectPage.tsx` (from feature 004) to honor the `?domains=` query param. If a contributor lands 005 before 004 is fully merged, gate this task.

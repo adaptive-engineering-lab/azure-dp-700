@@ -20,13 +20,13 @@ File: [`frontend/src/lib/questions/types.ts`](../frontend/src/lib/questions/type
 - [ ] Update the `Domain` string-literal union:
 
   ```ts
-  // Before (AI-300):
+  // Before (DP-700):
   export type Domain =
-    | 'mlops-infra'
-    | 'ml-lifecycle'
-    | 'genaiops-infra'
-    | 'genai-quality'
-    | 'genai-optimization';
+    | 'implement-manage'
+    | 'ingest-transform'
+    | 'monitor-optimize'
+    | 'implement-manage'
+    | 'ingest-transform';
 
   // After (AZ-900 example):
   export type Domain =
@@ -124,18 +124,18 @@ Easiest. Edit the migration in place before first `supabase db push`:
 
 ### Other copy mentions
 
-- [ ] grep for `AI-300` across the codebase and replace where it's user-facing (not in archived spec files):
+- [ ] grep for `DP-700` across the codebase and replace where it's user-facing (not in archived spec files):
 
   ```bash
-  grep -rn "AI-300" --include="*.tsx" --include="*.ts" --include="*.html" --include="*.md" \
+  grep -rn "DP-700" --include="*.tsx" --include="*.ts" --include="*.html" --include="*.md" \
     frontend/ README.md netlify.toml | grep -v "specs/"
   ```
 
-- [ ] grep for the old exam title strings too (`Operationalize Machine Learning`, `ML Operations Engineer`, etc.).
+- [ ] grep for the old exam title strings too (`Implementing Data Engineering Solutions`, `Fabric Data Engineer`, etc.).
 
 ### `README.md`
 
-- [ ] Rewrite the project-level README hero, sections that mention AI-300 specifically, and the architecture diagram captions. Most of the doc is exam-agnostic and can stay.
+- [ ] Rewrite the project-level README hero, sections that mention DP-700 specifically, and the architecture diagram captions. Most of the doc is exam-agnostic and can stay.
 
 ---
 
@@ -178,7 +178,7 @@ Easiest. Edit the migration in place before first `supabase db push`:
 ## 8. Privacy + Terms
 
 - [ ] Open `frontend/src/pages/PrivacyPolicyPage.tsx` and `TermsOfServicePage.tsx`.
-- [ ] Update the exam name from "AI-300 Study" to "AZ-900 Study" (or whatever).
+- [ ] Update the exam name from "DP-700 Study" to "AZ-900 Study" (or whatever).
 - [ ] Confirm operator name, contact email, Supabase region, and governing jurisdiction are still correct (or update them).
 
 ---
@@ -198,10 +198,10 @@ If you're launching free-tier-only: do nothing. The billing surface gracefully s
 
 ## 10. Specs folder
 
-- [ ] Decide what to keep. The 13 AI-300 specs document HOW each feature was built, which is useful reference material. But they're cluttered with AI-300-specific intent and STATUS notes.
+- [ ] Decide what to keep. The 13 DP-700 specs document HOW each feature was built, which is useful reference material. But they're cluttered with DP-700-specific intent and STATUS notes.
 - [ ] Options:
   - **Keep** as-is — historic reference, no harm.
-  - **Archive** by moving `specs/` → `specs.ai-300/` and starting a fresh `specs/` for the new exam.
+  - **Archive** by moving `specs/` → `specs.dp-700/` and starting a fresh `specs/` for the new exam.
   - **Trim** to spec.md + plan.md only, dropping tasks.md (which is exam-specific and already executed).
 
 For Option A (forking): archiving is usually right. For Option B (multi-exam in one repo): keep + reorganize.
@@ -241,7 +241,7 @@ For Option A (forking): archiving is usually right. For Option B (multi-exam in 
 
 ## Rough effort
 
-For someone who's done this once already and is forking AZ-900 / AI-900 from the AI-300 base:
+For someone who's done this once already and is forking AZ-900 / AI-900 from the DP-700 base:
 
 - **Code changes**: 30 minutes (taxonomy + types + copy)
 - **Initial content (30-50 items)**: 4-8 hours of authoring

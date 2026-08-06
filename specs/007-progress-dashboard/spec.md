@@ -3,7 +3,7 @@
 **Feature Branch**: `007-progress-dashboard`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "Progress dashboard: stats, streaks, weak areas" (Phase 2 of AI300-Game-Spec.md §13, expanded per §10.2)
+**Input**: User description: "Progress dashboard: stats, streaks, weak areas" (Phase 2 of DP700-Game-Spec.md §13, expanded per §10.2)
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -25,7 +25,7 @@ A learner taps the Progress tab and lands on a single screen that summarizes the
 
 ### User Story 2 — A Per-Domain Radar Chart Highlights Strengths and Weaknesses (Priority: P1)
 
-The dashboard renders a five-axis radar chart, one axis per AI-300 domain, where each axis shows the learner's accuracy in that domain. Domains where the learner has answered fewer than five questions render as dotted/translucent axes ("not enough data"). Below the chart, a "weak areas" list names every domain at or below the configured threshold (default 60%) with a one-tap CTA to start a study session there.
+The dashboard renders a three-axis radar chart, one axis per DP-700 domain, where each axis shows the learner's accuracy in that domain. Domains where the learner has answered fewer than five questions render as dotted/translucent axes ("not enough data"). Below the chart, a "weak areas" list names every domain at or below the configured threshold (default 60%) with a one-tap CTA to start a study session there.
 
 **Why this priority**: The single biggest study-efficiency lever is "study what you suck at." The radar chart makes weakness visible at a glance and the weak-areas CTA closes the loop into action. P1 because it transforms the dashboard from a leaderboard into a study coach.
 
@@ -33,7 +33,7 @@ The dashboard renders a five-axis radar chart, one axis per AI-300 domain, where
 
 **Acceptance Scenarios**:
 
-1. **Given** the learner has answered ≥5 questions in every domain, **When** the dashboard renders, **Then** all five axes are solid and the radar shape reflects the per-domain accuracy.
+1. **Given** the learner has answered ≥5 questions in every domain, **When** the dashboard renders, **Then** all three axes are solid and the radar shape reflects the per-domain accuracy.
 2. **Given** the learner has answered fewer than 5 in some domain, **When** the dashboard renders, **Then** that axis is dimmed and labeled "Not enough data yet."
 3. **Given** at least one domain is below 60%, **When** the dashboard renders, **Then** a "Focus areas" list names those domains, each with a CTA that opens a pre-filtered session.
 
@@ -70,7 +70,7 @@ The dashboard includes a 12-week calendar of "active days" — every day on whic
 
 - **FR-001**: The dashboard MUST live at `/progress` and MUST be reachable from primary in-app navigation.
 - **FR-002**: The dashboard MUST display the following metrics: current streak (days), current XP total, current level, total questions seen, overall accuracy percentage, most-recent session summary.
-- **FR-003**: The dashboard MUST display a five-axis radar chart, one axis per AI-300 domain, with per-domain accuracy as the magnitude.
+- **FR-003**: The dashboard MUST display a three-axis radar chart, one axis per DP-700 domain, with per-domain accuracy as the magnitude.
 - **FR-004**: For domains with fewer than 5 answered questions, the axis MUST render as a dimmed "not enough data" axis with a tooltip explaining why.
 - **FR-005**: Below the radar, the dashboard MUST list "Focus areas" — every domain strictly below 60% accuracy — with a one-tap CTA per entry that opens a pre-filtered session.
 - **FR-006**: The dashboard MUST display a 12-week activity calendar with one cell per day, filled when at least one session completed that day.

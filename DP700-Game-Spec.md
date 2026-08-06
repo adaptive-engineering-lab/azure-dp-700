@@ -10,7 +10,7 @@
 
 ### 1.1 Product Summary
 
-A mobile-first, gamified web application designed to help learners prepare for the **Microsoft ML Operations Engineer (DP-700)** certification exam. The app combines a curated question bank with AI-generated content to deliver flashcards, multiple-choice quizzes, and product identification challenges across progressive difficulty levels.
+A mobile-first, gamified web application designed to help learners prepare for the **Microsoft Fabric Data Engineer (DP-700)** certification exam. The app combines a curated question bank with AI-generated content to deliver flashcards, multiple-choice quizzes, and product identification challenges across progressive difficulty levels.
 
 ### 1.2 Goals
 

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ai300game.local/contracts/code-review.schema.json",
+  "$id": "https://dp700game.local/contracts/code-review.schema.json",
   "title": "Code Review Item",
   "type": "object",
   "required": [

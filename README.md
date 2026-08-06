@@ -1,6 +1,6 @@
 # DP-700 Study
 
-A mobile-first study app for the **Microsoft Certified: Machine Learning Operations Engineer Associate** exam (Exam DP-700). Flashcards, multiple-choice quizzes, and code-review drills across all five exam domains, with spaced repetition, a daily review queue, progress dashboards, and a cosmetic Pro tier — built as a Progressive Web App that works offline once installed.
+A mobile-first study app for the **Microsoft Certified: Fabric Data Engineer Associate** exam (Exam DP-700). Multiple-choice quizzes and code-review drills across all three exam domains, with spaced repetition, a daily review queue, progress dashboards, and a cosmetic Pro tier — built as a Progressive Web App that works offline once installed.
 
 Live: [tranquil-eclair-165309.netlify.app](https://tranquil-eclair-165309.netlify.app/)
 
@@ -38,13 +38,12 @@ Live: [tranquil-eclair-165309.netlify.app](https://tranquil-eclair-165309.netlif
 
 A learner opens the site, picks a study mode, and starts answering questions. Their answers feed into a spaced-repetition system that decides when to surface each question again. A streak rewards daily play; a progress dashboard shows accuracy by domain, time per session, and which areas to focus on. They can play entirely as a guest (data stays in browser storage) or sign in to sync across devices.
 
-Three study modes share one question bank:
+Two study modes share one question bank:
 
-- **Flashcards** — self-rated recall (got it / almost / missed).
-- **Quiz** — four-option multiple choice with optional 45-second exam timer.
-- **Code Review** — short Python / YAML snippets (8–20 lines) with three sub-modes: find-the-bug, what-does-this-do, fill-the-blank.
+- **Quiz** — multiple choice with optional 45-second exam timer. Most items have four options; true/false items carry two.
+- **Code Review** — short PySpark / T-SQL / KQL snippets (8–20 lines) with three sub-modes: find-the-bug, what-does-this-do, fill-the-blank.
 
-A fourth surface, **Daily Review**, pulls items that spaced repetition has scheduled for today and dispatches each one to the matching study UI. One session, multiple modes, one click from the home screen.
+A third surface, **Daily Review**, pulls items that spaced repetition has scheduled for today and dispatches each one to the matching study UI. One session, both modes, one click from the home screen.
 
 ---
 
@@ -133,7 +132,7 @@ Hosting:
 │   │   ├── App.tsx             # Router + provider tree + cross-tab sync
 │   │   ├── main.tsx            # ReactDOM entry
 │   │   ├── components/         # Reusable UI (RadarChart, ProBadge, etc.)
-│   │   ├── pages/              # One per route (HomePage, FlashcardSessionPage…)
+│   │   ├── pages/              # One per route (HomePage, QuizSessionPage…)
 │   │   ├── lib/
 │   │   │   ├── auth/           # Supabase Auth provider + migration helper
 │   │   │   ├── billing/        # Stripe checkout/portal helpers
@@ -155,7 +154,7 @@ Hosting:
 │
 ├── supabase/
 │   ├── migrations/             # Numbered SQL migrations 0001 → 0014
-│   ├── seed/content/           # The question bank (flashcards.json, mcq.json, code-review.json)
+│   ├── seed/content/           # The question bank (mcq.json, code-review.json)
 │   ├── functions/              # Deno Edge Functions (stripe-webhook + 2 more)
 │   └── config.toml             # supabase init config
 │
@@ -190,7 +189,7 @@ The shared bank. Public read-only via the anon key.
 
 ```sql
 id            uuid     primary key
-type          text     check in ('flashcard', 'mcq', 'code-review')
+type          text     check in ('mcq', 'code-review')
 domain        text     check in (5 DP-700 domain slugs)
 topic         text
 difficulty    smallint check in (1, 2, 3)
@@ -203,7 +202,6 @@ tags          text[]
 ```
 
 CHECK constraint `questions_content_shape_chk` validates JSONB shape per type:
-- `flashcard.content` → `{ front, back }`
 - `mcq.content` → `{ question, options: {A,B,C,D}, correct, explanation }`
 - `code-review.content` → `{ sub_mode, language, snippet, prompt, options: {A,B,C,D}, correct, explanation }`
 
@@ -247,7 +245,7 @@ One row per completed study session.
 ```sql
 id               uuid PK default gen_random_uuid()
 user_id          uuid references profiles(id) ON DELETE CASCADE
-mode             text check in ('flashcard', 'mcq', 'code-review', 'daily-review')
+mode             text check in ('mcq', 'code-review', 'daily-review')
 topic            text                  -- optional, may be domain slug
 score_pct        smallint check 0..100
 duration_seconds int
@@ -336,10 +334,9 @@ Cross-tab sync: [`App.tsx`](frontend/src/App.tsx) attaches a `window.addEventLis
 |---|---|
 | `/` | Home (streak/XP badges + Daily Review hero + CTAs) |
 | `/learn` | Mode selector |
-| `/learn/flashcards` + `/session` | Flashcard mode |
 | `/learn/quiz` + `/session` | MCQ mode |
 | `/learn/code-review` + `/session` | Code Review mode |
-| `/learn/daily-review` | Daily Review (dispatcher across all three modes) |
+| `/learn/daily-review` | Daily Review (dispatcher across both modes) |
 | `/progress` | Dashboard (streak, accuracy, radar, focus areas, activity calendar) |
 | `/settings` | Theme, session length, motion, exam date, account, billing link |
 | `/settings/billing` | Plan view + Upgrade/Manage buttons |
@@ -383,11 +380,11 @@ When a guest signs in, [`AuthProvider`](frontend/src/lib/auth/AuthProvider.tsx) 
 1. Reads the local `progress` and `sessions` from Zustand.
 2. Uploads them in bulk via the user JWT (RLS scopes them to the new `user_id`).
 3. Calls `hydrateFromServer` to merge any pre-existing rows from a previous session.
-4. **Does not run mid-session** — the migration is queued and runs at the next session boundary so a sign-in mid-flashcard doesn't lose the current run.
+4. **Does not run mid-session** — the migration is queued and runs at the next session boundary so a sign-in mid-session doesn't lose the current run.
 
 ### Study session lifecycle
 
-The pattern is consistent across all three modes:
+The pattern is consistent across both modes:
 
 1. **Select page** (`/learn/<mode>`) gathers topic/difficulty/count/timer/etc. from the user.
 2. On Start, navigate to `/learn/<mode>/session?<params>`.
@@ -429,18 +426,9 @@ Authenticated users see the same flow; the Zustand store + `AuthProvider` push t
 
 ## Study modes
 
-### Flashcards
-
-- Front of card shown, tap to flip.
-- Three rating buttons: **Got it** / **Almost** / **Missed**.
-- Optional Framer Motion flip animation (auto-disabled if `prefers-reduced-motion: reduce`).
-- Score % at end = `correct / total`.
-
-Implementation: [`FlashcardSessionPage.tsx`](frontend/src/pages/FlashcardSessionPage.tsx). Card order comes from `sequenceForSession` which interleaves due cards (from spaced repetition) ahead of fresh ones.
-
 ### Quiz (MCQ)
 
-- Question + four options (A/B/C/D).
+- Question + its options. Four-option items use A/B/C/D; true/false items render only A (True) and B (False), so the renderer draws whichever letters a question actually carries.
 - Optional 45-second timer per question (off by default). On expiry → marked incorrect + reveal explanation + advance.
 - Reveal shows correct option in green, chosen-wrong option in red, plus the per-question explanation.
 - Keyboard: A/B/C/D selects, Space/Enter advances.
@@ -467,7 +455,7 @@ The home page shows a "Daily review" CTA when any due items exist. Tapping it op
 1. Reads due items via `findDueQuestionIds(progress)`.
 2. Caps at `DAILY_REVIEW_CAP = 30` per session.
 3. Fetches the matching question rows.
-4. Dispatches each item to the right inline component (`FlashcardCard`, `McqCard`, or `CodeReviewCard`) based on `type`.
+4. Dispatches each item to the right inline component (`McqCard` or `CodeReviewCard`) based on `type`.
 5. Records a `sessions` row with `mode='daily-review'` on completion.
 
 If there are more than 30 due, an opt-in **Review more** button on the results screen runs another batch — but with the "no streak XP bonus" flag so the cap can't be gamed for streak bumps.
@@ -488,7 +476,7 @@ The function returns an ISO date (YYYY-MM-DD), local-day-bucketed so an answer a
 
 Due-list query: [`findDueQuestionIds`](frontend/src/lib/dashboard/due.ts) returns items whose `nextReview <= today`, ordered by date.
 
-All three study modes call `computeNextReview` after every answer — there's one canonical scheduling policy, not per-mode variants.
+Both study modes call `computeNextReview` after every answer — there's one canonical scheduling policy, not per-mode variants.
 
 ---
 
@@ -496,34 +484,32 @@ All three study modes call `computeNextReview` after every answer — there's on
 
 ### Schemas
 
-Three JSON Schemas in [`specs/001-supabase-schema-and-seed/contracts/`](specs/001-supabase-schema-and-seed/contracts/):
+Two JSON Schemas in [`specs/001-supabase-schema-and-seed/contracts/`](specs/001-supabase-schema-and-seed/contracts/):
 
-- `flashcard.schema.json` — `{ front (≤280 chars), back (≤800 chars) }`
-- `mcq.schema.json` — `{ question, options: {A,B,C,D}, correct: A|B|C|D, explanation }`
+- `mcq.schema.json` — `{ question, options: {A,B,(C),(D)}, correct: A|B|C|D, explanation }`. Only A and B are required, so a true/false item needs no invented distractors.
 - `code-review.schema.json` — `{ sub_mode, language, snippet (≤2000 chars), prompt (≤200), options, correct, explanation }`
 
 The seed CLI validates every item against its schema with Ajv before any write. Any single failure aborts the batch — no partial writes.
 
 ### Source of truth
 
-The bank lives as three JSON files under [`supabase/seed/content/`](supabase/seed/content/):
+The bank lives as two JSON files under [`supabase/seed/content/`](supabase/seed/content/):
 
 ```
 supabase/seed/content/
-├── flashcards.json   (45 items)
-├── mcq.json          (75 items)
-└── code-review.json  (30 items)
+├── mcq.json          (86 items)
+└── code-review.json  (0 items)
 ```
 
-150 items total. Target per DP-700 exam weight is 200 (see `exams.config.json`); the remaining 50 will land as the bank matures.
+86 items total, generated from the practice-quiz markdown in `bank/knowledge/` by `pnpm -C tools import:md`. Target per DP-700 exam weight is 200 (see `exams.config.json`).
 
 Every item declares:
 
 ```json
 {
   "id": "<uuid>",
-  "type": "flashcard|mcq|code-review",
-  "domain": "<one of 5 DP-700 domain slugs>",
+  "type": "mcq|code-review",
+  "domain": "<one of 3 DP-700 domain slugs>",
   "topic": "<topic from exams.config.json>",
   "difficulty": 1|2|3,
   "source": "bank" | "ai-generated",
@@ -537,11 +523,11 @@ Every item declares:
 ### Domains
 
 ```
-mlops-infra        — Workspace, IAM, Compute, Datastores, IaC, GitHub Integration, ...
-ml-lifecycle       — MLflow, AutoML, Pipelines, Endpoints, Monitoring, ...
-genaiops-infra     — Foundry Setup, RBAC, Network Security, Prompt Flow, ...
-genai-quality      — Evaluators, Tracing, Safety, Continuous Monitoring, ...
-genai-optimization — RAG, Embeddings, Fine-tuning, A/B Testing, ...
+implement-manage        — Workspace, IAM, Compute, Datastores, IaC, GitHub Integration, ...
+ingest-transform       — MLflow, AutoML, Pipelines, Endpoints, Monitoring, ...
+monitor-optimize     — Foundry Setup, RBAC, Network Security, Prompt Flow, ...
+implement-manage      — Evaluators, Tracing, Safety, Continuous Monitoring, ...
+ingest-transform — RAG, Embeddings, Fine-tuning, A/B Testing, ...
 ```
 
 Full taxonomy in [`exams.config.json`](exams.config.json).
@@ -578,7 +564,7 @@ authoring (humans + Claude) → JSON files (PR review) → seed CLI → public.q
 
 - **Headline tiles** — Streak (days), XP, Level, overall Accuracy %.
 - **Most recent session** — mode + score + relative time ("3 min ago", "yesterday", date).
-- **Domain radar** — hand-rolled SVG five-axis radar from [`RadarChart.tsx`](frontend/src/components/RadarChart.tsx). Domains with fewer than `MIN_ANSWERS = 5` answers render dimmed with a dashed axis (the "not enough data yet" state, per FR-016).
+- **Domain radar** — hand-rolled SVG three-axis radar from [`RadarChart.tsx`](frontend/src/components/RadarChart.tsx). Domains with fewer than `MIN_ANSWERS = 5` answers render dimmed with a dashed axis (the "not enough data yet" state, per FR-016).
 - **Focus areas** — list of domains scoring strictly below 60% with a **Practice** CTA → `/learn/quiz?domain=<slug>` pre-populated.
 - **Advanced Stats panel** (Pro) — per-difficulty accuracy + average session length. Locked preview for free users.
 - **Activity calendar** — 12-week grid of session counts ([`StreakCalendar.tsx`](frontend/src/components/StreakCalendar.tsx)).
@@ -610,7 +596,7 @@ Powered by `vite-plugin-pwa` (configured in [`vite.config.ts`](frontend/vite.con
 - **Runtime caching** — `StaleWhileRevalidate` on the Supabase `/rest/v1/questions*` path; the bank is browseable offline once the user has loaded it once.
 - **Offline indicator** — [`OfflineIndicator.tsx`](frontend/src/components/OfflineIndicator.tsx) listens to `online`/`offline` window events and renders a small banner when offline.
 
-The cached shell + the bank cache mean a user can complete a flashcard session entirely offline. Authenticated writes (sessions, ratings) accumulate in the persisted store and re-sync when the connection returns.
+The cached shell + the bank cache mean a user can complete a quiz session entirely offline. Authenticated writes (sessions, ratings) accumulate in the persisted store and re-sync when the connection returns.
 
 ---
 
@@ -689,7 +675,7 @@ Until those four steps happen, the **Upgrade to Pro** button on `/settings/billi
 ```bash
 ANTHROPIC_API_KEY=sk-ant-... \
 pnpm -C tools/author cli draft \
-  --type=mcq --domain=ml-lifecycle --topic=MLflow \
+  --type=mcq --domain=ingest-transform --topic=MLflow \
   --difficulty=2 --count=10
 # → writes tools/author/drafts/2026-05-19-mcq-mlflow.json
 
@@ -821,7 +807,7 @@ Production site lives at the Netlify default URL. Build config in [`netlify.toml
   publish = "dist"
 ```
 
-SPA fallback redirect (`/*` → `/index.html`, 200) so direct visits to `/learn/flashcards` don't 404. Cache headers: immutable on `/assets/*` (hashed), no-cache on `index.html` and `sw.js` (so the service worker can refresh).
+SPA fallback redirect (`/*` → `/index.html`, 200) so direct visits to `/learn/quiz` don't 404. Cache headers: immutable on `/assets/*` (hashed), no-cache on `index.html` and `sw.js` (so the service worker can refresh).
 
 Set these env vars in Netlify (Site Settings → Environment variables):
 
@@ -921,7 +907,7 @@ Several specs document unit and Playwright tasks that didn't land. The shipped c
 - 68 data-layer integration tests
 - Manual end-to-end smoke on the live site
 
-Specs with unrealised test tasks: 004 (flashcard component tests), 005 (Playwright + a11y manual), 006 (Playwright + Lighthouse), 007 (math unit tests), 008 (policy/due-list/reducer unit tests), 011 (entitlements + billing-states tests + Stripe E2E).
+Specs with unrealised test tasks: 004 (flashcard mode, since removed), 005 (Playwright + a11y manual), 006 (Playwright + Lighthouse), 007 (math unit tests), 008 (policy/due-list/reducer unit tests), 011 (entitlements + billing-states tests + Stripe E2E).
 
 ---
 

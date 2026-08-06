@@ -20,7 +20,7 @@ Ship the MCQ practice surface at `/learn/quiz`. A learner picks topic + difficul
 | Principle | Status | Notes |
 |---|---|---|
 | I. Mobile-First UX | Pass | Four options stack vertically on narrow viewports; tap targets ≥ 44px; timer ring doesn't reflow content. |
-| II. Domain-Aligned Content | Pass | Topic filter is per AI-300 domain; the results screen rolls up to the same five domains. |
+| II. Domain-Aligned Content | Pass | Topic filter is per DP-700 domain; the results screen rolls up to the same three domains. |
 | III. AI as Authoring Tool | Pass | Explanations live on the bank row; no runtime AI. |
 | IV. Secrets Stay Server-Side | Pass | Anon client only. |
 | V. Measurable Quality Gates | Pass | SC-003 bounds feedback latency under 250 ms; SC-005 bounds timer drift to ±2 s; SC-006 requires Lighthouse a11y ≥ 90. |

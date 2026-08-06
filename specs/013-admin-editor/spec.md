@@ -83,7 +83,7 @@ The maintainer marks an existing item "remove on next export." It is visually ma
 - **FR-009**: Soft-delete MUST be reversible until export. Exported files MUST omit soft-deleted items.
 - **FR-010**: The export action MUST produce one JSON file per affected seed file (`flashcards.json`, `mcq.json`, `product-id.json`). Each downloaded file MUST be a complete, replacement-shaped copy of the seed file with edits applied — drop-in compatible with `supabase/seed/content/`.
 - **FR-011**: Exported items that were edited or newly added MUST have their `reviewer_id` and `reviewed_at` fields updated to reflect the admin and the export moment, regardless of `source`.
-- **FR-012**: Staged edits MUST persist across page reloads in a separate localStorage namespace (`ai300game.v1.admin-staged`) so a closed-tab event does not lose work.
+- **FR-012**: Staged edits MUST persist across page reloads in a separate localStorage namespace (`dp700game.v1.admin-staged`) so a closed-tab event does not lose work.
 - **FR-013**: A "Discard staged edits" button MUST be visible when staged edits exist; tapping it (after a confirmation) MUST clear the staged set.
 - **FR-014**: The admin route MUST display, beneath its header, a callout reminding maintainers that the workflow is: edit → export → drop files into repo → `pnpm seed` → commit. There MUST NOT be any "publish directly" or "save to DB" button.
 - **FR-015**: All admin UI MUST meet WCAG 2.1 AA contrast and keyboard navigation per resolved decision #5; forms MUST be tab-navigable in visual order.

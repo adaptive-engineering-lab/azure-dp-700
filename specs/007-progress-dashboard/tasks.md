@@ -27,12 +27,12 @@ Tasks below are marked [X] to reflect functional completion.
 
 - [X] **T001** Confirm at least one of features 004 / 005 / 006 has landed so `user_progress` and `sessions` rows actually exist for testing. If empty, seed fixtures during dev.
 - [X] **T002** Confirm feature 003 auth provides a session hook. The dashboard works for guests too, but auth-aware pieces (realtime sub) need it.
-- [X] **T003** Verify the AI-300 domain list in `exams.config.json` matches the radar's five axes: `mlops-infra`, `ml-lifecycle`, `genaiops-infra`, `genai-quality`, `genai-optimization`.
+- [X] **T003** Verify the DP-700 domain list in `exams.config.json` matches the radar's three axes: `implement-manage`, `ingest-transform`, `monitor-optimize`.
 
 ## Phase 1 — Sessions read adapter (foundational)
 
 - [X] **T010** Create `frontend/src/lib/sessions/types.ts` — `SessionRow` shape mirroring the Supabase `sessions` table.
-- [X] **T011** [P] Create `frontend/src/lib/sessions/guestStore.ts` — reads from `ai300game.v1.guest.sessions` and returns `SessionRow[]`.
+- [X] **T011** [P] Create `frontend/src/lib/sessions/guestStore.ts` — reads from `dp700game.v1.guest.sessions` and returns `SessionRow[]`.
 - [X] **T012** [P] Create `frontend/src/lib/sessions/supabaseStore.ts` — `select * from sessions where user_id = auth.uid()` via the anon client + user JWT; orders by `completed_at desc`.
 - [X] **T013** Create `frontend/src/lib/sessions/store.ts` — `useSessionsStore()` selecting the right adapter; exposes `sessions`, `latest`, and a `revalidate()` function.
 
@@ -62,7 +62,7 @@ Tasks below are marked [X] to reflect functional completion.
 
 ## Phase 4 — Domain radar + focus areas (US2, P1)
 
-- [X] **T040** Create `frontend/src/components/DomainRadar.tsx` — recharts `RadarChart` with five axes from `domainAccuracy`. Dimmed axes (< MIN_SAMPLES) render as a dashed stroke with reduced opacity + a "Not enough data yet" tooltip.
+- [X] **T040** Create `frontend/src/components/DomainRadar.tsx` — recharts `RadarChart` with three axes from `domainAccuracy`. Dimmed axes (< MIN_SAMPLES) render as a dashed stroke with reduced opacity + a "Not enough data yet" tooltip.
 - [X] **T041** [P] Create `frontend/src/components/FocusAreasList.tsx` — lists every `DomainAccuracy` strictly below 60% with a "Practice this domain" CTA per row that routes to `/learn/quiz?domain=<slug>` (and falls back to `/learn/flashcards?domain=<slug>` for users without enough MCQs).
 - [X] **T042** Compose both into `ProgressDashboardPage`.
 - [X] **T043** [P] `frontend/tests/components/DomainRadar.test.tsx` — shape markers on weak axes (not color alone); dimmed axes have data-table fallback for screen readers.

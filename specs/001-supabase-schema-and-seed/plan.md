@@ -26,7 +26,7 @@ Stand up the Supabase data layer that every later feature reads from and writes 
 | Principle | Applies? | Status | Notes |
 |---|---|---|---|
 | I. Mobile-First UX | No | N/A | This feature has no UI surface. Mobile-first applies to the consuming features. |
-| II. Domain-Aligned Content Integrity | Yes — core | Pass | A Postgres CHECK constraint pins the five domain values; `type`, `source`, and difficulty are similarly constrained. AI-authored items carry mandatory audit fields enforced by CHECK. |
+| II. Domain-Aligned Content Integrity | Yes — core | Pass | A Postgres CHECK constraint pins the three domain values; `type`, `source`, and difficulty are similarly constrained. AI-authored items carry mandatory audit fields enforced by CHECK. |
 | III. AI as Authoring Tool, Not Runtime | Yes | Pass | Seed loads pre-authored JSON. No Anthropic, no edge function, no outbound AI call from the runtime. AI-authored items reach the bank only via the offline workflow (§7 of product spec). |
 | IV. Secrets Stay Server-Side | Yes | Pass | The Supabase service-role key is used only by the seed tooling (maintainer/CI environment) and is never shipped in any app bundle. RLS is enabled on every user-data table before insert privileges are granted. The future frontend will hold only the anon key. |
 | V. Measurable Quality Gates | Yes | Pass | Spec SC-001 (100% schema validation) and SC-005 (zero cross-user leakage) become merge-blocking automated tests. No Lighthouse target applies (no UI). |

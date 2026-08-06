@@ -2,7 +2,7 @@
 
 Use this folder to **fork the codebase for a new Microsoft certification** — AZ-900, AI-900, AZ-104, DP-203, etc.
 
-The original codebase ships with AI-300 (ML Operations Engineer). Every exam-specific identifier — domain slugs, exam codes, branding copy, question bank — is concentrated in a small number of files that you swap when starting a new exam.
+The original codebase ships with DP-700 (Fabric Data Engineer). Every exam-specific identifier — domain slugs, exam codes, branding copy, question bank — is concentrated in a small number of files that you swap when starting a new exam.
 
 This template gives you:
 
@@ -22,7 +22,7 @@ This template gives you:
 One repo, one deployment, one Supabase project per exam. Cleanest. Most exams' content + branding are too different to share a UI.
 
 ```
-ai-300 repo  →  ai-300.netlify.app, az-103 Supabase project
+dp-700 repo  →  dp-700.netlify.app, az-103 Supabase project
 az-900 repo  →  az-900.netlify.app, az-900 Supabase project
 ai-900 repo  →  ai-900.netlify.app, ai-900 Supabase project
 ```
@@ -35,7 +35,7 @@ ai-900 repo  →  ai-900.netlify.app, ai-900 Supabase project
 4. Create a new Netlify site, point at the new GitHub repo, set env vars
 5. Update the public domain (optional)
 
-Each fork keeps its own commit history. PRs against the original AI-300 repo (e.g., shared bug fixes) merge cleanly via cherry-pick if the shared files haven't drifted.
+Each fork keeps its own commit history. PRs against the original DP-700 repo (e.g., shared bug fixes) merge cleanly via cherry-pick if the shared files haven't drifted.
 
 ### Option B — Multi-exam single repo (heavier refactor; not yet built)
 
@@ -51,21 +51,21 @@ If you're going to do multi-exam, do it after the second exam ships (you'll know
 
 ```bash
 # 1. Clone the repo into a new directory
-git clone https://github.com/adaptive-engineering-lab/azure-300 az-900
+git clone https://github.com/adaptive-engineering-lab/azure-dp-700 az-900
 cd az-900
 
 # 2. Reset the git history (optional but clean)
 rm -rf .git
 git init
 git add .
-git commit -m "fork: start AZ-900 from ai-300 base"
+git commit -m "fork: start AZ-900 from dp-700 base"
 
 # 3. Replace the exam config
 cp template/exams/az-900.config.example.json exams.config.json
 
 # 4. Open PORTING_CHECKLIST.md and walk through the file changes
 
-# 5. Empty the existing bank (or keep the AI-300 items if you want a hybrid)
+# 5. Empty the existing bank (or keep the DP-700 items if you want a hybrid)
 cp template/seed-content/flashcards.json supabase/seed/content/flashcards.json
 cp template/seed-content/mcq.json supabase/seed/content/mcq.json
 cp template/seed-content/code-review.json supabase/seed/content/code-review.json

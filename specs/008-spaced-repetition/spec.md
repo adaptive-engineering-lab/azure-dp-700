@@ -3,7 +3,7 @@
 **Feature Branch**: `008-spaced-repetition`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "Spaced repetition ('Daily Review' mode) + SM-2 algorithm" (Phase 3 of AI300-Game-Spec.md §13, expanded per §9 and §10.2)
+**Input**: User description: "Spaced repetition ('Daily Review' mode) + SM-2 algorithm" (Phase 3 of DP700-Game-Spec.md §13, expanded per §9 and §10.2)
 
 ## User Scenarios & Testing *(mandatory)*
 

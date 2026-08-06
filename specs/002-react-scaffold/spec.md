@@ -3,7 +3,7 @@
 **Feature Branch**: `002-react-scaffold`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "React app scaffold + routing + guest-mode local-storage progress store" (Phase 1 of AI300-Game-Spec.md §13)
+**Input**: User description: "React app scaffold + routing + guest-mode local-storage progress store" (Phase 1 of DP700-Game-Spec.md §13)
 
 ## User Scenarios & Testing *(mandatory)*
 

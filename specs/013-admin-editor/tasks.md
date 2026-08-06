@@ -57,6 +57,6 @@ Order is dependency-aware. `[P]` = can run in parallel with the previous task.
 
 ## Phase 6 — Cleanup
 
-- [X] **T060** Delete dead code referenced by removed `staged.ts` / `export.ts` (e.g., the localStorage namespace `ai300game.v1.admin-staged`, any leftover types).
+- [X] **T060** Delete dead code referenced by removed `staged.ts` / `export.ts` (e.g., the localStorage namespace `dp700game.v1.admin-staged`, any leftover types).
 - [X] **T061** Update `specs/013-admin-editor/checklists/requirements.md` to mark the items invalidated by the pivot (or replace with a fresh checklist).
 - [X] **T062** Decide whether to write a follow-up spec for "dump live DB → seed JSON" (plan §6); if yes, create `specs/014-seed-resync/` skeleton. Else add a one-line note to the project README about the divergence.

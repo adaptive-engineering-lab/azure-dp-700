@@ -54,7 +54,7 @@ The shell-accessibility test runs an axe-core pass on the home and shell compone
 
 ## Application timing
 
-1. Inline script in `index.html` reads `localStorage["ai300game.v1.state"]`, parses, extracts `preferences.theme`, and applies `document.documentElement.classList.add('dark' | 'light')` **before the React bundle parses**.
+1. Inline script in `index.html` reads `localStorage["dp700game.v1.state"]`, parses, extracts `preferences.theme`, and applies `document.documentElement.classList.add('dark' | 'light')` **before the React bundle parses**.
 2. If localStorage is unavailable or the parse fails, the script defaults to `dark`.
 3. After mount, the React `ThemeProvider` keeps the class in sync with subsequent toggles in `/settings`.
 

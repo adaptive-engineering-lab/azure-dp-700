@@ -3,7 +3,7 @@
 **Feature Branch**: `010-pwa-dark-mode`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "Dark mode + design refinement + PWA manifest + mobile install prompt" (Phase 4 of AI300-Game-Spec.md §13)
+**Input**: User description: "Dark mode + design refinement + PWA manifest + mobile install prompt" (Phase 4 of DP700-Game-Spec.md §13)
 
 ## User Scenarios & Testing *(mandatory)*
 

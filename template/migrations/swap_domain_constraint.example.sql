@@ -7,8 +7,8 @@
 --
 -- WHEN TO RUN THIS:
 --   - You are forking the repo for a new exam (AZ-900, AI-900, etc.).
---   - The new exam has different domain slugs than AI-300.
---   - You need to deploy against a Supabase project that has the AI-300
+--   - The new exam has different domain slugs than DP-700.
+--   - You need to deploy against a Supabase project that has the DP-700
 --     constraint already applied.
 --
 -- WHEN NOT TO RUN THIS:

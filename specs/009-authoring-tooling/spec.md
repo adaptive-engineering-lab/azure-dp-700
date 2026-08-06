@@ -3,7 +3,7 @@
 **Feature Branch**: `009-authoring-tooling`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "Authoring scripts under `tools/author/` (Claude-assisted, schema-validated) to grow the question bank toward 200" (Phase 3 of AI300-Game-Spec.md §13, expanded per §7)
+**Input**: User description: "Authoring scripts under `tools/author/` (Claude-assisted, schema-validated) to grow the question bank toward 200" (Phase 3 of DP700-Game-Spec.md §13, expanded per §7)
 
 ## User Scenarios & Testing *(mandatory)*
 

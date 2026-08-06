@@ -54,7 +54,7 @@ The app should load in light theme **before any content paints** (no flash of da
 In DevTools → Application → Local Storage, you should see one key:
 
 ```
-ai300game.v1.state
+dp700game.v1.state
 ```
 
 with a JSON payload containing `preferences.theme === 'light'`.
@@ -110,7 +110,7 @@ The four core categories (Performance, Accessibility, Best Practices, SEO) shoul
 | Symptom | Cause | Fix |
 |---|---|---|
 | Flash of wrong theme on reload | Inline theme script in `index.html` missing or running after the CSS parse | Verify the `<script>` in `<head>` runs synchronously before any `<link rel="stylesheet">`. |
-| State doesn't persist across reloads | localStorage write threw (quota) or namespace mismatch | DevTools → Application → Storage; verify `ai300game.v1.state` exists. If it does but doesn't match, the schema version probably bumped — clear and reload. |
+| State doesn't persist across reloads | localStorage write threw (quota) or namespace mismatch | DevTools → Application → Storage; verify `dp700game.v1.state` exists. If it does but doesn't match, the schema version probably bumped — clear and reload. |
 | Deep link to `/progress` 404s in production | `vite.config.ts` missing the SPA fallback for the static host | Add the configured 404→`index.html` rewrite to the hosting provider's settings. |
 | `pnpm dev` shows a different IP than `127.0.0.1` | Vite picked a public network IP for LAN preview | Use `--host 127.0.0.1` or accept the LAN preview; both work. |
 | Test suite reports type mismatch in `shape-compat.test.ts` | Feature 001's schema changed and the guest types didn't | Update `GuestProgress` or `GuestSession` to match — the test is doing its job. |

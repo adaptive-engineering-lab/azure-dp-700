@@ -3,7 +3,7 @@
 **Feature Branch**: `005-mcq-mode`
 **Created**: 2026-05-11
 **Status**: Draft
-**Input**: User description: "MCQ mode (timer optional) + results screen with domain breakdown" (Phase 1–2 of AI300-Game-Spec.md §13, expanded per §6.2)
+**Input**: User description: "MCQ mode (timer optional) + results screen with domain breakdown" (Phase 1–2 of DP700-Game-Spec.md §13, expanded per §6.2)
 
 ## User Scenarios & Testing *(mandatory)*
 
@@ -11,7 +11,7 @@
 
 A learner picks a topic, difficulty, and question count, optionally enables a 45-second-per-question timer, and is shown one MCQ at a time. Each question displays four options (A/B/C/D). Tapping an option submits an answer; correct picks render green with a one-line explanation, incorrect picks render red on the chosen option, green on the correct one, with the full explanation. The session ends after the chosen question count and shows a results screen with the score percentage, time taken, and a per-domain breakdown.
 
-**Why this priority**: MCQs are the closest format to the AI-300 exam itself. They are the most exam-relevant practice mode and the most-asked-for in similar prep tools. This story delivers a complete exam-style loop.
+**Why this priority**: MCQs are the closest format to the DP-700 exam itself. They are the most exam-relevant practice mode and the most-asked-for in similar prep tools. This story delivers a complete exam-style loop.
 
 **Independent Test**: As a learner, start a 5-question MCQ session in Identity & Governance at difficulty 2 with the timer off. Answer each question. Verify per-answer feedback renders the correct color, the explanation appears, and the results screen at the end shows score percentage and a chart with at least the Identity domain represented.
 
@@ -28,7 +28,7 @@ A learner picks a topic, difficulty, and question count, optionally enables a 45
 
 The learner can enable a per-question timer in the mode selector. When enabled, each question shows a 45-second countdown ring around the question number. If the countdown reaches zero before the learner answers, the question is marked incorrect, the correct answer is revealed with the explanation, and the session continues.
 
-**Why this priority**: The real AI-300 exam pace is roughly 90 seconds per question; pacing practice is widely requested. P2 because the un-timed mode in US1 delivers the core value; the timer is the pressure-mode add-on.
+**Why this priority**: The real DP-700 exam pace is roughly 90 seconds per question; pacing practice is widely requested. P2 because the un-timed mode in US1 delivers the core value; the timer is the pressure-mode add-on.
 
 **Independent Test**: Start an MCQ session with the timer enabled. On one question, allow the timer to expire without answering. Verify the question is recorded as incorrect, the correct answer is revealed with the explanation, and the session advances to the next question.
 

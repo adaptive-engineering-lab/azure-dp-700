@@ -4,7 +4,7 @@
 
 ## Summary
 
-Ship the Code Review study mode at `/learn/code-review`. A learner picks a difficulty / sub-mode / session length, sees one syntax-highlighted code snippet at a time, picks one of four options, and gets immediate feedback with a plain-English explanation. Three sub-modes share one component: `find-the-bug`, `what-does-this-do`, and `fill-the-blank`. The mode replaces the earlier `product-id` proposal — AI-300 has thin product breadth but deep tool surface area, so snippet-based scenario questions are a better fit than name-to-category drills.
+Ship the Code Review study mode at `/learn/code-review`. A learner picks a difficulty / sub-mode / session length, sees one syntax-highlighted code snippet at a time, picks one of four options, and gets immediate feedback with a plain-English explanation. Three sub-modes share one component: `find-the-bug`, `what-does-this-do`, and `fill-the-blank`. The mode replaces the earlier `product-id` proposal — DP-700 has thin product breadth but deep tool surface area, so snippet-based scenario questions are a better fit than name-to-category drills.
 
 This feature introduces a new `questions.type='code-review'` row shape, a new schema contract, a one-line migration to the `questions_type_chk` constraint, and a syntax-highlighting dependency on the client.
 
@@ -13,7 +13,7 @@ This feature introduces a new `questions.type='code-review'` row shape, a new sc
 **Language**: TypeScript 5.5 + React 18.3
 **New deps**: `shiki@^1` for syntax highlighting (smaller and more themable than Prism; ships with the One Dark theme out of the box). Lazy-loaded so it doesn't bloat the home-route bundle.
 **Env vars**: none new
-**Storage**: reuses `lib/progress/store.ts` from feature 004 (guest + Supabase). New per-session resume state lives under `ai300game.v1.<scope>.code-review-session` for FR-011.
+**Storage**: reuses `lib/progress/store.ts` from feature 004 (guest + Supabase). New per-session resume state lives under `dp700game.v1.<scope>.code-review-session` for FR-011.
 **Testing**: vitest on selection, blank-placeholder rendering, the session reducer, schema validation; one Playwright smoke for a 5-item session covering all three sub-modes.
 **Project**: extends `frontend/`. Adds one Supabase migration; updates feature 001's contracts and seed-CLI schema map; updates feature 009's authoring tool to handle the new type.
 
@@ -22,7 +22,7 @@ This feature introduces a new `questions.type='code-review'` row shape, a new sc
 | Principle | Status | Notes |
 |---|---|---|
 | I. Mobile-First UX | Pass | Code block scrolls horizontally inside its container (FR-014); options stay below; tap targets ≥ 44 px. |
-| II. Domain-Aligned Content | Pass | Items tagged with one of the five AI-300 domains; `topic` from the canonical topics list in `exams.config.json`. |
+| II. Domain-Aligned Content | Pass | Items tagged with one of the three DP-700 domains; `topic` from the canonical topics list in `exams.config.json`. |
 | III. AI as Authoring Tool | Pass | Snippets are pre-authored via feature 009 + human review. No runtime AI; the explanation is part of the seeded row. |
 | IV. Secrets Stay Server-Side | Pass | Anon client only. |
 | V. Measurable Quality Gates | Pass | SC-003 budgets syntax highlighting at < 300 ms; SC-006 requires Lighthouse a11y ≥ 90; SC-007 verifies no horizontal page scroll on 375 px viewport. |
@@ -84,11 +84,11 @@ The bundle cost of `shiki` is the main concern. Naïve import pulls every gramma
 | `shiki` over Prism | Better dark-theme defaults, more accurate highlighting for YAML + Python; tree-shakeable grammars. |
 | Lazy-load the highlighter | Keep home / `/learn` route bundles unaffected; first nav to `/learn/code-review` pays the cost. |
 | Resume snapshot in localStorage even for authenticated users | FR-011 + spec edge case (mid-session navigation). Authenticated learners get the same resume; on session completion the snapshot is cleared and the `sessions` row is the durable record. |
-| No new migration needed | The 001 sanitization sweep edited 0001_questions.sql directly to accept `'code-review'` and the new content-shape predicate, since the AI-300 schema isn't deployed yet. If 001 ever ships, a follow-up `drop + recreate` migration would be required. |
+| No new migration needed | The 001 sanitization sweep edited 0001_questions.sql directly to accept `'code-review'` and the new content-shape predicate, since the DP-700 schema isn't deployed yet. If 001 ever ships, a follow-up `drop + recreate` migration would be required. |
 
 ## Cross-feature coordination
 
 - **Feature 001** (schema/seed): the new `code-review.schema.json` lives under `contracts/`; the seed CLI's schema map needs an entry. Coordinate that PR with this one.
 - **Feature 008** (spaced repetition): the cross-mode Daily Review session needs to know about `mode='code-review'` to dispatch the right component. Update feature 008's `DailyReviewItem` dispatcher.
 - **Feature 009** (authoring): add `--type=code-review` support; commit the prompt addendum at `tools/author/prompts/code-review.md`.
-- **`exams.config.json`**: `questionTargets.byType['product-id']` becomes `code-review`; `gameModes.productId` becomes `gameModes.codeReview` (set to `true` for AI-300).
+- **`exams.config.json`**: `questionTargets.byType['product-id']` becomes `code-review`; `gameModes.productId` becomes `gameModes.codeReview` (set to `true` for DP-700).

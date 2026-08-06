@@ -25,13 +25,13 @@ Tasks below are marked [X] to reflect functional completion. The granular file-l
 ## Phase 0 — Verify ground state
 
 - [X] **T001** Confirm `frontend/src/lib/auth` from feature 003 exists and exposes a usable session hook. If not, gate this feature on 003 landing first.
-- [X] **T002** Confirm at least 10 flashcard rows exist in `public.questions` where `type='flashcard'` across the five AI-300 domains. Run `select domain, count(*) from public.questions where type='flashcard' group by domain;` via MCP. If thin, queue an authoring task (feature 009 backfill) — flag, don't block.
+- [X] **T002** Confirm at least 10 flashcard rows exist in `public.questions` where `type='flashcard'` across the three DP-700 domains. Run `select domain, count(*) from public.questions where type='flashcard' group by domain;` via MCP. If thin, queue an authoring task (feature 009 backfill) — flag, don't block.
 - [X] **T003** Confirm `frontend/src/pages/LearnIndexPage.tsx` (or equivalent `/learn` mode-selector) exists from feature 002; if absent, add a minimal one in T020.
 
 ## Phase 1 — Progress store adapters (foundational, blocks every story)
 
 - [X] **T010** Create `frontend/src/lib/progress/types.ts` defining `ProgressEntry`, `Rating = 'correct' | 'almost' | 'missed'`, `ProgressStore` interface.
-- [X] **T011** [P] Create `frontend/src/lib/progress/guestStore.ts` implementing `ProgressStore` against `localStorage` under `ai300game.v1.guest.progress`. Uses a single JSON blob with read-modify-write under a per-key lock to avoid race when rapid ratings interleave (FR-010 edge case).
+- [X] **T011** [P] Create `frontend/src/lib/progress/guestStore.ts` implementing `ProgressStore` against `localStorage` under `dp700game.v1.guest.progress`. Uses a single JSON blob with read-modify-write under a per-key lock to avoid race when rapid ratings interleave (FR-010 edge case).
 - [X] **T012** [P] Create `frontend/src/lib/progress/supabaseStore.ts` implementing `ProgressStore` against `user_progress` via the anon client + user JWT. Uses `upsert` on `(user_id, question_id)`.
 - [X] **T013** Create `frontend/src/lib/progress/store.ts` exporting a `useProgressStore()` hook that picks the right adapter based on `useAuth().status`.
 - [X] **T014** [P] `frontend/tests/unit/progress-guest.test.ts` — sequential ratings interleave correctly (no lost writes under the per-key lock).
@@ -51,7 +51,7 @@ Tasks below are marked [X] to reflect functional completion. The granular file-l
 - [X] **T030** Create `frontend/src/components/Flashcard.tsx` — front/back states with Framer Motion flip; respects `prefers-reduced-motion`; back scrolls when overflowing (edge case from spec).
 - [X] **T031** [P] Create `frontend/src/components/RatingControls.tsx` — three buttons (`Got it ✓`, `Almost`, `Missed ✗`) with hotkeys (1/2/3 on desktop).
 - [X] **T032** [P] Create `frontend/src/components/FlashcardSessionProgress.tsx` — "3 / 20" bar + the current streak/XP read-only display (read from `useProgressStore`).
-- [X] **T033** Create `frontend/src/pages/FlashcardSelectPage.tsx` at `/learn/flashcards` — topic select (the 5 AI-300 domains + a per-domain topic list driven by `exams.config.json`) + length picker (10/20/30) + "random mix" option + Start CTA.
+- [X] **T033** Create `frontend/src/pages/FlashcardSelectPage.tsx` at `/learn/flashcards` — topic select (the 5 DP-700 domains + a per-domain topic list driven by `exams.config.json`) + length picker (10/20/30) + "random mix" option + Start CTA.
 - [X] **T033b** In `FlashcardSelectPage`, read `?domains=<csv>` and `?domain=<slug>` from the URL query string and pre-populate the topic filter accordingly. Consumed by feature 005's `ReviewMissedCTA` (its T053/T054) and feature 007's `FocusAreasList` CTAs (its T041). If the query param names a domain not in `exams.config.json`, ignore it silently.
 - [X] **T034** Create `frontend/src/pages/FlashcardSessionPage.tsx` at `/learn/flashcards/session` — reducer-driven loop using `flashcards/reducer.ts`. On mount, calls `selectCardsForSession`. On each rating, calls `applyRating` and writes via `useProgressStore`. Swipe gestures via `react-swipeable`; equivalent buttons always rendered (FR-007).
 - [X] **T035** Create `frontend/src/components/FlashcardResultsPanel.tsx` — counts per rating, duration, "study another topic" CTA.
@@ -90,7 +90,7 @@ Most of US3 is already covered by T023 + T034 wiring `applyRating` → `useProgr
 
 ## Phase 7 — Manual verification
 
-- [X] **T070** `pnpm -C frontend dev`. As a guest, complete a 10-card session in a single AI-300 topic. Verify counts, the swipe direction → rating mapping, and the results screen.
+- [X] **T070** `pnpm -C frontend dev`. As a guest, complete a 10-card session in a single DP-700 topic. Verify counts, the swipe direction → rating mapping, and the results screen.
 - [X] **T071** Repeat as an authenticated user (sign in via feature 003). Verify `user_progress` rows appear via `mcp__supabase__execute_sql`.
 - [X] **T072** With the OS-level "Reduce motion" setting on, repeat: confirm no flip animation (or instant flip), all controls still reachable.
 - [X] **T073** Verify session-mid sign-in does NOT migrate during the session — the migration prompt only appears at session end (spec edge case + feature 003 FR-005).

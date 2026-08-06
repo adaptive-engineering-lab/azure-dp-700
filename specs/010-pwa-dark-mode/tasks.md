@@ -9,14 +9,14 @@ Order is dependency-aware. `[P]` = can run in parallel with the previous task.
 Spec 010 was already implemented in the AZ-104 fork in compact form. The PWA install path, offline shell cache, theme tokens, and ThemeProvider are all wired:
 
 - `frontend/vite.config.ts` — `VitePWA({ registerType: 'autoUpdate', manifest: {...}, workbox: {...} })` with `StaleWhileRevalidate` on `supabase.co/rest/v1/questions*` (T020/T040/T041).
-- `frontend/index.html` — inlined first-paint script reads `ai300game.v1.state` and applies `data-theme` before React renders, preventing FOUC (T015).
+- `frontend/index.html` — inlined first-paint script reads `dp700game.v1.state` and applies `data-theme` before React renders, preventing FOUC (T015).
 - `frontend/src/lib/theme/ThemeProvider.tsx` — reads `preferences.theme` from the persisted store; toggles `<html>` class + `colorScheme` on theme change (T012). Settings page exposes the toggle (T016).
 - `frontend/src/lib/pwa/install.ts` + `frontend/src/components/InstallPrompt.tsx` — captures `beforeinstallprompt`, exposes install CTA (T031/T032).
 - `frontend/src/components/OfflineIndicator.tsx` — listens to `online`/`offline` events (T042/T043).
 - `public/icon.svg` — single SVG icon (used in place of the spec's three PNG variants; vite-plugin-pwa accepts SVG with `purpose: 'any maskable'`).
 
 **Closed gaps in this PR (2026-05-18)**:
-- Swept stale "product ID" copy out of two PWA touchpoints: the meta description in `index.html` and the `manifest.description` in `vite.config.ts` now read "code review" to match the AI-300 fork's actual mode lineup.
+- Swept stale "product ID" copy out of two PWA touchpoints: the meta description in `index.html` and the `manifest.description` in `vite.config.ts` now read "code review" to match the DP-700 fork's actual mode lineup.
 
 The granular per-file structure in the original tasks (separate `lib/theme/{tokens,useTheme,motion}.ts`, `lib/pwa/{engagementClock,installPrompt,pendingWrites,register}.ts`, `IosInstallInstructions`, `ThemeToggle` components, and three PNG icon variants) is a design alternative the fork didn't take; the inline single-file structure has the same install-path + offline-shell coverage.
 
@@ -39,7 +39,7 @@ Tasks below are marked [X] to reflect functional completion of the install + off
 
 - [X] **T010** Create `frontend/src/lib/theme/tokens.ts` — `color.bg`, `color.fg`, `color.accent`, `color.success`, `color.error`, `color.muted`; `space.1..space.12` on a 4 px grid; `type.scale` capped at 3 sizes per screen; `radius.sm/md/lg`. Define both dark and light value sets.
 - [X] **T011** Create `frontend/src/styles/globals.css` — emit tokens as CSS custom properties under `:root` (dark default) and `[data-theme='light']`. Switching is `data-theme` swap on `<html>` — no reload.
-- [X] **T012** Create `frontend/src/lib/theme/ThemeProvider.tsx` — wraps the app; persists user choice under `ai300game.v1.theme` in localStorage; falls back to `(prefers-color-scheme: dark)` system query.
+- [X] **T012** Create `frontend/src/lib/theme/ThemeProvider.tsx` — wraps the app; persists user choice under `dp700game.v1.theme` in localStorage; falls back to `(prefers-color-scheme: dark)` system query.
 - [X] **T013** [P] Create `frontend/src/lib/theme/useTheme.ts` — `{ theme, setTheme, toggle }`.
 - [X] **T014** [P] Create `frontend/src/lib/theme/motion.ts` — `useReducedMotion()` returns the live OS preference; `withMotion(props)` zeros out durations when reduced.
 - [X] **T015** Mount `<ThemeProvider>` at the root in `frontend/src/main.tsx` (or wherever the tree is rooted). Confirm "no flash of light theme" on first paint by inlining a tiny `<script>` in `index.html` that sets `data-theme` before React renders (FR-009 Acceptance 1).
@@ -58,8 +58,8 @@ Tasks below are marked [X] to reflect functional completion of the install + off
 
 ## Phase 3 — Engagement clock + install prompt (US1, P1)
 
-- [X] **T030** Create `frontend/src/lib/pwa/engagementClock.ts` — accumulates focused-page time across visits, persists to `ai300game.v1.engagement-ms`. Threshold check: `total >= 3 * 60 * 1000`.
-- [X] **T031** Create `frontend/src/lib/pwa/installPrompt.ts` — captures `beforeinstallprompt`, stores it, exposes a `triggerInstall()` function. Tracks dismissed/declined state with a 14-day cooldown (FR-004) under `ai300game.v1.install-dismissed-at`.
+- [X] **T030** Create `frontend/src/lib/pwa/engagementClock.ts` — accumulates focused-page time across visits, persists to `dp700game.v1.engagement-ms`. Threshold check: `total >= 3 * 60 * 1000`.
+- [X] **T031** Create `frontend/src/lib/pwa/installPrompt.ts` — captures `beforeinstallprompt`, stores it, exposes a `triggerInstall()` function. Tracks dismissed/declined state with a 14-day cooldown (FR-004) under `dp700game.v1.install-dismissed-at`.
 - [X] **T032** Create `frontend/src/components/InstallPromptCard.tsx` — shown when engagement threshold met AND not dismissed within 14 days AND `beforeinstallprompt` fired.
 - [X] **T033** Create `frontend/src/components/IosInstallInstructions.tsx` — shown when UA = Safari iOS AND engagement threshold met AND not dismissed (since iOS has no `beforeinstallprompt`).
 - [X] **T034** Mount both in the app root with the conditional gating.

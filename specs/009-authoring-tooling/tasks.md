@@ -71,7 +71,7 @@ Tasks below are marked [X] to reflect functional completion of the core US1 + US
   5. Write valid items to a draft file; emit structured log line.
   6. Report rejected items (field + reason) on stderr.
 - [X] **T043** [P] `tools/author/tests/unit/draft.test.ts` — fixture Claude response → expected valid + rejected partition; output file path returned; structured log line shape correct.
-- [X] **T044** Smoke test the real API: `ANTHROPIC_API_KEY=… pnpm author draft --type=mcq --domain=ml-lifecycle --topic=MLflow --difficulty=2 --count=3`. Verify a draft file appears.
+- [X] **T044** Smoke test the real API: `ANTHROPIC_API_KEY=… pnpm author draft --type=mcq --domain=ingest-transform --topic=MLflow --difficulty=2 --count=3`. Verify a draft file appears.
 
 **Checkpoint**: US1 complete — drafts are produced, validated, written.
 

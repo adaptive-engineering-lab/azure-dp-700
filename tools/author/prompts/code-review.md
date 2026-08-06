@@ -18,8 +18,8 @@ Append this section to `dp700-question-authoring-prompt.md` (the base authoring 
   "source": "ai-generated",
   "content": {
     "sub_mode": "<find-the-bug | what-does-this-do | fill-the-blank>",
-    "language": "<python | yaml | bash>",
-    "snippet": "<the code or YAML block — 8 to 20 lines — escaped as a JSON string>",
+    "language": "<python | sql | kql | json>",
+    "snippet": "<the code block — 8 to 20 lines — escaped as a JSON string>",
     "prompt": "<one sentence — what the learner must do — ≤ 200 chars>",
     "options": {
       "A": "<option text — ≤ 240 chars>",
@@ -33,6 +33,16 @@ Append this section to `dp700-question-authoring-prompt.md` (the base authoring 
 }
 ```
 
+`language` maps to the three languages DP-700 names explicitly, plus JSON for
+pipeline and Dataflow definitions:
+
+| Value    | Use for                                                        |
+| -------- | -------------------------------------------------------------- |
+| `python` | PySpark in a Fabric notebook                                     |
+| `sql`    | T-SQL in a Warehouse or SQL analytics endpoint                   |
+| `kql`    | KQL against an Eventhouse / KQL database                         |
+| `json`   | Pipeline activity definitions, Dataflow Gen2 config, deployment  |
+
 ---
 
 ## Code-review quality rules (in addition to the shared rules)
@@ -45,8 +55,8 @@ Append this section to `dp700-question-authoring-prompt.md` (the base authoring 
    placeholder. Multi-blank snippets are out of scope for v1.
 
 3. **Realistic snippets**: snippets must look like code a learner would
-   actually write when using Azure ML SDK v2, the Azure AI Foundry SDK,
-   or GitHub Actions YAML. Avoid toy examples.
+   actually write in a Fabric notebook, a Warehouse query window, a KQL
+   queryset, or a pipeline JSON definition. Avoid toy examples.
 
 4. **Plausible distractors**: all four options must be things a learner
    who partially understands the topic would consider. Avoid options that
@@ -62,65 +72,81 @@ Append this section to `dp700-question-authoring-prompt.md` (the base authoring 
    for newlines and `\"` for any double-quotes inside the snippet.
 
 8. **Difficulty calibration for code-review**:
-   - **Level 1**: obvious flaw or simple recall ("what does `mlflow.autolog()` do?")
-   - **Level 2**: requires knowing which option is correct for a scenario
-     (e.g. sampling algorithm constraints, trigger type differences)
+   - **Level 1**: obvious flaw or simple recall ("what does `OPTIMIZE` do
+     to a Delta table?")
+   - **Level 2**: requires knowing which option fits a scenario
+     (e.g. when `has` beats `contains`, managed vs external table writes)
    - **Level 3**: exam trap — the snippet looks correct but violates a
-     non-obvious constraint (e.g. Bayesian + Normal expression, missing
-     `disable()` before `delete()`, MLTable vs URI_FILE for AutoML)
+     non-obvious constraint (e.g. KQL `join` defaulting to `innerunique`,
+     a Warehouse primary key being `NOT ENFORCED`)
 
 ---
 
 ## High-value code-review scenarios (ready to author)
 
 Use these as starting points for `find-the-bug` and `fill-the-blank` items.
-Every one of these maps to a real exam trap from the knowledge bank.
+Each maps to a real exam trap. Verify behaviour against current Fabric docs
+before shipping — the platform moves quickly.
 
-### Hyperparameter tuning (ingest-transform)
+### PySpark and Delta (ingest-transform)
 
-- Sweep job using `Normal()` with `sampling_algorithm="bayesian"` — invalid combination
-- Sweep job using `sampling_algorithm="grid"` with a `Uniform()` param — grid requires discrete
-- `BanditPolicy` with both `slack_amount` and `slack_factor` set — only one should be set
-- Missing `delay_evaluation` on a `TruncationSelectionPolicy` — early trials get cut prematurely
-- `evaluation_interval=0` — invalid; must be ≥ 1
+- `spark.read.format("csv").option("header", "true").load(...)` with no
+  `inferSchema` or explicit schema — every column silently lands as string
+- `df.write.format("delta").save(path)` where a managed table was intended —
+  `saveAsTable` registers it in the metastore, `save` leaves it external
+- Schema evolution write without `.option("mergeSchema", "true")` — fails
+  when a new column appears
+- `partitionBy` on a high-cardinality column such as an order ID — produces
+  the small-file problem rather than helping
+- `createOrReplaceTempView` expected to survive into the next session —
+  temp views are session-scoped
 
-### AutoML (ingest-transform)
+### Spark performance (monitor-optimize)
 
-- `Input(type=AssetTypes.URI_FILE, ...)` for AutoML training data — must be `MLTABLE`, not `URI_FILE`
-- `enable_model_explainability` not set when RAI dashboard is expected — must be `True`
-- `max_concurrent_trials` set higher than compute cluster max nodes — trials queue, not error
+- `df.count()` called repeatedly inside a loop on an uncached dataframe —
+  the whole lineage recomputes each time; needs `.cache()` and an action
+- `collect()` on a full dataframe to "check the data" — pulls everything to
+  the driver; use `limit()` then `show()`
+- A Delta table written by many small appends with no `OPTIMIZE` — read
+  performance degrades until the files are compacted
+- `VACUUM` with a retention below the default without
+  `spark.databricks.delta.retentionDurationCheck.enabled` set — breaks
+  time travel
 
-### MLflow (ingest-transform)
+### KQL and Eventhouse (ingest-transform / monitor-optimize)
 
-- `mlflow.set_tracking_uri` called on a compute instance — not needed; auto-configured
-- `mlflow.log_metric("accuracy", accuracy)` called outside `with mlflow.start_run():` — no run context
-- `mlflow.autolog()` called after `model.fit()` — must be called before training
+- `join` written without a `kind`, expecting SQL semantics — KQL defaults to
+  `innerunique`, which de-duplicates the left side. The classic trap.
+- `contains` used on an indexed string column where `has` is correct —
+  `has` matches whole terms and uses the index; `contains` scans substrings
+- `| where` placed after `| summarize` — filters the aggregate instead of
+  the source rows, doing far more work than needed
+- `bin()` omitted from a time-series `summarize`, so no windowing occurs
+- A materialized view defined over a non-deterministic aggregation — must
+  use `arg_max`, `take_any`, or another supported aggregation
 
-### Pipelines (ingest-transform / implement-manage)
+### Warehouse T-SQL (implement-manage / monitor-optimize)
 
-- Pipeline submitted without `pipeline_job.settings.default_compute` set and no per-component compute — fails
-- `ml_client.schedules.begin_delete(name=...)` called without `begin_disable()` first — must disable first
-- Component YAML missing `outputs` section when downstream component references it — runtime error
+- `PRIMARY KEY` declared without `NONCLUSTERED NOT ENFORCED` — Fabric
+  Warehouse only supports unenforced constraints, and duplicate rows will
+  still load
+- `SELECT TOP 10` with no `ORDER BY`, expected to be deterministic
+- `SELECT ... INTO` used to create a table — use `CREATE TABLE AS SELECT`
+- A cross-warehouse query written with two-part naming — needs three-part
+  `database.schema.table`
+- A row-level security predicate function missing `WITH SCHEMABINDING`
+- Dynamic data masking applied while the querying principal holds `UNMASK`,
+  so the data comes back in the clear
 
-### GitHub Actions (implement-manage)
+### Pipelines and Dataflows (implement-manage / monitor-optimize)
 
-- Workflow trigger: `on: [pull_request]` expected to fire after PR merge — wrong; use `on: push: branches: [main]`
-- `AZURE_CREDENTIALS` referenced in workflow YAML as plain text — must be `${{ secrets.AZURE_CREDENTIALS }}`
-- Job targets `production` environment with no `needs:` referencing staging job — skips approval gate
-
-### GenAIOps / Foundry (monitor-optimize)
-
-- `fill-the-blank`: `sampling_algorithm="___BLANK___"` in a sweep job that uses only `Choice()` params
-  → answer: `"grid"` (all discrete, so grid is valid)
-- `fill-the-blank`: `sweep_job.early_termination = BanditPolicy(slack_amount=___BLANK___, delay_evaluation=5)`
-  → answer: a float like `0.2` (not slack_factor)
-
-### Evaluation (implement-manage)
-
-- Code uses `groundedness_evaluator` without a judge model deployment and no Azure AI Content Safety config
-  — should use `GroundednessProEvaluator` (no judge needed) or configure OpenAI connection
-- Safety evaluator result compared to threshold of 5 — default pass threshold is 3, not 5
-- ROUGE result accessed as a single float — ROUGE returns a dict with `precision`, `recall`, `F1` keys
+- An activity dependency set to `Succeeded` where the intent was a
+  failure-handling branch — that branch never runs; use `Failed`
+- Dynamic content written as `@pipeline().parameters.p` inside a larger
+  string without the `@{...}` interpolation form
+- A Copy activity referencing `@activity('Prev').output.value` when the
+  previous activity is a Copy, which does not expose `value`
+- No retry or timeout configured on a flaky external source
 
 ---
 
@@ -130,7 +156,7 @@ Every one of these maps to a real exam trap from the knowledge bank.
 Domain    : <domain slug>
 Topic(s)  : <topic strings from allowed list>
 Sub-mode  : <find-the-bug | what-does-this-do | fill-the-blank>
-Language  : <python | yaml | bash>
+Language  : <python | sql | kql | json>
 Difficulty: <1 | 2 | 3>
 Count     : <N items>
 
@@ -147,7 +173,7 @@ Knowledge-bank files to use as source:
 
 Before committing, verify:
 
-- [ ] Snippet is realistic (looks like real Azure ML / Foundry / GitHub Actions code)
+- [ ] Snippet is realistic (looks like real PySpark / T-SQL / KQL / pipeline JSON)
 - [ ] `find-the-bug`: exactly one flaw, unambiguously identified by the correct option
 - [ ] `fill-the-blank`: exactly one `___BLANK___`, correct option is the only valid completion
 - [ ] All four options are plausible to a learner who partially knows the topic
