@@ -2,7 +2,7 @@
 
 **Feature Branch**: `004-flashcard-mode`
 **Created**: 2026-05-11
-**Status**: Draft
+**Status**: Retired — flashcard mode was removed on 2026-08-06. See `DP700-Game-Spec.md` §6.4 and migration `0015_drop_flashcards.sql`. Kept as the historical record of the rating model and session shape that quiz mode inherited.
 **Input**: User description: "Flashcard mode (static, no AI)" (Phase 1 of DP700-Game-Spec.md §13, expanded per §6.1)
 
 ## User Scenarios & Testing *(mandatory)*
