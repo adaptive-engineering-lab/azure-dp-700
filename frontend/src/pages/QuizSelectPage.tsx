@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { DOMAINS, DOMAIN_LABELS, type Domain } from '../lib/questions/types';
+import { useModules } from '../lib/questions/useModules';
 import { ROUTES } from '../lib/routes';
 import { supabase } from '../lib/supabase';
 
@@ -10,10 +10,10 @@ const DIFFS = [1, 2, 3] as const;
 export default function QuizSelectPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const initialDomain = DOMAINS.includes(searchParams.get('domain') as Domain)
-    ? (searchParams.get('domain') as Domain)
-    : 'implement-manage';
-  const [domain, setDomain] = useState<Domain>(initialDomain);
+  const { modules, loading: modulesLoading } = useModules('mcq');
+  // 'all' mixes every module; otherwise the value is a module title (an
+  // item's `topic`).
+  const [topic, setTopic] = useState<string>(searchParams.get('topic') ?? 'all');
   const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
   const [count, setCount] = useState<5 | 10 | 20>(10);
   const [timer, setTimer] = useState(false);
@@ -21,28 +21,25 @@ export default function QuizSelectPage() {
 
   useEffect(() => {
     let cancelled = false;
-    supabase()
-      .from('questions')
-      .select('id', { count: 'exact', head: true })
-      .eq('type', 'mcq')
-      .eq('domain', domain)
-      .then(({ count: n }) => {
-        if (!cancelled) setPoolSize(n ?? 0);
-      });
+    let query = supabase().from('questions').select('id', { count: 'exact', head: true }).eq('type', 'mcq');
+    if (topic !== 'all') query = query.eq('topic', topic);
+    query.then(({ count: n }) => {
+      if (!cancelled) setPoolSize(n ?? 0);
+    });
     return () => {
       cancelled = true;
     };
-  }, [domain]);
+  }, [topic]);
 
   const willDeliver = poolSize === null ? null : Math.min(poolSize, count);
 
   function start() {
     const p = new URLSearchParams({
-      domain,
       difficulty: String(difficulty),
       count: String(count),
       timer: timer ? '1' : '0',
     });
+    if (topic !== 'all') p.set('topic', topic);
     navigate(`${ROUTES.quiz}/session?${p.toString()}`);
   }
 
@@ -53,13 +50,20 @@ export default function QuizSelectPage() {
         <p className="mt-1 text-fg-muted">Multiple choice with explanations. Pick your settings.</p>
       </header>
 
-      <Fieldset legend="Domain">
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          {DOMAINS.map((d) => (
-            <Pill key={d} active={domain === d} onClick={() => setDomain(d)}>
-              {DOMAIN_LABELS[d]}
+      <Fieldset legend="Module">
+        <div className="grid grid-cols-1 gap-2">
+          <Pill active={topic === 'all'} onClick={() => setTopic('all')}>
+            All modules
+          </Pill>
+          {modules.map((m) => (
+            <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)}>
+              {m.topic}{' '}
+              <span className="opacity-70">({m.count})</span>
             </Pill>
           ))}
+          {!modulesLoading && modules.length === 0 && (
+            <p className="text-sm text-fg-muted">No modules in the bank yet.</p>
+          )}
         </div>
       </Fieldset>
 
@@ -98,8 +102,8 @@ export default function QuizSelectPage() {
       {poolSize !== null && (
         <p className="mt-4 text-xs text-fg-muted">
           {poolSize === 0
-            ? `No MCQs available for ${DOMAIN_LABELS[domain]} yet.`
-            : `${poolSize} MCQ${poolSize === 1 ? '' : 's'} available in ${DOMAIN_LABELS[domain]}. Difficulty is a preference — adjacent levels fill any gap.`}
+            ? `No MCQs available for ${topic === 'all' ? 'this bank' : topic} yet.`
+            : `${poolSize} MCQ${poolSize === 1 ? '' : 's'} available in ${topic === 'all' ? 'all modules' : topic}. Difficulty is a preference — adjacent levels fill any gap.`}
         </p>
       )}
 

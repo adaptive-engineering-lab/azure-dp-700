@@ -29,7 +29,7 @@ interface Answer {
 
 export default function QuizSessionPage() {
   const [params] = useSearchParams();
-  const domain = params.get('domain') as Domain | null;
+  const topic = params.get('topic');
   const difficulty = (Number(params.get('difficulty') ?? 2) as 1 | 2 | 3);
   const count = Number(params.get('count') ?? 10);
   const timerOn = params.get('timer') === '1';
@@ -55,7 +55,7 @@ export default function QuizSessionPage() {
     // Fetch all difficulties for the domain — difficulty is applied as
     // a soft preference in pickWithDifficultyPreference so sparse cells
     // don't starve the quiz.
-    fetchQuestions({ type: 'mcq', domain: domain ?? undefined })
+    fetchQuestions({ type: 'mcq', topic: topic ?? undefined })
       .then((all) => {
         if (cancelled) return;
         if (all.length === 0) {
@@ -73,7 +73,7 @@ export default function QuizSessionPage() {
     return () => {
       cancelled = true;
     };
-  }, [domain, difficulty, count]);
+  }, [topic, difficulty, count]);
 
   useEffect(() => {
     if (!timerOn || !questions || showFeedback) return;
@@ -146,7 +146,7 @@ export default function QuizSessionPage() {
       const scorePct = Math.round((correctCount / questions!.length) * 100);
       const durationSeconds = Math.round((Date.now() - startedAt) / 1000);
       addXp(correctCount * 10 + 50);
-      recordSession({ mode: 'mcq', topic: domain, scorePct, durationSeconds });
+      recordSession({ mode: 'mcq', topic, scorePct, durationSeconds });
       bumpStreak();
       setIdx(idx + 1);
     }

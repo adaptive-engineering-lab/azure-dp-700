@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { DOMAINS, DOMAIN_LABELS, type Domain } from '../lib/questions/types';
+import { useModules } from '../lib/questions/useModules';
 import type { CodeReviewSubMode } from '../lib/questions/types';
 import { ROUTES } from '../lib/routes';
 import { supabase } from '../lib/supabase';
@@ -31,7 +31,8 @@ export default function CodeReviewPage() {
   const [subMode, setSubMode] = useState<CodeReviewSubMode>('find-the-bug');
   const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
   const [count, setCount] = useState<5 | 10 | 15>(5);
-  const [domain, setDomain] = useState<Domain | 'all'>('all');
+  const { modules, loading: modulesLoading } = useModules('code-review');
+  const [topic, setTopic] = useState<string>('all');
   const [poolSize, setPoolSize] = useState<number | null>(null);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function CodeReviewPage() {
       .from('questions')
       .select('id, content', { count: 'exact' })
       .eq('type', 'code-review');
-    if (domain !== 'all') query = query.eq('domain', domain);
+    if (topic !== 'all') query = query.eq('topic', topic);
     query.then(({ data, count: n }) => {
       if (cancelled) return;
       if (!data) {
@@ -55,7 +56,7 @@ export default function CodeReviewPage() {
     return () => {
       cancelled = true;
     };
-  }, [domain, subMode]);
+  }, [topic, subMode]);
 
   const willDeliver = poolSize === null ? null : Math.min(poolSize, count);
 
@@ -65,7 +66,7 @@ export default function CodeReviewPage() {
       difficulty: String(difficulty),
       count: String(count),
     });
-    if (domain !== 'all') p.set('domain', domain);
+    if (topic !== 'all') p.set('topic', topic);
     navigate(`${ROUTES.codeReview}/session?${p.toString()}`);
   }
 
@@ -105,16 +106,19 @@ export default function CodeReviewPage() {
         </div>
       </Fieldset>
 
-      <Fieldset legend="Domain">
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-          <Pill active={domain === 'all'} onClick={() => setDomain('all')}>
-            Any domain
+      <Fieldset legend="Module">
+        <div className="grid grid-cols-1 gap-2">
+          <Pill active={topic === 'all'} onClick={() => setTopic('all')}>
+            Any module
           </Pill>
-          {DOMAINS.map((d) => (
-            <Pill key={d} active={domain === d} onClick={() => setDomain(d)}>
-              {DOMAIN_LABELS[d]}
+          {modules.map((m) => (
+            <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)}>
+              {m.topic} <span className="opacity-70">({m.count})</span>
             </Pill>
           ))}
+          {!modulesLoading && modules.length === 0 && (
+            <p className="text-sm text-fg-muted">No code-review items in the bank yet.</p>
+          )}
         </div>
       </Fieldset>
 

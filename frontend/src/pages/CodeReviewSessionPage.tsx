@@ -76,7 +76,7 @@ export default function CodeReviewSessionPage() {
   const subMode = (params.get('sub_mode') ?? 'find-the-bug') as CodeReviewSubMode;
   const difficulty = Number(params.get('difficulty') ?? 2) as 1 | 2 | 3;
   const count = Number(params.get('count') ?? 5);
-  const domain = params.get('domain') as Domain | null;
+  const topic = params.get('topic');
   const themeMode = useAppStore((s) => s.preferences.theme);
 
   const [questions, setQuestions] = useState<CodeReviewQuestion[] | null>(null);
@@ -95,7 +95,7 @@ export default function CodeReviewSessionPage() {
 
   useEffect(() => {
     let cancelled = false;
-    fetchQuestions({ type: 'code-review', domain: domain ?? undefined })
+    fetchQuestions({ type: 'code-review', topic: topic ?? undefined })
       .then((all) => {
         if (cancelled) return;
         const filtered = (all as CodeReviewQuestion[]).filter(
@@ -131,7 +131,7 @@ export default function CodeReviewSessionPage() {
     return () => {
       cancelled = true;
     };
-  }, [subMode, difficulty, count, domain]);
+  }, [subMode, difficulty, count, topic]);
 
   useEffect(() => {
     if (!questions || questions.length === 0) return;
@@ -206,7 +206,7 @@ export default function CodeReviewSessionPage() {
       addXp(correctCount * 10 + 50);
       recordSession({
         mode: 'code-review',
-        topic: domain,
+        topic,
         scorePct,
         durationSeconds,
       });
