@@ -2,8 +2,8 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
 
   "framework": null,
-  "installCommand": "corepack enable && pnpm --dir frontend install --frozen-lockfile",
-  "buildCommand": "pnpm --dir frontend build",
+  "installCommand": "corepack enable && cd frontend && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install --frozen-lockfile",
+  "buildCommand": "cd frontend && COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm build",
   "outputDirectory": "frontend/dist",
 
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }],
