@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { CONTACT_EMAIL, OPERATOR_JURISDICTION, OPERATOR_NAME } from '../lib/legal';
 import { ROUTES } from '../lib/routes';
 
 export default function PrivacyPolicyPage() {
@@ -12,10 +13,10 @@ export default function PrivacyPolicyPage() {
       <Section title="1. Who we are">
         <p>
           DP-700 Study (the &ldquo;Service&rdquo;) is operated by{' '}
-          <strong>Adaptive Engineering Lab</strong>, a brand of Lanre Adetola
-          operating as an individual based in Belgium. You can reach us at{' '}
-          <a href="mailto:ladetola0@gmail.com" className="text-accent underline">
-            ladetola0@gmail.com
+          <strong>{OPERATOR_NAME}</strong>, operating from{' '}
+          {OPERATOR_JURISDICTION}. You can reach us at{' '}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent underline">
+            {CONTACT_EMAIL}
           </a>
           .
         </p>
@@ -148,8 +149,8 @@ export default function PrivacyPolicyPage() {
         </ul>
         <p className="mt-2">
           For access, correction, or export requests, email{' '}
-          <a href="mailto:ladetola0@gmail.com" className="text-accent underline">
-            ladetola0@gmail.com
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent underline">
+            {CONTACT_EMAIL}
           </a>{' '}
           and we&rsquo;ll respond within 30 days.
         </p>
@@ -162,7 +163,7 @@ export default function PrivacyPolicyPage() {
         </p>
         <ul className="list-disc pl-5">
           <li>Keep you signed in (Supabase Auth session token).</li>
-          <li>Remember your preferences (theme, default session length).</li>
+          <li>Remember your preferences (theme, exam date).</li>
           <li>Hold your guest progress until you sign in.</li>
           <li>Cache the app shell for offline use (service worker / IndexedDB).</li>
         </ul>
@@ -177,8 +178,8 @@ export default function PrivacyPolicyPage() {
           The Service is intended for users aged 16 and over. We do not
           knowingly collect personal data from anyone under 16. If you
           believe a child has signed up, contact{' '}
-          <a href="mailto:ladetola0@gmail.com" className="text-accent underline">
-            ladetola0@gmail.com
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent underline">
+            {CONTACT_EMAIL}
           </a>{' '}
           and we&rsquo;ll delete the account.
         </p>
@@ -196,8 +197,8 @@ export default function PrivacyPolicyPage() {
       <Section title="11. Contact">
         <p>
           Questions, requests, complaints:{' '}
-          <a href="mailto:ladetola0@gmail.com" className="text-accent underline">
-            ladetola0@gmail.com
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent underline">
+            {CONTACT_EMAIL}
           </a>
           .
         </p>

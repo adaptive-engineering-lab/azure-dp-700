@@ -915,7 +915,7 @@ Specs with unrealised test tasks: 004 (flashcard mode, since removed), 005 (Play
 
 TBD. Not yet under any open-source license — code is the author's. The question bank explanations may quote phrasing from Microsoft Learn documentation; those quotations are fair-use educational excerpts.
 
-If you want to use this codebase, contact `ladetola0@gmail.com`.
+If you want to use this codebase, open an issue on the repository.
 
 ---
 

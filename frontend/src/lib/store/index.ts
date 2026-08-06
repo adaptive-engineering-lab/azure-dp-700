@@ -7,7 +7,6 @@ import {
   DEFAULT_PREFERENCES,
   type SessionPreferences,
   type Theme,
-  type SessionLength,
   type GameMode,
 } from './preferences';
 import { makeDefaultProfile, levelFromXp, type GuestProfile, type Level } from './profile';
@@ -21,7 +20,6 @@ interface AppState {
   sessions: GuestSession[];
 
   setTheme: (theme: Theme) => void;
-  setDefaultSessionLength: (n: SessionLength) => void;
   setDefaultStartingMode: (mode: GameMode | null) => void;
   setReducedMotion: (v: boolean | 'system') => void;
   setExamDate: (date: string | null) => void;
@@ -77,8 +75,6 @@ export const useAppStore = create<AppState>()(
 
       setTheme: (theme) =>
         set((s) => ({ preferences: { ...s.preferences, theme } })),
-      setDefaultSessionLength: (n) =>
-        set((s) => ({ preferences: { ...s.preferences, defaultSessionLength: n } })),
       setDefaultStartingMode: (mode) =>
         set((s) => ({ preferences: { ...s.preferences, defaultStartingMode: mode } })),
       setReducedMotion: (v) =>
@@ -188,7 +184,7 @@ export const useAppStore = create<AppState>()(
   ),
 );
 
-export type { Theme, SessionLength, GameMode, SessionPreferences } from './preferences';
+export type { Theme, GameMode, SessionPreferences } from './preferences';
 export type { GuestProfile, Level } from './profile';
 export type { GuestProgress, GuestProgressMap, Rating } from './progress';
 export type { GuestSession, SessionMode } from './sessions';

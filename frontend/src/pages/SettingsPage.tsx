@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAppStore, type Theme, type SessionLength } from '../lib/store';
+import { useAppStore, type Theme } from '../lib/store';
 import { FREE_THEMES, PRO_THEMES } from '../lib/store/preferences';
 import { useAuth } from '../lib/auth/AuthProvider';
 import { useEntitlement } from '../lib/entitlement';
@@ -8,7 +8,6 @@ import { supabase } from '../lib/supabase';
 import { ROUTES } from '../lib/routes';
 import ProBadge from '../components/ProBadge';
 
-const SESSION_LENGTHS: SessionLength[] = [10, 20, 30];
 
 const THEME_LABEL: Record<Theme, string> = {
   dark: 'Dark',
@@ -20,7 +19,6 @@ const THEME_LABEL: Record<Theme, string> = {
 export default function SettingsPage() {
   const prefs = useAppStore((s) => s.preferences);
   const setTheme = useAppStore((s) => s.setTheme);
-  const setLength = useAppStore((s) => s.setDefaultSessionLength);
   const setReducedMotion = useAppStore((s) => s.setReducedMotion);
   const setExamDate = useAppStore((s) => s.setExamDate);
   const { user, signOut } = useAuth();
@@ -80,30 +78,6 @@ export default function SettingsPage() {
             Solar and Forest are Pro themes. <ProBadge />
           </p>
         )}
-      </fieldset>
-
-      <fieldset className="mt-4 rounded-lg bg-bg-elevated p-4">
-        <legend className="px-1 text-sm font-semibold text-fg-muted">
-          Default session length
-        </legend>
-        <div className="mt-2 flex gap-2">
-          {SESSION_LENGTHS.map((n) => (
-            <button
-              key={n}
-              type="button"
-              onClick={() => setLength(n)}
-              aria-pressed={prefs.defaultSessionLength === n}
-              className={[
-                'flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                prefs.defaultSessionLength === n
-                  ? 'bg-accent text-accent-fg'
-                  : 'bg-bg text-fg',
-              ].join(' ')}
-            >
-              {n} cards
-            </button>
-          ))}
-        </div>
       </fieldset>
 
       <fieldset className="mt-4 rounded-lg bg-bg-elevated p-4">

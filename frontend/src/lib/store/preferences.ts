@@ -6,12 +6,10 @@ export const ALL_THEMES: Theme[] = [...FREE_THEMES, ...PRO_THEMES];
 export function isProTheme(theme: Theme): boolean {
   return PRO_THEMES.includes(theme);
 }
-export type SessionLength = 10 | 20 | 30;
 export type GameMode = 'mcq' | 'code-review';
 
 export interface SessionPreferences {
   theme: Theme;
-  defaultSessionLength: SessionLength;
   defaultStartingMode: GameMode | null;
   reducedMotion: boolean | 'system';
   /** ISO date (YYYY-MM-DD) of the user's scheduled DP-700 exam. Pro-only. */
@@ -20,7 +18,6 @@ export interface SessionPreferences {
 
 export const DEFAULT_PREFERENCES: SessionPreferences = {
   theme: 'dark',
-  defaultSessionLength: 20,
   defaultStartingMode: null,
   reducedMotion: 'system',
   examDate: null,

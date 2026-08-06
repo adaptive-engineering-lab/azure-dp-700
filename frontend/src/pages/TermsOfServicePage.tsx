@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { CONTACT_EMAIL, OPERATOR_JURISDICTION, OPERATOR_NAME } from '../lib/legal';
 import { ROUTES } from '../lib/routes';
 
 export default function TermsOfServicePage() {
@@ -14,8 +15,7 @@ export default function TermsOfServicePage() {
           DP-700 Study (&ldquo;the Service&rdquo;) is an educational study
           tool for the Microsoft Certified: Fabric Data Engineer Associate
           exam (Exam DP-700). It is operated by{' '}
-          <strong>Adaptive Engineering Lab</strong>, a brand of Lanre
-          Adetola operating as an individual based in Belgium.
+          <strong>{OPERATOR_NAME}</strong>, operating from {OPERATOR_JURISDICTION}.
         </p>
         <p className="mt-2">
           The Service is <strong>not affiliated with, endorsed by, or
@@ -160,7 +160,7 @@ export default function TermsOfServicePage() {
 
       <Section title="12. Governing law and disputes">
         <p>
-          These Terms are governed by the laws of Belgium, without regard
+          These Terms are governed by the laws of {OPERATOR_JURISDICTION}, without regard
           to conflict-of-laws rules.
         </p>
         <p className="mt-2">
@@ -187,8 +187,8 @@ export default function TermsOfServicePage() {
       <Section title="14. Contact">
         <p>
           Questions about these Terms:{' '}
-          <a href="mailto:ladetola0@gmail.com" className="text-accent underline">
-            ladetola0@gmail.com
+          <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent underline">
+            {CONTACT_EMAIL}
           </a>
           .
         </p>
