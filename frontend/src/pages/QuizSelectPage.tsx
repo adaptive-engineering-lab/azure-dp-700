@@ -47,9 +47,6 @@ export default function QuizSelectPage() {
 
       <Fieldset legend="Module">
         <div className="grid grid-cols-1 gap-2">
-          <Pill active={topic === 'all'} onClick={() => setTopic('all')}>
-            All modules
-          </Pill>
           {modules.map((m) => (
             <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)}>
               {m.topic}{' '}
@@ -59,6 +56,11 @@ export default function QuizSelectPage() {
           {!modulesLoading && modules.length === 0 && (
             <p className="text-sm text-fg-muted">No modules in the bank yet.</p>
           )}
+          {/* Rendered after the map, not as part of it, so it stays last as
+              modules are added. */}
+          <Pill active={topic === 'all'} onClick={() => setTopic('all')}>
+            All modules
+          </Pill>
         </div>
       </Fieldset>
 

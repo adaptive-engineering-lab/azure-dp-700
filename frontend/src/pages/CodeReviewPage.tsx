@@ -105,9 +105,6 @@ export default function CodeReviewPage() {
 
       <Fieldset legend="Module">
         <div className="grid grid-cols-1 gap-2">
-          <Pill active={topic === 'all'} onClick={() => setTopic('all')}>
-            Any module
-          </Pill>
           {modules.map((m) => (
             <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)}>
               {m.topic} <span className="opacity-70">({m.count})</span>
@@ -116,6 +113,11 @@ export default function CodeReviewPage() {
           {!modulesLoading && modules.length === 0 && (
             <p className="text-sm text-fg-muted">No code-review items in the bank yet.</p>
           )}
+          {/* Rendered after the map, not as part of it, so it stays last as
+              modules are added. */}
+          <Pill active={topic === 'all'} onClick={() => setTopic('all')}>
+            Any module
+          </Pill>
         </div>
       </Fieldset>
 

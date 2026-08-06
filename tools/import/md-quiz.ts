@@ -280,6 +280,14 @@ function buildItems(file: string, body: string): BankItem[] {
     warn(`${file}: no parsable "Source module:" URL; using the quiz heading as topic`);
   }
   const topic = info?.title ?? headingTitle;
+  // The leading number in the filename is the order the modules are meant to
+  // be worked through, so carry it into the bank — it is not derivable from
+  // anything else once the file name is gone.
+  const orderPrefix = stem.match(/^(\d+)/)?.[1];
+  if (!orderPrefix) {
+    warn(`${file}: filename has no leading number; the module picker will fall back to alphabetical order`);
+  }
+  const orderTag = orderPrefix ? `order:${Number(orderPrefix)}` : undefined;
   const pathTags = (info?.paths ?? []).map((p) => `path:${p}`);
   const moduleTag = slug ? `module:${slug}` : undefined;
   const primaryPathTag = info ? `primary-path:${info.primaryPath}` : undefined;
@@ -300,6 +308,7 @@ function buildItems(file: string, body: string): BankItem[] {
       domain,
       slugify(topic),
       `level-${difficulty}`,
+      ...(orderTag ? [orderTag] : []),
       ...(moduleTag ? [moduleTag] : []),
       ...pathTags,
       ...(primaryPathTag ? [primaryPathTag] : []),

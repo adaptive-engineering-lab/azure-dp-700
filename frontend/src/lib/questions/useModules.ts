@@ -7,6 +7,20 @@ export interface ModuleOption {
   topic: string;
   domain: Domain;
   count: number;
+  /**
+   * Study order, from the leading number on the source markdown filename
+   * (`3-DP-700_Apache-Spark_Quiz.md` → 3). Undefined when the file was not
+   * numbered.
+   */
+  order?: number;
+}
+
+/** Read `order:<n>` out of an item's tags. */
+function readOrder(tags: string[] | null): number | undefined {
+  const tag = tags?.find((t) => t.startsWith('order:'));
+  if (!tag) return undefined;
+  const n = Number(tag.slice('order:'.length));
+  return Number.isFinite(n) ? n : undefined;
 }
 
 /**
@@ -28,7 +42,7 @@ export function useModules(type: Question['type']) {
     setLoading(true);
     supabase()
       .from('questions')
-      .select('topic, domain')
+      .select('topic, domain, tags')
       .eq('type', type)
       .then(({ data, error: err }) => {
         if (cancelled) return;
@@ -37,12 +51,25 @@ export function useModules(type: Question['type']) {
           setModules([]);
         } else {
           const tally = new Map<string, ModuleOption>();
-          for (const row of (data ?? []) as { topic: string; domain: Domain }[]) {
+          for (const row of (data ?? []) as { topic: string; domain: Domain; tags: string[] | null }[]) {
             const hit = tally.get(row.topic);
-            if (hit) hit.count += 1;
-            else tally.set(row.topic, { topic: row.topic, domain: row.domain, count: 1 });
+            if (hit) {
+              hit.count += 1;
+              continue;
+            }
+            tally.set(row.topic, {
+              topic: row.topic,
+              domain: row.domain,
+              count: 1,
+              order: readOrder(row.tags),
+            });
           }
-          setModules([...tally.values()].sort((a, b) => a.topic.localeCompare(b.topic)));
+          // Study order first; unnumbered modules fall to the end, alphabetical.
+          setModules(
+            [...tally.values()].sort(
+              (a, b) => (a.order ?? Infinity) - (b.order ?? Infinity) || a.topic.localeCompare(b.topic),
+            ),
+          );
           setError(null);
         }
         setLoading(false);
