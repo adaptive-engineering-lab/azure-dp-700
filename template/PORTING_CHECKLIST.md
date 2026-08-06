@@ -128,7 +128,7 @@ Easiest. Edit the migration in place before first `supabase db push`:
 
   ```bash
   grep -rn "DP-700" --include="*.tsx" --include="*.ts" --include="*.html" --include="*.md" \
-    frontend/ README.md netlify.toml | grep -v "specs/"
+    frontend/ README.md vercel.json | grep -v "specs/"
   ```
 
 - [ ] grep for the old exam title strings too (`Implementing Data Engineering Solutions`, `Fabric Data Engineer`, etc.).
@@ -156,21 +156,23 @@ Easiest. Edit the migration in place before first `supabase db push`:
 - [ ] `supabase db push --linked`
 - [ ] Temporarily swap `tools/.env.local` to the cloud creds; run `pnpm -C tools seed`; swap back.
 - [ ] Project Settings → Authentication → URL Configuration:
-  - Site URL: `https://<your-netlify-subdomain>.netlify.app/`
-  - Redirect URL: `https://<your-netlify-subdomain>.netlify.app/auth/callback`
+  - Site URL: `https://<your-vercel-project>.vercel.app/`
+  - Redirect URL: `https://<your-vercel-project>.vercel.app/auth/callback`
   - (Add `http://localhost:5173/auth/callback` for local dev.)
 
-### Netlify
+### Vercel
 
-- [ ] Create a new Netlify site, point at the new GitHub repo, accept the build settings from `netlify.toml` (`frontend/` base, `pnpm build` command, `dist/` publish).
-- [ ] Set env vars: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`.
+- [ ] Create a new Vercel project, point at the new GitHub repo. `vercel.json` carries the build settings (builds in `frontend/`, publishes `frontend/dist`, SPA rewrite) — leave the dashboard's Framework Preset and build commands alone, since `vercel.json` overrides them.
+- [ ] Set env vars for **both Production and Preview**: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`. Vite bakes them in at build time, so set them before the first deploy or redeploy after.
 - [ ] Trigger a deploy.
 - [ ] Verify in browser: home page loads, console clean, "N questions across K domains" line reflects the new bank.
+- [ ] Verify a deep link (e.g. `/learn/quiz`) returns the app on a hard reload, not a 404 — that exercises the SPA rewrite.
+- [ ] Deployment Protection defaults to on for a team project. If the app should be publicly reachable, turn off Vercel Authentication (Project Settings → Deployment Protection) or the `.vercel.app` URLs will redirect visitors to a Vercel login.
 
 ### Optional: custom domain
 
 - [ ] Buy / claim domain (e.g. `az-900.yourdomain.com`).
-- [ ] Add as custom domain in Netlify; Netlify provisions a Let's Encrypt cert.
+- [ ] Add as custom domain in Vercel; Vercel provisions the cert.
 - [ ] Update Supabase Auth URLs to use the custom domain.
 
 ---

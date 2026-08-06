@@ -22,9 +22,9 @@ This template gives you:
 One repo, one deployment, one Supabase project per exam. Cleanest. Most exams' content + branding are too different to share a UI.
 
 ```
-dp-700 repo  →  dp-700.netlify.app, az-103 Supabase project
-az-900 repo  →  az-900.netlify.app, az-900 Supabase project
-ai-900 repo  →  ai-900.netlify.app, ai-900 Supabase project
+dp-700 repo  →  azure-dp-700.vercel.app, az-103 Supabase project
+az-900 repo  →  az-900.vercel.app, az-900 Supabase project
+ai-900 repo  →  ai-900.vercel.app, ai-900 Supabase project
 ```
 
 **Workflow:**
@@ -32,7 +32,7 @@ ai-900 repo  →  ai-900.netlify.app, ai-900 Supabase project
 1. `git clone <this repo> az-900` (or fork on GitHub then clone)
 2. Walk through [`PORTING_CHECKLIST.md`](./PORTING_CHECKLIST.md)
 3. Create a new Supabase project, apply migrations, seed the new bank
-4. Create a new Netlify site, point at the new GitHub repo, set env vars
+4. Create a new Vercel project, point at the new GitHub repo, set env vars
 5. Update the public domain (optional)
 
 Each fork keeps its own commit history. PRs against the original DP-700 repo (e.g., shared bug fixes) merge cleanly via cherry-pick if the shared files haven't drifted.
@@ -89,7 +89,7 @@ Then deploy:
 # 10. supabase link --project-ref <new-ref>
 # 11. supabase db push --linked
 # 12. Swap tools/.env.local to the cloud creds, pnpm -C tools seed
-# 13. Create Netlify site, set VITE_SUPABASE_URL + VITE_SUPABASE_ANON_KEY
+# 13. Create Vercel project, set VITE_SUPABASE_URL + VITE_SUPABASE_ANON_KEY
 ```
 
 ---
@@ -106,7 +106,7 @@ The exam-specific surface is small. In rough order of "must change" → "nice to
 | Bank content | `supabase/seed/content/*.json` | All questions (this is the biggest task) |
 | Branding | `frontend/index.html`, `frontend/vite.config.ts`, `frontend/src/pages/HomePage.tsx`, `README.md` | Exam name, description, hero copy |
 | Optional | `frontend/public/icon.svg` | New icon |
-| Optional | `netlify.toml` | (No exam-specific content today, but you may add domain config) |
+| Optional | `vercel.json` | (No exam-specific content today, but you may add domain config) |
 
 Full list with line-level changes in [`PORTING_CHECKLIST.md`](./PORTING_CHECKLIST.md).
 
