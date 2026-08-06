@@ -1,1 +1,1652 @@
-[]
+[
+  {
+    "id": "74d2d245-c2b4-5988-8052-bd8d9b122f65",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "What type of tool is a Dataflow Gen2 fundamentally classified as?",
+      "options": {
+        "A": "A reporting and visualization tool",
+        "B": "A cloud-based ETL tool",
+        "C": "A row-level security engine",
+        "D": "A real-time streaming engine"
+      },
+      "correct": "B",
+      "explanation": "Dataflows are defined as cloud-based ETL tools for building and executing scalable data transformation processes. (A: no visualization role; C/D: not their function.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "04041ccf-8bf9-5e9a-8342-4f398405008f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Which underlying technology powers the visual transformation experience in Dataflows Gen2?",
+      "options": {
+        "A": "T-SQL",
+        "B": "KQL",
+        "C": "Power Query Online",
+        "D": "Spark SQL"
+      },
+      "correct": "C",
+      "explanation": "Dataflows Gen2 use Power Query Online for the visual, low-code transformation interface. (A/B/D are used elsewhere in Fabric, not for the Dataflow authoring UI.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "d79012d1-6809-58dd-885f-34379363db50",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "In the Dataflow Gen2 authoring experience, what is a data source referred to as before it is loaded to a data store?",
+      "options": {
+        "A": "A table",
+        "B": "A query",
+        "C": "An activity",
+        "D": "A dataset"
+      },
+      "correct": "B",
+      "explanation": "Data sources are called \"queries\" while in the dataflow; they only become \"tables\" once loaded to a data store. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "04030a7b-a203-57e1-90cf-7b650a855b69",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Which pane in the Dataflow Gen2 editor lets you visually see how data sources connect and which transformations are applied, represented as connected shapes?",
+      "options": {
+        "A": "Query Settings pane",
+        "B": "Data Preview pane",
+        "C": "Diagram View",
+        "D": "Power Query ribbon"
+      },
+      "correct": "C",
+      "explanation": "It visually shows connected shapes representing queries and their transformations. (A shows applied steps as a list; B shows sample data; D is for connectors/transform actions, not visual mapping.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "0c8776df-9885-5821-9368-4d7d0ec847dd",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Where can you view the underlying M code for a dataflow's transformations?",
+      "options": {
+        "A": "Data Preview pane",
+        "B": "Advanced editor",
+        "C": "Queries pane",
+        "D": "Pipeline monitoring hub"
+      },
+      "correct": "B",
+      "explanation": "The Advanced editor exposes the M code behind the visual steps. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "b590a7c0-f3bf-5331-8dda-3fc00d2dcc90",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Which of the following is a valid native Fabric data destination for a Dataflow Gen2?",
+      "options": {
+        "A": "Eventhouse",
+        "B": "Warehouse",
+        "C": "Power BI Report",
+        "D": "Real-Time hub"
+      },
+      "correct": "B",
+      "explanation": "Native Fabric destinations listed are Lakehouse, Warehouse, and SQL database (plus external Azure SQL DB, Azure Data Explorer, Azure Synapse Analytics). (A/D are Real-Time Intelligence items, not Dataflow Gen2 destinations; C is a consumption layer, not a data destination.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "3a93c3d4-15d0-57ba-81b3-9d358a1acc35",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "A team wants to use a Pipeline to first copy/land raw data into the lakehouse, and then use a Dataflow Gen2 to cleanse and curate it into a semantic model. What pattern does this describe?",
+      "options": {
+        "A": "ETL (Extract, Transform, Load)",
+        "B": "ELT (Extract, Load, Transform)",
+        "C": "Change Data Capture",
+        "D": "Query folding"
+      },
+      "correct": "B",
+      "explanation": "Extract and Load happen first via the pipeline, then Transform happens via the Dataflow Gen2 — that ordering is the definition of ELT, as opposed to ETL where transform happens before load. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "81e7769c-9bb1-5e98-a058-6c629520c65b",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Which pipeline activity would you use to run a Dataflow Gen2 as part of a larger orchestration?",
+      "options": {
+        "A": "Get metadata",
+        "B": "Copy data",
+        "C": "Incorporate Dataflow (Dataflow activity)",
+        "D": "Execute stored procedure"
+      },
+      "correct": "C",
+      "explanation": "This is the activity type specifically used to add a dataflow into a pipeline's orchestration. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "8c2600b1-2645-5a2d-b16e-736d17ad9b38",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Why might a team schedule or trigger a Dataflow Gen2 via a pipeline rather than running it manually?",
+      "options": {
+        "A": "It is the only way to apply transformations",
+        "B": "It enables automated, timely refresh without manual intervention",
+        "C": "Pipelines are required before any dataflow can be created",
+        "D": "Dataflows cannot be run on their own"
+      },
+      "correct": "B",
+      "explanation": "Scheduling/triggering via pipeline lets data refresh on a defined cadence, especially useful for enterprise or frequently changing data. (A, C, D are all false — dataflows can run standalone and manually too.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "17967ca5-da52-5a8f-8694-ae69cb96b075",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Which of the following is explicitly listed as a limitation of Dataflows Gen2?",
+      "options": {
+        "A": "They cannot connect to Excel files",
+        "B": "They do not support row-level security",
+        "C": "They require a Spark cluster",
+        "D": "They cannot be scheduled"
+      },
+      "correct": "B",
+      "explanation": "This is explicitly listed as a limitation, along with \"not a replacement for a data warehouse\" and \"requires Fabric capacity.\" (A is false — Excel is a supported source; C/D are not stated limitations.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "383a1f29-6197-5bb2-a536-46c232e63093",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-2",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "Your organization has several Power BI report authors who all need a standardized, cleaned \"Date\" dimension table, and you want to avoid each of them re-building their own date logic. Which approach best fits the benefits described for Dataflows Gen2?",
+      "options": {
+        "A": "Build the date table in T-SQL inside a Warehouse and grant everyone direct SQL access",
+        "B": "Create a shared/global Dataflow Gen2 with the standardized date logic that analysts can reference",
+        "C": "Have each analyst create their own Dataflow Gen2 independently",
+        "D": "Use an Eventstream to generate the date dimension in real time"
+      },
+      "correct": "B",
+      "explanation": "This matches the stated benefit: \"Extend data with consistent data, such as a standard date dimension table\" combined with global/shared dataflows that analysts can reuse for specialized semantic models — avoiding duplicated logic. (A bypasses the low-code/reusability benefit; C recreates the exact duplication problem; D is unrelated — real-time streaming isn't relevant to a static date dimension.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "d0966682-3755-57a9-a819-7c850b4b2ecd",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-2",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "You need to ingest data from a source, transform it visually with minimal code, and then execute a stored procedure afterward for auditing. What's the best orchestration approach?",
+      "options": {
+        "A": "Use only a Dataflow Gen2 — it can execute stored procedures natively",
+        "B": "Use only a pipeline with a Copy Data activity — no transformation needed",
+        "C": "Build a Dataflow Gen2 for ingestion/transformation, then add it to a Pipeline with a subsequent \"Execute stored procedure\" activity",
+        "D": "Use KQL to perform both the transformation and the stored procedure execution"
+      },
+      "correct": "C",
+      "explanation": "This is exactly the integration pattern described: use the Dataflow Gen2 for low-code ingestion/transformation, then orchestrate additional steps (like a stored procedure) via a pipeline activity after the dataflow completes. (A is false — dataflows don't execute stored procedures; B skips the required transformation step; D misapplies KQL, which isn't the tool used here.) (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "716664af-cc2a-5a90-a0b4-c83042a2922b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "What is the fundamental unit of work inside a Fabric pipeline that performs data movement or processing?",
+      "options": {
+        "A": "A query",
+        "B": "An activity",
+        "C": "A notebook cell",
+        "D": "A dataflow step"
+      },
+      "correct": "B",
+      "explanation": "Activities are the executable tasks in a pipeline; they're connected in sequence to define the pipeline's flow. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "558d5363-8c69-5c8f-bc0b-9fb10d537510",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "Which of the following is classified as a control flow activity rather than a data transformation activity?",
+      "options": {
+        "A": "Copy Data",
+        "B": "Notebook",
+        "C": "Loop / conditional branching",
+        "D": "Stored procedure"
+      },
+      "correct": "C",
+      "explanation": "Control flow activities manage branching, looping, and variable/parameter logic. Copy Data, Notebook, and Stored procedure are all data transformation activities. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "110935ec-d5ab-5815-bc14-7067c5427d32",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "Which activity would you use to run Spark code as part of a pipeline?",
+      "options": {
+        "A": "Data Flow activity",
+        "B": "Copy Data activity",
+        "C": "Notebook activity",
+        "D": "Delete data activity"
+      },
+      "correct": "C",
+      "explanation": "Notebook activities run Spark code as part of a pipeline. (Data Flow runs a Dataflow Gen2, Copy Data moves data without transforming, Delete data removes existing data.) (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "b0137ae0-1a7c-5b2c-9610-a3489f51d3df",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "What is the primary purpose of parameterizing a pipeline?",
+      "options": {
+        "A": "To improve Spark cluster performance",
+        "B": "To increase reusability by supplying different values on each run",
+        "C": "To enable row-level security",
+        "D": "To reduce the number of activities needed"
+      },
+      "correct": "B",
+      "explanation": "For example, specifying a different folder name each run without editing the pipeline itself. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "0b4ad86a-dc3c-52de-b6f8-707f4ce9cf68",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "What is initiated each time a pipeline executes?",
+      "options": {
+        "A": "A dataflow refresh",
+        "B": "A data pipeline run",
+        "C": "A semantic model refresh",
+        "D": "A Git commit"
+      },
+      "correct": "B",
+      "explanation": "Each execution initiates a run, identified by a unique run ID you can use to review details and confirm success. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "4d8bb37f-428f-5224-addb-843e32a17728",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "According to the module, what should you use a Copy Data activity for?",
+      "options": {
+        "A": "Applying complex transformations while merging multiple sources",
+        "B": "Copying data directly between a supported source and destination with no transformation",
+        "C": "Running Python-based machine learning models",
+        "D": "Enforcing object-level security on a warehouse"
+      },
+      "correct": "B",
+      "explanation": "That's the stated primary use case — moving raw data, with transformations optionally applied in later activities. (A describes when to use Data Flow instead.) (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "56f30668-469e-5fc8-8df6-78d58075c1f0",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "If you need to apply transformations to data as it's being ingested, or merge data from multiple sources, which activity type does the module recommend instead of Copy Data?",
+      "options": {
+        "A": "Delete data activity",
+        "B": "Get metadata activity",
+        "C": "Data Flow activity (running a Dataflow Gen2)",
+        "D": "Stored procedure activity"
+      },
+      "correct": "C",
+      "explanation": "The module explicitly recommends this for transformation-as-you-ingest or merging multiple sources scenarios, using the Power Query interface to define the transformation logic. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "51ec99f1-d306-5581-bde3-cd8e4827d4d8",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "How do you start creating a pipeline based on a predefined Microsoft Fabric template?",
+      "options": {
+        "A": "Import a Python script",
+        "B": "Select the Templates tile when creating a new pipeline",
+        "C": "Write a JSON definition manually",
+        "D": "Use the Advanced editor in Power Query"
+      },
+      "correct": "B",
+      "explanation": "This surfaces a selection of predefined templates you can pick and then customize in the canvas. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "2c7f32df-1a31-5c74-aead-07604a54092a",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "Before running a pipeline, what option can you use to check that its configuration is correct?",
+      "options": {
+        "A": "Refresh",
+        "B": "Validate",
+        "C": "Compile",
+        "D": "Publish"
+      },
+      "correct": "B",
+      "explanation": "This checks that the pipeline's configuration is valid before you run it interactively or put it on a schedule. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "c2364fc7-55c6-5e2a-adba-c3b35dac216c",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "Where can you view the run history of a pipeline?",
+      "options": {
+        "A": "Only from the Fabric admin portal",
+        "B": "From the pipeline canvas or the pipeline item in the workspace",
+        "C": "Only through the REST API",
+        "D": "From the Power BI Desktop navigator"
+      },
+      "correct": "B",
+      "explanation": "Run history is accessible from either location. (A, C, D are not stated as the (only) access points.) (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "a53f1774-0b2e-5df1-891e-eb769ff95be0",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-2",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "You need a repeatable process that: (1) deletes stale data, (2) copies fresh data in from an external source, and (3) runs Spark code to transform it into a table. Which combination of activities fits this scenario, per the module?",
+      "options": {
+        "A": "A single Copy Data activity only",
+        "B": "Delete data activity → Copy Data activity → Notebook activity",
+        "C": "Data Flow activity only, with no other activities",
+        "D": "Stored procedure activity → Get metadata activity"
+      },
+      "correct": "B",
+      "explanation": "This is the exact example the module gives: delete existing data, copy in the replacement from an external source, then run Spark code via a Notebook activity to transform and load it into a table. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "dbe8caaf-1b3a-57db-9425-7b090516b364",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-2",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "Your data needs light transformation and merging from two different sources as it's ingested into the lakehouse, with no need for further Spark processing afterward. What's the most appropriate single-activity approach?",
+      "options": {
+        "A": "Copy Data activity, since it supports all transformation types",
+        "B": "Data Flow activity referencing a Dataflow Gen2 with the transformation/merge logic built in",
+        "C": "Notebook activity using PySpark exclusively",
+        "D": "Delete data activity followed by manual reload"
+      },
+      "correct": "B",
+      "explanation": "The module is explicit: for transformations during ingestion or merging multiple sources, use a Data Flow activity running a Dataflow Gen2, rather than Copy Data (which doesn't transform) or a standalone Notebook (more coding overhead for a task Power Query already handles visually). (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "34d008a7-1aba-596e-8df9-2f78d6451d16",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "What is a Spark pool in Microsoft Fabric?",
+      "options": {
+        "A": "A single virtual machine dedicated to one notebook",
+        "B": "A cluster of compute nodes that distribute data processing tasks",
+        "C": "A storage container for Parquet files",
+        "D": "A destination type for a Dataflow Gen2"
+      },
+      "correct": "B",
+      "explanation": "Spark uses a \"divide and conquer\" approach across multiple nodes, known in Fabric as a Spark pool. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "55abd4e1-adbf-5aee-a365-b48add7d9616",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "In a Spark pool's architecture, which node coordinates distributed processes through a driver program?",
+      "options": {
+        "A": "Worker node",
+        "B": "Executor node",
+        "C": "Head node",
+        "D": "Storage node"
+      },
+      "correct": "C",
+      "explanation": "The head node coordinates distributed processes through a driver program; worker nodes run executor processes that do the actual data processing. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "f758f2b3-d96f-59be-975c-5d059bd54b57",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "What is the purpose of the \"starter pool\" provided in every Fabric workspace?",
+      "options": {
+        "A": "It's a training sandbox with no real data access",
+        "B": "It enables Spark jobs to start and run quickly with minimal setup",
+        "C": "It's only used for Spark job definitions, never notebooks",
+        "D": "It replaces the need for custom Spark pools entirely"
+      },
+      "correct": "B",
+      "explanation": "Every Fabric workspace gets a starter pool by default, configurable to your workload/cost needs; custom pools are optional additions, not replacements. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "dabf4eb7-517b-5490-9a85-9217f348f0ed",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "Which Spark pool configuration setting controls whether nodes are automatically provisioned as needed (and the min/max node count)?",
+      "options": {
+        "A": "Node Family",
+        "B": "Autoscale",
+        "C": "Dynamic allocation",
+        "D": "High concurrency mode"
+      },
+      "correct": "B",
+      "explanation": "Autoscale governs automatic node provisioning and the initial/maximum node count. Dynamic allocation is a related but distinct setting (see Q5). (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "ee2749b8-b136-55d4-bd90-3c93a5162a0f",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "What does \"dynamic allocation\" specifically control in a Spark pool?",
+      "options": {
+        "A": "Which virtual machine type is used for nodes",
+        "B": "Whether executor processes on worker nodes scale based on data volume",
+        "C": "Whether MLFlow logging is enabled",
+        "D": "The default Spark runtime version"
+      },
+      "correct": "B",
+      "explanation": "This is distinct from Autoscale, which is about provisioning nodes rather than executor processes on existing nodes. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "367539b2-f38f-53c2-a120-9c6cf611419f",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "What is the primary benefit of enabling the native execution engine in Microsoft Fabric?",
+      "options": {
+        "A": "A vectorized processing engine that improves performance on large Parquet/Delta datasets",
+        "B": "It manages user authentication for Spark pools",
+        "C": "It eliminates the need for a Spark pool",
+        "D": "It converts PySpark code into T-SQL automatically"
+      },
+      "correct": "A",
+      "explanation": "It runs Spark operations directly on lakehouse infrastructure for significant performance gains on those formats. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "da2d0e3c-a9eb-5dab-91ae-8fd0a2f2db45",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "What does high concurrency mode allow multiple users or processes to do?",
+      "options": {
+        "A": "Edit the exact same notebook cell simultaneously",
+        "B": "Share a Spark session for efficient resource use, while keeping code execution isolated",
+        "C": "Bypass workspace-level access controls",
+        "D": "Automatically merge each other's dataframes"
+      },
+      "correct": "B",
+      "explanation": "This avoids variables in one notebook affecting another, even while sharing underlying session resources. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "21f1abdd-0ef8-5480-85dd-225cbd56e928",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "What does a Spark runtime determine, as distinct from an environment?",
+      "options": {
+        "A": "Which libraries a user has manually installed",
+        "B": "The version of Apache Spark, Delta Lake, Python, and other core components",
+        "C": "The Fabric capacity SKU",
+        "D": "The workspace's security role assignments"
+      },
+      "correct": "B",
+      "explanation": "An environment builds on a runtime by adding specific libraries and configuration — the runtime itself is about core component versions. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "d73662e2-a20e-57f9-bc94-00a9fe0d4e48",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "When should you use a Spark job definition rather than a notebook?",
+      "options": {
+        "A": "When you want to interactively explore data with immediate visual feedback",
+        "B": "When you want to run Spark code as an automated, on-demand or scheduled process",
+        "C": "When you only need markdown documentation, no code",
+        "D": "When you want to avoid using PySpark entirely"
+      },
+      "correct": "B",
+      "explanation": "Notebooks are for interactive exploration; Spark job definitions are for automated script execution. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "1d71ca55-a9bc-52e2-91d0-3b6fefb9fe3e",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "What is a key benefit of specifying an explicit schema when loading a dataframe (versus letting Spark infer it)?",
+      "options": {
+        "A": "It's the only way Spark can read a CSV file",
+        "B": "It improves performance and is useful when column headers aren't present in the source file",
+        "C": "It automatically partitions the output",
+        "D": "It converts the data to Delta format"
+      },
+      "correct": "B",
+      "explanation": "The module states this explicitly — plus it's necessary when there's no header row to infer column names from. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "4d6fee3e-8a00-5d91-8512-08f962bbe42b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "Which magic command tells a Fabric notebook cell to run PySpark code?",
+      "options": {
+        "A": "%%sql",
+        "B": "%%spark",
+        "C": "%%pyspark",
+        "D": "%%python"
+      },
+      "correct": "C",
+      "explanation": "%%spark is actually used for Scala, not PySpark — a common mix-up worth remembering directly for the exam. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "c4f7cde5-ff09-599a-bd93-911414dff4b4",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "Which file format is preferred in Microsoft Fabric for Spark tables, due to support for transactions, versioning, and streaming data?",
+      "options": {
+        "A": "CSV",
+        "B": "JSON",
+        "C": "Delta",
+        "D": "Avro"
+      },
+      "correct": "C",
+      "explanation": "Delta Lake format supports transactions, versioning, and streaming data — it's the preferred format for Spark tables in Fabric, more capable than plain Parquet, CSV, or JSON for this use. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "10f431e9-e326-5725-b5d4-2586ac6c4628",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-2",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "You want multiple data analysts to interactively explore a dataset, mixing markdown commentary with executable code cells, and see results immediately as they iterate. What's the best tool for this?",
+      "options": {
+        "A": "A scheduled Spark job definition",
+        "B": "A notebook combining markdown and executable code cells",
+        "C": "A Delete data pipeline activity",
+        "D": "A Copy Data activity"
+      },
+      "correct": "B",
+      "explanation": "This is exactly what notebooks are designed for: interactive, collaborative exploration with immediate results and mixed content types. A Spark job definition (A) is for automated/scheduled execution, not interactive iteration. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "fb648b82-e711-5bc0-9454-39ba07376ed0",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-2",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "You have a CSV file with no header row containing product data, and you want correct data types and the best possible load performance — without relying entirely on Spark's automatic inference. What should you do?",
+      "options": {
+        "A": "Load with header=True and let Spark infer all types",
+        "B": "Define an explicit StructType schema and pass it when loading the dataframe",
+        "C": "Convert the CSV to JSON before loading",
+        "D": "Load the data into a temporary view instead of a dataframe"
+      },
+      "correct": "B",
+      "explanation": "Since there's no header row, Spark can't infer column names, and explicit schemas both solve that problem and improve performance versus relying on inference. (A doesn't apply since there's no header to read; C and D don't address the schema/performance need at all.) (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "981c6d49-4f56-54fa-8a51-84ee29d9c7a0",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "What is automatically created when you create an Eventhouse in Microsoft Fabric?",
+      "options": {
+        "A": "A Lakehouse with the same name",
+        "B": "A default KQL database with the same name",
+        "C": "A Warehouse",
+        "D": "A Dataflow Gen2"
+      },
+      "correct": "B",
+      "explanation": "Every Eventhouse gets a default KQL database automatically; you can use it as-is or create additional databases as needed. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "af05b5cf-1f91-5cb3-b1c6-8e7edb71859f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "What do database shortcuts in an Eventhouse allow you to do?",
+      "options": {
+        "A": "Copy data permanently into your local eventhouse",
+        "B": "Query data from external KQL databases as if stored locally, without copying it",
+        "C": "Automatically delete stale data",
+        "D": "Convert KQL queries to T-SQL"
+      },
+      "correct": "B",
+      "explanation": "Database shortcuts point to KQL databases in other eventhouses or Azure Data Explorer without duplicating the underlying data. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "8a6b2581-db20-550a-8153-a95d9a67330e",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "What does enabling OneLake availability for a KQL database or table do?",
+      "options": {
+        "A": "Deletes the data from the eventhouse",
+        "B": "Makes the data accessible throughout the Fabric ecosystem for cross-workload integration",
+        "C": "Converts the database into a Lakehouse",
+        "D": "Enables row-level security automatically"
+      },
+      "correct": "B",
+      "explanation": "This lets Power BI, Warehouse, Lakehouse, and other Fabric services access the data directly. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "5ef136ce-fd67-53e7-a427-d03b29bab737",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "Which query languages can be used within a KQL queryset?",
+      "options": {
+        "A": "Only KQL",
+        "B": "Only T-SQL",
+        "C": "Both KQL and T-SQL",
+        "D": "Only PySpark"
+      },
+      "correct": "C",
+      "explanation": "The KQL queryset supports both languages, giving flexibility for people more comfortable with SQL syntax. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "0ae4900b-cc84-5187-85c3-c4c649603b4f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "In KQL syntax, what character is used to pass data from one operation to the next?",
+      "options": {
+        "A": "Semicolon (;)",
+        "B": "Pipe (|)",
+        "C": "Ampersand (&)",
+        "D": "Arrow (->)"
+      },
+      "correct": "B",
+      "explanation": "KQL uses a pipeline/funnel approach — each operator after a pipe works on the results of the previous step. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "2e8562de-8e6f-5f83-abf7-566cd13793de",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "Is KQL case-sensitive?",
+      "options": {
+        "A": "No, it's fully case-insensitive",
+        "B": "Yes — table names, column names, functions, operators, keywords, and string values must all match exactly",
+        "C": "Only table names are case-sensitive",
+        "D": "Only string values are case-sensitive"
+      },
+      "correct": "B",
+      "explanation": "TaxiTrips, taxitrips, and TAXITRIPS are all treated as different — a common gotcha worth remembering directly for the exam. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "a8a7cc89-4aef-517a-8e84-acd27e7ee23d",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "Which operator would you use to retrieve a small sample of rows from a large table for exploration?",
+      "options": {
+        "A": "project",
+        "B": "summarize",
+        "C": "take",
+        "D": "join"
+      },
+      "correct": "C",
+      "explanation": "take returns a limited number of rows quickly, ideal for exploring a large table's structure without processing everything. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "68e807fa-414d-5401-b024-808f318f2ead",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "Which operator is used to select specific columns from a table, reducing the data processed downstream?",
+      "options": {
+        "A": "project",
+        "B": "summarize",
+        "C": "take",
+        "D": "where"
+      },
+      "correct": "A",
+      "explanation": "Selecting only needed columns early reduces the data volume that later operators (like where or summarize) have to process. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "59f281dc-1dba-5d18-8669-56ca1efc91f9",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "According to the module's optimization guidance, how should filters be ordered in a query for best performance?",
+      "options": {
+        "A": "Alphabetically by column name",
+        "B": "Put filters that eliminate the most data first",
+        "C": "Put filters that eliminate the least data first",
+        "D": "Order doesn't affect performance"
+      },
+      "correct": "B",
+      "explanation": "Think funnel: broad, high-impact filters (like a time range) go first, narrower filters follow, minimizing the data volume as early as possible. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "44dd56cc-84e2-5828-81b8-beb94052ff25",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "When performing a join in KQL, which table should be placed first for best performance?",
+      "options": {
+        "A": "The larger table",
+        "B": "The smaller table",
+        "C": "It doesn't matter which table is first",
+        "D": "The table with the most columns"
+      },
+      "correct": "B",
+      "explanation": "KQL processes the first table to match against the second, so starting with the smaller table means less data to process during the join. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "3cce656a-31c2-5637-a5b2-3a356ff486d7",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "What are materialized views designed to solve?",
+      "options": {
+        "A": "The need for real-time data ingestion",
+        "B": "The performance challenge of repeatedly recalculating aggregations across massive datasets",
+        "C": "The lack of support for T-SQL in KQL querysets",
+        "D": "Security and access control for KQL databases"
+      },
+      "correct": "B",
+      "explanation": "Materialized views precompute and store aggregation results so you're not recalculating from scratch on every query. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "f71330be-e953-5263-8ea6-fb00a9376831",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "What are the two parts that make up a materialized view's automatic update mechanism?",
+      "options": {
+        "A": "A source table and a destination table",
+        "B": "A materialized part (precomputed results) and a delta (new unprocessed data)",
+        "C": "A KQL queryset and a Copilot pane",
+        "D": "A Lakehouse shortcut and a Warehouse table"
+      },
+      "correct": "B",
+      "explanation": "These combine automatically at query time, giving both speed (from precomputed data) and freshness (from the delta) simultaneously. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "e2f0b3e6-7f98-5a77-8203-2cb0ed51e309",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-2",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "You have a TaxiTrips table with billions of rows and a VendorInfo table with only a handful of rows. You need to join them to enrich trip data with vendor names. Which query structure follows the module's optimization guidance?",
+      "options": {
+        "A": "TaxiTrips | join kind=inner VendorInfo on vendor_id",
+        "B": "VendorInfo | join kind=inner TaxiTrips on vendor_id",
+        "C": "Join order doesn't matter in KQL",
+        "D": "Use a materialized view instead of a join in all cases"
+      },
+      "correct": "B",
+      "explanation": "Putting the smaller table (VendorInfo) first follows the module's stated best practice, minimizing the data KQL has to process during the join. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "25134dd9-5e0a-5bf4-a44b-b613a77dd213",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-2",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "Your team repeatedly writes the same filtering logic (trips with at least a certain number of passengers) across many different queries, and you want to ensure everyone applies this logic consistently. What KQL feature best fits this need?",
+      "options": {
+        "A": "A materialized view",
+        "B": "A database shortcut",
+        "C": "A stored function with a parameter",
+        "D": "OneLake availability"
+      },
+      "correct": "C",
+      "explanation": "This directly matches the module's stated use case: encapsulate shared filtering/transformation logic once, parameterize it, and ensure consistent application across the team — exactly like the trips_by_min_passenger_count example. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "707a81d9-6f34-5879-8f68-3620ef91bc54",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "What is OneLake in Microsoft Fabric?",
+      "options": {
+        "A": "A reporting tool for building dashboards",
+        "B": "Fabric's centralized data storage architecture built on ADLS Gen2",
+        "C": "A Spark compute engine",
+        "D": "A KQL database type"
+      },
+      "correct": "B",
+      "explanation": "OneLake unifies data across regions and clouds into a single logical lake without moving or duplicating it — every Fabric compute engine reads/writes here. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "c0d2ca6b-c1b9-52d1-a8b7-cfadcaf925da",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "What underlying Azure storage technology is OneLake built on?",
+      "options": {
+        "A": "Azure Blob Storage (classic)",
+        "B": "Azure Data Lake Storage Gen2",
+        "C": "Azure SQL Database",
+        "D": "Azure Cosmos DB"
+      },
+      "correct": "B",
+      "explanation": "This is the foundation OneLake is built on, supporting formats including Delta, Parquet, CSV, and JSON. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "81bb87fe-d5ce-5512-a475-cbf2bff4c3d5",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "What format do Fabric's analytical engines use to write tabular data in OneLake?",
+      "options": {
+        "A": "CSV",
+        "B": "JSON",
+        "C": "Delta-Parquet",
+        "D": "Avro"
+      },
+      "correct": "C",
+      "explanation": "For tabular data specifically, Fabric's analytical engines write in delta-parquet format, and all engines interact with it seamlessly. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "f622ed5b-2c2f-5f9c-a953-c1c98f31efe3",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "What is the purpose of a \"shortcut\" in OneLake?",
+      "options": {
+        "A": "To physically copy data into a new workspace for faster access",
+        "B": "To reference files or storage locations without copying the data",
+        "C": "To encrypt sensitive data automatically",
+        "D": "To convert data into Delta format"
+      },
+      "correct": "B",
+      "explanation": "Shortcuts point to data in OneLake or external sources (Azure Data Lake Storage, Amazon S3, Dataverse) while keeping it in sync with the source, avoiding duplication. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "7637053c-d302-554e-939c-d39d99575595",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "In Fabric, what is a workspace primarily used for?",
+      "options": {
+        "A": "A logical container for organizing and managing data, reports, and other assets, with its own permissions",
+        "B": "A single physical server dedicated to one user",
+        "C": "A billing unit only, with no access control function",
+        "D": "A backup location for OneLake"
+      },
+      "correct": "A",
+      "explanation": "Workspaces provide separation of resources and control access, supporting both collaboration and security. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "652954e3-91b7-5eff-8b77-ee67b21d4794",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "Where is Fabric administration centralized?",
+      "options": {
+        "A": "The OneLake catalog",
+        "B": "The Admin portal",
+        "C": "Power BI Desktop",
+        "D": "The Data Factory workload"
+      },
+      "correct": "B",
+      "explanation": "This is where Fabric administrators manage groups/permissions, configure data sources and gateways, and monitor usage and performance. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "13461686-b4ea-5b9b-a950-35054f4a3ae6",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "What does the OneLake catalog help you do?",
+      "options": {
+        "A": "Write PySpark code",
+        "B": "Analyze, monitor, and maintain data governance, and discover data shared with you",
+        "C": "Configure Spark pool autoscale settings",
+        "D": "Create Eventhouses"
+      },
+      "correct": "B",
+      "explanation": "The OneLake catalog surfaces sensitivity labels, item metadata, and refresh status — but only for items actually shared with you. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "7422b0d0-c088-5b1d-8fd8-1730613dec48",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "Which role can enable Microsoft Fabric for an organization via implicit, organization-wide permissions?",
+      "options": {
+        "A": "Workspace viewer",
+        "B": "Workspace contributor",
+        "C": "Global administrator",
+        "D": "Data analyst"
+      },
+      "correct": "C",
+      "explanation": "Global admins have implicit Fabric admin rights through organization-wide permissions, distinct from a dedicated Fabric administrator or Power Platform administrator role (both of which can also enable Fabric, but not via implicit org-wide rights). (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "5c713502-d732-5ad6-8ad1-7c28afb0374a",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "Which of the four workspace-level roles would you assign to someone who needs to view items but not modify them?",
+      "options": {
+        "A": "Admin",
+        "B": "Contributor",
+        "C": "Member",
+        "D": "Viewer"
+      },
+      "correct": "D",
+      "explanation": "The four workspace roles are admin, contributor, member, and viewer — viewer is the read-only tier, appropriate for someone who only needs to see content. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "acb26aac-b268-53ec-895c-28fc91efe33b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "According to the module, which persona curates data assets in lakehouses, ensures data quality, and creates semantic models to enable self-service analytics?",
+      "options": {
+        "A": "Data engineer",
+        "B": "Analytics engineer",
+        "C": "Data scientist",
+        "D": "Citizen developer"
+      },
+      "correct": "B",
+      "explanation": "This role explicitly bridges data engineering and analysis — curating lakehouse assets, ensuring quality, and building semantic models for self-service. (Data engineers ingest/transform/load; data scientists build ML models; citizen developers consume curated data, not curate it.) (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "9fc41c8e-f1aa-52e1-9f97-25183763b1a0",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "Which Fabric capability lets data analysts connect directly to OneLake data, reducing the need for downstream transformations?",
+      "options": {
+        "A": "Direct Lake mode",
+        "B": "Import mode only",
+        "C": "DirectQuery to Azure SQL",
+        "D": "Dataflow Gen1 mode"
+      },
+      "correct": "A",
+      "explanation": "This lets data analysts connect straight to OneLake data, cutting down on the downstream transformation work otherwise needed before building reports. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "f8f0eb03-25f6-58a0-9541-e89055e9bf47",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "What is the core item in the Fabric IQ workload that defines business concepts, relationships, and rules for AI agents?",
+      "options": {
+        "A": "A semantic model",
+        "B": "An ontology",
+        "C": "A materialized view",
+        "D": "A Dataflow Gen2"
+      },
+      "correct": "B",
+      "explanation": "The ontology defines business concepts, relationships, and rules, letting AI agents reason using consistent business language instead of raw table schemas. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "ae860333-49b6-5856-ab6e-a084bcb1bf79",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-2",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "A citizen developer in the marketing department wants to quickly build a report from existing curated data without writing code or relying on a data engineer. Which combination of Fabric capabilities best supports this?",
+      "options": {
+        "A": "Writing custom PySpark notebooks and Spark job definitions",
+        "B": "Discovering data via the OneLake catalog and using Power BI templates / dataflows for simple ETL",
+        "C": "Creating a KQL database and writing KQL queries",
+        "D": "Requesting elevated workspace admin permissions"
+      },
+      "correct": "B",
+      "explanation": "This matches the module's description of low-to-no-code users and citizen developers directly — no notebooks, no KQL, and no elevated admin rights needed. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "3b526ad0-614e-5074-a513-82253266ab74",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-2",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "Your organization wants an AI agent that can answer natural-language questions about sales data using consistent business terminology (e.g., \"revenue,\" \"customer churn\") rather than raw table and column names. Which Fabric capability is purpose-built for this?",
+      "options": {
+        "A": "A Dataflow Gen2",
+        "B": "A Fabric data agent connected to a Fabric IQ ontology",
+        "C": "A Spark job definition",
+        "D": "An Eventstream"
+      },
+      "correct": "B",
+      "explanation": "Data agents translate natural-language questions into structured queries, and when connected to an ontology in Fabric IQ, they understand and use business concepts (like \"revenue\") rather than needing users to know raw schema names. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  }
+]
