@@ -1,38 +1,21 @@
 import type { Question } from './types';
 
 /**
- * Pick up to `count` questions from `pool`, preferring those whose
- * difficulty matches `target`. Adjacent difficulties fill any deficit
- * (target ± 1, then ± 2). Within each difficulty band the order is
- * randomized so repeated runs aren't identical.
+ * Pick up to `count` questions from `pool` in random order.
  *
- * This keeps the quiz "fulfilling" (delivering the requested length)
- * when a strict (domain, difficulty) cell is sparse, while still
- * weighting the experience toward the difficulty the user picked.
+ * This replaced a difficulty-weighted picker. The bank's `difficulty` values
+ * are inferred by the importer from which quiz section a question came from,
+ * not stated by the source material, so weighting by them expressed a
+ * confidence the data does not support — and with no level-3 items at all, a
+ * "hard" preference just fell through to easier questions. The column is still
+ * there for when items are graded for real; until then selection ignores it.
  */
-export function pickWithDifficultyPreference<T extends Question>(
+export function pickRandom<T extends Question>(
   pool: T[],
-  target: 1 | 2 | 3,
   count: number,
   rng: () => number = Math.random,
 ): T[] {
-  const byDistance = new Map<number, T[]>();
-  for (const q of pool) {
-    const d = Math.abs(q.difficulty - target);
-    const bucket = byDistance.get(d) ?? [];
-    bucket.push(q);
-    byDistance.set(d, bucket);
-  }
-
-  const result: T[] = [];
-  for (const distance of [...byDistance.keys()].sort((a, b) => a - b)) {
-    const bucket = shuffle(byDistance.get(distance)!, rng);
-    for (const q of bucket) {
-      if (result.length >= count) return result;
-      result.push(q);
-    }
-  }
-  return result;
+  return shuffle(pool, rng).slice(0, count);
 }
 
 function shuffle<T>(items: T[], rng: () => number): T[] {

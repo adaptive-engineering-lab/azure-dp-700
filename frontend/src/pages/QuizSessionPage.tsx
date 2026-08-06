@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { fetchQuestions } from '../lib/questions/fetch';
-import { pickWithDifficultyPreference } from '../lib/questions/pick';
+import { pickRandom } from '../lib/questions/pick';
 import type { McqQuestion, Domain, OptionLetter } from '../lib/questions/types';
 import { useAppStore } from '../lib/store';
 import { computeNextReview } from '../lib/spacing';
@@ -30,7 +30,6 @@ interface Answer {
 export default function QuizSessionPage() {
   const [params] = useSearchParams();
   const topic = params.get('topic');
-  const difficulty = (Number(params.get('difficulty') ?? 2) as 1 | 2 | 3);
   const count = Number(params.get('count') ?? 10);
   const timerOn = params.get('timer') === '1';
 
@@ -52,9 +51,6 @@ export default function QuizSessionPage() {
 
   useEffect(() => {
     let cancelled = false;
-    // Fetch all difficulties for the domain — difficulty is applied as
-    // a soft preference in pickWithDifficultyPreference so sparse cells
-    // don't starve the quiz.
     fetchQuestions({ type: 'mcq', topic: topic ?? undefined })
       .then((all) => {
         if (cancelled) return;
@@ -63,7 +59,7 @@ export default function QuizSessionPage() {
           setQuestions([]);
           return;
         }
-        const picked = pickWithDifficultyPreference(all as McqQuestion[], difficulty, count);
+        const picked = pickRandom(all as McqQuestion[], count);
         setQuestions(picked);
         questionStartedAt.current = Date.now();
       })
@@ -73,7 +69,7 @@ export default function QuizSessionPage() {
     return () => {
       cancelled = true;
     };
-  }, [topic, difficulty, count]);
+  }, [topic, count]);
 
   useEffect(() => {
     if (!timerOn || !questions || showFeedback) return;

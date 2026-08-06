@@ -23,13 +23,11 @@ const SUB_MODES: { id: CodeReviewSubMode; label: string; description: string }[]
   },
 ];
 
-const DIFFS = [1, 2, 3] as const;
 const COUNTS = [5, 10, 15] as const;
 
 export default function CodeReviewPage() {
   const navigate = useNavigate();
   const [subMode, setSubMode] = useState<CodeReviewSubMode>('find-the-bug');
-  const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
   const [count, setCount] = useState<5 | 10 | 15>(5);
   const { modules, loading: modulesLoading } = useModules('code-review');
   const [topic, setTopic] = useState<string>('all');
@@ -63,7 +61,6 @@ export default function CodeReviewPage() {
   function start() {
     const p = new URLSearchParams({
       sub_mode: subMode,
-      difficulty: String(difficulty),
       count: String(count),
     });
     if (topic !== 'all') p.set('topic', topic);
@@ -122,16 +119,6 @@ export default function CodeReviewPage() {
         </div>
       </Fieldset>
 
-      <Fieldset legend="Difficulty">
-        <div className="flex gap-2">
-          {DIFFS.map((d) => (
-            <Pill key={d} active={difficulty === d} onClick={() => setDifficulty(d)}>
-              {d === 1 ? 'Easy' : d === 2 ? 'Medium' : 'Hard'}
-            </Pill>
-          ))}
-        </div>
-      </Fieldset>
-
       <Fieldset legend="Number of items">
         <div className="flex gap-2">
           {COUNTS.map((n) => (
@@ -146,7 +133,7 @@ export default function CodeReviewPage() {
         <p className="mt-4 text-xs text-fg-muted">
           {poolSize === 0
             ? `No items available for that combination yet.`
-            : `${poolSize} item${poolSize === 1 ? '' : 's'} available. Difficulty is a preference — adjacent levels fill any gap.`}
+            : `${poolSize} item${poolSize === 1 ? '' : 's'} available.`}
         </p>
       )}
 

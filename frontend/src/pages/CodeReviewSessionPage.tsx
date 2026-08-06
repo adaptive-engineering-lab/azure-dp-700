@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { fetchQuestions } from '../lib/questions/fetch';
-import { pickWithDifficultyPreference } from '../lib/questions/pick';
+import { pickRandom } from '../lib/questions/pick';
 import type {
   CodeReviewQuestion,
   CodeReviewSubMode,
@@ -74,7 +74,6 @@ function clearSnapshot() {
 export default function CodeReviewSessionPage() {
   const [params] = useSearchParams();
   const subMode = (params.get('sub_mode') ?? 'find-the-bug') as CodeReviewSubMode;
-  const difficulty = Number(params.get('difficulty') ?? 2) as 1 | 2 | 3;
   const count = Number(params.get('count') ?? 5);
   const topic = params.get('topic');
   const themeMode = useAppStore((s) => s.preferences.theme);
@@ -121,7 +120,7 @@ export default function CodeReviewSessionPage() {
           }
         }
 
-        const picked = pickWithDifficultyPreference(filtered, difficulty, count);
+        const picked = pickRandom(filtered, count);
         setQuestions(picked);
         startedAtRef.current = Date.now();
       })
@@ -131,7 +130,7 @@ export default function CodeReviewSessionPage() {
     return () => {
       cancelled = true;
     };
-  }, [subMode, difficulty, count, topic]);
+  }, [subMode, count, topic]);
 
   useEffect(() => {
     if (!questions || questions.length === 0) return;

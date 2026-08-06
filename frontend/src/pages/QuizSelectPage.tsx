@@ -5,7 +5,6 @@ import { ROUTES } from '../lib/routes';
 import { supabase } from '../lib/supabase';
 
 const COUNTS = [5, 10, 20] as const;
-const DIFFS = [1, 2, 3] as const;
 
 export default function QuizSelectPage() {
   const navigate = useNavigate();
@@ -14,7 +13,6 @@ export default function QuizSelectPage() {
   // 'all' mixes every module; otherwise the value is a module title (an
   // item's `topic`).
   const [topic, setTopic] = useState<string>(searchParams.get('topic') ?? 'all');
-  const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
   const [count, setCount] = useState<5 | 10 | 20>(10);
   const [timer, setTimer] = useState(false);
   const [poolSize, setPoolSize] = useState<number | null>(null);
@@ -35,7 +33,6 @@ export default function QuizSelectPage() {
 
   function start() {
     const p = new URLSearchParams({
-      difficulty: String(difficulty),
       count: String(count),
       timer: timer ? '1' : '0',
     });
@@ -67,16 +64,6 @@ export default function QuizSelectPage() {
         </div>
       </Fieldset>
 
-      <Fieldset legend="Difficulty">
-        <div className="flex gap-2">
-          {DIFFS.map((d) => (
-            <Pill key={d} active={difficulty === d} onClick={() => setDifficulty(d)}>
-              {d === 1 ? 'Easy' : d === 2 ? 'Medium' : 'Hard'}
-            </Pill>
-          ))}
-        </div>
-      </Fieldset>
-
       <Fieldset legend="Number of questions">
         <div className="flex gap-2">
           {COUNTS.map((n) => (
@@ -103,7 +90,7 @@ export default function QuizSelectPage() {
         <p className="mt-4 text-xs text-fg-muted">
           {poolSize === 0
             ? `No MCQs available for ${topic === 'all' ? 'this bank' : topic} yet.`
-            : `${poolSize} MCQ${poolSize === 1 ? '' : 's'} available in ${topic === 'all' ? 'all modules' : topic}. Difficulty is a preference — adjacent levels fill any gap.`}
+            : `${poolSize} MCQ${poolSize === 1 ? '' : 's'} available in ${topic === 'all' ? 'all modules' : topic}.`}
         </p>
       )}
 
