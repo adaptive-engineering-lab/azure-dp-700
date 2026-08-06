@@ -14,7 +14,6 @@ export default function QuizSelectPage() {
   // item's `topic`).
   const [topic, setTopic] = useState<string>(searchParams.get('topic') ?? 'all');
   const [count, setCount] = useState<5 | 10 | 20>(10);
-  const [timer, setTimer] = useState(false);
   const [poolSize, setPoolSize] = useState<number | null>(null);
 
   useEffect(() => {
@@ -34,7 +33,6 @@ export default function QuizSelectPage() {
   function start() {
     const p = new URLSearchParams({
       count: String(count),
-      timer: timer ? '1' : '0',
     });
     if (topic !== 'all') p.set('topic', topic);
     navigate(`${ROUTES.quiz}/session?${p.toString()}`);
@@ -72,18 +70,6 @@ export default function QuizSelectPage() {
             </Pill>
           ))}
         </div>
-      </Fieldset>
-
-      <Fieldset legend="Timer (45s per question)">
-        <label className="flex items-center gap-3 text-sm">
-          <input
-            type="checkbox"
-            checked={timer}
-            onChange={(e) => setTimer(e.target.checked)}
-            className="h-4 w-4 accent-accent"
-          />
-          <span>Enable timer (DP-700 exam pace)</span>
-        </label>
       </Fieldset>
 
       {poolSize !== null && (

@@ -22,7 +22,7 @@ function presentOptions(options: McqQuestion['content']['options']): Letter[] {
 interface Answer {
   questionId: string;
   domain: Domain;
-  chosen: Letter | null;
+  chosen: Letter;
   correct: Letter;
   elapsedSeconds: number;
 }
@@ -31,7 +31,6 @@ export default function QuizSessionPage() {
   const [params] = useSearchParams();
   const topic = params.get('topic');
   const count = Number(params.get('count') ?? 10);
-  const timerOn = params.get('timer') === '1';
 
   const [questions, setQuestions] = useState<McqQuestion[] | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -39,7 +38,6 @@ export default function QuizSessionPage() {
   const [chosen, setChosen] = useState<Letter | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [answers, setAnswers] = useState<Answer[]>([]);
-  const [timeLeft, setTimeLeft] = useState(45);
   const questionStartedAt = useRef<number>(Date.now());
   const startedAt = useMemo(() => Date.now(), []);
 
@@ -71,24 +69,6 @@ export default function QuizSessionPage() {
     };
   }, [topic, count]);
 
-  useEffect(() => {
-    if (!timerOn || !questions || showFeedback) return;
-    if (idx >= questions.length) return;
-    setTimeLeft(45);
-    const interval = setInterval(() => {
-      setTimeLeft((t) => {
-        if (t <= 1) {
-          clearInterval(interval);
-          submitAnswer(null);
-          return 0;
-        }
-        return t - 1;
-      });
-    }, 1000);
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idx, timerOn, questions, showFeedback]);
-
   if (error) {
     return (
       <section className="mx-auto w-full max-w-2xl">
@@ -109,7 +89,7 @@ export default function QuizSessionPage() {
 
   const q = questions[idx]!;
 
-  function submitAnswer(letter: Letter | null) {
+  function submitAnswer(letter: Letter) {
     if (showFeedback) return;
     const elapsed = Math.round((Date.now() - questionStartedAt.current) / 1000);
     const correctLetter = q.content.correct;
@@ -154,14 +134,6 @@ export default function QuizSessionPage() {
         <span>
           Q {idx + 1} / {questions.length}
         </span>
-        {timerOn && (
-          <span
-            className={`tabular-nums ${timeLeft <= 10 ? 'text-error font-semibold' : 'text-fg-muted'}`}
-            aria-live="polite"
-          >
-            {timeLeft}s
-          </span>
-        )}
       </div>
       <div
         className="mb-4 h-1.5 w-full overflow-hidden rounded-full bg-divider"
@@ -202,7 +174,7 @@ export default function QuizSessionPage() {
         <div className="mt-4 rounded-md bg-bg-elevated p-4">
           <p className="text-sm">
             <strong>
-              {chosen === q.content.correct ? 'Correct.' : chosen === null ? 'Time up.' : 'Not quite.'}
+              {chosen === q.content.correct ? 'Correct.' : 'Not quite.'}
             </strong>{' '}
             {q.content.explanation}
           </p>

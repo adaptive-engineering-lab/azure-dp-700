@@ -18,7 +18,7 @@ const MODES: Mode[] = [
     title: 'Quiz',
     emoji: '🎯',
     description: 'Multiple-choice with explanations.',
-    details: 'Pick a domain, choose easy / medium / hard, optional 45-second exam timer.',
+    details: 'Pick a Microsoft Learn module and a session length. Every question comes with an explanation.',
     countKey: 'mcq',
     accent: 'ring-sky-500/40 from-sky-500/15',
   },
