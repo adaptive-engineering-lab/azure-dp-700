@@ -1,4 +1,4 @@
-project_id = "ai300-game"
+project_id = "dp700-game"
 
 [api]
 enabled = true
