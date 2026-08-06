@@ -4,9 +4,10 @@ import type { CodeReviewLanguage } from '../lib/questions/types';
 const BLANK_TOKEN = '___BLANK___';
 
 const LANG_LABEL: Record<CodeReviewLanguage, string> = {
-  python: 'Python',
-  yaml: 'YAML',
-  bash: 'Bash',
+  python: 'PySpark',
+  sql: 'T-SQL',
+  kql: 'KQL',
+  json: 'JSON',
 };
 
 interface ShikiInstance {
@@ -21,20 +22,21 @@ let cachedHighlighter: Promise<ShikiInstance> | null = null;
 function getHighlighter(): Promise<ShikiInstance> {
   if (!cachedHighlighter) {
     cachedHighlighter = (async () => {
-      const [{ createHighlighterCore }, { createJavaScriptRegexEngine }, python, yaml, bash, ghDark, ghLight] =
+      const [{ createHighlighterCore }, { createJavaScriptRegexEngine }, python, sql, kql, json, ghDark, ghLight] =
         await Promise.all([
           import('shiki/core'),
           import('shiki/engine/javascript'),
           import('shiki/langs/python.mjs'),
-          import('shiki/langs/yaml.mjs'),
-          import('shiki/langs/bash.mjs'),
+          import('shiki/langs/sql.mjs'),
+          import('shiki/langs/kql.mjs'),
+          import('shiki/langs/json.mjs'),
           import('shiki/themes/github-dark.mjs'),
           import('shiki/themes/github-light.mjs'),
         ]);
       return createHighlighterCore({
         engine: createJavaScriptRegexEngine(),
         themes: [ghDark.default, ghLight.default],
-        langs: [python.default, yaml.default, bash.default],
+        langs: [python.default, sql.default, kql.default, json.default],
       });
     })();
   }

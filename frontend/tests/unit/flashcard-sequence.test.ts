@@ -6,7 +6,7 @@ function makeCard(id: string): FlashcardQuestion {
   return {
     id,
     type: 'flashcard',
-    domain: 'ml-lifecycle',
+    domain: 'ingest-transform',
     topic: 'blob',
     difficulty: 1,
     content: { front: `Q ${id}`, back: `A ${id}` },

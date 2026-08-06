@@ -12,14 +12,14 @@ describe('Storage adapter (FR-011, FR-012)', () => {
   });
 
   it('round-trips a value through localStorage', () => {
-    storageAdapter.setItem('ai300game.v1.state', '{"hello":"world"}');
-    expect(storageAdapter.getItem('ai300game.v1.state')).toBe('{"hello":"world"}');
+    storageAdapter.setItem('dp700game.v1.state', '{"hello":"world"}');
+    expect(storageAdapter.getItem('dp700game.v1.state')).toBe('{"hello":"world"}');
   });
 
   it('removeItem clears the value', () => {
-    storageAdapter.setItem('ai300game.v1.state', '{}');
-    storageAdapter.removeItem('ai300game.v1.state');
-    expect(storageAdapter.getItem('ai300game.v1.state')).toBeNull();
+    storageAdapter.setItem('dp700game.v1.state', '{}');
+    storageAdapter.removeItem('dp700game.v1.state');
+    expect(storageAdapter.getItem('dp700game.v1.state')).toBeNull();
   });
 
   it('falls back to in-memory store when localStorage throws on write', () => {
@@ -28,8 +28,8 @@ describe('Storage adapter (FR-011, FR-012)', () => {
       .mockImplementation(() => {
         throw new Error('QuotaExceededError');
       });
-    storageAdapter.setItem('ai300game.v1.state', '{"a":1}');
-    expect(storageAdapter.getItem('ai300game.v1.state')).toBe('{"a":1}');
+    storageAdapter.setItem('dp700game.v1.state', '{"a":1}');
+    expect(storageAdapter.getItem('dp700game.v1.state')).toBe('{"a":1}');
     setSpy.mockRestore();
   });
 
@@ -41,8 +41,8 @@ describe('Storage adapter (FR-011, FR-012)', () => {
         throw new Error('SecurityError');
       });
     expect(isLocalStorageAvailable()).toBe(false);
-    storageAdapter.setItem('ai300game.v1.state', '{"x":1}');
-    expect(storageAdapter.getItem('ai300game.v1.state')).toBe('{"x":1}');
+    storageAdapter.setItem('dp700game.v1.state', '{"x":1}');
+    expect(storageAdapter.getItem('dp700game.v1.state')).toBe('{"x":1}');
     setSpy.mockRestore();
   });
 });

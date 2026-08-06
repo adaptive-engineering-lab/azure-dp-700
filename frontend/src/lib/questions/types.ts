@@ -1,24 +1,18 @@
 export type Domain =
-  | 'mlops-infra'
-  | 'ml-lifecycle'
-  | 'genaiops-infra'
-  | 'genai-quality'
-  | 'genai-optimization';
+  | 'implement-manage'
+  | 'ingest-transform'
+  | 'monitor-optimize';
 
 export const DOMAINS: Domain[] = [
-  'mlops-infra',
-  'ml-lifecycle',
-  'genaiops-infra',
-  'genai-quality',
-  'genai-optimization',
+  'implement-manage',
+  'ingest-transform',
+  'monitor-optimize',
 ];
 
 export const DOMAIN_LABELS: Record<Domain, string> = {
-  'mlops-infra': 'MLOps Infrastructure',
-  'ml-lifecycle': 'ML Model Lifecycle & Operations',
-  'genaiops-infra': 'GenAIOps Infrastructure',
-  'genai-quality': 'GenAI Quality & Observability',
-  'genai-optimization': 'GenAI Optimization',
+  'implement-manage': 'Implement & Manage',
+  'ingest-transform': 'Ingest & Transform',
+  'monitor-optimize': 'Monitor & Optimize',
 };
 
 export interface FlashcardContent {
@@ -34,7 +28,7 @@ export interface McqContent {
 }
 
 export type CodeReviewSubMode = 'find-the-bug' | 'what-does-this-do' | 'fill-the-blank';
-export type CodeReviewLanguage = 'python' | 'yaml' | 'bash';
+export type CodeReviewLanguage = 'python' | 'sql' | 'kql' | 'json';
 
 export interface CodeReviewContent {
   sub_mode: CodeReviewSubMode;

@@ -1,4 +1,4 @@
-# Netlify deploy configuration for the AI-300 study frontend.
+# Netlify deploy configuration for the DP-700 study frontend.
 # The repo is a multi-package monorepo (frontend/, tools/, supabase/);
 # only frontend/ is deployed. Tools and Supabase are maintainer-side.
 

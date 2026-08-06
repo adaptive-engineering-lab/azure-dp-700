@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ai300game.local/contracts/code-review.schema.json",
+  "$id": "https://dp700game.local/contracts/code-review.schema.json",
   "title": "Code Review Item",
   "type": "object",
   "required": [
@@ -29,7 +29,7 @@
       "additionalProperties": false,
       "properties": {
         "sub_mode":    { "enum": ["find-the-bug", "what-does-this-do", "fill-the-blank"] },
-        "language":    { "enum": ["python", "yaml", "bash"] },
+        "language":    { "enum": ["python", "sql", "kql", "json"] },
         "snippet":     { "type": "string", "minLength": 1, "maxLength": 2000 },
         "prompt":      { "type": "string", "minLength": 1, "maxLength": 200 },
         "options": {
@@ -57,11 +57,9 @@
   "$defs": {
     "domain": {
       "enum": [
-        "mlops-infra",
-        "ml-lifecycle",
-        "genaiops-infra",
-        "genai-quality",
-        "genai-optimization"
+        "implement-manage",
+        "ingest-transform",
+        "monitor-optimize"
       ]
     },
     "source": { "enum": ["bank", "ai-generated"] }

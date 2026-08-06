@@ -6,7 +6,7 @@ function mkMcq(id: string, difficulty: 1 | 2 | 3): McqQuestion {
   return {
     id,
     type: 'mcq',
-    domain: 'ml-lifecycle',
+    domain: 'ingest-transform',
     topic: 'blob',
     difficulty,
     content: {

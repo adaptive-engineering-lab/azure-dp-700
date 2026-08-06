@@ -1,4 +1,4 @@
-# AI-300 Learning Game — Product Specification
+# DP-700 Learning Game — Product Specification
 
 **Version**: 1.0  
 **Date**: 2026-05-11  
@@ -10,12 +10,12 @@
 
 ### 1.1 Product Summary
 
-A mobile-first, gamified web application designed to help learners prepare for the **Microsoft ML Operations Engineer (AI-300)** certification exam. The app combines a curated question bank with AI-generated content to deliver flashcards, multiple-choice quizzes, and product identification challenges across progressive difficulty levels.
+A mobile-first, gamified web application designed to help learners prepare for the **Microsoft ML Operations Engineer (DP-700)** certification exam. The app combines a curated question bank with AI-generated content to deliver flashcards, multiple-choice quizzes, and product identification challenges across progressive difficulty levels.
 
 ### 1.2 Goals
 
-- Make AI-300 exam prep engaging, bite-sized, and habit-forming
-- Cover all official AI-300 exam domains with structured progression
+- Make DP-700 exam prep engaging, bite-sized, and habit-forming
+- Cover all official DP-700 exam domains with structured progression
 - Use AI to provide unlimited content variety and contextual explanations
 - Track learner progress and surface weak areas intelligently
 
@@ -106,7 +106,7 @@ The production runtime makes **no** outbound calls to any AI provider. Claude is
 | 3 | **Administrator** | Score 80%+ across all Level 2 topics |
 | 4 | **Expert** | Complete all timed challenges in Level 3 |
 
-### 5.2 AI-300 Exam Domains (mapped to topics)
+### 5.2 DP-700 Exam Domains (mapped to topics)
 
 | Domain | Weight | Topics |
 |---|---|---|
@@ -166,7 +166,7 @@ The production runtime makes **no** outbound calls to any AI provider. Claude is
 
 **Flow**:
 1. User selects topic, difficulty, and question count
-2. Optional: enable timer (45 seconds per question, AI-300 pace)
+2. Optional: enable timer (45 seconds per question, DP-700 pace)
 3. Question displayed with 4 options (A/B/C/D)
 4. On answer:
    - **Correct**: Green highlight + brief explanation (1–2 sentences)
@@ -271,7 +271,7 @@ never calls an AI API. This section describes the authoring workflow.
 
 ### 7.3 Prompt Design Principles
 
-- Always include: domain, topic, difficulty level, exam context ("AI-300")
+- Always include: domain, topic, difficulty level, exam context ("DP-700")
 - For generation: include existing item IDs to suppress duplicates
 - Temperature: `0.7` for generation, `0.3` for explanation rewrites
 - Always request JSON output for generation
@@ -406,7 +406,7 @@ Initial bank targets **200 questions** across all domains:
 | **Total** | **65** | **90** | **45** |
 
 Questions sourced from:
-- Official Microsoft Learn AI-300 study guide
+- Official Microsoft Learn DP-700 study guide
 - Public exam prep communities (rephrased/original)
 - AI-generated (Claude, reviewed before seeding)
 

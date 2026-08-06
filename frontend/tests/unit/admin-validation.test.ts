@@ -6,7 +6,7 @@ describe('Admin item validation (feature 013, FR-007)', () => {
     const result = validateItem('flashcard', {
       id: '00000000-0000-4000-8000-000000000001',
       type: 'flashcard',
-      domain: 'ml-lifecycle',
+      domain: 'ingest-transform',
       topic: 'blob',
       difficulty: 1,
       source: 'bank',
@@ -19,7 +19,7 @@ describe('Admin item validation (feature 013, FR-007)', () => {
     const result = validateItem('mcq', {
       id: '00000000-0000-4000-8000-000000000002',
       type: 'mcq',
-      domain: 'mlops-infra',
+      domain: 'implement-manage',
       topic: 'rbac',
       difficulty: 2,
       source: 'bank',
@@ -61,7 +61,7 @@ describe('Admin item validation (feature 013, FR-007)', () => {
     const result = validateItem('mcq', {
       id: '00000000-0000-4000-8000-000000000004',
       type: 'mcq',
-      domain: 'ml-lifecycle',
+      domain: 'ingest-transform',
       topic: 't',
       difficulty: 1,
       source: 'bank',

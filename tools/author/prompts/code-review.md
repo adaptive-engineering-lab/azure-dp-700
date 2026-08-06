@@ -1,6 +1,6 @@
-# AI-300 · Authoring Prompt Addendum — Code Review Items
+# DP-700 · Authoring Prompt Addendum — Code Review Items
 
-Append this section to `ai300-question-authoring-prompt.md` (the base authoring prompt).
+Append this section to `dp700-question-authoring-prompt.md` (the base authoring prompt).
 
 ---
 
@@ -76,7 +76,7 @@ Append this section to `ai300-question-authoring-prompt.md` (the base authoring 
 Use these as starting points for `find-the-bug` and `fill-the-blank` items.
 Every one of these maps to a real exam trap from the knowledge bank.
 
-### Hyperparameter tuning (ml-lifecycle)
+### Hyperparameter tuning (ingest-transform)
 
 - Sweep job using `Normal()` with `sampling_algorithm="bayesian"` — invalid combination
 - Sweep job using `sampling_algorithm="grid"` with a `Uniform()` param — grid requires discrete
@@ -84,38 +84,38 @@ Every one of these maps to a real exam trap from the knowledge bank.
 - Missing `delay_evaluation` on a `TruncationSelectionPolicy` — early trials get cut prematurely
 - `evaluation_interval=0` — invalid; must be ≥ 1
 
-### AutoML (ml-lifecycle)
+### AutoML (ingest-transform)
 
 - `Input(type=AssetTypes.URI_FILE, ...)` for AutoML training data — must be `MLTABLE`, not `URI_FILE`
 - `enable_model_explainability` not set when RAI dashboard is expected — must be `True`
 - `max_concurrent_trials` set higher than compute cluster max nodes — trials queue, not error
 
-### MLflow (ml-lifecycle)
+### MLflow (ingest-transform)
 
 - `mlflow.set_tracking_uri` called on a compute instance — not needed; auto-configured
 - `mlflow.log_metric("accuracy", accuracy)` called outside `with mlflow.start_run():` — no run context
 - `mlflow.autolog()` called after `model.fit()` — must be called before training
 
-### Pipelines (ml-lifecycle / mlops-infra)
+### Pipelines (ingest-transform / implement-manage)
 
 - Pipeline submitted without `pipeline_job.settings.default_compute` set and no per-component compute — fails
 - `ml_client.schedules.begin_delete(name=...)` called without `begin_disable()` first — must disable first
 - Component YAML missing `outputs` section when downstream component references it — runtime error
 
-### GitHub Actions (mlops-infra)
+### GitHub Actions (implement-manage)
 
 - Workflow trigger: `on: [pull_request]` expected to fire after PR merge — wrong; use `on: push: branches: [main]`
 - `AZURE_CREDENTIALS` referenced in workflow YAML as plain text — must be `${{ secrets.AZURE_CREDENTIALS }}`
 - Job targets `production` environment with no `needs:` referencing staging job — skips approval gate
 
-### GenAIOps / Foundry (genaiops-infra)
+### GenAIOps / Foundry (monitor-optimize)
 
 - `fill-the-blank`: `sampling_algorithm="___BLANK___"` in a sweep job that uses only `Choice()` params
   → answer: `"grid"` (all discrete, so grid is valid)
 - `fill-the-blank`: `sweep_job.early_termination = BanditPolicy(slack_amount=___BLANK___, delay_evaluation=5)`
   → answer: a float like `0.2` (not slack_factor)
 
-### Evaluation (genai-quality)
+### Evaluation (implement-manage)
 
 - Code uses `groundedness_evaluator` without a judge model deployment and no Azure AI Content Safety config
   — should use `GroundednessProEvaluator` (no judge needed) or configure OpenAI connection

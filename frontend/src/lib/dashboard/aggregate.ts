@@ -1,7 +1,7 @@
 import type { Domain } from '../questions/types';
 import type { GuestProgressMap, GuestSession } from '../store';
 
-const DOMAINS: Domain[] = ['mlops-infra', 'ml-lifecycle', 'genaiops-infra', 'genai-quality', 'genai-optimization'];
+const DOMAINS: Domain[] = ['implement-manage', 'ingest-transform', 'monitor-optimize'];
 
 export interface DomainStat {
   domain: Domain;
@@ -20,11 +20,9 @@ export function computeDomainStats(
   questionDomains: Record<string, Domain>,
 ): DomainStat[] {
   const tally: Record<Domain, { seen: number; correct: number }> = {
-    'mlops-infra': { seen: 0, correct: 0 },
-    'ml-lifecycle': { seen: 0, correct: 0 },
-    'genaiops-infra': { seen: 0, correct: 0 },
-    'genai-quality': { seen: 0, correct: 0 },
-    'genai-optimization': { seen: 0, correct: 0 },
+    'implement-manage': { seen: 0, correct: 0 },
+    'ingest-transform': { seen: 0, correct: 0 },
+    'monitor-optimize': { seen: 0, correct: 0 },
   };
   for (const p of Object.values(progress)) {
     const dom = questionDomains[p.questionId];

@@ -443,7 +443,7 @@ function makeBlank(type: ItemType): NewQuestionInput {
   if (type === 'flashcard') {
     return {
       type: 'flashcard',
-      domain: 'ml-lifecycle',
+      domain: 'ingest-transform',
       topic: '',
       difficulty: 1,
       source: 'bank',
@@ -453,7 +453,7 @@ function makeBlank(type: ItemType): NewQuestionInput {
   if (type === 'mcq') {
     return {
       type: 'mcq',
-      domain: 'ml-lifecycle',
+      domain: 'ingest-transform',
       topic: '',
       difficulty: 1,
       source: 'bank',
@@ -462,7 +462,7 @@ function makeBlank(type: ItemType): NewQuestionInput {
   }
   return {
     type: 'code-review',
-    domain: 'ml-lifecycle',
+    domain: 'ingest-transform',
     topic: '',
     difficulty: 1,
     source: 'bank',
@@ -515,8 +515,9 @@ function CodeReviewFields({
           className="mt-1 block w-full rounded-md border border-divider bg-bg px-3 py-2 text-fg"
         >
           <option value="python">python</option>
-          <option value="yaml">yaml</option>
-          <option value="bash">bash</option>
+          <option value="sql">sql</option>
+          <option value="kql">kql</option>
+          <option value="json">json</option>
         </select>
       </label>
       <Field label="Snippet (use \n for newlines, ___BLANK___ for fill-the-blank)" value={(content.snippet as string) ?? ''} onChange={(v) => setContentField('snippet', v)} multiline />

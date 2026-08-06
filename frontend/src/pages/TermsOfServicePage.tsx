@@ -11,15 +11,15 @@ export default function TermsOfServicePage() {
 
       <Section title="1. About">
         <p>
-          AI-300 Study (&ldquo;the Service&rdquo;) is an educational study
-          tool for the Microsoft Certified: Machine Learning Operations
-          Engineer Associate exam (Exam AI-300). It is operated by{' '}
+          DP-700 Study (&ldquo;the Service&rdquo;) is an educational study
+          tool for the Microsoft Certified: Fabric Data Engineer Associate
+          exam (Exam DP-700). It is operated by{' '}
           <strong>Adaptive Engineering Lab</strong>, a brand of Lanre
           Adetola operating as an individual based in Belgium.
         </p>
         <p className="mt-2">
           The Service is <strong>not affiliated with, endorsed by, or
-          sponsored by Microsoft</strong>. &ldquo;AI-300&rdquo; and
+          sponsored by Microsoft</strong>. &ldquo;DP-700&rdquo; and
           &ldquo;Microsoft&rdquo; are trademarks of their respective owners,
           used here only to identify the exam this material targets.
         </p>
@@ -82,7 +82,7 @@ export default function TermsOfServicePage() {
       <Section title="5. Content accuracy">
         <p>
           Study material is curated and reviewed to align with the
-          AI-300 exam objectives at the time of writing. Microsoft updates
+          DP-700 exam objectives at the time of writing. Microsoft updates
           exam objectives and Azure features regularly; we make no
           guarantee that every item perfectly reflects the current state of
           the exam or the underlying products.

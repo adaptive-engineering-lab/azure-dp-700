@@ -312,7 +312,7 @@ function CodeReviewCard({
   onNext,
 }: {
   snippet: string;
-  language: 'python' | 'yaml' | 'bash';
+  language: 'python' | 'sql' | 'kql' | 'json';
   subMode: 'find-the-bug' | 'what-does-this-do' | 'fill-the-blank';
   prompt: string;
   options: Record<Letter, string>;

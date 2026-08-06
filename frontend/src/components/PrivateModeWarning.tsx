@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { isLocalStorageAvailable } from '../lib/storage/adapter';
 
-const DISMISS_KEY = '__ai300game.warning.dismissed';
+const DISMISS_KEY = '__dp700game.warning.dismissed';
 
 export function PrivateModeWarning() {
   const [show, setShow] = useState(false);

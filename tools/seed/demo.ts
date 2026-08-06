@@ -17,7 +17,7 @@ const { data: fc } = await client
   .from('questions')
   .select('topic, content')
   .eq('type', 'flashcard')
-  .eq('domain', 'genai-quality')
+  .eq('domain', 'implement-manage')
   .limit(1)
   .single();
 console.log('\n=== Sample flashcard (networking) ===');
@@ -29,7 +29,7 @@ const { data: mcq } = await client
   .from('questions')
   .select('topic, content')
   .eq('type', 'mcq')
-  .eq('domain', 'mlops-infra')
+  .eq('domain', 'implement-manage')
   .limit(1)
   .single();
 console.log('\n=== Sample MCQ (identity-governance) ===');
@@ -48,10 +48,10 @@ const { data: cr } = await client
   .from('questions')
   .select('topic, content')
   .eq('type', 'code-review')
-  .eq('domain', 'ml-lifecycle')
+  .eq('domain', 'ingest-transform')
   .limit(1)
   .single();
-console.log('\n=== Sample code-review (ml-lifecycle) ===');
+console.log('\n=== Sample code-review (ingest-transform) ===');
 const c = cr!.content as {
   sub_mode: string;
   language: string;

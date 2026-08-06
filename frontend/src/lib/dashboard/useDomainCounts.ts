@@ -13,11 +13,9 @@ export interface DomainCounts {
 }
 
 const EMPTY: Record<Domain, number> = {
-  'mlops-infra': 0,
-  'ml-lifecycle': 0,
-  'genaiops-infra': 0,
-  'genai-quality': 0,
-  'genai-optimization': 0,
+  'implement-manage': 0,
+  'ingest-transform': 0,
+  'monitor-optimize': 0,
 };
 
 const EMPTY_TYPES: Record<ItemType, number> = {

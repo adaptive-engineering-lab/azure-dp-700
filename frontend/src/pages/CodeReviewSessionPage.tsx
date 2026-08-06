@@ -21,7 +21,7 @@ const SUB_MODE_LABEL: Record<CodeReviewSubMode, string> = {
   'fill-the-blank': 'Fill the blank',
 };
 
-const RESUME_KEY = 'ai300game.v1.codeReview.session';
+const RESUME_KEY = 'dp700game.v1.codeReview.session';
 const RESUME_TTL_MS = 24 * 60 * 60 * 1000;
 
 interface Answer {

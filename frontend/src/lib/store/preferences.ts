@@ -14,7 +14,7 @@ export interface SessionPreferences {
   defaultSessionLength: SessionLength;
   defaultStartingMode: GameMode | null;
   reducedMotion: boolean | 'system';
-  /** ISO date (YYYY-MM-DD) of the user's scheduled AI-300 exam. Pro-only. */
+  /** ISO date (YYYY-MM-DD) of the user's scheduled DP-700 exam. Pro-only. */
   examDate: string | null;
 }
 

@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
 
       <Section title="1. Who we are">
         <p>
-          AI-300 Study (the &ldquo;Service&rdquo;) is operated by{' '}
+          DP-700 Study (the &ldquo;Service&rdquo;) is operated by{' '}
           <strong>Adaptive Engineering Lab</strong>, a brand of Lanre Adetola
           operating as an individual based in Belgium. You can reach us at{' '}
           <a href="mailto:ladetola0@gmail.com" className="text-accent underline">

@@ -2,11 +2,9 @@ import { describe, it, expect, beforeAll } from 'vitest';
 import { anonClient } from '../../tools/test-helpers/clients.js';
 
 const DOMAINS = [
-  'mlops-infra',
-  'ml-lifecycle',
-  'genaiops-infra',
-  'genai-quality',
-  'genai-optimization',
+  'implement-manage',
+  'ingest-transform',
+  'monitor-optimize',
 ] as const;
 
 const TYPES = ['flashcard', 'mcq', 'code-review'] as const;

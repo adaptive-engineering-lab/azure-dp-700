@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ai300game.local/contracts/flashcard.schema.json",
+  "$id": "https://dp700game.local/contracts/flashcard.schema.json",
   "title": "Flashcard Question",
   "type": "object",
   "required": [
@@ -42,11 +42,9 @@
   "$defs": {
     "domain": {
       "enum": [
-        "mlops-infra",
-        "ml-lifecycle",
-        "genaiops-infra",
-        "genai-quality",
-        "genai-optimization"
+        "implement-manage",
+        "ingest-transform",
+        "monitor-optimize"
       ]
     },
     "source": { "enum": ["bank", "ai-generated"] }

@@ -68,7 +68,7 @@ describe('Admin RLS (T040 / spec 013 / FR-001..FR-003)', () => {
     return {
       id,
       type: 'flashcard',
-      domain: 'ml-lifecycle',
+      domain: 'ingest-transform',
       topic: 'admin-rls-test',
       difficulty: 1,
       source: 'bank',

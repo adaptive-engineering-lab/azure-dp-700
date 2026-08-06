@@ -20,11 +20,9 @@ create table public.questions (
 
   constraint questions_domain_chk
     check (domain in (
-      'mlops-infra',
-      'ml-lifecycle',
-      'genaiops-infra',
-      'genai-quality',
-      'genai-optimization'
+      'implement-manage',
+      'ingest-transform',
+      'monitor-optimize'
     )),
 
   constraint questions_source_chk

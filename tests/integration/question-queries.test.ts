@@ -4,11 +4,11 @@ import { anonClient } from '../../tools/test-helpers/clients.js';
 describe('Question queries — anonymous, filtered reads (T011 / FR-013, US1 acceptance)', () => {
   const client = anonClient();
 
-  it('Scenario 1: genai-quality domain returns at least one item of each type with complete metadata', async () => {
+  it('Scenario 1: implement-manage domain returns at least one item of each type with complete metadata', async () => {
     const { data, error } = await client
       .from('questions')
       .select('id, type, domain, topic, difficulty, source, content')
-      .eq('domain', 'genai-quality');
+      .eq('domain', 'implement-manage');
     expect(error).toBeNull();
     const rows = data ?? [];
     expect(rows.length).toBeGreaterThan(0);
@@ -60,7 +60,7 @@ describe('Question queries — anonymous, filtered reads (T011 / FR-013, US1 acc
   it('Scenario 3: every domain returns at least one item per type', async () => {
     const { data } = await client.from('questions').select('domain, type');
     const rows = (data ?? []) as Array<{ domain: string; type: string }>;
-    const domains = ['mlops-infra', 'ml-lifecycle', 'genaiops-infra', 'genai-quality', 'genai-optimization'];
+    const domains = ['implement-manage', 'ingest-transform', 'monitor-optimize'];
     const types = ['flashcard', 'mcq', 'code-review'];
     for (const d of domains) {
       for (const t of types) {
@@ -76,13 +76,13 @@ describe('Question queries — anonymous, filtered reads (T011 / FR-013, US1 acc
     const { data, error } = await client
       .from('questions')
       .select('id, type, domain, difficulty')
-      .eq('domain', 'mlops-infra')
+      .eq('domain', 'implement-manage')
       .eq('type', 'mcq')
       .eq('difficulty', 2);
     expect(error).toBeNull();
     expect((data ?? []).length).toBeGreaterThanOrEqual(1);
     for (const row of data ?? []) {
-      expect(row.domain).toBe('mlops-infra');
+      expect(row.domain).toBe('implement-manage');
       expect(row.type).toBe('mcq');
       expect(row.difficulty).toBe(2);
     }

@@ -12,7 +12,7 @@ export default function QuizSelectPage() {
   const [searchParams] = useSearchParams();
   const initialDomain = DOMAINS.includes(searchParams.get('domain') as Domain)
     ? (searchParams.get('domain') as Domain)
-    : 'mlops-infra';
+    : 'implement-manage';
   const [domain, setDomain] = useState<Domain>(initialDomain);
   const [difficulty, setDifficulty] = useState<1 | 2 | 3>(2);
   const [count, setCount] = useState<5 | 10 | 20>(10);
@@ -91,7 +91,7 @@ export default function QuizSelectPage() {
             onChange={(e) => setTimer(e.target.checked)}
             className="h-4 w-4 accent-accent"
           />
-          <span>Enable timer (AI-300 exam pace)</span>
+          <span>Enable timer (DP-700 exam pace)</span>
         </label>
       </Fieldset>
 

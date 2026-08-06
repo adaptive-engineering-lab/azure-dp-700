@@ -1,7 +1,7 @@
 import { serviceRoleClient } from './clients.js';
 
 const TEST_EMAIL_PREFIX = 'test+';
-const TEST_DOMAIN = 'ai300game.test';
+const TEST_DOMAIN = 'dp700game.test';
 
 export interface TestUser {
   id: string;

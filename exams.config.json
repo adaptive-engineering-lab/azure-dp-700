@@ -1,64 +1,63 @@
 {
   "exams": [
     {
-      "code": "AI-300",
-      "title": "Operationalize Machine Learning and Generative AI Solutions",
-      "certificationTitle": "Microsoft Certified: Machine Learning Operations Engineer Associate",
+      "code": "DP-700",
+      "title": "Implementing Data Engineering Solutions Using Microsoft Fabric",
+      "certificationTitle": "Microsoft Certified: Fabric Data Engineer Associate",
       "level": "Intermediate",
       "passMark": 700,
-      "productionUrl": "ai-300.yourdomain.com",
+      "productionUrl": "dp-700.yourdomain.com",
+      "skillsMeasuredAsOf": "2026-07-21",
 
       "domains": [
         {
-          "slug": "mlops-infra",
-          "label": "Design and Implement an MLOps Infrastructure",
-          "weight": "15-20",
+          "slug": "implement-manage",
+          "label": "Implement and Manage an Analytics Solution",
+          "weight": "30-35",
           "topics": [
-            "Workspace", "Datastores", "Compute", "IAM",
-            "Data Assets", "Environments", "Components",
-            "Registries", "IaC", "GitHub Integration"
+            "Spark Workspace Settings", "Domain Workspace Settings",
+            "OneLake Workspace Settings", "Apache Airflow Workspace Settings",
+            "Version Control", "Database Projects", "Deployment Pipelines",
+            "Workspace Access Controls", "Item Access Controls",
+            "Row-Level Security", "Column-Level Security", "Object-Level Security",
+            "Folder and File Access Controls", "Dynamic Data Masking",
+            "Sensitivity Labels", "Item Endorsement", "Fabric Audit Logs",
+            "OneLake Security", "Dataflow vs Pipeline vs Notebook",
+            "Schedules and Triggers", "Orchestration Patterns",
+            "Parameters and Dynamic Expressions"
           ]
         },
         {
-          "slug": "ml-lifecycle",
-          "label": "Implement Machine Learning Model Lifecycle and Operations",
-          "weight": "25-30",
+          "slug": "ingest-transform",
+          "label": "Ingest and Transform Data",
+          "weight": "30-35",
           "topics": [
-            "MLflow", "AutoML", "Notebooks", "Hyperparameter Tuning",
-            "Training Scripts", "Distributed Training", "Pipelines",
-            "Model Registration", "Responsible AI", "Online Endpoints",
-            "Batch Endpoints", "Progressive Rollout", "Data Drift", "Monitoring"
+            "Full and Incremental Loads", "Dimensional Model Preparation",
+            "Streaming Loading Patterns", "Choosing a Data Store",
+            "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+            "OneLake Shortcuts", "Mirroring", "Pipeline Ingestion",
+            "PySpark Transforms", "SQL Transforms", "KQL Transforms",
+            "Denormalization", "Grouping and Aggregation",
+            "Duplicate Handling", "Missing Data", "Late-Arriving Data",
+            "Choosing a Streaming Engine",
+            "Native Tables vs OneLake Shortcuts", "Query Acceleration",
+            "Eventstreams", "Spark Structured Streaming", "Windowing Functions"
           ]
         },
         {
-          "slug": "genaiops-infra",
-          "label": "Design and Implement a GenAIOps Infrastructure",
-          "weight": "20-25",
+          "slug": "monitor-optimize",
+          "label": "Monitor and Optimize an Analytics Solution",
+          "weight": "30-35",
           "topics": [
-            "Foundry Setup", "Managed Identities", "RBAC", "Network Security",
-            "Bicep", "Model Catalog", "Serverless Endpoints", "Managed Compute",
-            "Provisioned Throughput", "Prompt Versioning", "Prompt Flow"
-          ]
-        },
-        {
-          "slug": "genai-quality",
-          "label": "Implement Generative AI Quality Assurance and Observability",
-          "weight": "10-15",
-          "topics": [
-            "Evaluation Metrics", "Test Datasets", "Groundedness",
-            "Relevance", "Coherence", "Fluency", "Safety Evaluators",
-            "Risk Evaluation", "Observability", "Logging", "Tracing",
-            "Latency", "Token Cost", "Continuous Monitoring"
-          ]
-        },
-        {
-          "slug": "genai-optimization",
-          "label": "Optimize Generative AI Systems and Model Performance",
-          "weight": "10-15",
-          "topics": [
-            "RAG", "Chunk Size", "Similarity Threshold", "Hybrid Search",
-            "Embedding Models", "Fine-tuning", "Synthetic Data",
-            "Fine-tuned Model Deployment", "A/B Testing", "Relevance Metrics"
+            "Monitor Data Ingestion", "Monitor Data Transformation",
+            "Monitor Semantic Model Refresh", "Alerts", "Monitoring Hub",
+            "Activator", "Pipeline Errors", "Dataflow Gen2 Errors",
+            "Notebook Errors", "Eventhouse Errors", "Eventstream Errors",
+            "T-SQL Errors", "OneLake Shortcut Errors",
+            "Lakehouse Table Optimization", "Pipeline Optimization",
+            "Data Warehouse Optimization",
+            "Eventstream and Eventhouse Optimization",
+            "Spark Performance", "Query Performance"
           ]
         }
       ],
@@ -66,35 +65,40 @@
       "learningPaths": [
         {
           "id": "lp1",
-          "title": "Operationalize machine learning models (MLOps)",
-          "url": "https://learn.microsoft.com/en-us/training/paths/build-first-machine-operations-workflow/",
-          "moduleCount": 7,
-          "domains": ["mlops-infra", "ml-lifecycle"]
+          "title": "Get started with Microsoft Fabric",
+          "url": "https://learn.microsoft.com/en-us/training/paths/get-started-fabric/",
+          "moduleCount": 10,
+          "domains": ["implement-manage"]
         },
         {
           "id": "lp2",
-          "title": "Operationalize generative AI applications (GenAIOps)",
-          "url": "https://learn.microsoft.com/en-us/training/paths/operationalize-gen-ai-apps/",
-          "moduleCount": 2,
-          "domains": ["genaiops-infra", "genai-quality", "genai-optimization"]
+          "title": "Implement a Lakehouse with Microsoft Fabric",
+          "url": "https://learn.microsoft.com/en-us/training/paths/implement-lakehouse-microsoft-fabric/",
+          "moduleCount": 7,
+          "domains": ["ingest-transform", "implement-manage"]
         },
         {
           "id": "lp3",
-          "title": "Operationalize AI responsibly with Azure AI Foundry",
-          "url": "https://learn.microsoft.com/en-us/training/paths/operationalize-ai-responsibly/",
-          "moduleCount": 3,
-          "domains": ["genai-quality"]
+          "title": "Ingest data with Microsoft Fabric",
+          "url": "https://learn.microsoft.com/en-us/training/paths/ingest-data-with-microsoft-fabric/",
+          "moduleCount": 6,
+          "domains": ["ingest-transform"]
+        },
+        {
+          "id": "lp4",
+          "title": "Implement Real-Time Intelligence with Microsoft Fabric",
+          "url": "https://learn.microsoft.com/en-us/training/paths/explore-real-time-analytics-microsoft-fabric/",
+          "moduleCount": 4,
+          "domains": ["ingest-transform", "monitor-optimize"]
         }
       ],
 
       "questionTargets": {
         "total": 200,
         "perDomain": {
-          "mlops-infra": 30,
-          "ml-lifecycle": 80,
-          "genaiops-infra": 50,
-          "genai-quality": 20,
-          "genai-optimization": 20
+          "implement-manage": 67,
+          "ingest-transform": 67,
+          "monitor-optimize": 66
         },
         "byType": {
           "flashcard": 70,

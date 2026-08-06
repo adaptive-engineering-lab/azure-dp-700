@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ai300game.local/contracts/mcq.schema.json",
+  "$id": "https://dp700game.local/contracts/mcq.schema.json",
   "title": "Multiple Choice Question",
   "type": "object",
   "required": [
@@ -54,11 +54,9 @@
   "$defs": {
     "domain": {
       "enum": [
-        "mlops-infra",
-        "ml-lifecycle",
-        "genaiops-infra",
-        "genai-quality",
-        "genai-optimization"
+        "implement-manage",
+        "ingest-transform",
+        "monitor-optimize"
       ]
     },
     "source": { "enum": ["bank", "ai-generated"] }

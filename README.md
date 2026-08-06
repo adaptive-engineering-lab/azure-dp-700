@@ -1,6 +1,6 @@
-# AI-300 Study
+# DP-700 Study
 
-A mobile-first study app for the **Microsoft Certified: Machine Learning Operations Engineer Associate** exam (Exam AI-300). Flashcards, multiple-choice quizzes, and code-review drills across all five exam domains, with spaced repetition, a daily review queue, progress dashboards, and a cosmetic Pro tier — built as a Progressive Web App that works offline once installed.
+A mobile-first study app for the **Microsoft Certified: Machine Learning Operations Engineer Associate** exam (Exam DP-700). Flashcards, multiple-choice quizzes, and code-review drills across all five exam domains, with spaced repetition, a daily review queue, progress dashboards, and a cosmetic Pro tier — built as a Progressive Web App that works offline once installed.
 
 Live: [tranquil-eclair-165309.netlify.app](https://tranquil-eclair-165309.netlify.app/)
 
@@ -171,7 +171,7 @@ Hosting:
 ├── specs/                      # Spec-Kit feature specs (0XX-name/)
 │   └── 001-supabase-schema-and-seed/  # plan.md, spec.md, tasks.md, contracts/
 │
-├── exams.config.json           # AI-300 domain/topic taxonomy + question targets
+├── exams.config.json           # DP-700 domain/topic taxonomy + question targets
 ├── netlify.toml                # Production deploy config + SPA fallback
 ├── .lighthouserc.json          # PR-gated Lighthouse audit config
 ├── .github/workflows/          # data-layer.yml + lighthouse.yml
@@ -191,7 +191,7 @@ The shared bank. Public read-only via the anon key.
 ```sql
 id            uuid     primary key
 type          text     check in ('flashcard', 'mcq', 'code-review')
-domain        text     check in (5 AI-300 domain slugs)
+domain        text     check in (5 DP-700 domain slugs)
 topic         text
 difficulty    smallint check in (1, 2, 3)
 source        text     check in ('bank', 'ai-generated')
@@ -324,7 +324,7 @@ A single Zustand store ([`lib/store/index.ts`](frontend/src/lib/store/index.ts))
 - **`progress`** — `Record<questionId, { timesSeen, timesCorrect, lastRating, nextReview, updatedAt }>`.
 - **`sessions`** — array of recent session summaries (capped at 500).
 
-The store uses `zustand/middleware`'s `persist` adapter to write to `localStorage` under the key `ai300game.v1.state`. A schema-version migration runs on hydration ([`lib/storage/migrate.ts`](frontend/src/lib/storage/migrate.ts)) so old shapes never crash a returning user.
+The store uses `zustand/middleware`'s `persist` adapter to write to `localStorage` under the key `dp700game.v1.state`. A schema-version migration runs on hydration ([`lib/storage/migrate.ts`](frontend/src/lib/storage/migrate.ts)) so old shapes never crash a returning user.
 
 Cross-tab sync: [`App.tsx`](frontend/src/App.tsx) attaches a `window.addEventListener('storage', ...)` listener that calls `useAppStore.persist.rehydrate()` when another tab writes the same state key. Effect: complete a session in tab A, see the streak / XP update in tab B within one event loop.
 
@@ -515,7 +515,7 @@ supabase/seed/content/
 └── code-review.json  (30 items)
 ```
 
-150 items total. Target per AI-300 exam weight is 200 (see `exams.config.json`); the remaining 50 will land as the bank matures.
+150 items total. Target per DP-700 exam weight is 200 (see `exams.config.json`); the remaining 50 will land as the bank matures.
 
 Every item declares:
 
@@ -523,7 +523,7 @@ Every item declares:
 {
   "id": "<uuid>",
   "type": "flashcard|mcq|code-review",
-  "domain": "<one of 5 AI-300 domain slugs>",
+  "domain": "<one of 5 DP-700 domain slugs>",
   "topic": "<topic from exams.config.json>",
   "difficulty": 1|2|3,
   "source": "bank" | "ai-generated",
@@ -723,7 +723,7 @@ specs/00X-<feature-name>/
 └── checklists/   # requirements traceability
 ```
 
-13 specs landed for the AI-300 fork (001 through 013, plus 011-pro-surfaces). Most `tasks.md` files end with a `STATUS YYYY-MM-DD` section documenting which tasks landed in compact form versus the original per-file breakdown — useful for understanding intent vs reality.
+13 specs landed for the DP-700 fork (001 through 013, plus 011-pro-surfaces). Most `tasks.md` files end with a `STATUS YYYY-MM-DD` section documenting which tasks landed in compact form versus the original per-file breakdown — useful for understanding intent vs reality.
 
 The `/speckit-*` slash commands (`/speckit-tasks`, `/speckit-implement`, `/speckit-analyze`) are how this codebase was driven from specs to code.
 
@@ -742,7 +742,7 @@ The `/speckit-*` slash commands (`/speckit-tasks`, `/speckit-implement`, `/speck
 
 ```bash
 git clone <this repo>
-cd ai-300
+cd dp-700
 
 # Frontend deps
 pnpm -C frontend install
@@ -935,7 +935,7 @@ If you want to use this codebase, contact `ladetola0@gmail.com`.
 
 ## Acknowledgements
 
-- Forked from an earlier AZ-104 study app and adapted to AI-300.
+- Forked from an earlier AZ-104 study app and adapted to DP-700.
 - Spec-Kit methodology + the `/speckit-*` slash commands drove the implementation.
 - Question content references public Microsoft Learn documentation for Azure ML and Azure AI Foundry.
 - Built with Claude assisting on every spec, draft, and review.
