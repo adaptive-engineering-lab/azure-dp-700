@@ -6,23 +6,51 @@ interface Props {
   size?: number;
 }
 
+const LINE_HEIGHT = 12;
+const MAX_CHARS_PER_LINE = 18;
+
+/** Greedy word wrap — domain labels are full sentences, not single words. */
+function wrapLabel(text: string, maxChars = MAX_CHARS_PER_LINE): string[] {
+  const lines: string[] = [];
+  let line = '';
+  for (const word of text.split(' ')) {
+    const candidate = line ? `${line} ${word}` : word;
+    if (candidate.length > maxChars && line) {
+      lines.push(line);
+      line = word;
+    } else {
+      line = candidate;
+    }
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+
 export function RadarChart({ stats, size = 280 }: Props) {
   const cx = size / 2;
   const cy = size / 2;
-  const radius = size / 2 - 32;
+  // Labels are multi-line sentences, so the plot has to give up radius to
+  // leave room for them on all sides.
+  const radius = size / 2 - 62;
   const n = stats.length;
 
   const ringPcts = [25, 50, 75, 100];
   const points = stats.map((s, i) => {
     const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
     const r = s.hasEnoughData ? (s.pct / 100) * radius : 0;
+    const lines = wrapLabel(DOMAIN_LABELS[s.domain]);
+    const dy = Math.sin(angle);
+    // Nudge each label away from the plot, then centre the wrapped block on
+    // its anchor so a 3-line label above the chart doesn't sit on the rings.
+    const labelY = cy + dy * (radius + 20) - ((lines.length - 1) * LINE_HEIGHT) / 2 + dy * 8;
     return {
       angle,
       x: cx + Math.cos(angle) * r,
       y: cy + Math.sin(angle) * r,
-      labelX: cx + Math.cos(angle) * (radius + 16),
-      labelY: cy + Math.sin(angle) * (radius + 16),
-      label: DOMAIN_LABELS[s.domain].split(' ')[0],
+      labelX: cx + Math.cos(angle) * (radius + 20),
+      labelY,
+      lines,
+      label: lines.join(' '),
       hasData: s.hasEnoughData,
       stat: s,
     };
@@ -71,10 +99,14 @@ export function RadarChart({ stats, size = 280 }: Props) {
             y={p.labelY}
             textAnchor="middle"
             dominantBaseline="middle"
-            fontSize={11}
+            fontSize={10}
             fill={p.hasData ? 'hsl(var(--color-fg))' : 'hsl(var(--color-fg-muted))'}
           >
-            {p.label}
+            {p.lines.map((line, li) => (
+              <tspan key={line} x={p.labelX} dy={li === 0 ? 0 : LINE_HEIGHT}>
+                {line}
+              </tspan>
+            ))}
           </text>
         </g>
       ))}

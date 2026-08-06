@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { type ReactNode, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchQuestionsByIds } from '../lib/questions/fetch';
 import type { Question } from '../lib/questions/types';
@@ -6,6 +6,7 @@ import { useAppStore, type Rating } from '../lib/store';
 import { computeNextReview } from '../lib/spacing';
 import { findDueQuestionIds, DAILY_REVIEW_CAP } from '../lib/dashboard/due';
 import { ROUTES } from '../lib/routes';
+import { SourceLine } from '../components/SourceLine';
 import SnippetView from '../components/SnippetView';
 
 const ALL_OPTIONS = ['A', 'B', 'C', 'D'] as const;
@@ -185,6 +186,7 @@ export default function DailyReviewPage() {
           chosen={chosen as Letter | null}
           showFeedback={showFeedback}
           explanation={item.content.explanation}
+          source={<SourceLine topic={item.topic} tags={item.tags} />}
           onPick={(letter) => {
             setChosen(letter);
             setShowFeedback(true);
@@ -203,6 +205,7 @@ export default function DailyReviewPage() {
           explanation={item.content.explanation}
           chosen={chosen as Letter | null}
           showFeedback={showFeedback}
+          source={<SourceLine topic={item.topic} tags={item.tags} />}
           onPick={(letter) => {
             setChosen(letter);
             setShowFeedback(true);
@@ -221,6 +224,7 @@ function McqCard({
   chosen,
   showFeedback,
   explanation,
+  source,
   onPick,
   onNext,
 }: {
@@ -230,6 +234,7 @@ function McqCard({
   chosen: Letter | null;
   showFeedback: boolean;
   explanation: string;
+  source: ReactNode;
   onPick: (l: Letter) => void;
   onNext: () => void;
 }) {
@@ -254,6 +259,7 @@ function McqCard({
       {showFeedback && (
         <div className="mt-4 rounded-md bg-bg-elevated p-4">
           <p className="text-sm"><strong>{chosen === correct ? 'Correct.' : 'Not quite.'}</strong> {explanation}</p>
+          {source}
           <button type="button" onClick={onNext} className="mt-4 w-full rounded-md bg-accent px-4 py-2 font-semibold text-accent-fg">Next</button>
         </div>
       )}
@@ -271,6 +277,7 @@ function CodeReviewCard({
   explanation,
   chosen,
   showFeedback,
+  source,
   onPick,
   onNext,
 }: {
@@ -283,6 +290,7 @@ function CodeReviewCard({
   explanation: string;
   chosen: Letter | null;
   showFeedback: boolean;
+  source: ReactNode;
   onPick: (l: Letter) => void;
   onNext: () => void;
 }) {
@@ -324,6 +332,7 @@ function CodeReviewCard({
           <p className="text-sm">
             <strong>{chosen === correct ? 'Correct.' : 'Not quite.'}</strong> {explanation}
           </p>
+          {source}
           <button
             type="button"
             onClick={onNext}

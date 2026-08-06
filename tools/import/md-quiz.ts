@@ -54,16 +54,55 @@ const DOMAIN_PROSE: ReadonlyArray<[RegExp, Domain]> = [
 ];
 
 /**
- * Topic per source file. Values must appear in the matching domain's `topics`
- * array in exams.config.json. Falls back to the module title when unmapped.
+ * Microsoft Learn modules, keyed by the slug in their `Source module:` URL.
+ *
+ * `topic` becomes the module title, so the bank is grouped the way a learner
+ * actually studies — by module — rather than by exam-objective phrasing.
+ *
+ * A module usually belongs to several learning paths, so `paths` lists them
+ * all (they become tags) and `primaryPath` is the one shown in the UI. The
+ * primary is the most specific path for that module's DP-700 role, not
+ * necessarily the broadest one it appears in. Path ids match
+ * exams.config.json → learningPaths.
  */
-const TOPIC_BY_FILE: Record<string, string> = {
-  '1-DP-700_Dataflows-Gen2_Quiz': 'Dataflows Gen2 vs Notebooks vs KQL vs T-SQL',
-  '2-DP-700_Orchestrate-Pipelines_Quiz': 'Orchestration Patterns',
-  '3-DP-700_Apache-Spark_Quiz': 'PySpark Transforms',
-  '4-DP-700_Eventhouse-KQL_Quiz': 'KQL Transforms',
-  '5-DP-700_Intro-End-to-End-Analytics_Quiz': 'OneLake Workspace Settings',
+interface ModuleInfo {
+  title: string;
+  paths: string[];
+  primaryPath: string;
+}
+
+const MODULES: Record<string, ModuleInfo> = {
+  'use-dataflow-gen-2-fabric': {
+    title: 'Ingest Data with Dataflows Gen2 in Microsoft Fabric',
+    paths: ['lp1', 'lp2', 'lp3'],
+    primaryPath: 'lp3',
+  },
+  'use-data-factory-pipelines-fabric': {
+    title: 'Orchestrate processes and data movement with Microsoft Fabric',
+    paths: ['lp1', 'lp2', 'lp3'],
+    primaryPath: 'lp3',
+  },
+  'use-apache-spark-work-files-lakehouse': {
+    title: 'Use Apache Spark in Microsoft Fabric',
+    paths: ['lp1', 'lp2', 'lp3'],
+    primaryPath: 'lp3',
+  },
+  'query-data-kql-database-microsoft-fabric': {
+    title: 'Work with real-time data in a Microsoft Fabric eventhouse',
+    paths: ['lp3', 'lp4'],
+    primaryPath: 'lp4',
+  },
+  'introduction-end-analytics-use-microsoft-fabric': {
+    title: 'Introduction to end-to-end analytics using Microsoft Fabric',
+    paths: ['lp1', 'lp2'],
+    primaryPath: 'lp1',
+  },
 };
+
+/** Pull the module slug out of a learn.microsoft.com/training/modules/<slug>/ URL. */
+function moduleSlugFromUrl(url: string | undefined): string | undefined {
+  return url?.match(/\/training\/modules\/([^/?#]+)/)?.[1];
+}
 
 /** Section A recalls facts, Section C reasons about a scenario. */
 const DIFFICULTY_BY_SECTION: Record<Section, 1 | 2 | 3> = { A: 1, B: 1, C: 2 };
@@ -225,9 +264,25 @@ function parseAnswers(body: string, file: string): Map<number, ParsedAnswer> {
 function buildItems(file: string, body: string): BankItem[] {
   const stem = file.replace(/\.md$/, '');
   const domain = parseDomain(body, file);
-  const moduleTitle = plain(body.match(/^#\s+(.+)$/m)?.[1] ?? stem).replace(/^DP-700 Practice Quiz\s*[—–-]\s*/, '');
-  const topic = TOPIC_BY_FILE[stem] ?? moduleTitle;
+  const headingTitle = plain(body.match(/^#\s+(.+)$/m)?.[1] ?? stem).replace(
+    /^DP-700 Practice Quiz\s*[—–-]\s*/,
+    '',
+  );
   const sourceUrl = body.match(/^Source module:\s*(\S+)/m)?.[1];
+
+  // The module is the unit of study, so it is the topic. Prefer the canonical
+  // Learn title over the quiz heading, which is hand-typed and drifts.
+  const slug = moduleSlugFromUrl(sourceUrl);
+  const info = slug ? MODULES[slug] : undefined;
+  if (slug && !info) {
+    warn(`${file}: module "${slug}" is not in MODULES; using the quiz heading as topic and tagging no learning path`);
+  } else if (!slug) {
+    warn(`${file}: no parsable "Source module:" URL; using the quiz heading as topic`);
+  }
+  const topic = info?.title ?? headingTitle;
+  const pathTags = (info?.paths ?? []).map((p) => `path:${p}`);
+  const moduleTag = slug ? `module:${slug}` : undefined;
+  const primaryPathTag = info ? `primary-path:${info.primaryPath}` : undefined;
 
   const questions = parseQuestions(body, file);
   const answers = parseAnswers(body, file);
@@ -241,13 +296,17 @@ function buildItems(file: string, body: string): BankItem[] {
     }
     const difficulty = DIFFICULTY_BY_SECTION[q.section];
     const id = uuidv5(`${stem}#${q.number}`, NS);
-    const tags = [domain, slugify(topic), `level-${difficulty}`, slugify(stem)];
-    // Rationales reference the source module; keep that provenance in the text.
-    const explanation = capped(
-      sourceUrl ? `${a.explanation} (Source: ${sourceUrl})` : a.explanation,
-      LIMITS.explanation,
-      `${file} Q${q.number} explanation`,
-    );
+    const tags = [
+      domain,
+      slugify(topic),
+      `level-${difficulty}`,
+      ...(moduleTag ? [moduleTag] : []),
+      ...pathTags,
+      ...(primaryPathTag ? [primaryPathTag] : []),
+    ];
+    // Provenance is carried by `topic` and the module/path tags and rendered
+    // by SourceLine, so the URL is not repeated inside the explanation.
+    const explanation = capped(a.explanation, LIMITS.explanation, `${file} Q${q.number} explanation`);
 
     if (q.section === 'B') {
       if (a.verdict !== 'True' && a.verdict !== 'False') {

@@ -9,10 +9,16 @@ export const DOMAINS: Domain[] = [
   'monitor-optimize',
 ];
 
+/**
+ * The official domain names, verbatim from the DP-700 study guide
+ * (skills measured as of 2026-07-21). Kept in Microsoft's sentence case so
+ * this file can be diffed against the source when the exam is updated.
+ * They are long by design — components wrap rather than abbreviate.
+ */
 export const DOMAIN_LABELS: Record<Domain, string> = {
-  'implement-manage': 'Implement & Manage',
-  'ingest-transform': 'Ingest & Transform',
-  'monitor-optimize': 'Monitor & Optimize',
+  'implement-manage': 'Implement and manage an analytics solution',
+  'ingest-transform': 'Ingest and transform data',
+  'monitor-optimize': 'Monitor and optimize an analytics solution',
 };
 
 export type OptionLetter = 'A' | 'B' | 'C' | 'D';
@@ -48,8 +54,34 @@ export interface BaseQuestion {
   id: string;
   type: 'mcq' | 'code-review';
   domain: Domain;
+  /** The Microsoft Learn module the item was authored from. */
   topic: string;
   difficulty: 1 | 2 | 3;
+  /**
+   * Free-form labels written by the importer. Recognised prefixes:
+   * `module:<slug>`, `path:<id>` (every path the module belongs to), and
+   * `primary-path:<id>` (the one worth showing).
+   */
+  tags?: string[];
+}
+
+/**
+ * Learning paths, mirroring exams.config.json → learningPaths. Kept here
+ * because the frontend does not read the config at runtime; if you add a
+ * path there, add it here too.
+ */
+export const LEARNING_PATHS: Record<string, string> = {
+  lp1: 'Get started with Microsoft Fabric',
+  lp2: 'Implement a Lakehouse with Microsoft Fabric',
+  lp3: 'Ingest data with Microsoft Fabric',
+  lp4: 'Implement Real-Time Intelligence with Microsoft Fabric',
+};
+
+/** Title of the primary learning path for an item, if it declares one. */
+export function primaryLearningPath(tags: string[] | undefined): string | null {
+  const tag = tags?.find((t) => t.startsWith('primary-path:'));
+  if (!tag) return null;
+  return LEARNING_PATHS[tag.slice('primary-path:'.length)] ?? null;
 }
 
 export interface McqQuestion extends BaseQuestion {

@@ -6,6 +6,7 @@ import type { McqQuestion, Domain, OptionLetter } from '../lib/questions/types';
 import { useAppStore } from '../lib/store';
 import { computeNextReview } from '../lib/spacing';
 import { ROUTES } from '../lib/routes';
+import { SourceLine } from '../components/SourceLine';
 
 const ALL_OPTIONS = ['A', 'B', 'C', 'D'] as const;
 type Letter = OptionLetter;
@@ -209,6 +210,7 @@ export default function QuizSessionPage() {
             </strong>{' '}
             {q.content.explanation}
           </p>
+          <SourceLine topic={q.topic} tags={q.tags} />
           <button
             type="button"
             onClick={nextQuestion}

@@ -8,6 +8,7 @@ interface RawRow {
   topic: string;
   difficulty: 1 | 2 | 3;
   content: Question['content'];
+  tags: string[] | null;
 }
 
 export async function fetchQuestions(filter: {
@@ -16,7 +17,7 @@ export async function fetchQuestions(filter: {
   topic?: string;
   difficulty?: 1 | 2 | 3;
 }): Promise<Question[]> {
-  let query = supabase().from('questions').select('id, type, domain, topic, difficulty, content').eq('type', filter.type);
+  let query = supabase().from('questions').select('id, type, domain, topic, difficulty, content, tags').eq('type', filter.type);
   if (filter.domain) query = query.eq('domain', filter.domain);
   if (filter.topic) query = query.eq('topic', filter.topic);
   if (filter.difficulty) query = query.eq('difficulty', filter.difficulty);
@@ -29,7 +30,7 @@ export async function fetchQuestionsByIds(ids: string[]): Promise<Question[]> {
   if (ids.length === 0) return [];
   const { data, error } = await supabase()
     .from('questions')
-    .select('id, type, domain, topic, difficulty, content')
+    .select('id, type, domain, topic, difficulty, content, tags')
     .in('id', ids);
   if (error) throw new Error(`fetchQuestionsByIds: ${error.message}`);
   return (data ?? []) as RawRow[] as Question[];

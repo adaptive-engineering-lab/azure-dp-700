@@ -12,7 +12,7 @@
       "domains": [
         {
           "slug": "implement-manage",
-          "label": "Implement and Manage an Analytics Solution",
+          "label": "Implement and manage an analytics solution",
           "weight": "30-35",
           "topics": [
             "Spark Workspace Settings", "Domain Workspace Settings",
@@ -29,7 +29,7 @@
         },
         {
           "slug": "ingest-transform",
-          "label": "Ingest and Transform Data",
+          "label": "Ingest and transform data",
           "weight": "30-35",
           "topics": [
             "Full and Incremental Loads", "Dimensional Model Preparation",
@@ -46,7 +46,7 @@
         },
         {
           "slug": "monitor-optimize",
-          "label": "Monitor and Optimize an Analytics Solution",
+          "label": "Monitor and optimize an analytics solution",
           "weight": "30-35",
           "topics": [
             "Monitor Data Ingestion", "Monitor Data Transformation",
@@ -101,14 +101,12 @@
           "monitor-optimize": 66
         },
         "byType": {
-          "flashcard": 70,
-          "mcq": 90,
+          "mcq": 160,
           "code-review": 40
         }
       },
 
       "gameModes": {
-        "flashcard": true,
         "mcq": true,
         "codeReview": true
       },

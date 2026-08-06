@@ -10,6 +10,7 @@ import type {
 import { useAppStore } from '../lib/store';
 import { computeNextReview } from '../lib/spacing';
 import { ROUTES } from '../lib/routes';
+import { SourceLine } from '../components/SourceLine';
 import SnippetView from '../components/SnippetView';
 
 const OPTIONS = ['A', 'B', 'C', 'D'] as const;
@@ -277,6 +278,7 @@ export default function CodeReviewSessionPage() {
             <strong>{chosen === c.correct ? 'Correct.' : 'Not quite.'}</strong>{' '}
             {c.explanation}
           </p>
+          <SourceLine topic={q.topic} tags={q.tags} />
           <button
             type="button"
             onClick={nextQuestion}

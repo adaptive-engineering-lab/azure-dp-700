@@ -57,6 +57,7 @@ function toRpcRow(i: LoadedItem) {
     reviewed_at: i.reviewed_at ?? '',
     content: i.content,
     content_hash: i.content_hash,
+    tags: i.tags ?? [],
   };
 }
 
