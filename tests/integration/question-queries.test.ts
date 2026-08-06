@@ -13,7 +13,6 @@ describe('Question queries — anonymous, filtered reads (T011 / FR-013, US1 acc
     const rows = data ?? [];
     expect(rows.length).toBeGreaterThan(0);
     const types = new Set(rows.map((r) => r.type));
-    expect(types.has('flashcard')).toBe(true);
     expect(types.has('mcq')).toBe(true);
     expect(types.has('code-review')).toBe(true);
     for (const row of rows) {
@@ -41,10 +40,6 @@ describe('Question queries — anonymous, filtered reads (T011 / FR-013, US1 acc
       expect(c.options).toBeTruthy();
       expect(c.correct).toMatch(/^[A-D]$/);
       expect(c.explanation).toBeTruthy();
-    } else if (row!.type === 'flashcard') {
-      const c = row!.content as Record<string, unknown>;
-      expect(c.front).toBeTruthy();
-      expect(c.back).toBeTruthy();
     } else if (row!.type === 'code-review') {
       const c = row!.content as Record<string, unknown>;
       expect(c.sub_mode).toBeTruthy();
@@ -61,7 +56,7 @@ describe('Question queries — anonymous, filtered reads (T011 / FR-013, US1 acc
     const { data } = await client.from('questions').select('domain, type');
     const rows = (data ?? []) as Array<{ domain: string; type: string }>;
     const domains = ['implement-manage', 'ingest-transform', 'monitor-optimize'];
-    const types = ['flashcard', 'mcq', 'code-review'];
+    const types = ['mcq', 'code-review'];
     for (const d of domains) {
       for (const t of types) {
         expect(

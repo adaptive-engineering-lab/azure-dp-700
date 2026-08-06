@@ -7,7 +7,7 @@ const DOMAINS = [
   'monitor-optimize',
 ] as const;
 
-const TYPES = ['flashcard', 'mcq', 'code-review'] as const;
+const TYPES = ['mcq', 'code-review'] as const;
 
 describe('Domain coverage (T010 / SC-002 / FR-006)', () => {
   let rows: Array<{ domain: string; type: string }>;

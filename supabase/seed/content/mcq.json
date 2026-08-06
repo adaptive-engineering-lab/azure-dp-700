@@ -250,6 +250,98 @@
     }
   },
   {
+    "id": "c04f6b79-58a9-552c-976f-65ecaaca3218",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "True or false? Adding a data destination to a Dataflow Gen2 is mandatory — a dataflow cannot exist without one.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "A data destination is explicitly described as optional — the dataflow preserves all transformation steps regardless, and can be incorporated into a pipeline for further use without a destination set. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "f6182784-d6dc-5ccc-859c-ed8bbd520868",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "True or false? Dataflows Gen2 can be used as a reusable, discoverable data source that data analysts connect to directly from Power BI Desktop.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Making a dataflow discoverable lets analysts connect to it via Power BI Desktop, reducing data prep duplication for report development. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "517ba60c-2db1-5377-bf2b-f9460a6a75a7",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "True or false? Dataflows Gen2 are a full replacement for a data warehouse in Microsoft Fabric.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Dataflows are explicitly not a replacement for a data warehouse — that's listed as a limitation. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
+    "id": "986e9190-bf38-503a-ad29-ca677ad2adc5",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Dataflows Gen2 vs Notebooks vs KQL vs T-SQL",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "dataflows-gen2-vs-notebooks-vs-kql-vs-t-sql",
+      "level-1",
+      "1-dp-700-dataflows-gen2-quiz"
+    ],
+    "content": {
+      "question": "True or false? A Fabric capacity workspace is required to use Dataflows Gen2. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "A Fabric capacity workspace is required to use Dataflows Gen2. (Source: https://learn.microsoft.com/en-us/training/modules/use-dataflow-gen-2-fabric/)"
+    }
+  },
+  {
     "id": "383a1f29-6197-5bb2-a536-46c232e63093",
     "type": "mcq",
     "domain": "ingest-transform",
@@ -547,6 +639,98 @@
       },
       "correct": "B",
       "explanation": "Run history is accessible from either location. (A, C, D are not stated as the (only) access points.) (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "a13abf24-c817-50b0-8b54-2bc33b41c1aa",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "True or false? A single pipeline can only contain one activity — Copy Data — and nothing else.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "A pipeline can contain any combination of activities — data transformation and control flow — chosen to meet the specific need; Copy Data is common but not exclusive. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "e81ee463-aad3-59ea-a497-1cb0e29bcb9a",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "True or false? Pipeline runs can be triggered on-demand or scheduled to run at a specific frequency.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Runs can be started on-demand in the Fabric UI or scheduled to run at a specific frequency. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "4da72ece-a886-514b-8d21-9e2987e29feb",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "True or false? Pipeline templates in Microsoft Fabric are fixed and cannot be edited or customized after selection.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Templates are a starting point — you select one and then edit it in the pipeline canvas to customize it to your needs. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
+    }
+  },
+  {
+    "id": "c00c82b2-88a8-54d4-9b76-58e1a155dccd",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Orchestration Patterns",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "orchestration-patterns",
+      "level-1",
+      "2-dp-700-orchestrate-pipelines-quiz"
+    ],
+    "content": {
+      "question": "True or false? The Copy Data activity supports a wide range of source connections, including lakehouse, warehouse, and SQL Database within OneLake. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "In OneLake, Copy Data supports lakehouse, warehouse, SQL Database, and other destination/source types. (Source: https://learn.microsoft.com/en-us/training/modules/use-data-factory-pipelines-fabric/)"
     }
   },
   {
@@ -900,6 +1084,98 @@
     }
   },
   {
+    "id": "fca105d1-11c8-5bc1-be40-ce3caead16c6",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "True or false? Deleting a managed table in the Spark catalog also deletes its underlying data.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Managed tables store their underlying data in the catalog's associated storage location; deleting the table deletes that data too. (External tables behave differently — deleting them removes only the metadata, not the underlying files.) (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "c2a7799b-be22-5229-beef-c86ee1dbf9ca",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "True or false? A temporary view created with createOrReplaceTempView persists permanently across all future Spark sessions.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "A view is temporary — it's automatically deleted at the end of the current session, not persisted permanently. Persisted objects are tables, not views. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "8f5ccf09-9794-531c-91c3-c00850cd5710",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "True or false? Matplotlib can plot directly from a Spark dataframe without any conversion.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Matplotlib requires data in a Pandas dataframe, not a Spark dataframe — you need to call .toPandas() to convert it first before charting. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
+    "id": "38be38f0-b47d-5317-887c-26426f7f2953",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "PySpark Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "pyspark-transforms",
+      "level-1",
+      "3-dp-700-apache-spark-quiz"
+    ],
+    "content": {
+      "question": "True or false? Partitioning a saved dataframe (e.g., with partitionBy) can improve query performance by reducing unnecessary disk I/O when filtering. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Partitioning is explicitly called out as an optimization technique that reduces unnecessary disk I/O when queries filter on the partitioning column, improving performance across worker nodes. (Source: https://learn.microsoft.com/en-us/training/modules/use-apache-spark-work-files-lakehouse/)"
+    }
+  },
+  {
     "id": "10f431e9-e326-5725-b5d4-2586ac6c4628",
     "type": "mcq",
     "domain": "implement-manage",
@@ -1250,6 +1526,98 @@
     }
   },
   {
+    "id": "91fc62fe-6a50-5ac8-b41e-1d4265184661",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "True or false? A stored function in KQL can accept parameters, allowing the same query logic to be reused with different values.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Functions can take parameters (e.g., trips_by_min_passenger_count(num_passengers:long)), letting you reuse the same logic with different input values. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "32e58dd6-352e-58e9-97e0-d7e54f48c837",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "True or false? Querying a materialized view always returns only the precomputed data as of the last background update, ignoring any newer data.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Materialized views combine the materialized part and the delta at query time, so they always return fresh, up-to-date results — not stale data frozen at the last background update. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "b3416aad-2656-5046-92db-83d3676cda20",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "True or false? KQL databases can ingest data from sources like Azure Event Hubs, Fabric Eventstream, and Apache Kafka connectors.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The module explicitly lists Azure Event Hubs, Fabric Eventstream, Real-Time hub, and connectors including Apache Kafka among supported ingestion sources. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "2cdbb524-b006-5ae0-bee1-2d664ade48e5",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "KQL Transforms",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "kql-transforms",
+      "level-1",
+      "4-dp-700-eventhouse-kql-quiz"
+    ],
+    "content": {
+      "question": "True or false? Reducing the number of columns selected (projecting early) has no effect on KQL query performance. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Projecting only needed columns early reduces resource usage and processing overhead — this is one of the module's explicit optimization techniques, especially valuable on wide tables. (Source: https://learn.microsoft.com/en-us/training/modules/query-data-kql-database-microsoft-fabric/)"
+    }
+  },
+  {
     "id": "e2f0b3e6-7f98-5a77-8203-2cb0ed51e309",
     "type": "mcq",
     "domain": "ingest-transform",
@@ -1597,6 +1965,98 @@
       },
       "correct": "B",
       "explanation": "The ontology defines business concepts, relationships, and rules, letting AI agents reason using consistent business language instead of raw table schemas. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "d4c629a1-f55b-54d1-a3f7-5078152f368c",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "True or false? Workspace-level roles (admin, contributor, member, viewer) apply to all items in a workspace, while item-level permissions allow more granular access control.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Workspace roles govern access at the whole-workspace level; item-level permissions layer on top for more granular, business-need-specific control. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "17681933-e710-5bfe-aa1a-cf186aaff49d",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "True or false? Copilot in Microsoft Fabric must be manually enabled by an administrator before any user can access it — it is disabled by default.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Copilot in Microsoft Fabric is enabled by default — administrators have the option to disable it (tenant-wide, by security group, or by capacity), not the other way around. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "42380bda-3adf-52e5-96a6-7957c3a106a0",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "True or false? Fabric IQ, Foundry IQ, and Work IQ are mutually exclusive — an organization can only use one at a time.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "The three IQ workloads (Fabric IQ, Foundry IQ, Work IQ) are each standalone, but the module explicitly states they can be used together to provide comprehensive organizational context for agents — they aren't mutually exclusive. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
+    }
+  },
+  {
+    "id": "a966300b-c70b-561c-b8e0-d1daf52280d5",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "OneLake Workspace Settings",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "onelake-workspace-settings",
+      "level-1",
+      "5-dp-700-intro-end-to-end-analytics-quiz"
+    ],
+    "content": {
+      "question": "True or false? The OneLake catalog only shows items that have been shared with the signed-in user. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The module states explicitly: in the OneLake catalog, you only see items that have been shared with you. (Source: https://learn.microsoft.com/en-us/training/modules/introduction-end-analytics-use-microsoft-fabric/)"
     }
   },
   {

@@ -15,15 +15,19 @@ export const DOMAIN_LABELS: Record<Domain, string> = {
   'monitor-optimize': 'Monitor & Optimize',
 };
 
-export interface FlashcardContent {
-  front: string;
-  back: string;
-}
+export type OptionLetter = 'A' | 'B' | 'C' | 'D';
+
+/**
+ * A and B are always present; C and D are optional so that two-way
+ * true/false items can use the same shape as four-option questions.
+ * Render whichever keys exist rather than assuming all four.
+ */
+export type McqOptions = { A: string; B: string; C?: string; D?: string };
 
 export interface McqContent {
   question: string;
-  options: { A: string; B: string; C: string; D: string };
-  correct: 'A' | 'B' | 'C' | 'D';
+  options: McqOptions;
+  correct: OptionLetter;
   explanation: string;
 }
 
@@ -36,21 +40,16 @@ export interface CodeReviewContent {
   snippet: string;
   prompt: string;
   options: { A: string; B: string; C: string; D: string };
-  correct: 'A' | 'B' | 'C' | 'D';
+  correct: OptionLetter;
   explanation: string;
 }
 
 export interface BaseQuestion {
   id: string;
-  type: 'flashcard' | 'mcq' | 'code-review';
+  type: 'mcq' | 'code-review';
   domain: Domain;
   topic: string;
   difficulty: 1 | 2 | 3;
-}
-
-export interface FlashcardQuestion extends BaseQuestion {
-  type: 'flashcard';
-  content: FlashcardContent;
 }
 
 export interface McqQuestion extends BaseQuestion {
@@ -63,4 +62,4 @@ export interface CodeReviewQuestion extends BaseQuestion {
   content: CodeReviewContent;
 }
 
-export type Question = FlashcardQuestion | McqQuestion | CodeReviewQuestion;
+export type Question = McqQuestion | CodeReviewQuestion;

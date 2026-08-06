@@ -47,7 +47,7 @@ describe('RLS isolation between two users', () => {
         last_rating: 'missed',
       }),
       clientA.from('sessions').insert({ user_id: userA.id, mode: 'mcq', score_pct: 100 }),
-      clientB.from('sessions').insert({ user_id: userB.id, mode: 'flashcards', score_pct: 50 }),
+      clientB.from('sessions').insert({ user_id: userB.id, mode: 'mcq', score_pct: 50 }),
     ]);
     for (const r of insertions) expect(r.error, JSON.stringify(r.error)).toBeNull();
   });
@@ -85,7 +85,7 @@ describe('RLS isolation between two users', () => {
     expect(error).toBeNull();
     expect(data).toHaveLength(1);
     expect(data![0]!.user_id).toBe(userB.id);
-    expect(data![0]!.mode).toBe('flashcards');
+    expect(data![0]!.mode).toBe('mcq');
   });
 
   it("user B cannot insert a user_progress row with user A's id", async () => {

@@ -7,7 +7,7 @@ export function isProTheme(theme: Theme): boolean {
   return PRO_THEMES.includes(theme);
 }
 export type SessionLength = 10 | 20 | 30;
-export type GameMode = 'flashcards' | 'mcq' | 'code-review';
+export type GameMode = 'mcq' | 'code-review';
 
 export interface SessionPreferences {
   theme: Theme;

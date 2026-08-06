@@ -116,7 +116,6 @@ export default function AdminPage() {
           className="rounded-md border border-divider bg-bg px-2 py-2 text-sm"
         >
           <option value="all">All types</option>
-          <option value="flashcard">Flashcard</option>
           <option value="mcq">MCQ</option>
           <option value="code-review">Code Review</option>
         </select>
@@ -134,7 +133,6 @@ export default function AdminPage() {
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <div className="ml-auto flex gap-2 text-xs">
-          <button type="button" onClick={() => setAddingType('flashcard')} className="rounded-md bg-bg-elevated px-3 py-2">+ Flashcard</button>
           <button type="button" onClick={() => setAddingType('mcq')} className="rounded-md bg-bg-elevated px-3 py-2">+ MCQ</button>
           <button type="button" onClick={() => setAddingType('code-review')} className="rounded-md bg-bg-elevated px-3 py-2">+ Code Review</button>
         </div>
@@ -193,7 +191,6 @@ export default function AdminPage() {
 }
 
 function summary(it: BankItem): string {
-  if (it.type === 'flashcard') return (it.content.front as string) ?? '';
   if (it.type === 'mcq') return (it.content.question as string) ?? '';
   if (it.type === 'code-review') return (it.content.prompt as string) ?? '';
   return '';
@@ -231,13 +228,6 @@ function EditPanel({
   return (
     <div className="mt-3 space-y-3 border-t border-divider pt-3">
       <p className="text-xs text-fg-muted">id: <code>{original.id}</code></p>
-
-      {draft.type === 'flashcard' && (
-        <>
-          <Field label="Front" value={draft.content.front as string} onChange={(v) => setContentField('front', v)} multiline />
-          <Field label="Back" value={draft.content.back as string} onChange={(v) => setContentField('back', v)} multiline />
-        </>
-      )}
 
       {draft.type === 'mcq' && (
         <>
@@ -335,12 +325,6 @@ function NewItemForm({
     <div className="mt-4 rounded-lg bg-success/10 p-4 ring-1 ring-success">
       <h2 className="text-base font-bold">New {type}</h2>
       <div className="mt-3 space-y-3">
-        {type === 'flashcard' && (
-          <>
-            <Field label="Front" value={draft.content.front as string} onChange={(v) => setContentField('front', v)} multiline />
-            <Field label="Back" value={draft.content.back as string} onChange={(v) => setContentField('back', v)} multiline />
-          </>
-        )}
         {type === 'mcq' && (
           <>
             <Field label="Question" value={draft.content.question as string} onChange={(v) => setContentField('question', v)} multiline />
@@ -440,16 +424,6 @@ function Field({
 }
 
 function makeBlank(type: ItemType): NewQuestionInput {
-  if (type === 'flashcard') {
-    return {
-      type: 'flashcard',
-      domain: 'ingest-transform',
-      topic: '',
-      difficulty: 1,
-      source: 'bank',
-      content: { front: '', back: '' },
-    };
-  }
   if (type === 'mcq') {
     return {
       type: 'mcq',

@@ -64,10 +64,10 @@ describe('Admin RLS (T040 / spec 013 / FR-001..FR-003)', () => {
     await cleanupTestUsers();
   });
 
-  function newFlashcardRow(id: string) {
+  function newMcqRow(id: string) {
     return {
       id,
-      type: 'flashcard',
+      type: 'mcq',
       domain: 'ingest-transform',
       topic: 'admin-rls-test',
       difficulty: 1,
@@ -80,19 +80,19 @@ describe('Admin RLS (T040 / spec 013 / FR-001..FR-003)', () => {
   it('admin can INSERT a question', async () => {
     const id = crypto.randomUUID();
     createdQuestionIds.push(id);
-    const { error } = await adminClient.from('questions').insert(newFlashcardRow(id));
+    const { error } = await adminClient.from('questions').insert(newMcqRow(id));
     expect(error, `admin insert: ${JSON.stringify(error)}`).toBeNull();
   });
 
   it('regular authenticated user cannot INSERT a question (RLS denies)', async () => {
     const id = crypto.randomUUID();
-    const { error } = await regularClient.from('questions').insert(newFlashcardRow(id));
+    const { error } = await regularClient.from('questions').insert(newMcqRow(id));
     expect(error, 'regular insert should be denied').not.toBeNull();
   });
 
   it('anon cannot INSERT a question', async () => {
     const id = crypto.randomUUID();
-    const { error } = await anon.from('questions').insert(newFlashcardRow(id));
+    const { error } = await anon.from('questions').insert(newMcqRow(id));
     expect(error, 'anon insert should be denied').not.toBeNull();
   });
 
@@ -119,7 +119,7 @@ describe('Admin RLS (T040 / spec 013 / FR-001..FR-003)', () => {
 
   it('admin can DELETE a question they just inserted', async () => {
     const id = crypto.randomUUID();
-    const insertRes = await adminClient.from('questions').insert(newFlashcardRow(id));
+    const insertRes = await adminClient.from('questions').insert(newMcqRow(id));
     expect(insertRes.error).toBeNull();
 
     const { data, error } = await adminClient

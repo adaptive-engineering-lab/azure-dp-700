@@ -13,18 +13,6 @@ for (const row of counts ?? []) {
 console.log('\n=== Bank by domain × type ===');
 console.table(byDomain);
 
-const { data: fc } = await client
-  .from('questions')
-  .select('topic, content')
-  .eq('type', 'flashcard')
-  .eq('domain', 'implement-manage')
-  .limit(1)
-  .single();
-console.log('\n=== Sample flashcard (networking) ===');
-console.log('Topic:', fc!.topic);
-console.log('Front:', (fc!.content as { front: string }).front);
-console.log('Back: ', (fc!.content as { back: string }).back);
-
 const { data: mcq } = await client
   .from('questions')
   .select('topic, content')

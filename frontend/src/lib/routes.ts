@@ -1,7 +1,6 @@
 export const ROUTES = {
   home: '/',
   learn: '/learn',
-  flashcards: '/learn/flashcards',
   quiz: '/learn/quiz',
   codeReview: '/learn/code-review',
   progress: '/progress',

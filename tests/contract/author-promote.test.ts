@@ -5,37 +5,37 @@ import { tmpdir } from 'node:os';
 import { promoteDraft } from '../../tools/author/lib/promote.js';
 
 const CONTENT_DIR = resolve(__dirname, '..', '..', 'supabase', 'seed', 'content');
-const FLASHCARDS = resolve(CONTENT_DIR, 'flashcards.json');
+const MCQ = resolve(CONTENT_DIR, 'mcq.json');
 
 let backup: string;
 let tmpDraft: string;
 
 beforeEach(async () => {
-  backup = await readFile(FLASHCARDS, 'utf8');
+  backup = await readFile(MCQ, 'utf8');
   const tmp = await mkdtemp(resolve(tmpdir(), 'author-test-'));
   tmpDraft = resolve(tmp, 'draft.json');
 });
 
 afterEach(async () => {
-  await writeFile(FLASHCARDS, backup, 'utf8');
+  await writeFile(MCQ, backup, 'utf8');
 });
 
 describe('author promote (feature 009)', () => {
   it('appends a valid item with reviewer stamps', async () => {
     const item = {
       id: '00000000-0000-4000-8000-000000aaaaaa',
-      type: 'flashcard',
+      type: 'mcq',
       domain: 'ingest-transform',
       topic: 'test',
       difficulty: 1,
       source: 'bank',
-      content: { front: 'q', back: 'a' },
+      content: { question: 'q', options: { A: 'a', B: 'b', C: 'c', D: 'd' }, correct: 'A', explanation: 'e' },
     };
     await writeFile(tmpDraft, JSON.stringify([item]), 'utf8');
     const report = await promoteDraft({ draftPath: tmpDraft, reviewer: 'la' });
-    expect(report.appended.flashcard).toBe(1);
+    expect(report.appended.mcq).toBe(1);
 
-    const post = JSON.parse(await readFile(FLASHCARDS, 'utf8'));
+    const post = JSON.parse(await readFile(MCQ, 'utf8'));
     const found = post.find((x: { id: string }) => x.id === item.id);
     expect(found).toBeTruthy();
     expect(found.source).toBe('ai-generated');
@@ -46,19 +46,19 @@ describe('author promote (feature 009)', () => {
   it('aborts the whole promote on any validation failure', async () => {
     const valid = {
       id: '00000000-0000-4000-8000-000000bbbbbb',
-      type: 'flashcard',
+      type: 'mcq',
       domain: 'ingest-transform',
       topic: 'test',
       difficulty: 1,
       source: 'bank',
-      content: { front: 'q', back: 'a' },
+      content: { question: 'q', options: { A: 'a', B: 'b', C: 'c', D: 'd' }, correct: 'A', explanation: 'e' },
     };
     const bad = { ...valid, id: '00000000-0000-4000-8000-000000cccccc', domain: 'not-a-domain' };
     await writeFile(tmpDraft, JSON.stringify([valid, bad]), 'utf8');
     await expect(promoteDraft({ draftPath: tmpDraft, reviewer: 'la' })).rejects.toThrow(/Aborted before any write/);
 
     // The valid item must NOT have been written.
-    const post = JSON.parse(await readFile(FLASHCARDS, 'utf8'));
+    const post = JSON.parse(await readFile(MCQ, 'utf8'));
     expect(post.find((x: { id: string }) => x.id === valid.id)).toBeUndefined();
   });
 

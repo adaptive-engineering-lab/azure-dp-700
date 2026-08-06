@@ -4,12 +4,12 @@ import { detectDuplicate, type QuestionItem } from '../../tools/seed/lib/load-co
 function makeItem(id: string, overrides: Partial<QuestionItem> = {}): QuestionItem {
   return {
     id,
-    type: 'flashcard',
+    type: 'mcq',
     domain: 'ingest-transform',
     topic: 'blob',
     difficulty: 1,
     source: 'bank',
-    content: { front: 'q', back: 'a' },
+    content: { question: 'q', options: { A: 'a', B: 'b', C: 'c', D: 'd' }, correct: 'A', explanation: 'e' },
     ...overrides,
   };
 }
@@ -17,7 +17,7 @@ function makeItem(id: string, overrides: Partial<QuestionItem> = {}): QuestionIt
 describe('Duplicate ID detection (T024 / FR-008 — exit code 11)', () => {
   it('returns null when no duplicates exist', () => {
     const result = detectDuplicate([
-      { file: 'flashcards.json', item: makeItem('00000000-0000-4000-8000-000000000001') },
+      { file: 'code-review.json', item: makeItem('00000000-0000-4000-8000-000000000001') },
       { file: 'mcq.json', item: makeItem('00000000-0000-4000-8000-000000000002') },
     ]);
     expect(result).toBeNull();
@@ -26,12 +26,12 @@ describe('Duplicate ID detection (T024 / FR-008 — exit code 11)', () => {
   it('finds a duplicate ID present across two different files', () => {
     const dup = '11111111-1111-4111-8111-111111111111';
     const result = detectDuplicate([
-      { file: 'flashcards.json', item: makeItem(dup) },
+      { file: 'code-review.json', item: makeItem(dup) },
       { file: 'mcq.json', item: makeItem(dup) },
     ]);
     expect(result).not.toBeNull();
     expect(result!.id).toBe(dup);
-    expect(result!.firstFile).toBe('flashcards.json');
+    expect(result!.firstFile).toBe('code-review.json');
     expect(result!.secondFile).toBe('mcq.json');
   });
 

@@ -2,15 +2,20 @@ import { describe, it, expect } from 'vitest';
 import { validateItem } from '../../src/lib/admin/validators';
 
 describe('Admin item validation (feature 013, FR-007)', () => {
-  it('accepts a valid flashcard', () => {
-    const result = validateItem('flashcard', {
+  it('accepts a two-option true/false mcq', () => {
+    const result = validateItem('mcq', {
       id: '00000000-0000-4000-8000-000000000001',
-      type: 'flashcard',
+      type: 'mcq',
       domain: 'ingest-transform',
       topic: 'blob',
       difficulty: 1,
       source: 'bank',
-      content: { front: 'q', back: 'a' },
+      content: {
+        question: 'True or false? OneLake is built on ADLS Gen2.',
+        options: { A: 'True', B: 'False' },
+        correct: 'A',
+        explanation: 'It is.',
+      },
     });
     expect(result.valid).toBe(true);
   });

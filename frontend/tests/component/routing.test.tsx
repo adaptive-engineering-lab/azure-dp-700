@@ -43,7 +43,6 @@ vi.mock('../../src/lib/supabase', () => ({
 import { AppShell } from '../../src/components/AppShell';
 import HomePage from '../../src/pages/HomePage';
 import LearnIndexPage from '../../src/pages/LearnIndexPage';
-import FlashcardSelectPage from '../../src/pages/FlashcardSelectPage';
 import QuizSelectPage from '../../src/pages/QuizSelectPage';
 import CodeReviewPage from '../../src/pages/CodeReviewPage';
 import ProgressPage from '../../src/pages/ProgressPage';
@@ -57,7 +56,6 @@ function renderAt(path: string) {
         children: [
           { path: ROUTES.home, element: <HomePage /> },
           { path: ROUTES.learn, element: <LearnIndexPage /> },
-          { path: ROUTES.flashcards, element: <FlashcardSelectPage /> },
           { path: ROUTES.quiz, element: <QuizSelectPage /> },
           { path: ROUTES.codeReview, element: <CodeReviewPage /> },
           { path: ROUTES.progress, element: <ProgressPage /> },
@@ -85,10 +83,9 @@ describe('Routing (FR-002, FR-003, FR-015)', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Pick a mode/i);
   });
 
-  it('renders the flashcards select page at /learn/flashcards', () => {
-    renderAt(ROUTES.flashcards);
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Flashcards/i);
-    expect(screen.getByText(/Pick a topic/i)).toBeInTheDocument();
+  it('renders the quiz select page at /learn/quiz', () => {
+    renderAt(ROUTES.quiz);
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Quiz/i);
   });
 
   it('renders the code-review placeholder at /learn/code-review', () => {

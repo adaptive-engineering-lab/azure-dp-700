@@ -8,8 +8,13 @@ import { findDueQuestionIds, DAILY_REVIEW_CAP } from '../lib/dashboard/due';
 import { ROUTES } from '../lib/routes';
 import SnippetView from '../components/SnippetView';
 
-const OPTIONS = ['A', 'B', 'C', 'D'] as const;
-type Letter = (typeof OPTIONS)[number];
+const ALL_OPTIONS = ['A', 'B', 'C', 'D'] as const;
+type Letter = (typeof ALL_OPTIONS)[number];
+
+/** C and D are absent on two-way true/false items. */
+function presentOptions(options: Partial<Record<Letter, string>>): Letter[] {
+  return ALL_OPTIONS.filter((l) => typeof options[l] === 'string' && options[l] !== '');
+}
 
 interface Outcome {
   questionId: string;
@@ -27,7 +32,6 @@ export default function DailyReviewPage() {
   const [items, setItems] = useState<Question[] | null>(null);
   const [idx, setIdx] = useState(0);
   const [error, setError] = useState<string | null>(null);
-  const [flipped, setFlipped] = useState(false);
   const [chosen, setChosen] = useState<Letter | string | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [outcomes, setOutcomes] = useState<Outcome[]>([]);
@@ -100,16 +104,16 @@ export default function DailyReviewPage() {
 
         <div className="mt-4 flex flex-col gap-2 sm:flex-row">
           <Link
-            to={ROUTES.flashcards}
+            to={ROUTES.quiz}
             className="flex-1 rounded-md bg-accent px-4 py-3 text-center text-sm font-semibold text-accent-fg shadow-lg shadow-accent/20"
           >
-            Study flashcards →
+            Take a quiz →
           </Link>
           <Link
-            to={ROUTES.quiz}
+            to={ROUTES.codeReview}
             className="flex-1 rounded-md bg-bg px-4 py-3 text-center text-sm font-medium ring-1 ring-divider"
           >
-            Try a quiz
+            Try code review
           </Link>
         </div>
       </section>
@@ -125,7 +129,6 @@ export default function DailyReviewPage() {
           setExtended(true);
           setIdx(0);
           setOutcomes([]);
-          setFlipped(false);
           setShowFeedback(false);
           setChosen(null);
         }}
@@ -144,7 +147,6 @@ export default function DailyReviewPage() {
       nextReview: computeNextReview({ rating, priorTimesCorrect: priorCorrect }),
     });
     setOutcomes((o) => [...o, { questionId: item.id, rating }]);
-    setFlipped(false);
     setChosen(null);
     setShowFeedback(false);
     if (idx + 1 < items!.length) {
@@ -172,18 +174,9 @@ export default function DailyReviewPage() {
         <div className="h-full bg-accent transition-all" style={{ width: `${((idx + 1) / items.length) * 100}%` }} />
       </div>
       <p className="mb-2 text-xs uppercase tracking-wider text-fg-muted">
-        Daily review · {item.type === 'flashcard' ? 'flashcard' : item.type === 'mcq' ? 'multiple choice' : 'code review'} · {idx + 1} / {items.length}
+        Daily review · {item.type === 'mcq' ? 'multiple choice' : 'code review'} · {idx + 1} / {items.length}
       </p>
 
-      {item.type === 'flashcard' && (
-        <FlashcardCard
-          front={item.content.front}
-          back={item.content.back}
-          flipped={flipped}
-          onFlip={() => setFlipped(true)}
-          onRate={commit}
-        />
-      )}
       {item.type === 'mcq' && (
         <McqCard
           question={item.content.question}
@@ -221,36 +214,6 @@ export default function DailyReviewPage() {
   );
 }
 
-function FlashcardCard({
-  front,
-  back,
-  flipped,
-  onFlip,
-  onRate,
-}: {
-  front: string;
-  back: string;
-  flipped: boolean;
-  onFlip: () => void;
-  onRate: (r: Rating) => void;
-}) {
-  return (
-    <>
-      <button type="button" onClick={onFlip} className="mb-4 block w-full rounded-lg bg-bg-elevated p-6 text-left">
-        <p className="text-xs uppercase tracking-wider text-fg-muted">{flipped ? 'Answer' : 'Question'}</p>
-        <p className="mt-2 text-lg leading-snug">{flipped ? back : front}</p>
-      </button>
-      {flipped && (
-        <div className="grid grid-cols-3 gap-2">
-          <button type="button" onClick={() => onRate('missed')} className="rounded-md bg-bg-elevated px-3 py-3 text-sm font-medium text-error">Missed</button>
-          <button type="button" onClick={() => onRate('almost')} className="rounded-md bg-bg-elevated px-3 py-3 text-sm font-medium text-warning">Almost</button>
-          <button type="button" onClick={() => onRate('correct')} className="rounded-md bg-bg-elevated px-3 py-3 text-sm font-medium text-success">Got it</button>
-        </div>
-      )}
-    </>
-  );
-}
-
 function McqCard({
   question,
   options,
@@ -262,7 +225,7 @@ function McqCard({
   onNext,
 }: {
   question: string;
-  options: Record<Letter, string>;
+  options: Partial<Record<Letter, string>>;
   correct: Letter;
   chosen: Letter | null;
   showFeedback: boolean;
@@ -274,7 +237,7 @@ function McqCard({
     <>
       <h2 className="text-lg font-medium leading-snug">{question}</h2>
       <div className="mt-4 grid gap-2">
-        {OPTIONS.map((letter) => {
+        {presentOptions(options).map((letter) => {
           let cls = 'bg-bg-elevated text-fg';
           if (showFeedback) {
             if (letter === correct) cls = 'bg-success/20 text-success ring-1 ring-success';
@@ -283,7 +246,7 @@ function McqCard({
           return (
             <button key={letter} type="button" disabled={showFeedback} onClick={() => onPick(letter)} className={`flex items-start gap-3 rounded-md px-4 py-3 text-left text-sm font-medium ${cls}`}>
               <span className="font-bold">{letter}.</span>
-              <span className="flex-1">{options[letter]}</span>
+              <span className="flex-1">{options[letter]!}</span>
             </button>
           );
         })}
@@ -315,7 +278,7 @@ function CodeReviewCard({
   language: 'python' | 'sql' | 'kql' | 'json';
   subMode: 'find-the-bug' | 'what-does-this-do' | 'fill-the-blank';
   prompt: string;
-  options: Record<Letter, string>;
+  options: Partial<Record<Letter, string>>;
   correct: Letter;
   explanation: string;
   chosen: Letter | null;
@@ -325,7 +288,7 @@ function CodeReviewCard({
 }) {
   const themeMode = useAppStore((s) => s.preferences.theme);
   const revealedValue =
-    showFeedback && subMode === 'fill-the-blank' ? options[correct] : undefined;
+    showFeedback && subMode === 'fill-the-blank' ? options[correct]! : undefined;
   return (
     <>
       <SnippetView
@@ -336,7 +299,7 @@ function CodeReviewCard({
       />
       <p className="mt-4 text-sm font-medium">{prompt}</p>
       <div className="mt-3 grid gap-2">
-        {OPTIONS.map((letter) => {
+        {presentOptions(options).map((letter) => {
           let cls = 'bg-bg-elevated text-fg';
           if (showFeedback) {
             if (letter === correct) cls = 'bg-success/20 text-success ring-1 ring-success';
@@ -351,7 +314,7 @@ function CodeReviewCard({
               className={`flex items-start gap-3 rounded-md px-4 py-3 text-left text-sm font-medium ${cls}`}
             >
               <span className="font-bold">{letter}.</span>
-              <span className="flex-1">{options[letter]}</span>
+              <span className="flex-1">{options[letter]!}</span>
             </button>
           );
         })}

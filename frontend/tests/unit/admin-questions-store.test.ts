@@ -36,12 +36,12 @@ function reset() {
 
 const itemA = {
   id: 'a',
-  type: 'flashcard' as const,
+  type: 'mcq' as const,
   domain: 'ingest-transform',
   topic: 't',
   difficulty: 1,
   source: 'bank' as const,
-  content: { front: 'f', back: 'b' },
+  content: { question: 'q', options: { A: 'a', B: 'b' }, correct: 'A', explanation: 'e' },
 };
 
 describe('useAdminQuestionsStore', () => {
@@ -90,7 +90,7 @@ describe('useAdminQuestionsStore', () => {
     await useAdminQuestionsStore
       .getState()
       .create(
-        { type: 'flashcard', domain: 'ingest-transform', topic: 't', difficulty: 1, source: 'bank', content: { front: 'f', back: 'b' } },
+        { type: 'mcq', domain: 'ingest-transform', topic: 't', difficulty: 1, source: 'bank', content: { question: 'q', options: { A: 'a', B: 'b' }, correct: 'A', explanation: 'e' } },
         'reviewer',
       );
 

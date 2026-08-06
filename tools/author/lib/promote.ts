@@ -7,7 +7,6 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const CONTENT_DIR = resolve(HERE, '..', '..', '..', 'supabase', 'seed', 'content');
 
 const FILES: Record<ItemType, string> = {
-  flashcard: 'flashcards.json',
   mcq: 'mcq.json',
   'code-review': 'code-review.json',
 };
@@ -35,7 +34,6 @@ export async function promoteDraft({ draftPath, reviewer, now }: PromoteArgs): P
 
   const ts = (now ?? new Date()).toISOString();
   const stamped: Record<ItemType, Array<Record<string, unknown>>> = {
-    flashcard: [],
     mcq: [],
     'code-review': [],
   };
@@ -63,7 +61,7 @@ export async function promoteDraft({ draftPath, reviewer, now }: PromoteArgs): P
   }
 
   // All valid — append to seed files.
-  const appended: PromoteReport['appended'] = { flashcard: 0, mcq: 0, 'code-review': 0 };
+  const appended: PromoteReport['appended'] = { mcq: 0, 'code-review': 0 };
   for (const type of Object.keys(FILES) as ItemType[]) {
     if (stamped[type].length === 0) continue;
     const path = resolve(CONTENT_DIR, FILES[type]);

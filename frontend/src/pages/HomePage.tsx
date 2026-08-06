@@ -28,8 +28,8 @@ export default function HomePage() {
               Mobile-first prep for the Fabric Data Engineer exam.
             </h1>
             <p className="mt-3 text-fg-muted">
-              Flashcards, quizzes, and code-review drills across all three exam domains — with real
-              T-SQL, KQL, and PySpark. Study in short sessions; come back tomorrow.
+              Quizzes and code-review drills across all three exam domains — with real T-SQL,
+              KQL, and PySpark. Study in short sessions; come back tomorrow.
             </p>
             {!countsLoading && bankSize > 0 && (
               <p className="mt-3 text-xs text-fg-muted">

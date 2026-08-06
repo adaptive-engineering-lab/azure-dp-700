@@ -24,7 +24,7 @@ describe('Partial-failure rollback', () => {
     const content = { front: `Pre-test front ${id}`, back: `Pre-test back ${id}` };
     return {
       id,
-      type: 'flashcard',
+      type: 'mcq',
       domain: opts.domain,
       topic: 'rollback-test',
       difficulty: 1,

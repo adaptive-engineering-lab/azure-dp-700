@@ -66,7 +66,7 @@ describe('Dashboard aggregations (feature 007)', () => {
   it('calendar fills sessionCount for matching dates', () => {
     const sessions: GuestSession[] = [
       { id: '1', mode: 'mcq', topic: null, scorePct: 80, durationSeconds: 120, completedAt: '2026-05-10T12:00:00Z' },
-      { id: '2', mode: 'flashcards', topic: null, scorePct: null, durationSeconds: 60, completedAt: '2026-05-10T18:00:00Z' },
+      { id: '2', mode: 'mcq', topic: null, scorePct: null, durationSeconds: 60, completedAt: '2026-05-10T18:00:00Z' },
     ];
     const cells = computeActivityCalendar(sessions, new Date('2026-05-11T00:00:00Z'));
     const day = cells.find((c) => c.date === '2026-05-10');

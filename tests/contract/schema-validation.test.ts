@@ -42,7 +42,7 @@ describe('Schema validation (T022 / SC-001 / FR-005)', () => {
 
   it('rejects an ai-generated item missing reviewer audit fields', async () => {
     const items = await loadContent();
-    const base = items.find((i) => i.type === 'flashcard')!;
+    const base = items.find((i) => i.type === 'mcq')!;
     const bad: LoadedItem = {
       ...base,
       id: '00000000-0000-4000-8000-000000000bad',

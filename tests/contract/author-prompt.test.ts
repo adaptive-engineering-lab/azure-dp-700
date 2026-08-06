@@ -17,7 +17,7 @@ describe('Author prompt builder — grounded vs. ungrounded', () => {
 
   it('inlines source-file contents and tells Claude they are authoritative', () => {
     const prompt = buildPrompt(
-      { type: 'flashcard', domain: 'implement-manage', topic: 'rbac', difficulty: 1, count: 3 },
+      { type: 'mcq', domain: 'implement-manage', topic: 'rbac', difficulty: 1, count: 3 },
       SCHEMA_STUB,
       [],
       [

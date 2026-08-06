@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '../supabase';
 import { DOMAINS, type Domain } from '../questions/types';
 
-type ItemType = 'flashcard' | 'mcq' | 'code-review';
+type ItemType = 'mcq' | 'code-review';
 
 export interface DomainCounts {
   byDomain: Record<Domain, number>;
@@ -19,7 +19,6 @@ const EMPTY: Record<Domain, number> = {
 };
 
 const EMPTY_TYPES: Record<ItemType, number> = {
-  flashcard: 0,
   mcq: 0,
   'code-review': 0,
 };
@@ -27,7 +26,7 @@ const EMPTY_TYPES: Record<ItemType, number> = {
 /**
  * Fetches the question bank's domain × count breakdown in a single
  * lightweight query (id + domain only, ~6 KB for ~100 rows). Tallies
- * client-side so callers can render five domain cards without firing
+ * client-side so callers can render the domain cards without firing
  * five separate count requests.
  */
 export function useDomainCounts(): DomainCounts {

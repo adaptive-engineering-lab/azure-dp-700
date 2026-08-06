@@ -2,13 +2,21 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { fetchQuestions } from '../lib/questions/fetch';
 import { pickWithDifficultyPreference } from '../lib/questions/pick';
-import type { McqQuestion, Domain } from '../lib/questions/types';
+import type { McqQuestion, Domain, OptionLetter } from '../lib/questions/types';
 import { useAppStore } from '../lib/store';
 import { computeNextReview } from '../lib/spacing';
 import { ROUTES } from '../lib/routes';
 
-const OPTIONS = ['A', 'B', 'C', 'D'] as const;
-type Letter = (typeof OPTIONS)[number];
+const ALL_OPTIONS = ['A', 'B', 'C', 'D'] as const;
+type Letter = OptionLetter;
+
+/**
+ * Options C and D are absent on two-way true/false items, so render only the
+ * letters this question actually carries rather than a fixed four.
+ */
+function presentOptions(options: McqQuestion['content']['options']): Letter[] {
+  return ALL_OPTIONS.filter((letter) => typeof options[letter] === 'string' && options[letter] !== '');
+}
 
 interface Answer {
   questionId: string;
@@ -171,8 +179,8 @@ export default function QuizSessionPage() {
       <h2 className="text-lg font-medium leading-snug">{q.content.question}</h2>
 
       <div className="mt-4 grid gap-2">
-        {OPTIONS.map((letter) => {
-          const text = q.content.options[letter];
+        {presentOptions(q.content.options).map((letter) => {
+          const text = q.content.options[letter]!;
           let cls = 'bg-bg-elevated text-fg';
           if (showFeedback) {
             if (letter === q.content.correct) cls = 'bg-success/20 text-success ring-1 ring-success';
@@ -244,7 +252,7 @@ function ResultsScreen({ answers, totalElapsed }: { answers: Answer[]; totalElap
       {(() => {
         const weakDomains = byDomain.filter((r) => r.weak).map((r) => r.domain);
         if (weakDomains.length === 0) return null;
-        const href = `${ROUTES.flashcards}?domains=${weakDomains.join(',')}`;
+        const href = `${ROUTES.codeReview}?domains=${weakDomains.join(',')}`;
         return (
           <Link
             to={href}
@@ -252,7 +260,7 @@ function ResultsScreen({ answers, totalElapsed }: { answers: Answer[]; totalElap
           >
             <p className="text-sm font-semibold text-warning">Review missed →</p>
             <p className="mt-1 text-xs text-fg-muted">
-              Open a flashcard session pre-filtered to your weak {weakDomains.length === 1 ? 'domain' : 'domains'}:{' '}
+              Open a code-review session pre-filtered to your weak {weakDomains.length === 1 ? 'domain' : 'domains'}:{' '}
               {weakDomains.map((d) => d.replace(/-/g, ' ')).join(', ')}.
             </p>
           </Link>

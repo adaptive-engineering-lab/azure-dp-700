@@ -8,7 +8,6 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const CONTRACTS_DIR = resolve(HERE, '..', '..', '..', 'specs', '001-supabase-schema-and-seed', 'contracts');
 
 const SCHEMA_FILES = {
-  flashcard: 'flashcard.schema.json',
   mcq: 'mcq.schema.json',
   'code-review': 'code-review.schema.json',
 } as const;

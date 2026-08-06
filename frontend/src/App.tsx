@@ -9,8 +9,6 @@ import { useAppStore } from './lib/store';
 import { STATE_KEY } from './lib/storage/namespace';
 
 const LearnIndexPage = lazy(() => import('./pages/LearnIndexPage'));
-const FlashcardSelectPage = lazy(() => import('./pages/FlashcardSelectPage'));
-const FlashcardSessionPage = lazy(() => import('./pages/FlashcardSessionPage'));
 const QuizSelectPage = lazy(() => import('./pages/QuizSelectPage'));
 const QuizSessionPage = lazy(() => import('./pages/QuizSessionPage'));
 const CodeReviewPage = lazy(() => import('./pages/CodeReviewPage'));
@@ -36,8 +34,6 @@ const router = createBrowserRouter([
     children: [
       { path: ROUTES.home, element: <HomePage /> },
       { path: ROUTES.learn, element: lazyPage(<LearnIndexPage />) },
-      { path: ROUTES.flashcards, element: lazyPage(<FlashcardSelectPage />) },
-      { path: `${ROUTES.flashcards}/session`, element: lazyPage(<FlashcardSessionPage />) },
       { path: ROUTES.quiz, element: lazyPage(<QuizSelectPage />) },
       { path: `${ROUTES.quiz}/session`, element: lazyPage(<QuizSessionPage />) },
       { path: ROUTES.codeReview, element: lazyPage(<CodeReviewPage />) },

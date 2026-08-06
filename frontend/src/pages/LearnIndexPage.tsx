@@ -8,20 +8,11 @@ interface Mode {
   emoji: string;
   description: string;
   details: string;
-  countKey: 'flashcard' | 'mcq' | 'code-review';
+  countKey: 'mcq' | 'code-review';
   accent: string;
 }
 
 const MODES: Mode[] = [
-  {
-    to: ROUTES.flashcards,
-    title: 'Flashcards',
-    emoji: '🧠',
-    description: 'Concept and term recall with self-rating.',
-    details: 'Short, focused sessions. Spaced repetition surfaces what you need to review.',
-    countKey: 'flashcard',
-    accent: 'ring-violet-500/40 from-violet-500/15',
-  },
   {
     to: ROUTES.quiz,
     title: 'Quiz',
@@ -35,8 +26,8 @@ const MODES: Mode[] = [
     to: ROUTES.codeReview,
     title: 'Code Review',
     emoji: '🔍',
-    description: 'Spot the bug or fill the blank in real Azure ML / Foundry snippets.',
-    details: 'Short Python / YAML / Bash snippets with four-option feedback. Mirrors the exam’s scenario questions.',
+    description: 'Spot the bug or fill the blank in real Fabric snippets.',
+    details: 'Short PySpark / T-SQL / KQL snippets with four-option feedback. Mirrors the exam’s scenario questions.',
     countKey: 'code-review',
     accent: 'ring-emerald-500/40 from-emerald-500/15',
   },
@@ -50,7 +41,7 @@ export default function LearnIndexPage() {
       <header className="mb-6">
         <h1 className="text-2xl font-bold">Pick a mode</h1>
         <p className="mt-1 text-fg-muted">
-          Three ways to study. Start with whatever you have time for.
+          Two ways to study. Start with whatever you have time for.
         </p>
       </header>
 

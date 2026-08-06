@@ -29,10 +29,10 @@ describe('Store: progress and profile (FR-008, FR-009)', () => {
   it('records sessions in newest-first order', () => {
     const s = useAppStore.getState();
     s.recordSession({ mode: 'mcq', topic: 'rbac', scorePct: 80, durationSeconds: 60, now: new Date('2026-05-10') });
-    s.recordSession({ mode: 'flashcards', topic: null, scorePct: null, durationSeconds: 120, now: new Date('2026-05-11') });
+    s.recordSession({ mode: 'code-review', topic: null, scorePct: null, durationSeconds: 120, now: new Date('2026-05-11') });
     const sessions = useAppStore.getState().sessions;
     expect(sessions).toHaveLength(2);
-    expect(sessions[0]!.mode).toBe('flashcards');
+    expect(sessions[0]!.mode).toBe('code-review');
     expect(sessions[1]!.mode).toBe('mcq');
   });
 

@@ -1,16 +1,14 @@
 import Ajv2020, { type ValidateFunction } from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
-import flashcardSchema from './schemas/flashcard.schema.json';
 import mcqSchema from './schemas/mcq.schema.json';
 import codeReviewSchema from './schemas/code-review.schema.json';
 
-export type ItemType = 'flashcard' | 'mcq' | 'code-review';
+export type ItemType = 'mcq' | 'code-review';
 
 const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats.default(ajv);
 
 const validators: Record<ItemType, ValidateFunction> = {
-  flashcard: ajv.compile(flashcardSchema),
   mcq: ajv.compile(mcqSchema),
   'code-review': ajv.compile(codeReviewSchema),
 };

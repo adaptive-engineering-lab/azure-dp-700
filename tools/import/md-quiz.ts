@@ -22,17 +22,17 @@
  *   **15. C.** <rationale>                  ← letter only
  *   **11. False.** <rationale>              ← true/false
  *
- * Sections A and C become `mcq` items. Section B becomes `flashcard` items:
- * the mcq content shape requires four options A–D, so a two-way true/false
- * cannot be represented as one without inventing filler distractors.
+ * Every section becomes an `mcq` item. Section B's true/false statements use
+ * a two-option MCQ (A = True, B = False) — the mcq schema requires only A and
+ * B, so no filler distractors have to be invented.
  *
  * IDs are UUIDv5 over "<file stem>#<question number>", so re-running the
  * import is idempotent — the same question keeps the same id and the seed
  * CLI's cross-bank duplicate check stays happy.
  *
  * Usage:
- *   pnpm -C tools import            # write the seed files
- *   pnpm -C tools import --dry-run  # report only, write nothing
+ *   pnpm -C tools import:md               # write the seed file
+ *   pnpm -C tools import:md -- --dry-run  # report only, write nothing
  */
 import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -72,8 +72,6 @@ const LIMITS = {
   mcqQuestion: 600,
   mcqOption: 240,
   explanation: 1200,
-  flashcardFront: 280,
-  flashcardBack: 800,
 } as const;
 
 type Section = 'A' | 'B' | 'C';
@@ -94,7 +92,7 @@ interface ParsedAnswer {
 
 interface BankItem {
   id: string;
-  type: 'flashcard' | 'mcq';
+  type: 'mcq';
   domain: Domain;
   topic: string;
   difficulty: 1 | 2 | 3;
@@ -258,15 +256,17 @@ function buildItems(file: string, body: string): BankItem[] {
       }
       items.push({
         id,
-        type: 'flashcard',
+        type: 'mcq',
         domain,
         topic,
         difficulty,
         source: 'bank',
         tags,
         content: {
-          front: capped(`True or false? ${q.prompt}`, LIMITS.flashcardFront, `${file} Q${q.number} front`),
-          back: capped(`${a.verdict}. ${explanation}`, LIMITS.flashcardBack, `${file} Q${q.number} back`),
+          question: capped(`True or false? ${q.prompt}`, LIMITS.mcqQuestion, `${file} Q${q.number} question`),
+          options: { A: 'True', B: 'False' },
+          correct: a.verdict === 'True' ? 'A' : 'B',
+          explanation,
         },
       });
       continue;
@@ -313,10 +313,10 @@ function main(): void {
   const all: BankItem[] = [];
   for (const file of files) {
     const items = buildItems(file, readFileSync(resolve(KNOWLEDGE_DIR, file), 'utf8'));
-    const mcq = items.filter((i) => i.type === 'mcq').length;
+    const trueFalse = items.filter((i) => Object.keys(i.content.options as object).length === 2).length;
     console.log(
       `${file.padEnd(46)} ${String(items.length).padStart(3)} items  ` +
-        `(${mcq} mcq, ${items.length - mcq} flashcard)  → ${items[0]?.domain ?? '—'}`,
+        `(${items.length - trueFalse} four-option, ${trueFalse} true/false)  → ${items[0]?.domain ?? '—'}`,
     );
     all.push(...items);
   }
@@ -327,10 +327,10 @@ function main(): void {
     seen.add(item.id);
   }
 
-  const mcq = all.filter((i) => i.type === 'mcq');
-  const flashcards = all.filter((i) => i.type === 'flashcard');
-
-  console.log(`\nTotal: ${all.length} items — ${mcq.length} mcq, ${flashcards.length} flashcard, 0 code-review`);
+  const trueFalse = all.filter((i) => Object.keys(i.content.options as object).length === 2).length;
+  console.log(
+    `\nTotal: ${all.length} mcq — ${all.length - trueFalse} four-option, ${trueFalse} true/false, 0 code-review`,
+  );
   const byDomain = new Map<string, number>();
   for (const i of all) byDomain.set(i.domain, (byDomain.get(i.domain) ?? 0) + 1);
   for (const [d, n] of [...byDomain].sort()) console.log(`  ${d.padEnd(18)} ${n}`);
@@ -344,10 +344,8 @@ function main(): void {
     console.log('\n--dry-run: no files written.');
     return;
   }
-  writeFileSync(resolve(CONTENT_DIR, 'mcq.json'), `${JSON.stringify(mcq, null, 2)}\n`);
-  writeFileSync(resolve(CONTENT_DIR, 'flashcards.json'), `${JSON.stringify(flashcards, null, 2)}\n`);
-  console.log(`\nWrote ${mcq.length} → supabase/seed/content/mcq.json`);
-  console.log(`Wrote ${flashcards.length} → supabase/seed/content/flashcards.json`);
+  writeFileSync(resolve(CONTENT_DIR, 'mcq.json'), `${JSON.stringify(all, null, 2)}\n`);
+  console.log(`\nWrote ${all.length} → supabase/seed/content/mcq.json`);
   console.log('code-review.json left untouched (no code snippets in the source files).');
 }
 
