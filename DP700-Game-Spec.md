@@ -95,9 +95,9 @@ reviewed by a human and committed to the seed bank before reaching users.
 
 | Concern | Choice |
 |---|---|
-| Hosting | Netlify (`netlify.toml`: `frontend/` base, `pnpm build`, `dist/` publish) |
+| Hosting | Vercel (`vercel.json`: builds in `frontend/`, publishes `frontend/dist`) |
 | CI/CD | GitHub Actions — `data-layer.yml` (schema + seed) and `lighthouse.yml` (perf/a11y gate) |
-| Environment | `frontend/.env.local` and `tools/.env.local` locally; Netlify env vars in production |
+| Environment | `frontend/.env.local` and `tools/.env.local` locally; Vercel env vars in production |
 | Monitoring | Supabase logs |
 
 ---

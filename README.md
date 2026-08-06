@@ -2,7 +2,7 @@
 
 A mobile-first study app for the **Microsoft Certified: Fabric Data Engineer Associate** exam (Exam DP-700). Multiple-choice quizzes and code-review drills across all three exam domains, with spaced repetition, a daily review queue, progress dashboards, and a cosmetic Pro tier — built as a Progressive Web App that works offline once installed.
 
-Live: [tranquil-eclair-165309.netlify.app](https://tranquil-eclair-165309.netlify.app/)
+Live: [azure-dp-700.vercel.app](https://azure-dp-700.vercel.app/)
 
 ---
 
@@ -53,13 +53,13 @@ A third surface, **Daily Review**, pulls items that spaced repetition has schedu
 |---|---|---|
 | Frontend framework | React 18 + TypeScript | Standard, hireable, type safety |
 | Build tool | Vite 5 | Fast HMR, small bundle defaults |
-| Router | React Router v6 | Lazy-loaded routes, splat fallback for SPA on Netlify |
+| Router | React Router v6 | Lazy-loaded routes, splat fallback for SPA on Vercel |
 | State | Zustand + `persist` middleware | Tiny, lazy localStorage hydration, cross-tab sync via `storage` event |
 | Styling | Tailwind CSS + CSS custom properties | Dark/light/Pro themes via `:root` token swap |
 | Code highlighting | Shiki (fine-grained bundle) | Syntax highlighting on Code Review snippets; ~85KB gzip for python + yaml + bash + two themes |
 | PWA | `vite-plugin-pwa` + Workbox | Service worker, install prompt, offline shell cache |
 | Backend | Supabase (Postgres + Auth + Edge Functions) | Schema, RLS, magic-link auth, future Stripe webhooks |
-| Hosting | Netlify | SPA redirects via `netlify.toml`, env-var injection at build, PR previews |
+| Hosting | Vercel | SPA rewrites via `vercel.json`, env-var injection at build, PR previews |
 | Billing | Stripe (Checkout + Customer Portal) | Foundation merged; not yet activated |
 | Authoring (maintainer-side) | Anthropic Claude SDK + Ajv | Draft → validate → promote into seed JSON |
 
@@ -112,9 +112,9 @@ A third surface, **Daily Review**, pulls items that spaced repetition has schedu
        └──────────────┘
 
 Hosting:
-  Frontend → Netlify (SPA fallback in netlify.toml,
-                      cache-immutable on /assets/*,
-                      no-cache on index.html + sw.js)
+  Frontend → Vercel (SPA fallback in vercel.json,
+                     cache-immutable on /assets/*,
+                     no-cache on index.html + sw.js)
   Backend  → Supabase project az-103 (West EU, Ireland)
 ```
 
@@ -171,7 +171,7 @@ Hosting:
 │   └── 001-supabase-schema-and-seed/  # plan.md, spec.md, tasks.md, contracts/
 │
 ├── exams.config.json           # DP-700 domain/topic taxonomy + question targets
-├── netlify.toml                # Production deploy config + SPA fallback
+├── vercel.json                 # Production deploy config + SPA fallback
 ├── .lighthouserc.json          # PR-gated Lighthouse audit config
 ├── .github/workflows/          # data-layer.yml + lighthouse.yml
 └── package.json                # Root pnpm workspace
@@ -622,7 +622,7 @@ If a Pro user's entitlement lapses while Solar or Forest is active, the provider
 Supabase Auth, magic-link email only (no password).
 
 - Sign-in page at `/sign-in` calls `signInWithOtp({ email, options: { emailRedirectTo: '<origin>/auth/callback' } })`.
-- The redirect URL `https://tranquil-eclair-165309.netlify.app/auth/callback` is on Supabase's allow list (Project Settings → Authentication → URL Configuration).
+- The redirect URL `https://azure-dp-700.vercel.app/auth/callback` is on Supabase's allow list (Project Settings → Authentication → URL Configuration).
 - After clicking the link, the user lands on `/auth/callback`, which calls `supabase.auth.exchangeCodeForSession(...)`, persists the session in localStorage, and redirects home.
 - [`AuthProvider`](frontend/src/lib/auth/AuthProvider.tsx) wraps the app, exposes `{ user, status, signOut }`, and triggers the guest→authed migration on transitions.
 
@@ -654,7 +654,7 @@ The foundation is merged and verified locally; **going live requires operator st
      STRIPE_SECRET_KEY=sk_test_... \
      STRIPE_WEBHOOK_SECRET=whsec_... \
      STRIPE_PRICE_ID=price_... \
-     APP_URL=https://tranquil-eclair-165309.netlify.app
+     APP_URL=https://azure-dp-700.vercel.app
    ```
 3. Deploy the Edge Functions:
    ```
@@ -796,27 +796,31 @@ supabase db push --linked --include-all    # apply migrations to cloud
 
 ## Deployment
 
-### Netlify (frontend)
+### Vercel (frontend)
 
-Production site lives at the Netlify default URL. Build config in [`netlify.toml`](netlify.toml):
+Production site lives at the Vercel default URL. Build config in [`vercel.json`](vercel.json):
 
-```toml
-[build]
-  base    = "frontend"
-  command = "corepack enable && pnpm install --frozen-lockfile && pnpm build"
-  publish = "dist"
+```json
+{
+  "framework": null,
+  "installCommand": "cd frontend && npx --yes pnpm@10.33.0 install --frozen-lockfile",
+  "buildCommand": "cd frontend && npx --yes pnpm@10.33.0 build",
+  "outputDirectory": "frontend/dist"
+}
 ```
 
-SPA fallback redirect (`/*` → `/index.html`, 200) so direct visits to `/learn/quiz` don't 404. Cache headers: immutable on `/assets/*` (hashed), no-cache on `index.html` and `sw.js` (so the service worker can refresh).
+The repo has no root `package.json` — the only Node package is `frontend/` — so the commands `cd` into it explicitly; without that, Vercel fails with "Failed to locate package.json". pnpm is named by version rather than left to `corepack`, because Vercel picks its own pnpm from a root lockfile that does not exist here and its default is too old to read `lockfileVersion: 9.0`.
 
-Set these env vars in Netlify (Site Settings → Environment variables):
+SPA fallback rewrite (`/(.*)` → `/index.html`) so direct visits to `/learn/quiz` don't 404; Vercel checks the filesystem before rewrites, so hashed assets still serve normally. Cache headers: immutable on `/assets/*` (hashed), no-cache on `index.html` and `sw.js` (so the service worker can refresh).
+
+Set these env vars in Vercel (Project Settings → Environment Variables, for Production and Preview):
 
 | Key | Value |
 |---|---|
 | `VITE_SUPABASE_URL` | `https://shyyxwcbigqkbzkpcrrf.supabase.co` |
 | `VITE_SUPABASE_ANON_KEY` | `sb_publishable_...` |
 
-Vite bakes `VITE_*` vars into the bundle at **build time**. After changing them, trigger a rebuild (push a commit or click "Trigger deploy").
+Vite bakes `VITE_*` vars into the bundle at **build time**. After changing them, trigger a rebuild (push a commit, or use Redeploy on the latest deployment). Without them the build still succeeds and the site loads, but `getEnv()` in [`frontend/src/lib/env.ts`](frontend/src/lib/env.ts) throws as soon as the Supabase client is constructed.
 
 ### Supabase (backend)
 
@@ -824,8 +828,8 @@ az-103 in West EU (Ireland) is the production project. Hosting on the free tier 
 
 Auth provider config (Project Settings → Authentication):
 
-- **Site URL**: `https://tranquil-eclair-165309.netlify.app/`
-- **Redirect URLs**: `https://tranquil-eclair-165309.netlify.app/auth/callback` (add `http://localhost:5173/auth/callback` to test the magic-link flow locally).
+- **Site URL**: `https://azure-dp-700.vercel.app/`
+- **Redirect URLs**: `https://azure-dp-700.vercel.app/auth/callback` (add `http://localhost:5173/auth/callback` to test the magic-link flow locally).
 - **Email provider**: Default (Supabase-hosted). Customize the magic-link email template under Authentication → Email Templates if you want branding.
 
 ### CI
@@ -875,7 +879,7 @@ Only needed if you're drafting new bank items with the CLI.
 STRIPE_SECRET_KEY=sk_test_...
 STRIPE_WEBHOOK_SECRET=whsec_...
 STRIPE_PRICE_ID=price_...
-APP_URL=https://tranquil-eclair-165309.netlify.app
+APP_URL=https://azure-dp-700.vercel.app
 # SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY are auto-populated.
 ```
 
@@ -888,7 +892,7 @@ APP_URL=https://tranquil-eclair-165309.netlify.app
 - **Stripe activation** — see [Stripe integration](#stripe-integration).
 - **More content** — bank is at 150 of 200 target items. Author the rest via [tools/author](#authoring-tool).
 - **OAuth providers** — Google / GitHub sign-in alongside magic link. Supabase Auth supports it; just needs provider config in the dashboard.
-- **Custom domain** — Netlify supports it; haven't pointed one yet.
+- **Custom domain** — Vercel supports it; haven't pointed one yet.
 
 ### Polish (unrealised per the spec tasks.md STATUS sections)
 

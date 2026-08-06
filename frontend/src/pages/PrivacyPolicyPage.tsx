@@ -94,7 +94,7 @@ export default function PrivacyPolicyPage() {
           .
         </p>
         <p className="mt-2">
-          Static frontend assets are served by Netlify (CDN). Netlify
+          Static frontend assets are served by Vercel (CDN). Vercel
           processes IP addresses for routing and DDoS protection.
         </p>
       </Section>
@@ -102,7 +102,7 @@ export default function PrivacyPolicyPage() {
       <Section title="5. Who else can access it">
         <p>
           Only the Service operator(s) and our infrastructure providers
-          (Supabase, Stripe, Netlify) have access to your data, each under
+          (Supabase, Stripe, Vercel) have access to your data, each under
           their own contractual confidentiality and security obligations. We
           never give your data to a third party for marketing, advertising,
           or model training.
