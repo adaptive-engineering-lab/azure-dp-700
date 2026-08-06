@@ -72,7 +72,12 @@ describe('Admin RLS (T040 / spec 013 / FR-001..FR-003)', () => {
       topic: 'admin-rls-test',
       difficulty: 1,
       source: 'bank',
-      content: { front: 'q', back: 'a' },
+      content: {
+        question: 'Admin RLS probe?',
+        options: { A: 'a', B: 'b', C: 'c', D: 'd' },
+        correct: 'A',
+        explanation: 'Fixture row for the admin RLS suite.',
+      },
       content_hash: 'rls-test',
     };
   }

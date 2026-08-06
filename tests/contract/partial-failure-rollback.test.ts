@@ -21,7 +21,16 @@ describe('Partial-failure rollback', () => {
   ];
 
   function buildRow(id: string, opts: { domain: string }) {
-    const content = { front: `Pre-test front ${id}`, back: `Pre-test back ${id}` };
+    // MCQ-shaped content on purpose: the only constraint this batch may trip
+    // is questions_domain_chk. Flashcard-shaped content would fail
+    // questions_content_shape_chk first and the test would pass for the
+    // wrong reason, proving nothing about domain validation.
+    const content = {
+      question: `Rollback probe ${id}?`,
+      options: { A: 'a', B: 'b', C: 'c', D: 'd' },
+      correct: 'A',
+      explanation: 'Fixture row; the batch containing it must roll back.',
+    };
     return {
       id,
       type: 'mcq',
@@ -33,6 +42,7 @@ describe('Partial-failure rollback', () => {
       reviewed_at: '',
       content,
       content_hash: contentHash(content),
+      tags: ['rollback-test'],
     };
   }
 
