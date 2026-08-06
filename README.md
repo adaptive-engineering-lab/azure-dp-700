@@ -786,7 +786,7 @@ pnpm -C tools seed
 ### Working with the cloud (az-103)
 
 ```bash
-supabase link --project-ref shyyxwcbigqkbzkpcrrf
+supabase link --project-ref ghgylswkhcgdvskkywtn
 supabase db push --linked --include-all    # apply migrations to cloud
 # For seeding the cloud, temporarily swap tools/.env.local to point at
 # the cloud URL + secret, run pnpm -C tools seed, then swap back.
@@ -817,7 +817,7 @@ Set these env vars in Vercel (Project Settings → Environment Variables, for Pr
 
 | Key | Value |
 |---|---|
-| `VITE_SUPABASE_URL` | `https://shyyxwcbigqkbzkpcrrf.supabase.co` |
+| `VITE_SUPABASE_URL` | `https://ghgylswkhcgdvskkywtn.supabase.co` |
 | `VITE_SUPABASE_ANON_KEY` | `sb_publishable_...` |
 
 Vite bakes `VITE_*` vars into the bundle at **build time**. After changing them, trigger a rebuild (push a commit, or use Redeploy on the latest deployment). Without them the build still succeeds and the site loads, but `getEnv()` in [`frontend/src/lib/env.ts`](frontend/src/lib/env.ts) throws as soon as the Supabase client is constructed.
