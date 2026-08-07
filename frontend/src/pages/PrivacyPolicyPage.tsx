@@ -7,7 +7,7 @@ export default function PrivacyPolicyPage() {
     <article className="mx-auto w-full max-w-2xl prose-sm">
       <header className="mb-6">
         <h1 className="text-2xl font-bold">Privacy Policy</h1>
-        <p className="mt-1 text-xs text-fg-muted">Last updated: 2026-05-18</p>
+        <p className="mt-1 text-xs text-fg-muted">Last updated: 2026-08-06</p>
       </header>
 
       <Section title="1. Who we are">
@@ -173,7 +173,53 @@ export default function PrivacyPolicyPage() {
         </p>
       </Section>
 
-      <Section title="9. Children">
+      <Section title="9. Usage measurement">
+        <p>
+          We count how many people use the Service, using Vercel Web Analytics.
+          This tells us totals — visits, which pages are opened, rough country
+          and device type. It is how we know whether the Service is worth
+          continuing to build.
+        </p>
+        <p className="mt-2">
+          It is deliberately the least invasive option we could find:
+        </p>
+        <ul className="list-disc pl-5">
+          <li>
+            <strong>No cookies and no identifier</strong> is stored on your
+            device for this. Nothing is added to the list in section 8.
+          </li>
+          <li>
+            <strong>You are not profiled.</strong> Visits are counted in
+            aggregate. We cannot single you out, follow you between visits, or
+            connect a visit to your account.
+          </li>
+          <li>
+            <strong>Your study data is never sent.</strong> Answers, scores,
+            progress, and streaks stay between your device and your account.
+          </li>
+          <li>
+            <strong>No data leaves our hosting provider.</strong> The
+            measurement script is served from our own domain, and Vercel — who
+            already host the Service and therefore already see these requests —
+            process it. No new company receives anything.
+          </li>
+        </ul>
+        <p className="mt-2">
+          To produce a daily visit count, Vercel derives a temporary hash from
+          your IP address, browser, and the date. It cannot be reversed to your
+          IP and is not retained beyond the day, so it cannot link today&rsquo;s
+          visit to tomorrow&rsquo;s. Our lawful basis is legitimate interest in
+          understanding whether the Service is used; you can object using the
+          contact address above.
+        </p>
+        <p className="mt-2">
+          If you would rather not be counted at all, any content blocker or
+          browser &ldquo;do not track&rdquo; setting that blocks analytics
+          requests will stop it, and the Service works exactly as before.
+        </p>
+      </Section>
+
+      <Section title="10. Children">
         <p>
           The Service is intended for users aged 16 and over. We do not
           knowingly collect personal data from anyone under 16. If you
@@ -185,7 +231,7 @@ export default function PrivacyPolicyPage() {
         </p>
       </Section>
 
-      <Section title="10. Changes to this policy">
+      <Section title="11. Changes to this policy">
         <p>
           We may update this policy from time to time. Material changes will
           be announced on the home page or by email at least 14 days before
@@ -194,7 +240,7 @@ export default function PrivacyPolicyPage() {
         </p>
       </Section>
 
-      <Section title="11. Contact">
+      <Section title="12. Contact">
         <p>
           Questions, requests, complaints:{' '}
           <a href={`mailto:${CONTACT_EMAIL}`} className="text-accent underline">

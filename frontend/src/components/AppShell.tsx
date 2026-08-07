@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { NavLink, Outlet } from 'react-router-dom';
 import { ROUTES } from '../lib/routes';
 import { PrivateModeWarning } from './PrivateModeWarning';
@@ -32,6 +33,16 @@ export function AppShell() {
       </main>
       <MigrationPrompt />
       <InstallPrompt />
+      {/*
+       * Vercel Web Analytics: aggregate visitor and pageview counts, covering
+       * signed-in and guest users alike. Cookieless and no persistent
+       * identifier, so it needs no consent banner — see Privacy Policy §8.
+       *
+       * The beacon is served first-party from /_vercel/insights, so no
+       * third-party domain is contacted. It fails silently offline, which
+       * means PWA sessions run from the service-worker cache are not counted.
+       */}
+      <Analytics />
       <nav
         aria-label="Primary"
         className="sticky bottom-0 border-t border-divider bg-bg-elevated"
