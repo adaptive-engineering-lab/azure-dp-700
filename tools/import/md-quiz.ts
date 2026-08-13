@@ -60,10 +60,13 @@ const DOMAIN_PROSE: ReadonlyArray<[RegExp, Domain]> = [
  * actually studies — by module — rather than by exam-objective phrasing.
  *
  * A module usually belongs to several learning paths, so `paths` lists them
- * all (they become tags) and `primaryPath` is the one shown in the UI. The
- * primary is the most specific path for that module's DP-700 role, not
- * necessarily the broadest one it appears in. Path ids match
- * exams.config.json → learningPaths.
+ * all (they become tags) and `primaryPath` is the one it is filed under in the
+ * UI. The primary is the path the module was *studied* in — the one that
+ * explains its `order:` number — so that grouping the picker by path
+ * reproduces the sequence the quiz files were written in. Modules 1-4 were
+ * worked through as lp3 and 5-11 as lp2, which is why the eventhouse module
+ * is filed under lp3 rather than the more obvious lp4, and the introduction
+ * under lp2 rather than lp1. Path ids match exams.config.json → learningPaths.
  */
 interface ModuleInfo {
   title: string;
@@ -90,12 +93,12 @@ const MODULES: Record<string, ModuleInfo> = {
   'query-data-kql-database-microsoft-fabric': {
     title: 'Work with real-time data in an Eventhouse in Microsoft Fabric',
     paths: ['lp3', 'lp4'],
-    primaryPath: 'lp4',
+    primaryPath: 'lp3',
   },
   'introduction-end-analytics-use-microsoft-fabric': {
     title: 'Introduction to end-to-end analytics using Microsoft Fabric',
     paths: ['lp1', 'lp2'],
-    primaryPath: 'lp1',
+    primaryPath: 'lp2',
   },
   'get-started-lakehouses': {
     title: 'Get started with lakehouses in Microsoft Fabric',

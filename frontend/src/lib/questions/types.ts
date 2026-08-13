@@ -77,11 +77,22 @@ export const LEARNING_PATHS: Record<string, string> = {
   lp4: 'Implement Real-Time Intelligence with Microsoft Fabric',
 };
 
-/** Title of the primary learning path for an item, if it declares one. */
-export function primaryLearningPath(tags: string[] | undefined): string | null {
+/**
+ * Id of the primary learning path for an item, if it declares one the
+ * frontend knows a title for. An unrecognised id reads as no path rather than
+ * as a path with a blank name.
+ */
+export function primaryLearningPathId(tags: string[] | undefined): string | null {
   const tag = tags?.find((t) => t.startsWith('primary-path:'));
   if (!tag) return null;
-  return LEARNING_PATHS[tag.slice('primary-path:'.length)] ?? null;
+  const id = tag.slice('primary-path:'.length);
+  return id in LEARNING_PATHS ? id : null;
+}
+
+/** Title of the primary learning path for an item, if it declares one. */
+export function primaryLearningPath(tags: string[] | undefined): string | null {
+  const id = primaryLearningPathId(tags);
+  return id ? LEARNING_PATHS[id]! : null;
 }
 
 export interface McqQuestion extends BaseQuestion {

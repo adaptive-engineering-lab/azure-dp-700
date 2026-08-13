@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../supabase';
+import { LEARNING_PATHS, primaryLearningPathId } from './types';
 import type { Domain, Question } from './types';
 
 export interface ModuleOption {
@@ -13,6 +14,12 @@ export interface ModuleOption {
    * numbered.
    */
   order?: number;
+  /**
+   * The learning path this module is filed under — the one it was studied in,
+   * which is also what makes `order` consecutive within a group. Modules
+   * belong to several paths; this is the single one worth showing.
+   */
+  pathTitle?: string;
 }
 
 /** Read `order:<n>` out of an item's tags. */
@@ -57,11 +64,13 @@ export function useModules(type: Question['type']) {
               hit.count += 1;
               continue;
             }
+            const pathId = primaryLearningPathId(row.tags ?? undefined);
             tally.set(row.topic, {
               topic: row.topic,
               domain: row.domain,
               count: 1,
               order: readOrder(row.tags),
+              pathTitle: pathId ? LEARNING_PATHS[pathId] : undefined,
             });
           }
           // Study order first; unnumbered modules fall to the end, alphabetical.

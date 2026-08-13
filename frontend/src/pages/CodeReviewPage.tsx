@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useModules } from '../lib/questions/useModules';
 import type { CodeReviewSubMode } from '../lib/questions/types';
@@ -105,11 +105,19 @@ export default function CodeReviewPage() {
 
       <Fieldset legend="Module">
         <div className="grid grid-cols-1 gap-2">
-          {modules.map((m) => (
-            <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)} align="left">
-              {m.order != null && <span className="opacity-60">{m.order}. </span>}
-              {m.topic} <span className="opacity-70">({m.count})</span>
-            </Pill>
+          {modules.map((m, i) => (
+            // See QuizSelectPage: a heading each time the learning path changes.
+            <Fragment key={m.topic}>
+              {m.pathTitle && m.pathTitle !== modules[i - 1]?.pathTitle && (
+                <h3 className="mt-3 px-1 text-xs font-semibold uppercase tracking-wide text-fg-muted first:mt-0">
+                  {m.pathTitle}
+                </h3>
+              )}
+              <Pill active={topic === m.topic} onClick={() => setTopic(m.topic)} align="left">
+                {m.order != null && <span className="opacity-60">{m.order}. </span>}
+                {m.topic} <span className="opacity-70">({m.count})</span>
+              </Pill>
+            </Fragment>
           ))}
           {!modulesLoading && modules.length === 0 && (
             <p className="text-sm text-fg-muted">No code-review items in the bank yet.</p>

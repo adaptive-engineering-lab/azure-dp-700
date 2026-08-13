@@ -1992,7 +1992,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "What is automatically created when you create an Eventhouse in Microsoft Fabric?",
@@ -2021,7 +2021,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "What do database shortcuts in an Eventhouse allow you to do?",
@@ -2050,7 +2050,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "What does enabling OneLake availability for a KQL database or table do?",
@@ -2079,7 +2079,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "Which query languages can be used within a KQL queryset?",
@@ -2108,7 +2108,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "In KQL syntax, what character is used to pass data from one operation to the next?",
@@ -2137,7 +2137,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "Is KQL case-sensitive?",
@@ -2166,7 +2166,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "Which operator would you use to retrieve a small sample of rows from a large table for exploration?",
@@ -2195,7 +2195,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "Which operator is used to select specific columns from a table, reducing the data processed downstream?",
@@ -2224,7 +2224,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "According to the module's optimization guidance, how should filters be ordered in a query for best performance?",
@@ -2253,7 +2253,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "When performing a join in KQL, which table should be placed first for best performance?",
@@ -2282,7 +2282,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "What are materialized views designed to solve?",
@@ -2311,7 +2311,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "What are the two parts that make up a materialized view's automatic update mechanism?",
@@ -2340,7 +2340,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "True or false? A stored function in KQL can accept parameters, allowing the same query logic to be reused with different values.",
@@ -2367,7 +2367,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "True or false? Querying a materialized view always returns only the precomputed data as of the last background update, ignoring any newer data.",
@@ -2394,7 +2394,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "True or false? KQL databases can ingest data from sources like Azure Event Hubs, Fabric Eventstream, and Apache Kafka connectors.",
@@ -2421,7 +2421,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "True or false? Reducing the number of columns selected (projecting early) has no effect on KQL query performance. ---",
@@ -2448,7 +2448,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "You have a TaxiTrips table with billions of rows and a VendorInfo table with only a handful of rows. You need to join them to enrich trip data with vendor names. Which query structure follows the module's optimization guidance?",
@@ -2477,7 +2477,7 @@
       "module:query-data-kql-database-microsoft-fabric",
       "path:lp3",
       "path:lp4",
-      "primary-path:lp4"
+      "primary-path:lp3"
     ],
     "content": {
       "question": "Your team repeatedly writes the same filtering logic (trips with at least a certain number of passengers) across many different queries, and you want to ensure everyone applies this logic consistently. What KQL feature best fits this need?",
@@ -2506,7 +2506,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "What is OneLake in Microsoft Fabric?",
@@ -2535,7 +2535,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "What underlying Azure storage technology is OneLake built on?",
@@ -2564,7 +2564,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "What format do Fabric's analytical engines use to write tabular data in OneLake?",
@@ -2593,7 +2593,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "What is the purpose of a \"shortcut\" in OneLake?",
@@ -2622,7 +2622,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "In Fabric, what is a workspace primarily used for?",
@@ -2651,7 +2651,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "Where is Fabric administration centralized?",
@@ -2680,7 +2680,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "What does the OneLake catalog help you do?",
@@ -2709,7 +2709,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "Which role can enable Microsoft Fabric for an organization via implicit, organization-wide permissions?",
@@ -2738,7 +2738,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "Which of the four workspace-level roles would you assign to someone who needs to view items but not modify them?",
@@ -2767,7 +2767,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "According to the module, which persona curates data assets in lakehouses, ensures data quality, and creates semantic models to enable self-service analytics?",
@@ -2796,7 +2796,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "Which Fabric capability lets data analysts connect directly to OneLake data, reducing the need for downstream transformations?",
@@ -2825,7 +2825,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "What is the core item in the Fabric IQ workload that defines business concepts, relationships, and rules for AI agents?",
@@ -2854,7 +2854,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "True or false? Workspace-level roles (admin, contributor, member, viewer) apply to all items in a workspace, while item-level permissions allow more granular access control.",
@@ -2881,7 +2881,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "True or false? Copilot in Microsoft Fabric must be manually enabled by an administrator before any user can access it — it is disabled by default.",
@@ -2908,7 +2908,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "True or false? Fabric IQ, Foundry IQ, and Work IQ are mutually exclusive — an organization can only use one at a time.",
@@ -2935,7 +2935,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "True or false? The OneLake catalog only shows items that have been shared with the signed-in user. ---",
@@ -2962,7 +2962,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "A citizen developer in the marketing department wants to quickly build a report from existing curated data without writing code or relying on a data engineer. Which combination of Fabric capabilities best supports this?",
@@ -2991,7 +2991,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
-      "primary-path:lp1"
+      "primary-path:lp2"
     ],
     "content": {
       "question": "Your organization wants an AI agent that can answer natural-language questions about sales data using consistent business terminology (e.g., \"revenue,\" \"customer churn\") rather than raw table and column names. Which Fabric capability is purpose-built for this?",
