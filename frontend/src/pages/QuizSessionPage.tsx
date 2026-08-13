@@ -30,7 +30,6 @@ interface Answer {
 export default function QuizSessionPage() {
   const [params] = useSearchParams();
   const topic = params.get('topic');
-  const learningPath = params.get('path');
   const count = Number(params.get('count') ?? 10);
 
   const [questions, setQuestions] = useState<McqQuestion[] | null>(null);
@@ -50,7 +49,7 @@ export default function QuizSessionPage() {
 
   useEffect(() => {
     let cancelled = false;
-    fetchQuestions({ type: 'mcq', topic: topic ?? undefined, learningPath: learningPath ?? undefined })
+    fetchQuestions({ type: 'mcq', topic: topic ?? undefined })
       .then((all) => {
         if (cancelled) return;
         if (all.length === 0) {
@@ -68,7 +67,7 @@ export default function QuizSessionPage() {
     return () => {
       cancelled = true;
     };
-  }, [topic, learningPath, count]);
+  }, [topic, count]);
 
   if (error) {
     return (

@@ -15,18 +15,11 @@ export async function fetchQuestions(filter: {
   type: Question['type'];
   domain?: Domain;
   topic?: string;
-  /**
-   * A learning-path id (`lp2`). Matches every module in the path, via the
-   * `path:<id>` tags the importer writes — so it spans modules the way `topic`
-   * spans a single one.
-   */
-  learningPath?: string;
   difficulty?: 1 | 2 | 3;
 }): Promise<Question[]> {
   let query = supabase().from('questions').select('id, type, domain, topic, difficulty, content, tags').eq('type', filter.type);
   if (filter.domain) query = query.eq('domain', filter.domain);
   if (filter.topic) query = query.eq('topic', filter.topic);
-  if (filter.learningPath) query = query.contains('tags', [`path:${filter.learningPath}`]);
   if (filter.difficulty) query = query.eq('difficulty', filter.difficulty);
   const { data, error } = await query;
   if (error) throw new Error(`fetchQuestions: ${error.message}`);

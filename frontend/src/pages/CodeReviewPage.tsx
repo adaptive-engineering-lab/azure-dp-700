@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useModules } from '../lib/questions/useModules';
-import { selectionParams } from '../lib/questions/selection';
-import type { Selection } from '../lib/questions/selection';
 import type { CodeReviewSubMode } from '../lib/questions/types';
 import { ROUTES } from '../lib/routes';
 import { supabase } from '../lib/supabase';
@@ -31,8 +29,8 @@ export default function CodeReviewPage() {
   const navigate = useNavigate();
   const [subMode, setSubMode] = useState<CodeReviewSubMode>('find-the-bug');
   const [count, setCount] = useState<5 | 10 | 15>(5);
-  const { modules, paths, loading: modulesLoading } = useModules('code-review');
-  const [selection, setSelection] = useState<Selection>({ kind: 'all' });
+  const { modules, loading: modulesLoading } = useModules('code-review');
+  const [topic, setTopic] = useState<string>('all');
   const [poolSize, setPoolSize] = useState<number | null>(null);
 
   useEffect(() => {
@@ -41,8 +39,7 @@ export default function CodeReviewPage() {
       .from('questions')
       .select('id, content', { count: 'exact' })
       .eq('type', 'code-review');
-    if (selection.kind === 'module') query = query.eq('topic', selection.topic);
-    if (selection.kind === 'path') query = query.contains('tags', [`path:${selection.id}`]);
+    if (topic !== 'all') query = query.eq('topic', topic);
     query.then(({ data, count: n }) => {
       if (cancelled) return;
       if (!data) {
@@ -57,7 +54,7 @@ export default function CodeReviewPage() {
     return () => {
       cancelled = true;
     };
-  }, [selection, subMode]);
+  }, [topic, subMode]);
 
   const willDeliver = poolSize === null ? null : Math.min(poolSize, count);
 
@@ -66,7 +63,7 @@ export default function CodeReviewPage() {
       sub_mode: subMode,
       count: String(count),
     });
-    for (const [k, v] of selectionParams(selection)) p.set(k, v);
+    if (topic !== 'all') p.set('topic', topic);
     navigate(`${ROUTES.codeReview}/session?${p.toString()}`);
   }
 
@@ -109,12 +106,7 @@ export default function CodeReviewPage() {
       <Fieldset legend="Module">
         <div className="grid grid-cols-1 gap-2">
           {modules.map((m) => (
-            <Pill
-              key={m.topic}
-              active={selection.kind === 'module' && selection.topic === m.topic}
-              onClick={() => setSelection({ kind: 'module', topic: m.topic })}
-              align="left"
-            >
+            <Pill key={m.topic} active={topic === m.topic} onClick={() => setTopic(m.topic)} align="left">
               {m.order != null && <span className="opacity-60">{m.order}. </span>}
               {m.topic} <span className="opacity-70">({m.count})</span>
             </Pill>
@@ -124,34 +116,11 @@ export default function CodeReviewPage() {
           )}
           {/* Rendered after the map, not as part of it, so it stays last as
               modules are added. */}
-          <Pill active={selection.kind === 'all'} onClick={() => setSelection({ kind: 'all' })} align="left">
+          <Pill active={topic === 'all'} onClick={() => setTopic('all')} align="left">
             Any module
           </Pill>
         </div>
       </Fieldset>
-
-      {paths.length > 0 && (
-        <Fieldset legend="Or a whole learning path">
-          <div className="grid grid-cols-1 gap-2">
-            {paths.map((p) => (
-              <Pill
-                key={p.id}
-                active={selection.kind === 'path' && selection.id === p.id}
-                onClick={() => setSelection({ kind: 'path', id: p.id })}
-                align="left"
-              >
-                {p.title}{' '}
-                <span className="opacity-70">
-                  ({p.moduleCount} module{p.moduleCount === 1 ? '' : 's'}, {p.count})
-                </span>
-              </Pill>
-            ))}
-          </div>
-          <p className="mt-2 px-1 text-xs text-fg-muted">
-            Paths share modules, so an item can appear under more than one.
-          </p>
-        </Fieldset>
-      )}
 
       <Fieldset legend="Number of items">
         <div className="flex gap-2">

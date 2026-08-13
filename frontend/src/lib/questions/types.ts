@@ -84,23 +84,6 @@ export function primaryLearningPath(tags: string[] | undefined): string | null {
   return LEARNING_PATHS[tag.slice('primary-path:'.length)] ?? null;
 }
 
-/**
- * Ids of every learning path an item's module belongs to — a module usually
- * appears in more than one.
- *
- * Filtering through LEARNING_PATHS rather than returning the raw tags does two
- * jobs: ids the frontend has no title for are dropped instead of rendering as
- * blanks, and the result comes back in a fixed order regardless of how the
- * importer happened to write the tags.
- */
-export function learningPathIds(tags: string[] | undefined): string[] {
-  if (!tags) return [];
-  const declared = new Set(
-    tags.filter((t) => t.startsWith('path:')).map((t) => t.slice('path:'.length)),
-  );
-  return Object.keys(LEARNING_PATHS).filter((id) => declared.has(id));
-}
-
 export interface McqQuestion extends BaseQuestion {
   type: 'mcq';
   content: McqContent;
