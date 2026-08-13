@@ -12,7 +12,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -42,7 +41,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -72,7 +70,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -102,7 +99,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -132,7 +128,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -162,7 +157,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -192,7 +186,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -222,7 +215,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -252,7 +244,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -282,7 +273,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -312,7 +302,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -340,7 +329,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -368,7 +356,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -396,7 +383,6 @@
       "level-1",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -424,7 +410,6 @@
       "level-2",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -454,7 +439,6 @@
       "level-2",
       "order:1",
       "module:use-dataflow-gen-2-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -472,6 +456,558 @@
     }
   },
   {
+    "id": "407df25c-c889-51ea-b262-12e97cd1cd88",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What is the primary purpose of the bronze layer in a medallion architecture?",
+      "options": {
+        "A": "To model data as a star schema for reporting",
+        "B": "To serve as the raw landing zone for data, unmodified from the source",
+        "C": "To apply row-level security",
+        "D": "To store only aggregated summary data"
+      },
+      "correct": "B",
+      "explanation": "Bronze stores structured, semi-structured, or unstructured data exactly as it arrives — no changes, no cleanup, intentionally."
+    }
+  },
+  {
+    "id": "84472de9-a8c5-50ff-bc24-819cf83e7abb",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which layer is typically modeled as a star schema for business consumption?",
+      "options": {
+        "A": "Bronze",
+        "B": "Silver",
+        "C": "Gold",
+        "D": "Landing zone"
+      },
+      "correct": "C",
+      "explanation": "Gold is where data is modeled for business use, typically as a star schema with facts and dimensions, ready for reports, models, and dashboards."
+    }
+  },
+  {
+    "id": "7a721365-e1b8-5207-a2ae-bf10e795983e",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What kind of activities are typical in the silver layer?",
+      "options": {
+        "A": "Raw ingestion only, with no changes",
+        "B": "Combining/merging sources and enforcing data quality (removing nulls, deduplication)",
+        "C": "Building Power BI reports directly",
+        "D": "Assigning workspace roles"
+      },
+      "correct": "B",
+      "explanation": "Silver focuses on validation and refinement — standardizing formats, deduplicating, and joining bronze sources into one consistent, integrated dataset."
+    }
+  },
+  {
+    "id": "64165a10-999f-5f98-b883-2e853b1bfcd3",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Why is bronze layer data kept in its original, unmodified format?",
+      "options": {
+        "A": "To reduce storage costs",
+        "B": "So you can reprocess from bronze if a downstream transformation goes wrong, without returning to the source system",
+        "C": "Because Fabric doesn't allow transformation of raw files",
+        "D": "To comply with GDPR automatically"
+      },
+      "correct": "B",
+      "explanation": "Keeping bronze raw and untouched is a deliberate safety net — it's your recovery point if something breaks further downstream."
+    }
+  },
+  {
+    "id": "4aea46a6-c2a0-5172-b868-e438561e6cc9",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Is the three-layer bronze/silver/gold pattern a strict, fixed requirement?",
+      "options": {
+        "A": "Yes, exactly three layers must always be used",
+        "B": "No — it's a starting point; you can add layers like a landing zone or domain-specific layers as needed",
+        "C": "No, only two layers are ever needed",
+        "D": "Yes, and the layer names must be bronze/silver/gold exactly"
+      },
+      "correct": "B",
+      "explanation": "The module is explicit that the names and number of layers are flexible — what matters is that each layer has a clear purpose and audience."
+    }
+  },
+  {
+    "id": "4b66c15a-b13b-5a59-89a7-f22bcdbe834c",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "When structuring a lakehouse for medallion architecture, what does using a single lakehouse with schemas (bronze/silver/gold) offer compared to separate lakehouses/workspaces?",
+      "options": {
+        "A": "Stronger regulatory isolation",
+        "B": "Simpler management, better suited to smaller teams or early-stage projects",
+        "C": "The ability to assign different capacities per layer",
+        "D": "Mandatory compliance certification"
+      },
+      "correct": "B",
+      "explanation": "A single lakehouse with bronze/silver/gold schemas trades some isolation for lower management overhead — a good fit when you don't yet need separate permissions or capacity per layer."
+    }
+  },
+  {
+    "id": "439b5bc1-2fb9-58ba-b452-5f8a0ea9f758",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which approach provides the strongest isolation between medallion layers, appropriate for regulatory or compliance scenarios?",
+      "options": {
+        "A": "Single lakehouse with schemas",
+        "B": "Separate lakehouses only",
+        "C": "Separate workspaces per layer",
+        "D": "OneLake shortcuts"
+      },
+      "correct": "C",
+      "explanation": "This gives each layer its own capacity, role assignments, and clear ownership boundary — the strongest isolation option, required for regulatory or compliance scenarios, at the cost of more workspaces to manage."
+    }
+  },
+  {
+    "id": "11c780f9-884e-5113-9b45-5cfb0aaa6adb",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "If your source data already lives in cloud storage like OneLake, ADLS Gen2, Amazon S3, or Google Cloud Storage, what's the recommended way to bring it into the bronze layer?",
+      "options": {
+        "A": "Always write a custom pipeline",
+        "B": "Use a OneLake shortcut to reference it without copying",
+        "C": "Manually download and re-upload the files",
+        "D": "Convert it to Delta format before ingestion"
+      },
+      "correct": "B",
+      "explanation": "Shortcuts keep bronze in sync with the source automatically, with no pipeline or ingestion code needed — but only when the source is already in supported cloud storage. Other sources still need pipelines, dataflows, or notebooks."
+    }
+  },
+  {
+    "id": "3c93fb49-dff9-53b5-b716-e572ddfab006",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which silver-layer transformation tool lets you write a SQL query that Fabric automatically keeps up to date — updating only changed rows as new bronze data arrives — without scheduling anything?",
+      "options": {
+        "A": "Dataflows Gen2",
+        "B": "A materialized lake view",
+        "C": "A regular SQL view",
+        "D": "Power BI semantic model"
+      },
+      "correct": "B",
+      "explanation": "You describe the target table with a SQL query, and Fabric creates and maintains it — updating only changed rows as new bronze data arrives, with no manual scheduling."
+    }
+  },
+  {
+    "id": "da1fc8a4-e267-5ba7-8b1e-cafd0cce5b85",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What is the key difference between a materialized lake view and a regular SQL view?",
+      "options": {
+        "A": "A regular view saves results as a real table; a materialized lake view reruns its query every time",
+        "B": "A materialized lake view saves the results as a real table and updates incrementally; a regular view reruns its query every time it's queried",
+        "C": "There is no functional difference between them",
+        "D": "Materialized lake views only work on the gold layer"
+      },
+      "correct": "B",
+      "explanation": "This distinction is the core value proposition: materialized lake views trade some flexibility for performance and automatic freshness, powered by Delta's change tracking."
+    }
+  },
+  {
+    "id": "f1d6ba16-ab4e-55c8-b979-b7fd828881ae",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What is the tradeoff of using a materialized lake view for a silver-layer transformation?",
+      "options": {
+        "A": "It cannot handle deduplication",
+        "B": "The transformation must be expressible as SQL; Python logic requires a notebook instead",
+        "C": "It only works with unstructured data",
+        "D": "It requires a separate workspace"
+      },
+      "correct": "B",
+      "explanation": "This is the explicit tradeoff called out in the module — materialized lake views are SQL-only, so anything needing Python-based logic has to go through a notebook."
+    }
+  },
+  {
+    "id": "89179516-5a5e-5c53-ad07-3a068590e643",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which silver/gold transformation tool is best suited for large datasets, complex logic, custom calculations, or API calls that a dataflow can't handle?",
+      "options": {
+        "A": "Notebooks",
+        "B": "Dataflows Gen2",
+        "C": "Materialized lake views only",
+        "D": "SQL analytics endpoint"
+      },
+      "correct": "A",
+      "explanation": "They give full control using Python or SQL, making them the right tool for large datasets, complex logic, custom calculations, or API calls — things dataflows and materialized lake views can't handle."
+    }
+  },
+  {
+    "id": "0191d3c3-c0f0-50f9-8805-136844c281bc",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "How does a data science team's gold layer commonly differ in shape from a finance team's gold layer, even when built from the same silver data?",
+      "options": {
+        "A": "They can't differ — gold layer shape is fixed once defined",
+        "B": "A data science team might want a flat, wide table for feature engineering, while finance might want pre-aggregated summaries",
+        "C": "Data science teams cannot access the gold layer",
+        "D": "Finance teams always require a star schema, and data science teams never do"
+      },
+      "correct": "B",
+      "explanation": "The module explicitly notes you can have multiple gold layers from the same silver data, each modeled differently for different audiences' needs."
+    }
+  },
+  {
+    "id": "ed6a902d-bd63-54dd-b1f8-e836be306069",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Besides a lakehouse, what other Fabric item can serve as the gold layer for teams that primarily work in SQL?",
+      "options": {
+        "A": "An Eventhouse",
+        "B": "A Fabric Data Warehouse",
+        "C": "A KQL database",
+        "D": "A Dataflow Gen1"
+      },
+      "correct": "B",
+      "explanation": "For SQL-first teams, a Data Warehouse can serve as the gold layer instead of a lakehouse — same layer purpose, different underlying item type."
+    }
+  },
+  {
+    "id": "68ed8100-8f80-5550-a067-7054c18b91e1",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? The SQL analytics endpoint operates in read-only mode over lakehouse Delta tables.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The SQL analytics endpoint gives direct T-SQL access to gold layer data, but strictly in read-only mode — you can query, create views/functions, and apply SQL security, but not modify the underlying Delta tables."
+    }
+  },
+  {
+    "id": "b6e4776f-1c13-59c0-99a2-3a1306cee412",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? Power BI semantic models connecting to the gold layer via Direct Lake mode require a separate manual refresh step to show current data.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Direct Lake reads directly from the Delta files in OneLake instead of importing a copy, so reports always reflect current data — no separate refresh step required."
+    }
+  },
+  {
+    "id": "4e9c141c-d712-52c0-9d58-fcd963b3df7d",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? Every Fabric lakehouse comes with a built-in DefaultReader role that grants all ReadAll users access to all data by default.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Every lakehouse comes with a built-in DefaultReader role granting all ReadAll users access to all data by default; you have to modify or delete it if you want to restrict that default access."
+    }
+  },
+  {
+    "id": "9b66eb31-bbfb-551f-9c6a-04a48ed0f59c",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-1",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? OneLake data access roles require putting each medallion layer in a separate workspace in order to function. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "OneLake data access roles are specifically the alternative to separate workspaces — they give granular, table/folder-scoped control within a single lakehouse, exactly for teams sharing a workspace who need different access per layer."
+    }
+  },
+  {
+    "id": "4b851925-46c9-556f-b9b3-264cb46555ec",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-2",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Your organization shares a single workspace across teams, but you need gold layer consumers to query gold tables while being blocked from seeing bronze or silver data — without creating separate workspaces. What should you configure?",
+      "options": {
+        "A": "Workspace-level Admin role for gold consumers",
+        "B": "A OneLake data access role scoped to the gold tables/folders",
+        "C": "A materialized lake view",
+        "D": "A deployment pipeline"
+      },
+      "correct": "B",
+      "explanation": "This is exactly the described use case: granular per-layer access within one shared workspace, without the overhead of separate workspaces. A workspace-level Admin role (A) would be far too broad and wouldn't restrict visibility by layer at all."
+    }
+  },
+  {
+    "id": "ed0216b3-6cf6-5f23-9f76-ad5641e3e367",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Organize a Fabric lakehouse using medallion architecture design",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "organize-a-fabric-lakehouse-using-medallion-architecture-design",
+      "level-2",
+      "order:11",
+      "module:describe-medallion-architecture",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "A transformation change to your silver layer notebook accidentally corrupts downstream data, and you need to quickly revert to the previous known-good version of that notebook. What Fabric capability directly supports this recovery scenario?",
+      "options": {
+        "A": "OneLake shortcuts",
+        "B": "Git integration, allowing you to revert to a previous commit",
+        "C": "The DefaultReader role",
+        "D": "A Power BI semantic model"
+      },
+      "correct": "B",
+      "explanation": "Fabric's Git integration versions notebooks, pipelines, and lakehouse definitions together, so a bad transformation change can be rolled back to the last known-good commit — exactly the recovery scenario described."
+    }
+  },
+  {
     "id": "716664af-cc2a-5a90-a0b4-c83042a2922b",
     "type": "mcq",
     "domain": "implement-manage",
@@ -484,7 +1020,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -514,7 +1049,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -544,7 +1078,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -574,7 +1107,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -604,7 +1136,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -634,7 +1165,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -664,7 +1194,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -694,7 +1223,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -724,7 +1252,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -754,7 +1281,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -784,7 +1310,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -812,7 +1337,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -840,7 +1364,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -868,7 +1391,6 @@
       "level-1",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -896,7 +1418,6 @@
       "level-2",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -926,7 +1447,6 @@
       "level-2",
       "order:2",
       "module:use-data-factory-pipelines-fabric",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -956,7 +1476,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -986,7 +1505,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1016,7 +1534,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1046,7 +1563,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1076,7 +1592,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1106,7 +1621,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1136,7 +1650,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1166,7 +1679,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1196,7 +1708,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1226,7 +1737,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1256,7 +1766,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1286,7 +1795,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1316,7 +1824,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1344,7 +1851,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1372,7 +1878,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1400,7 +1905,6 @@
       "level-1",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1428,7 +1932,6 @@
       "level-2",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1458,7 +1961,6 @@
       "level-2",
       "order:3",
       "module:use-apache-spark-work-files-lakehouse",
-      "path:lp1",
       "path:lp2",
       "path:lp3",
       "primary-path:lp3"
@@ -1479,12 +1981,12 @@
     "id": "981c6d49-4f56-54fa-8a51-84ee29d9c7a0",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1508,12 +2010,12 @@
     "id": "af05b5cf-1f91-5cb3-b1c6-8e7edb71859f",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1537,12 +2039,12 @@
     "id": "8a6b2581-db20-550a-8153-a95d9a67330e",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1566,12 +2068,12 @@
     "id": "5ef136ce-fd67-53e7-a427-d03b29bab737",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1595,12 +2097,12 @@
     "id": "0ae4900b-cc84-5187-85c3-c4c649603b4f",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1624,12 +2126,12 @@
     "id": "2e8562de-8e6f-5f83-abf7-566cd13793de",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1653,12 +2155,12 @@
     "id": "a8a7cc89-4aef-517a-8e84-acd27e7ee23d",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1682,12 +2184,12 @@
     "id": "68e807fa-414d-5401-b024-808f318f2ead",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1711,12 +2213,12 @@
     "id": "59f281dc-1dba-5d18-8669-56ca1efc91f9",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1740,12 +2242,12 @@
     "id": "44dd56cc-84e2-5828-81b8-beb94052ff25",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1769,12 +2271,12 @@
     "id": "3cce656a-31c2-5637-a5b2-3a356ff486d7",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1798,12 +2300,12 @@
     "id": "f71330be-e953-5263-8ea6-fb00a9376831",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1827,12 +2329,12 @@
     "id": "91fc62fe-6a50-5ac8-b41e-1d4265184661",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1854,12 +2356,12 @@
     "id": "32e58dd6-352e-58e9-97e0-d7e54f48c837",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1881,12 +2383,12 @@
     "id": "b3416aad-2656-5046-92db-83d3676cda20",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1908,12 +2410,12 @@
     "id": "2cdbb524-b006-5ae0-bee1-2d664ade48e5",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-1",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1935,12 +2437,12 @@
     "id": "e2f0b3e6-7f98-5a77-8203-2cb0ed51e309",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 2,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-2",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -1964,12 +2466,12 @@
     "id": "25134dd9-5e0a-5bf4-a44b-b613a77dd213",
     "type": "mcq",
     "domain": "ingest-transform",
-    "topic": "Work with real-time data in a Microsoft Fabric eventhouse",
+    "topic": "Work with real-time data in an Eventhouse in Microsoft Fabric",
     "difficulty": 2,
     "source": "bank",
     "tags": [
       "ingest-transform",
-      "work-with-real-time-data-in-a-microsoft-fabric-eventhouse",
+      "work-with-real-time-data-in-an-eventhouse-in-microsoft-fabric",
       "level-2",
       "order:4",
       "module:query-data-kql-database-microsoft-fabric",
@@ -2501,6 +3003,1072 @@
       },
       "correct": "B",
       "explanation": "Data agents translate natural-language questions into structured queries, and when connected to an ontology in Fabric IQ, they understand and use business concepts (like \"revenue\") rather than needing users to know raw schema names."
+    }
+  },
+  {
+    "id": "28f4e8cd-c382-5aa6-9dad-94b52052da10",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What are the two main storage areas within a lakehouse?",
+      "options": {
+        "A": "Tables and Views",
+        "B": "Tables and Files",
+        "C": "Schemas and Shortcuts",
+        "D": "Delta and Parquet"
+      },
+      "correct": "B",
+      "explanation": "These are the two main storage areas — Tables for structured, queryable Delta data, Files for raw or semi-structured data in native format."
+    }
+  },
+  {
+    "id": "4a5228c7-2ef8-55f3-ae75-8d341f99536f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which lakehouse folder contains data that supports SQL queries, enforces schemas, and supports ACID transactions?",
+      "options": {
+        "A": "Files",
+        "B": "Tables",
+        "C": "Shortcuts",
+        "D": "Views"
+      },
+      "correct": "B",
+      "explanation": "The Tables folder holds Delta Lake tables, which support SQL queries via the SQL analytics endpoint, enforce schemas, support ACID transactions, and can be accessed in Power BI."
+    }
+  },
+  {
+    "id": "0a04d64b-dc15-5a69-8f34-6d484760c12a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What happens to data in the Files folder of a lakehouse?",
+      "options": {
+        "A": "It automatically becomes a Delta table",
+        "B": "It stores raw or semi-structured data in native format without an enforced schema",
+        "C": "It's automatically optimized and maintained like a Delta table",
+        "D": "It can be queried directly via SQL with full write access"
+      },
+      "correct": "B",
+      "explanation": "Files support any format (CSV, JSON, Parquet, images, documents) and provide flexibility for staging before transformation into tables — they don't enforce schema or support direct SQL queries."
+    }
+  },
+  {
+    "id": "09f428f9-2e85-59fb-9f76-1a2e2e2ac0e3",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What does each Delta table consist of, according to the module?",
+      "options": {
+        "A": "Only Parquet data files",
+        "B": "Parquet data files plus a transaction log that tracks all changes",
+        "C": "A CSV file and a JSON manifest",
+        "D": "A materialized view and a stored function"
+      },
+      "correct": "B",
+      "explanation": "This combination is what enables both batch and streaming workloads to reliably work with the same underlying data."
+    }
+  },
+  {
+    "id": "ebbe3f4c-d205-56bc-99c3-d61db0ae59df",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which Delta Lake feature lets you query previous versions of your data or roll back changes?",
+      "options": {
+        "A": "Schema enforcement",
+        "B": "ACID transactions",
+        "C": "Time travel",
+        "D": "Efficient updates and deletes"
+      },
+      "correct": "C",
+      "explanation": "Delta Lake maintains a transaction log specifically so you can query previous versions of the data or roll back changes when needed."
+    }
+  },
+  {
+    "id": "b88f6f9d-912c-5e62-ae55-4394e12136cd",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "When you create a new lakehouse, what happens with schemas by default?",
+      "options": {
+        "A": "Schemas are disabled until manually enabled",
+        "B": "Schemas are enabled by default, with a \"dbo\" schema created automatically",
+        "C": "You must create at least 3 schemas before ingesting data",
+        "D": "Schemas only apply to the Files folder"
+      },
+      "correct": "B",
+      "explanation": "You can then create additional schemas (e.g., sales, marketing, hr) to organize tables by business domain as the lakehouse grows."
+    }
+  },
+  {
+    "id": "b46985eb-e42e-58cd-8589-5d325f306899",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What four-part namespace format enables cross-workspace queries in a schema-enabled lakehouse?",
+      "options": {
+        "A": "server.database.schema.table",
+        "B": "workspace.lakehouse.schema.table",
+        "C": "tenant.workspace.lakehouse.table",
+        "D": "catalog.schema.table.column"
+      },
+      "correct": "B",
+      "explanation": "This four-part namespace is what enables cross-workspace queries in schema-enabled lakehouses, and it's also used for cross-workspace queries from Spark notebooks."
+    }
+  },
+  {
+    "id": "80b10395-596d-5800-baf3-2530fdce0b10",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which lakehouse working mode lets you query Delta tables with T-SQL but is strictly read-only regarding the underlying data?",
+      "options": {
+        "A": "Lakehouse explorer",
+        "B": "SQL analytics endpoint",
+        "C": "Notebook mode",
+        "D": "Dataflow Gen2 editor"
+      },
+      "correct": "B",
+      "explanation": "It provides read-only T-SQL access — you can create views, functions, and apply SQL security, but you can't modify the underlying data. (Lakehouse explorer, by contrast, does let you manage data and make changes.)"
+    }
+  },
+  {
+    "id": "bc6dd781-daa6-5633-9abf-c93c2f41f388",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which no-code ingestion option lets you select a file in the lakehouse explorer and create a Delta table directly, supporting Parquet and CSV?",
+      "options": {
+        "A": "Upload",
+        "B": "Load to Table",
+        "C": "Dataflows Gen2",
+        "D": "Shortcuts"
+      },
+      "correct": "B",
+      "explanation": "This no-code option creates a Delta table directly from a selected file/folder, supporting Parquet and CSV, with the ability to append or overwrite data in new or existing tables."
+    }
+  },
+  {
+    "id": "ddb01af3-7979-519a-9c02-1d5932025cee",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What is a \"schema shortcut\" in a lakehouse?",
+      "options": {
+        "A": "A shortcut that maps an entire schema to a folder of Delta tables in another lakehouse or ADLS Gen2",
+        "B": "A saved SQL query template",
+        "C": "A shortcut available only for CSV files",
+        "D": "A method to rename columns automatically"
+      },
+      "correct": "A",
+      "explanation": "All the referenced tables then appear as local tables within that schema — a bulk version of a regular shortcut."
+    }
+  },
+  {
+    "id": "9765924c-0a43-5042-9335-f10d330abc41",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "In Spark notebooks, which approach uses Python methods like df.select() and df.filter() to manipulate data?",
+      "options": {
+        "A": "Spark SQL",
+        "B": "PySpark DataFrame API",
+        "C": "T-SQL",
+        "D": "KQL"
+      },
+      "correct": "B",
+      "explanation": "Methods like df.select() and df.filter() are Python/DataFrame API calls. (Spark SQL instead uses SQL syntax like SELECT FROM schema.table within a notebook cell.)*"
+    }
+  },
+  {
+    "id": "546ec432-f3f1-5962-9d62-cfa9b8c7101e",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "By default, what mode does Power BI use when building reports on a lakehouse semantic model?",
+      "options": {
+        "A": "Import mode",
+        "B": "DirectQuery mode",
+        "C": "Direct Lake mode",
+        "D": "Composite mode"
+      },
+      "correct": "C",
+      "explanation": "Power BI defaults to Direct Lake for lakehouse semantic models, reading data directly from Delta Lake Parquet files without importing or copying it — fast performance while always reflecting current data."
+    }
+  },
+  {
+    "id": "51e073b9-ff82-5d0b-a6f2-0b5ee853a5c0",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? The SQL analytics endpoint is automatically created with every lakehouse.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The SQL analytics endpoint is automatically created alongside every lakehouse — no separate setup step required."
+    }
+  },
+  {
+    "id": "99b22f1e-120a-5ab2-be7e-1464f0d728d1",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? You can modify (write to) the underlying lakehouse data directly through the SQL analytics endpoint.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "The SQL analytics endpoint is explicitly read-only. You can create views, functions, and apply SQL security through it, but you cannot modify the underlying data — for that, you'd use Lakehouse explorer, notebooks, or another write-capable tool."
+    }
+  },
+  {
+    "id": "0ab393e6-b80c-5708-9bd8-bf9f4fd2a569",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? Shortcuts require you to copy the source data into your lakehouse before you can use it.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Shortcuts specifically avoid copying data — they reference data in external storage (another storage account, cloud provider, or Fabric item) and make it appear as a folder in your lakehouse, with OneLake managing the underlying permissions and credentials."
+    }
+  },
+  {
+    "id": "9bad68e1-f67c-5c12-b2fa-8dbff444860f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-1",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? Row-level and column-level security are supported through the SQL analytics endpoint. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The SQL analytics endpoint supports both row-level and column-level security, letting you control exactly what different users see when they query through SQL."
+    }
+  },
+  {
+    "id": "3c5c37d2-a9e8-53b3-8d6a-c73f4f20f15a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-2",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "A data engineer wants to explore raw JSON files, apply complex transformations using Python, and prepare data for a machine learning model — all in one flexible, code-based environment. Which tool best fits?",
+      "options": {
+        "A": "SQL analytics endpoint",
+        "B": "Load to Table (no-code)",
+        "C": "Spark notebook using PySpark",
+        "D": "Power BI Direct Lake mode"
+      },
+      "correct": "C",
+      "explanation": "This matches the described use case directly: exploratory analysis of raw files, complex Python-based transformations, and ML data prep — precisely what notebooks are favored for by data engineers, especially with PySpark's flexibility."
+    }
+  },
+  {
+    "id": "a83ede16-0b13-5641-8296-60466dddd08e",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with lakehouses in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-lakehouses-in-microsoft-fabric",
+      "level-2",
+      "order:6",
+      "module:get-started-lakehouses",
+      "path:lp1",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Your organization wants report authors to consume a simplified, pre-joined, filtered view of sales and product data (active products only) without needing to understand the underlying table structure or write complex joins themselves. What should you create?",
+      "options": {
+        "A": "A schema shortcut",
+        "B": "A SQL view on the SQL analytics endpoint",
+        "C": "A new Files folder",
+        "D": "A Load to Table operation"
+      },
+      "correct": "B",
+      "explanation": "Views are explicitly called out for this exact purpose — applying business rules, simplifying complex joins, and providing curated data for downstream consumers like report authors, without exposing them to the raw table structure."
+    }
+  },
+  {
+    "id": "0c4b0f85-c93c-5804-aade-6872e0309ecc",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What does Delta Lake add to Spark-based data lake processing?",
+      "options": {
+        "A": "Real-time messaging",
+        "B": "Relational database semantics (ACID, schema, versioning)",
+        "C": "A visual ETL designer",
+        "D": "Native KQL support"
+      },
+      "correct": "B",
+      "explanation": "Delta Lake is an open-source storage layer that brings CRUD support, ACID transactions, versioning, and more to Spark-based data lake processing."
+    }
+  },
+  {
+    "id": "86455fe7-d1c4-5721-95c0-41d8d57fc29d",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What are the two components stored for each Delta table in a lakehouse?",
+      "options": {
+        "A": "A CSV file and an index file",
+        "B": "Parquet data files and a _delta_log folder with JSON transaction records",
+        "C": "A materialized view and a stored procedure",
+        "D": "A schema file and a checkpoint file only"
+      },
+      "correct": "B",
+      "explanation": "Every Delta table folder contains both: the actual data in Parquet, and a log of every transaction in JSON format."
+    }
+  },
+  {
+    "id": "87a1fe94-a590-5baf-9eed-d6572774a517",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which of the four ACID properties ensures that concurrent, in-process transactions can't interfere with one another?",
+      "options": {
+        "A": "Atomicity",
+        "B": "Consistency",
+        "C": "Isolation",
+        "D": "Durability"
+      },
+      "correct": "C",
+      "explanation": "Isolation specifically means in-process transactions can't interfere with one another. (Atomicity = complete as one unit; Consistency = leaves DB in a valid state; Durability = completed changes persist.)"
+    }
+  },
+  {
+    "id": "b6b513ad-aaad-5d35-bdf2-4313a89001db",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "When you save a dataframe using df.write.format(\"delta\").saveAsTable(\"mytable\") with no path specified, what kind of table is created?",
+      "options": {
+        "A": "An external table",
+        "B": "A managed table",
+        "C": "A temporary view",
+        "D": "A streaming table"
+      },
+      "correct": "B",
+      "explanation": "With no path argument, both the table definition in the metastore and the underlying data files are managed together by the Spark runtime."
+    }
+  },
+  {
+    "id": "b76945cc-5c06-56f0-9cf2-ba1cb077cf12",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What happens when you delete a managed table from the lakehouse metastore?",
+      "options": {
+        "A": "Only the metadata is removed; underlying files remain",
+        "B": "Both the table definition and the underlying data files are deleted",
+        "C": "Nothing happens until VACUUM is run",
+        "D": "The table is converted to an external table automatically"
+      },
+      "correct": "B",
+      "explanation": "This is the defining trait of a managed table — metastore and files are tied together."
+    }
+  },
+  {
+    "id": "1cadee27-4e50-5e0a-9ae1-5fd29e9489b3",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What happens when you delete an external table from the lakehouse metastore?",
+      "options": {
+        "A": "The metadata definition is removed, but the underlying data files are NOT deleted",
+        "B": "Both metadata and data files are deleted",
+        "C": "It cannot be deleted, only overwritten",
+        "D": "It automatically triggers a VACUUM"
+      },
+      "correct": "A",
+      "explanation": "External tables only map the metastore definition to a separate storage location; deleting the table leaves the actual files untouched."
+    }
+  },
+  {
+    "id": "ebed96a1-b89b-5440-bc96-d84466bdcc7a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "Which API lets you define a delta table's schema and columns directly in Spark code, without first loading a dataframe?",
+      "options": {
+        "A": "DeltaTableBuilder API",
+        "B": "Spark Structured Streaming API",
+        "C": "PySpark DataFrame API",
+        "D": "Delta Lake REST API"
+      },
+      "correct": "A",
+      "explanation": "This lets you specify a table name and add columns directly in code (e.g., DeltaTable.create(spark).tableName(...).addColumn(...)) without needing an existing dataframe."
+    }
+  },
+  {
+    "id": "a46f050f-292f-516d-b8a1-55f52c8a933f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What is the \"small file problem\" in Delta Lake / Spark?",
+      "options": {
+        "A": "Too few files, causing slow writes",
+        "B": "Many small files accumulating from updates and deletes, slowing down queries",
+        "C": "Files that are too large to fit in memory",
+        "D": "Missing transaction log files"
+      },
+      "correct": "B",
+      "explanation": "Because Parquet files are immutable, every update or delete writes a new file — over time this produces a large number of small files that degrade query performance."
+    }
+  },
+  {
+    "id": "2a946fc4-0bd0-5fbf-a414-7224683dcb6c",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What does the OptimizeWrite feature do, and is it enabled by default in Fabric?",
+      "options": {
+        "A": "Consolidates existing files on a schedule; disabled by default",
+        "B": "Writes fewer, larger files as data is written; enabled by default",
+        "C": "Deletes old Parquet files; disabled by default",
+        "D": "Partitions tables automatically; enabled by default"
+      },
+      "correct": "B",
+      "explanation": "OptimizeWrite acts at write time to prevent the small file problem before it starts, and it's on by default in Fabric (though it can be toggled at the session, table property, or command level)."
+    }
+  },
+  {
+    "id": "aef78d64-dce8-5489-a254-61bba4b96f0e",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What does the OPTIMIZE command do, as distinct from OptimizeWrite?",
+      "options": {
+        "A": "It runs as data is being written, preventing small files from forming in the first place",
+        "B": "It's a table maintenance feature that consolidates existing small Parquet files into fewer, larger ones after the fact",
+        "C": "It removes old data files beyond a retention period",
+        "D": "It partitions a table by a specified column"
+      },
+      "correct": "B",
+      "explanation": "Unlike OptimizeWrite (which prevents small files during writes), OPTIMIZE is run afterward to clean up files that have already accumulated."
+    }
+  },
+  {
+    "id": "a76a0451-ae6e-5005-bf2c-0a0892c687bf",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What does V-Order do, and what's the trade-off of using it?",
+      "options": {
+        "A": "It speeds up writes but slows down reads",
+        "B": "It speeds up reads (especially via Power BI/SQL Verti-Scan) at the cost of roughly 15% slower writes",
+        "C": "It compresses data losslessly with no performance trade-offs at all",
+        "D": "It only works with external tables"
+      },
+      "correct": "B",
+      "explanation": "V-Order applies special sorting, encoding, and compression to Parquet files, trading some write speed for meaningfully faster reads across Fabric's compute engines."
+    }
+  },
+  {
+    "id": "920b8c14-4a04-5ae9-8676-5dffa23ea078",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What does the VACUUM command do?",
+      "options": {
+        "A": "Compacts small files into larger ones",
+        "B": "Permanently removes old, unreferenced Parquet data files older than the retention period",
+        "C": "Deletes the transaction log entirely",
+        "D": "Reverses the effects of OptimizeWrite"
+      },
+      "correct": "B",
+      "explanation": "VACUUM cleans up files left behind by updates/deletes that are no longer needed for time travel within the retention window — but it does not touch the transaction log itself."
+    }
+  },
+  {
+    "id": "002f6d1d-8765-5b63-b045-14538b0a4d30",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "What is the default — and minimum allowed — retention period for VACUUM in Microsoft Fabric?",
+      "options": {
+        "A": "24 hours, with no minimum enforced",
+        "B": "7 days (168 hours), and the system prevents a shorter period",
+        "C": "30 days, with no way to change it",
+        "D": "1 hour by default"
+      },
+      "correct": "B",
+      "explanation": "This default protects your ability to time travel; you can't set VACUUM to a shorter retention window than this."
+    }
+  },
+  {
+    "id": "d6d75790-5884-5411-8565-0ca529f1f7f1",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "When should you avoid partitioning a Delta table, per the module's guidance?",
+      "options": {
+        "A": "When you have very large amounts of data",
+        "B": "When the partitioning column has high cardinality, creating a large number of partitions",
+        "C": "When tables can be split into a few large partitions",
+        "D": "When you want to enable data skipping"
+      },
+      "correct": "B",
+      "explanation": "This (along with small data volumes generally) can make the small file problem worse rather than improving performance — partitioning works best on very large datasets split into a few large partitions."
+    }
+  },
+  {
+    "id": "537a4357-8cd8-5a92-829e-e04975ff7ee3",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? Running VACUUM also deletes the transaction log entries associated with the removed files.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "VACUUM removes old data files only — it doesn't touch the transaction log. In fact, VACUUM itself commits an entry to the transaction log, which is why you can see previous VACUUM runs via DESCRIBE HISTORY."
+    }
+  },
+  {
+    "id": "cc56bdc8-2526-572c-83c7-42ffd5a1e985",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? You can retrieve an earlier version of a Delta table's data by specifying a versionAsOf or timestampAsOf option when reading it.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "You can read a specific past version by passing versionAsOf (a version number) or timestampAsOf (a date/time) as an option when loading the delta table into a dataframe — this is the time travel feature in action."
+    }
+  },
+  {
+    "id": "257532c1-fec5-55ac-b256-9b84d617cdff",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? When using a Delta table as a Spark Structured Streaming source, data modifications (updates/deletes) are allowed by default without any special configuration.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "By default, only append operations are allowed when a Delta table is used as a streaming source — modifications (updates/deletes) cause an error unless you explicitly specify the ignoreChanges or ignoreDeletes option."
+    }
+  },
+  {
+    "id": "20051c11-06fc-56be-988c-931c2e75eca2",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-1",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "True or false? Spark processes streaming data using a completely different API from batch data, requiring entirely separate code. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Spark processes both streaming and batch data using the same API — Structured Streaming is based on a \"boundless dataframe\" concept, meaning the same general dataframe operations apply to both."
+    }
+  },
+  {
+    "id": "562caa29-a54f-521d-9c5a-aa6dfdeab0b9",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-2",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "You need to permanently free up storage by removing old Parquet files that are no longer referenced and are older than your compliance-mandated retention window, while still being able to view table history via DESCRIBE HISTORY. What should you run?",
+      "options": {
+        "A": "OPTIMIZE",
+        "B": "VACUUM",
+        "C": "OptimizeWrite",
+        "D": "DeltaTableBuilder.create()"
+      },
+      "correct": "B",
+      "explanation": "This directly matches the described need: permanently remove old unreferenced data files past a retention threshold. Table history remains visible via DESCRIBE HISTORY because VACUUM doesn't touch the transaction log — only OPTIMIZE (A) consolidates files rather than deleting them, so it wouldn't free storage the same way."
+    }
+  },
+  {
+    "id": "2099af1d-77cc-5726-9cf8-5710b95555ec",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Work with Delta Lake tables in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "work-with-delta-lake-tables-in-microsoft-fabric",
+      "level-2",
+      "order:8",
+      "module:work-delta-lake-tables-fabric",
+      "path:lp2",
+      "primary-path:lp2"
+    ],
+    "content": {
+      "question": "You're staging raw data that will only be read once or twice before being discarded, and you want to minimize write overhead. What should you consider doing regarding V-Order?",
+      "options": {
+        "A": "Enable V-Order to maximize read speed regardless of write cost",
+        "B": "Disable V-Order, since the read benefit doesn't offset the write overhead for write-intensive, rarely-read staging data",
+        "C": "V-Order cannot be disabled once enabled",
+        "D": "Use partitioning instead of V-Order for staging data"
+      },
+      "correct": "B",
+      "explanation": "The module explicitly calls this out: V-Order's ~15% write overhead isn't worth it when data is only read once or twice, so disabling it can reduce overall ingestion processing time in staging scenarios."
     }
   }
 ]

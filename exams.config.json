@@ -67,7 +67,7 @@
           "id": "lp1",
           "title": "Get started with Microsoft Fabric",
           "url": "https://learn.microsoft.com/en-us/training/paths/get-started-fabric/",
-          "moduleCount": 10,
+          "moduleCount": 8,
           "domains": ["implement-manage"]
         },
         {
@@ -81,14 +81,14 @@
           "id": "lp3",
           "title": "Ingest data with Microsoft Fabric",
           "url": "https://learn.microsoft.com/en-us/training/paths/ingest-data-with-microsoft-fabric/",
-          "moduleCount": 6,
+          "moduleCount": 4,
           "domains": ["ingest-transform"]
         },
         {
           "id": "lp4",
           "title": "Implement Real-Time Intelligence with Microsoft Fabric",
           "url": "https://learn.microsoft.com/en-us/training/paths/explore-real-time-analytics-microsoft-fabric/",
-          "moduleCount": 4,
+          "moduleCount": 5,
           "domains": ["ingest-transform", "monitor-optimize"]
         }
       ],

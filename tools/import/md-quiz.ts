@@ -74,21 +74,21 @@ interface ModuleInfo {
 const MODULES: Record<string, ModuleInfo> = {
   'use-dataflow-gen-2-fabric': {
     title: 'Ingest Data with Dataflows Gen2 in Microsoft Fabric',
-    paths: ['lp1', 'lp2', 'lp3'],
+    paths: ['lp2', 'lp3'],
     primaryPath: 'lp3',
   },
   'use-data-factory-pipelines-fabric': {
     title: 'Orchestrate processes and data movement with Microsoft Fabric',
-    paths: ['lp1', 'lp2', 'lp3'],
+    paths: ['lp2', 'lp3'],
     primaryPath: 'lp3',
   },
   'use-apache-spark-work-files-lakehouse': {
     title: 'Use Apache Spark in Microsoft Fabric',
-    paths: ['lp1', 'lp2', 'lp3'],
+    paths: ['lp2', 'lp3'],
     primaryPath: 'lp3',
   },
   'query-data-kql-database-microsoft-fabric': {
-    title: 'Work with real-time data in a Microsoft Fabric eventhouse',
+    title: 'Work with real-time data in an Eventhouse in Microsoft Fabric',
     paths: ['lp3', 'lp4'],
     primaryPath: 'lp4',
   },
@@ -96,6 +96,21 @@ const MODULES: Record<string, ModuleInfo> = {
     title: 'Introduction to end-to-end analytics using Microsoft Fabric',
     paths: ['lp1', 'lp2'],
     primaryPath: 'lp1',
+  },
+  'get-started-lakehouses': {
+    title: 'Get started with lakehouses in Microsoft Fabric',
+    paths: ['lp1', 'lp2'],
+    primaryPath: 'lp2',
+  },
+  'work-delta-lake-tables-fabric': {
+    title: 'Work with Delta Lake tables in Microsoft Fabric',
+    paths: ['lp2'],
+    primaryPath: 'lp2',
+  },
+  'describe-medallion-architecture': {
+    title: 'Organize a Fabric lakehouse using medallion architecture design',
+    paths: ['lp2'],
+    primaryPath: 'lp2',
   },
 };
 
