@@ -76,6 +76,7 @@ export default function CodeReviewSessionPage() {
   const subMode = (params.get('sub_mode') ?? 'find-the-bug') as CodeReviewSubMode;
   const count = Number(params.get('count') ?? 5);
   const topic = params.get('topic');
+  const learningPath = params.get('path');
   const themeMode = useAppStore((s) => s.preferences.theme);
 
   const [questions, setQuestions] = useState<CodeReviewQuestion[] | null>(null);
@@ -94,7 +95,11 @@ export default function CodeReviewSessionPage() {
 
   useEffect(() => {
     let cancelled = false;
-    fetchQuestions({ type: 'code-review', topic: topic ?? undefined })
+    fetchQuestions({
+      type: 'code-review',
+      topic: topic ?? undefined,
+      learningPath: learningPath ?? undefined,
+    })
       .then((all) => {
         if (cancelled) return;
         const filtered = (all as CodeReviewQuestion[]).filter(
@@ -130,7 +135,7 @@ export default function CodeReviewSessionPage() {
     return () => {
       cancelled = true;
     };
-  }, [subMode, count, topic]);
+  }, [subMode, count, topic, learningPath]);
 
   useEffect(() => {
     if (!questions || questions.length === 0) return;
