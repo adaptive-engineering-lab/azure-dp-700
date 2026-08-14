@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { ROUTES } from './lib/routes';
 import { ThemeProvider } from './lib/theme/ThemeProvider';
 import { AuthProvider } from './lib/auth/AuthProvider';
@@ -79,6 +80,7 @@ export function App() {
     <AuthProvider>
       <ThemeProvider>
         <RouterProvider router={router} />
+        <Analytics />
       </ThemeProvider>
     </AuthProvider>
   );
