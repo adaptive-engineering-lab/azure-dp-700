@@ -2114,6 +2114,958 @@
     }
   },
   {
+    "id": "035e1996-7e38-5095-a0c5-fe3a523b3feb",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "What is each visualization within a Real-Time Dashboard called?",
+      "options": {
+        "A": "A page",
+        "B": "A tile",
+        "C": "A base query",
+        "D": "A parameter"
+      },
+      "correct": "B",
+      "explanation": "Each dashboard consists of one or more tiles, and each tile displays the results of a KQL query as a real-time data visualization."
+    }
+  },
+  {
+    "id": "29db5566-51f3-5c6a-a1e5-de21da8a815a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "Which type of data source authorization means each dashboard viewer accesses data using their own permissions?",
+      "options": {
+        "A": "Dashboard editor's identity",
+        "B": "Pass-through identity",
+        "C": "Anonymous access",
+        "D": "Shared service identity"
+      },
+      "correct": "B",
+      "explanation": "Each person viewing the dashboard queries the data source using their own individual permissions — useful when you need viewers subject to their own row-level or object-level security."
+    }
+  },
+  {
+    "id": "ec1a6471-221e-54b2-96c7-141259ae7ab0",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "Which type of data source authorization means everyone viewing the dashboard accesses data using the dashboard creator's permissions?",
+      "options": {
+        "A": "Pass-through identity",
+        "B": "Dashboard editor's identity",
+        "C": "Guest identity",
+        "D": "Row-level security"
+      },
+      "correct": "B",
+      "explanation": "Everyone viewing the dashboard accesses data using the permissions of the person who created/edited it, regardless of the viewer's own access level."
+    }
+  },
+  {
+    "id": "1bac2d63-cfa6-5c3a-895a-84dfa9274cb5",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "What does a tile display by default before you customize its visualization?",
+      "options": {
+        "A": "A bar chart",
+        "B": "A map",
+        "C": "A table",
+        "D": "A line chart"
+      },
+      "correct": "C",
+      "explanation": "When you first add a tile and specify a query, the results initially display as a plain table; you then edit the tile to define a chart, map, or other visualization."
+    }
+  },
+  {
+    "id": "f354ebfe-8da9-5b66-8cfb-092bcc8d1c85",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "What can you add to a dashboard to provide additional context or information, aside from data visualization tiles?",
+      "options": {
+        "A": "Parameters",
+        "B": "Text tiles",
+        "C": "Base queries",
+        "D": "Pages"
+      },
+      "correct": "B",
+      "explanation": "These provide additional information or context alongside your data visualization tiles, without querying data themselves."
+    }
+  },
+  {
+    "id": "11c94bd2-0ef3-5158-8eab-83e780352b51",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "By default, how many pages does a new Real-Time Dashboard have, and can more be added?",
+      "options": {
+        "A": "Unlimited pages by default, cannot be reduced",
+        "B": "One page by default; more can be added to organize content",
+        "C": "Exactly three pages, fixed",
+        "D": "Zero pages until a tile is created"
+      },
+      "correct": "B",
+      "explanation": "Pages act as containers for tiles, letting you organize related content — for example, separate pages per data source or subject area."
+    }
+  },
+  {
+    "id": "c2b23f15-b371-5a3f-843e-451ec8895069",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "What prefix convention is used to reference a dashboard parameter's variable name within a KQL tile query?",
+      "options": {
+        "A": "A dollar sign ($)",
+        "B": "An underscore (_)",
+        "C": "An at sign (@)",
+        "D": "A percent sign (%)"
+      },
+      "correct": "B",
+      "explanation": "Parameters have a variable name referenced in tile queries with an underscore prefix, as in _selected_neighbourhoods."
+    }
+  },
+  {
+    "id": "af2af230-9dab-5aaf-b3c4-a98c9a21bb1d",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "In a parameter-filtered KQL query, what does checking isempty(_selected_neighbourhoods) accomplish?",
+      "options": {
+        "A": "It deletes the parameter if unused",
+        "B": "It shows all neighborhoods when no specific selection has been made",
+        "C": "It hides all data until a selection is made",
+        "D": "It throws an error if the parameter is empty"
+      },
+      "correct": "B",
+      "explanation": "The isempty() check handles the \"nothing selected\" case by falling back to showing everything, rather than showing no data at all."
+    }
+  },
+  {
+    "id": "1b8b23dd-d02e-5189-970b-abfceb318c8a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "Regarding auto refresh, what control do dashboard editors have that viewers do not?",
+      "options": {
+        "A": "Editors can turn off refresh entirely; viewers cannot",
+        "B": "Editors can set a minimum refresh rate to prevent viewers from refreshing too frequently",
+        "C": "Editors cannot adjust refresh rate at all",
+        "D": "Only editors can view the dashboard in real time"
+      },
+      "correct": "B",
+      "explanation": "Editors set a default refresh rate that viewers can adjust during their session, but editors also control a minimum threshold to protect system performance."
+    }
+  },
+  {
+    "id": "22cff459-2f93-589c-bdea-475f51129c16",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "What is the primary purpose of a base query in a Real-Time Dashboard?",
+      "options": {
+        "A": "To replace the need for individual tiles",
+        "B": "To retrieve a general set of records shared by multiple tiles, avoiding duplicated logic",
+        "C": "To define dashboard-level security permissions",
+        "D": "To automatically create parameters"
+      },
+      "correct": "B",
+      "explanation": "Base queries centralize a shared dataset (e.g., \"all bike data from the last 30 minutes\"), and individual tile queries then reference and further filter/group that base query instead of each repeating the same underlying logic."
+    }
+  },
+  {
+    "id": "43ee33a6-323a-5e0d-be1e-afc826a2fc4f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "True or false? Dashboard viewers can adjust the refresh rate during their session, within limits set by the editor.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Editors set the default refresh rate, and viewers can adjust it during their own session — within whatever minimum threshold the editor has set."
+    }
+  },
+  {
+    "id": "d7e292ac-5009-57ee-9a90-36e023b00e8f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "True or false? A base query is referenced in tile queries using the same underscore-prefixed variable naming convention as parameters.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Base queries use the same underscore-prefixed variable naming convention as parameters (e.g., _base_bike_data), and tile queries reference them the same way — as the starting point of the query, followed by further project, order by, or filtering."
+    }
+  },
+  {
+    "id": "55ebad5f-621f-50f0-8d4a-3b4200ca66c6",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "True or false? Once created, a dashboard tile's query cannot be tested or edited after initial setup.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Tile queries can be tested and edited — the module explicitly shows entering and testing a query when a tile is first added, with the clear implication it remains editable afterward, not locked in place."
+    }
+  },
+  {
+    "id": "d4de99fa-d966-569c-9f50-b60315e4aa93",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-1",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "True or false? A Real-Time Dashboard can only ever be created from a KQL database in an Eventhouse — no other real-time data source is possible. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "The module's exact phrasing is \"a source of real-time data; such as a KQL database in an eventhouse\" — this is given as an example, not as the only possible option."
+    }
+  },
+  {
+    "id": "3894abb8-89d0-5e36-80e3-70b26626987d",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-2",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "Multiple tiles in your dashboard all need to reference the same 30-minute window of latest bike observations by neighborhood, and you want to avoid duplicating that KQL logic across every tile. What should you create?",
+      "options": {
+        "A": "A new parameter",
+        "B": "A base query",
+        "C": "A text tile",
+        "D": "A new dashboard page"
+      },
+      "correct": "B",
+      "explanation": "This matches the described scenario directly: shared 30-minute-window logic used across multiple tiles, centralized once to avoid duplicating the same KQL across each tile."
+    }
+  },
+  {
+    "id": "c6c58bc8-07bd-5fc0-9711-f83427fa46ef",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Create Real-Time Dashboards with Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "create-real-time-dashboards-with-microsoft-fabric",
+      "level-2",
+      "order:15",
+      "module:create-real-time-dashboards-microsoft-fabric",
+      "path:lp4",
+      "primary-path:lp4"
+    ],
+    "content": {
+      "question": "You want dashboard viewers external to your team to see only the bike station data their own individual permissions allow, based on row-level security configured on the underlying KQL database. Which data source authorization option should you choose?",
+      "options": {
+        "A": "Dashboard editor's identity",
+        "B": "Pass-through identity",
+        "C": "Anonymous access",
+        "D": "Base query identity"
+      },
+      "correct": "B",
+      "explanation": "This is the option that makes each viewer's own permissions (including any row-level security on the KQL database) apply when they query the data — exactly what's needed for viewers outside your team to see only what they're individually authorized to see."
+    }
+  },
+  {
+    "id": "875ba575-0623-5d92-a0f6-7b88be6144d1",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "In Activator's business objects model, what does an \"object\" represent?",
+      "options": {
+        "A": "A raw data value",
+        "B": "An individual real-world entity instance, like a specific package",
+        "C": "A KQL query",
+        "D": "A dashboard tile"
+      },
+      "correct": "B",
+      "explanation": "Objects represent the real-world things you want to monitor — Package001, Package002, and so on — each a distinct instance."
+    }
+  },
+  {
+    "id": "2f838aab-31c7-5a2d-b911-add9b0057247",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "What do \"properties\" represent in Activator's business objects model?",
+      "options": {
+        "A": "The unique identifier only",
+        "B": "The specific data attributes monitored for each object instance, like Temperature or City",
+        "C": "The action taken when a rule fires",
+        "D": "The eventstream destination type"
+      },
+      "correct": "B",
+      "explanation": "Properties are the data points tied to each object, updated as new events arrive."
+    }
+  },
+  {
+    "id": "c801f8dd-15b4-55db-92ab-4fee875ae758",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "What triggers Activator to automatically create a new object instance when using eventstream-based configuration?",
+      "options": {
+        "A": "Manually clicking \"add object\" for every package",
+        "B": "A new, previously unseen value appearing in the field designated as the unique identifier",
+        "C": "Running a KQL query manually",
+        "D": "Configuring a new eventstream transformation"
+      },
+      "correct": "B",
+      "explanation": "As data flows in, new unique identifiers automatically create new objects — no manual object creation needed once the eventstream and unique identifier field are configured."
+    }
+  },
+  {
+    "id": "dbbed41d-c208-5b4d-a73c-674d5d02de24",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "Besides the business objects model fed by eventstreams, what other alerting approaches does Activator support?",
+      "options": {
+        "A": "Only business objects; no alternatives exist",
+        "B": "Dashboard alerts, system event alerts, and query alerts",
+        "C": "Only email-based alerts",
+        "D": "Only Power Automate-triggered alerts"
+      },
+      "correct": "B",
+      "explanation": "These are explicitly listed alternative approaches — created from Real-Time Dashboard visualizations, Fabric workspace/OneLake activity monitoring, and KQL Queryset results respectively — all using the same Activator engine but interpreting data differently than the business objects model."
+    }
+  },
+  {
+    "id": "d8438b04-bbe9-5259-9937-8d8fcc9c02a4",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "What can system event alerts in Activator monitor?",
+      "options": {
+        "A": "Only KQL Queryset results",
+        "B": "Fabric workspace activities and OneLake file operations",
+        "C": "Only Real-Time Dashboard tiles",
+        "D": "Only Power BI report refreshes"
+      },
+      "correct": "B",
+      "explanation": "System event alerts specifically monitor these kinds of platform-level events, distinct from the business-object or dashboard/query-based approaches."
+    }
+  },
+  {
+    "id": "e8dd1aa3-403f-5bd5-af67-4f17e89900b6",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "In the rule Definition pane, which section lets you choose the specific data property (like Temperature) that Activator watches?",
+      "options": {
+        "A": "Condition",
+        "B": "Property filter",
+        "C": "Monitor",
+        "D": "Actions"
+      },
+      "correct": "C",
+      "explanation": "This is where you select the Attribute (like Temperature) and configure Summarization — it's specifically about what Activator watches, distinct from when it acts (Condition) or which events it evaluates (Property filter)."
+    }
+  },
+  {
+    "id": "47ef6be3-6e7f-578e-a77e-35d8af56020b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "Which summarization option would you use to detect sensor failures by tracking how many readings are being received?",
+      "options": {
+        "A": "Average",
+        "B": "Minimum/Maximum",
+        "C": "Count",
+        "D": "Total"
+      },
+      "correct": "C",
+      "explanation": "Tracking how many readings you're getting is exactly how you'd catch a sensor that's gone quiet or malfunctioning — a drop in count signals a data flow problem, not a value problem."
+    }
+  },
+  {
+    "id": "9dd14a5c-e50f-5ac7-a823-668d82af5006",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "Which summarization option smooths out noisy data by averaging readings over a period of time?",
+      "options": {
+        "A": "Average",
+        "B": "Count",
+        "C": "Total",
+        "D": "Maximum"
+      },
+      "correct": "A",
+      "explanation": "Averaging readings over time smooths out noise, like brief spikes when a package is moved or dips when passing through different environments."
+    }
+  },
+  {
+    "id": "58ec9f6c-3f90-5aac-b21e-e7d93b560c43",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "What does \"window size\" control when configuring summarization in Activator?",
+      "options": {
+        "A": "How often the calculation is recalculated",
+        "B": "How much historical data is included in the calculation",
+        "C": "The number of property filters allowed",
+        "D": "The action type triggered"
+      },
+      "correct": "B",
+      "explanation": "For example, a 10-minute window means the calculation considers the last 10 minutes of readings."
+    }
+  },
+  {
+    "id": "5382d4ea-dba0-59a9-9768-d3e4b77bdc90",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "What does \"step size\" control when configuring summarization in Activator?",
+      "options": {
+        "A": "How much historical data is included",
+        "B": "How often the summarization is recalculated",
+        "C": "The threshold value for the condition",
+        "D": "The unique identifier field"
+      },
+      "correct": "B",
+      "explanation": "A 5-minute step size means the calculation refreshes every 5 minutes, even while the window itself covers a longer historical span."
+    }
+  },
+  {
+    "id": "bda893eb-6448-54ae-8f3c-8aaca62ea444",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "Which condition detection approach would you use to catch a sensor that has stopped sending data entirely?",
+      "options": {
+        "A": "Threshold monitoring",
+        "B": "Change detection",
+        "C": "Range monitoring",
+        "D": "Missing data"
+      },
+      "correct": "D",
+      "explanation": "This detection approach is specifically for catching sensor failures or data flow interruptions — e.g., \"no new events for more than 30 minutes.\""
+    }
+  },
+  {
+    "id": "26364451-26cf-537a-b4d3-724eac9d2eec",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "Which Occurrence behavior would you select to only alert on persistent problems rather than brief spikes — for example, requiring the condition to stay true for 15 minutes?",
+      "options": {
+        "A": "Every time",
+        "B": "When it has been true for",
+        "C": "Threshold monitoring",
+        "D": "Range monitoring"
+      },
+      "correct": "B",
+      "explanation": "This Occurrence setting requires the condition to remain true for a specified duration before triggering, filtering out brief, transient spikes that \"Every time\" would catch immediately."
+    }
+  },
+  {
+    "id": "483ab959-231e-5ad1-87e2-dca3c397c92e",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "How many property filters can you combine in the Property filter section of a rule?",
+      "options": {
+        "A": "Only one",
+        "B": "Up to two",
+        "C": "Up to three",
+        "D": "Unlimited"
+      },
+      "correct": "C",
+      "explanation": "The Property filter section explicitly supports combining up to three filters for precise targeting of which events get evaluated."
+    }
+  },
+  {
+    "id": "e094d362-87b9-54f6-96b3-fbe3e8eda0b1",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "Which Activator action type is best suited for executing multi-step business processes that span multiple different applications and systems?",
+      "options": {
+        "A": "Email",
+        "B": "Teams",
+        "C": "Power Automate",
+        "D": "Fabric item"
+      },
+      "correct": "C",
+      "explanation": "It's Microsoft's workflow automation service, purpose-built for connecting different apps and services together and executing multi-step processes across systems."
+    }
+  },
+  {
+    "id": "c664230c-02ec-5969-b68e-d93cae0d28df",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "True or false? Activator's business objects model, dashboard alerts, system event alerts, and query alerts all use the same underlying Activator engine, just interpreting data differently.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The module states directly that dashboard alerts, system event alerts, and query alerts \"use the same Activator engine but interpret data differently\" than the business objects model fed by eventstreams."
+    }
+  },
+  {
+    "id": "91ddd7a2-fd4e-59cc-99c0-aa1c589af7cc",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "True or false? Teams actions in Activator are best suited for situations that require comprehensive context and can tolerate a response delay of hours or days.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "This description matches Email actions, not Teams. Teams actions are for immediate messages and quick coordination; Email is the one suited to comprehensive context and a response window of hours or days."
+    }
+  },
+  {
+    "id": "58b84642-aa2e-5224-8c3d-21a90809464b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "True or false? A Fabric item action can execute a data pipeline or notebook in response to a rule condition being met.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Fabric item actions execute data pipelines or notebooks for further processing or analysis in response to a rule's conditions being met."
+    }
+  },
+  {
+    "id": "a15e1bb1-45f2-5d38-9d3a-678a76bfbe17",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-1",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "True or false? Threshold monitoring and Range monitoring are the exact same detection approach with different names. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "These are distinct detection approaches: Threshold monitoring alerts when a value crosses a defined safety limit (e.g., \"greater than 68°F\"), while Range monitoring tracks entry into or exit from a defined safe zone — related concepts but not the same mechanism."
+    }
+  },
+  {
+    "id": "70801262-f7b6-540f-b176-25bddeaa0914",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-2",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "You want to alert on-call staff via Teams the instant a cold-chain medicine package's average temperature over a 10-minute window exceeds 68°F, but only for packages tagged ColdChainType = \"medicine\" — and only when it's sustained for at least 15 minutes, not on every brief fluctuation. Which combination of rule configuration matches this requirement?",
+      "options": {
+        "A": "Monitor: Temperature/Average/10-min window; Condition: threshold >68°F, Occurrence: Every time; Property filter: ColdChainType = \"medicine\"; Action: Email",
+        "B": "Monitor: Temperature/Average/10-min window; Condition: threshold >68°F, Occurrence: When it has been true for 15 min; Property filter: ColdChainType = \"medicine\"; Action: Teams",
+        "C": "Monitor: Temperature/Count; Condition: Missing data; Property filter: none; Action: Power Automate",
+        "D": "Monitor: Temperature/Maximum; Condition: Range monitoring; Property filter: City = \"Seattle\"; Action: Fabric item"
+      },
+      "correct": "B",
+      "explanation": "This is the only option that correctly matches every stated requirement: Average summarization over a 10-minute window (smoothing noise), a threshold condition with \"When it has been true for 15 min\" (sustained problems only, not every fluctuation), a property filter scoped to medicine cold-chain packages, and a Teams action for immediate on-call notification."
+    }
+  },
+  {
+    "id": "a4c9943b-4c1c-56a4-9fc6-1ab903749dab",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Use Activator in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "use-activator-in-microsoft-fabric",
+      "level-2",
+      "order:16",
+      "module:use-fabric-activator"
+    ],
+    "content": {
+      "question": "Your operations team wants a rule that automatically kicks off a data pipeline to run deeper diagnostic analysis whenever a condition is detected, without requiring a human to manually start it. Which action type should you configure?",
+      "options": {
+        "A": "Email",
+        "B": "Teams",
+        "C": "Power Automate",
+        "D": "Fabric item"
+      },
+      "correct": "D",
+      "explanation": "This action type is explicitly for executing a data pipeline or notebook automatically in response to a detected condition — exactly the described need for automated diagnostic analysis without manual intervention."
+    }
+  },
+  {
     "id": "716664af-cc2a-5a90-a0b4-c83042a2922b",
     "type": "mcq",
     "domain": "implement-manage",

@@ -71,7 +71,12 @@ const DOMAIN_PROSE: ReadonlyArray<[RegExp, Domain]> = [
 interface ModuleInfo {
   title: string;
   paths: string[];
-  primaryPath: string;
+  /**
+   * Omitted for a module that belongs to no path in exams.config.json — it is
+   * still worth registering for its canonical title, but it carries no path
+   * tag, and the picker renders it without a path label.
+   */
+  primaryPath?: string;
 }
 
 const MODULES: Record<string, ModuleInfo> = {
@@ -124,6 +129,17 @@ const MODULES: Record<string, ModuleInfo> = {
     title: 'Use real-time eventstreams in Microsoft Fabric',
     paths: ['lp3', 'lp4'],
     primaryPath: 'lp4',
+  },
+  'create-real-time-dashboards-microsoft-fabric': {
+    title: 'Create Real-Time Dashboards with Microsoft Fabric',
+    paths: ['lp4'],
+    primaryPath: 'lp4',
+  },
+  // Activator is an RTI capability but Learn files it in none of lp1-lp4, so
+  // it gets no path tags — see the primaryPath note on ModuleInfo.
+  'use-fabric-activator': {
+    title: 'Use Activator in Microsoft Fabric',
+    paths: [],
   },
 };
 
@@ -318,7 +334,7 @@ function buildItems(file: string, body: string): BankItem[] {
   const orderTag = orderPrefix ? `order:${Number(orderPrefix)}` : undefined;
   const pathTags = (info?.paths ?? []).map((p) => `path:${p}`);
   const moduleTag = slug ? `module:${slug}` : undefined;
-  const primaryPathTag = info ? `primary-path:${info.primaryPath}` : undefined;
+  const primaryPathTag = info?.primaryPath ? `primary-path:${info.primaryPath}` : undefined;
 
   const questions = parseQuestions(body, file);
   const answers = parseAnswers(body, file);
