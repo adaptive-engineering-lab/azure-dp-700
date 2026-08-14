@@ -1,0 +1,29 @@
+-- Grant the seed RPC to service_role explicitly.
+--
+-- 0003 and 0016 both end with
+--
+--   revoke all on function public.seed_upsert_questions(jsonb)
+--     from anon, authenticated, public;
+--
+-- which is right in intent — only the maintainer's seed tool should call it —
+-- but it also strips the implicit PUBLIC execute grant that service_role was
+-- riding on, and nothing ever granted service_role the function explicitly.
+--
+-- The bug stayed hidden because the two environments diverge. Hosted Supabase
+-- bootstraps with
+--
+--   alter default privileges in schema public
+--     grant all on functions to postgres, anon, authenticated, service_role;
+--
+-- so on a hosted project the function picks up an *explicit* service_role
+-- grant the moment it is created, and revoking PUBLIC leaves that grant
+-- standing — `pnpm seed` against the real project works. The CLI's local
+-- stack applies no such default for functions, so there service_role held
+-- only the PUBLIC grant, the revoke took it away, and CI has failed on
+-- "permission denied for function seed_upsert_questions" ever since.
+--
+-- Granting it here makes the intent explicit and the two environments agree.
+-- On hosted this is a no-op re-grant; locally it is what makes the seed run.
+-- anon and authenticated stay revoked.
+
+grant execute on function public.seed_upsert_questions(jsonb) to service_role;
