@@ -24,10 +24,16 @@ export default async function globalSetup(): Promise<() => Promise<void>> {
     );
   }
 
-  const { error } = await client.from('questions').select('id', { count: 'exact', head: true });
+  // A plain GET, not a head:true count. A HEAD response carries no body, so
+  // when the probe failed there was nothing for supabase-js to build a message
+  // from and this threw with an empty reason — blind exactly when it fires.
+  const { error } = await client.from('questions').select('id').limit(1);
   if (error) {
+    const detail = [error.message, error.code && `code ${error.code}`, error.details, error.hint]
+      .filter(Boolean)
+      .join(' | ');
     throw new Error(
-      `Supabase stack not reachable or migrations not applied: ${error.message}\n` +
+      `Supabase stack not reachable or migrations not applied: ${detail || '(no detail returned)'}\n` +
         `Run: supabase start (and supabase db reset if migrations changed).`,
     );
   }
