@@ -115,6 +115,16 @@ const MODULES: Record<string, ModuleInfo> = {
     paths: ['lp2'],
     primaryPath: 'lp2',
   },
+  'get-started-kusto-fabric': {
+    title: 'Get started with Real-Time Intelligence in Microsoft Fabric',
+    paths: ['lp1', 'lp3', 'lp4'],
+    primaryPath: 'lp4',
+  },
+  'explore-event-streams-microsoft-fabric': {
+    title: 'Use real-time eventstreams in Microsoft Fabric',
+    paths: ['lp3', 'lp4'],
+    primaryPath: 'lp4',
+  },
 };
 
 /** Pull the module slug out of a learn.microsoft.com/training/modules/<slug>/ URL. */
