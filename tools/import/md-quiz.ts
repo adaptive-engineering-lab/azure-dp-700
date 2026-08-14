@@ -141,6 +141,12 @@ const MODULES: Record<string, ModuleInfo> = {
     title: 'Use Activator in Microsoft Fabric',
     paths: [],
   },
+  // Filed under "Manage a Microsoft Fabric environment", which is likewise not
+  // one of lp1-lp4.
+  'monitor-fabric-items': {
+    title: 'Monitor activities in Microsoft Fabric',
+    paths: [],
+  },
 };
 
 /** Pull the module slug out of a learn.microsoft.com/training/modules/<slug>/ URL. */

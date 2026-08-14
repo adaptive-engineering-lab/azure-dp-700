@@ -3066,6 +3066,518 @@
     }
   },
   {
+    "id": "ffea431a-8ea7-5061-a217-b201d07c5733",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "What does monitoring in Microsoft Fabric fundamentally provide?",
+      "options": {
+        "A": "A way to reduce the capacity units a workspace consumes.",
+        "B": "Data about whether activities succeed, fail, or degrade over time.",
+        "C": "Automatic correction of failed pipeline activities.",
+        "D": "A replacement for source control on Fabric items."
+      },
+      "correct": "B",
+      "explanation": "Monitoring is the collection of activity data so you can judge outcomes. Without it, failures go undetected, reports show stale data, and troubleshooting becomes guesswork."
+    }
+  },
+  {
+    "id": "5baa2721-6eec-548b-b418-6d72dc681188",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A data pipeline reports an overall status of Succeeded, yet downstream reports show stale data. What should you check first?",
+      "options": {
+        "A": "The capacity metrics app for throttling events.",
+        "B": "The status of each individual activity inside the pipeline.",
+        "C": "The workspace sensitivity labels.",
+        "D": "The semantic model's row-level security rules."
+      },
+      "correct": "B",
+      "explanation": "A pipeline can report Succeeded overall even when an optional activity inside it failed, so the rolled-up status alone can hide the break that left the data stale."
+    }
+  },
+  {
+    "id": "91de2f5b-815a-51e4-8cf6-c5c765f69fb3",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A semantic model refresh succeeds, but its retry count has been climbing week over week. What does this most likely indicate?",
+      "options": {
+        "A": "The model is too small to refresh reliably.",
+        "B": "An emerging problem with the data source connection.",
+        "C": "The refresh schedule is set too infrequently.",
+        "D": "The workspace has exceeded its item limit."
+      },
+      "correct": "B",
+      "explanation": "A refresh that retries before succeeding points to a transient issue. When the retry count rises over time, investigate the source connection before the refresh starts failing outright."
+    }
+  },
+  {
+    "id": "bb75946c-9c52-55bf-a08a-b2127115d31b",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "How do eventstreams differ from batch activities when it comes to monitoring?",
+      "options": {
+        "A": "They run continuously, so you monitor throughput, latency, and error rates.",
+        "B": "They cannot be monitored from the monitoring hub at all.",
+        "C": "They only need monitoring when a pipeline invokes them.",
+        "D": "They report a single duration value at completion like any other job."
+      },
+      "correct": "A",
+      "explanation": "Batch activities run and complete, producing a duration and a final status. Eventstreams are designed to run without stopping, so the useful signals are continuous ones."
+    }
+  },
+  {
+    "id": "013cb7b6-c61e-575d-a255-98b4efb388e6",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Where do you open the monitoring hub in the Fabric portal?",
+      "options": {
+        "A": "From the workspace settings under the Monitoring tab.",
+        "B": "By selecting Monitor in the left navigation pane.",
+        "C": "From the Real-Time hub's Fabric events page.",
+        "D": "From the OneLake catalog."
+      },
+      "correct": "B",
+      "explanation": "That opens the hub's main view, a table of recent activities with columns for name, status, item type, and start time."
+    }
+  },
+  {
+    "id": "b2464063-98a2-582e-8a8e-61dffeb839cb",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "An activity in the monitoring hub shows a status of Cancelled. What does that mean?",
+      "options": {
+        "A": "The activity completed but produced no rows.",
+        "B": "The activity failed validation before it started.",
+        "C": "Something stopped the activity before it finished.",
+        "D": "The activity is queued behind a higher-priority job."
+      },
+      "correct": "C",
+      "explanation": "Check whether the cancellation was deliberate or the result of a timeout or a capacity limit."
+    }
+  },
+  {
+    "id": "9d9eae93-d002-5afa-a58f-b1438d4885bd",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "An activity has a status of In progress far longer than usual. What is the reasonable interpretation?",
+      "options": {
+        "A": "The status is cosmetic and always clears on the next refresh.",
+        "B": "The job has already failed and the status is stale.",
+        "C": "It might be stuck, or processing an unusually large dataset.",
+        "D": "The activity was cancelled but the hub has not updated."
+      },
+      "correct": "C",
+      "explanation": "In progress simply means the activity is still running. Staying there far longer than the baseline is the signal worth investigating."
+    }
+  },
+  {
+    "id": "145a473f-360d-5d2b-948f-68a2cf330a2d",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "How far back does the monitoring hub display run history for an item?",
+      "options": {
+        "A": "7 days",
+        "B": "30 days",
+        "C": "90 days",
+        "D": "The full lifetime of the item"
+      },
+      "correct": "B",
+      "explanation": "Historical runs show up to 30 days of run history for the selected item, reached through More options on the activity."
+    }
+  },
+  {
+    "id": "3eed15e9-c36a-5d75-866d-8165c8294f45",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Which question is the historical runs view best suited to answering?",
+      "options": {
+        "A": "Which users currently have Contributor access to the workspace.",
+        "B": "How many capacity units the workspace has left this month.",
+        "C": "When an activity started failing, and whether it is getting slower.",
+        "D": "Which columns a lakehouse table contains."
+      },
+      "correct": "C",
+      "explanation": "A single run tells you what happened now. History tells you when a pattern began, whether durations are drifting, and whether retries recur."
+    }
+  },
+  {
+    "id": "3310f6f9-fca3-5f3f-9756-16ec50a2e39b",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "In a busy workspace the activity list is long. Which two filters does the monitoring hub offer to narrow it?",
+      "options": {
+        "A": "Status and item type",
+        "B": "Sensitivity label and endorsement",
+        "C": "Owner and capacity region",
+        "D": "Table name and row count"
+      },
+      "correct": "A",
+      "explanation": "Filter to failures to focus on problems, or to a single item type such as Dataflow Gen2 when troubleshooting one part of the chain."
+    }
+  },
+  {
+    "id": "ca007ab1-6aea-5208-95ef-78f3860958bb",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Which monitoring hub column tells you whether a run was started by a user, a schedule, or a pipeline?",
+      "options": {
+        "A": "Location",
+        "B": "Duration",
+        "C": "Submitted by",
+        "D": "End time"
+      },
+      "correct": "C",
+      "explanation": "It identifies who or what triggered the run: a user, a schedule, or a pipeline. Location gives the workspace, and Refresh type distinguishes scheduled from manual runs."
+    }
+  },
+  {
+    "id": "4241ac70-2da6-5a5d-925f-d500a41765cd",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "What role do you need in a workspace to configure failure notifications on the Schedule failures page?",
+      "options": {
+        "A": "Viewer",
+        "B": "Contributor",
+        "C": "Tenant administrator",
+        "D": "Capacity administrator"
+      },
+      "correct": "B",
+      "explanation": "Configuring notifications on the Schedule failures page requires at least the Contributor role in the workspace."
+    }
+  },
+  {
+    "id": "7e393fda-cb9c-5f17-98d7-4c003c30f55a",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "What does Fabric create in your workspace when you enable workspace monitoring?",
+      "options": {
+        "A": "A lakehouse with a Delta table of activity logs.",
+        "B": "An Eventhouse database that collects diagnostic logs and metrics.",
+        "C": "A deployment pipeline linked to the workspace.",
+        "D": "A Power BI dashboard of capacity metrics."
+      },
+      "correct": "B",
+      "explanation": "It continuously gathers logs from your Fabric items, retains them for 30 days, and is enabled in workspace settings under the Monitoring tab."
+    }
+  },
+  {
+    "id": "6c095df5-796c-56ab-86bb-a25ebbaaaa78",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Which capability makes Activator different from the Schedule failures notification page?",
+      "options": {
+        "A": "It can email a list of recipients when a scheduled item fails.",
+        "B": "It can run a Fabric activity such as a notebook or pipeline in response to an event.",
+        "C": "It retains diagnostic logs for 30 days.",
+        "D": "It centrally manages notification recipients for every scheduled item."
+      },
+      "correct": "B",
+      "explanation": "Schedule failures sends email; Activator can also act, triggering a follow-up job rather than waiting for a human to respond."
+    }
+  },
+  {
+    "id": "8158c968-7593-5137-bd5a-51687de68661",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Workspace monitoring stores raw log data that you can query with KQL or SQL, unlike the monitoring hub's visual view of recent activity.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The monitoring hub is a visual dashboard for recent activity. Workspace monitoring keeps the raw log data, which you query with KQL or SQL for trend analysis and custom dashboards."
+    }
+  },
+  {
+    "id": "0c6fd01c-8fb9-5c29-af95-bf8d8ffa1eba",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Establishing a monitoring baseline means recording duration and status over time so you can tell when a run has deviated from normal.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "If you do not know that a dataflow normally finishes in four minutes, a twenty-minute run does not read as an anomaly. Baselines are what make deviation meaningful."
+    }
+  },
+  {
+    "id": "b9ff5ebe-b525-5f25-a9f2-92928171b482",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Activator can react only to job failures, not to jobs that succeed.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Activator responds to job created, job failed, job succeeded, and job status changed events. Reacting to success is how you chain a downstream refresh onto an upstream completion."
+    }
+  },
+  {
+    "id": "2682cd5c-e90e-5f7e-a08e-57c4f0385088",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Automatically re-running a pipeline through Activator is the recommended response to any failed job. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "If a job failed on a code error or a changed source schema, re-running it just fails again. Activator suits automated coordination — chaining jobs, cleanup, routing notifications — not substituting for a root-cause fix."
+    }
+  },
+  {
+    "id": "6b67d3e3-9b70-525f-ba02-a8f9d183f6ae",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-2",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A nightly load fails partway through and leaves partial data behind. The on-call team needs an immediate Teams message in their channel, and the partial rows must be cleaned up without waiting for someone to read an email. What should you configure?",
+      "options": {
+        "A": "The Schedule failures page, adding the on-call team as recipients.",
+        "B": "An Activator rule on the job failed event that posts to Teams and runs a cleanup notebook.",
+        "C": "A semantic model refresh schedule that runs after the load.",
+        "D": "Workspace monitoring with a KQL query over the failure logs."
+      },
+      "correct": "B",
+      "explanation": "Two requirements rule out the alternatives: a Teams channel rather than email, and an automatic follow-up action. The Schedule failures page delivers centrally managed email only, and neither a refresh schedule nor a KQL query removes the partial rows."
+    }
+  },
+  {
+    "id": "205f4233-91ed-542b-bb27-534f274f1fc6",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-2",
+      "order:17",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A notebook that used to finish in two minutes now takes eight, though every run still reports Succeeded. You need to establish when the slowdown began. What is the most direct way to find out?",
+      "options": {
+        "A": "Open historical runs for the notebook and compare durations across runs.",
+        "B": "Filter the monitoring hub to show only failed activities.",
+        "C": "Enable workspace monitoring and wait 30 days for data to accumulate.",
+        "D": "Re-run the notebook manually and time it."
+      },
+      "correct": "A",
+      "explanation": "Duration drift on succeeded runs is exactly what the history view exposes, and it is already there for the last 30 days. Filtering to failures hides these runs entirely, and enabling workspace monitoring now collects nothing about the past."
+    }
+  },
+  {
     "id": "716664af-cc2a-5a90-a0b4-c83042a2922b",
     "type": "mcq",
     "domain": "implement-manage",
