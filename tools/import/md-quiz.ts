@@ -102,7 +102,7 @@ const MODULES: Record<string, ModuleInfo> = {
   },
   'introduction-end-analytics-use-microsoft-fabric': {
     title: 'Introduction to end-to-end analytics using Microsoft Fabric',
-    paths: ['lp1', 'lp2'],
+    paths: ['lp1', 'lp2', 'lp5'],
     primaryPath: 'lp2',
   },
   'get-started-lakehouses': {
@@ -145,6 +145,38 @@ const MODULES: Record<string, ModuleInfo> = {
   // one of lp1-lp4.
   'monitor-fabric-items': {
     title: 'Monitor activities in Microsoft Fabric',
+    paths: [],
+  },
+  'get-started-data-warehouse': {
+    title: 'Get started with data warehouses in Microsoft Fabric',
+    paths: ['lp1', 'lp5'],
+    primaryPath: 'lp5',
+  },
+  'load-data-into-microsoft-fabric-data-warehouse': {
+    title: 'Load data into a Microsoft Fabric data warehouse',
+    paths: ['lp5'],
+    primaryPath: 'lp5',
+  },
+  'query-data-warehouse-microsoft-fabric': {
+    title: 'Query a data warehouse in Microsoft Fabric',
+    paths: ['lp5'],
+    primaryPath: 'lp5',
+  },
+  'monitor-fabric-data-warehouse': {
+    title: 'Monitor a Microsoft Fabric data warehouse',
+    paths: ['lp5'],
+    primaryPath: 'lp5',
+  },
+  // Also in "Administer and govern Microsoft Fabric", which is not one of ours.
+  'secure-data-warehouse-in-microsoft-fabric': {
+    title: 'Secure a Microsoft Fabric data warehouse',
+    paths: ['lp5'],
+    primaryPath: 'lp5',
+  },
+  // Studied alongside the warehouse path but not a member of it, and not an
+  // exam objective — so no path tags, like the other standalone modules.
+  'get-started-copilot-fabric-data-warehouse': {
+    title: 'Get started with Copilot in Microsoft Fabric for data warehouses',
     paths: [],
   },
 };

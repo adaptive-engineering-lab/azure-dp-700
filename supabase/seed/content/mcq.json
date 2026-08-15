@@ -3066,515 +3066,1679 @@
     }
   },
   {
-    "id": "ffea431a-8ea7-5061-a217-b201d07c5733",
+    "id": "693319dd-8d4a-5939-a4bb-0fe610be7e98",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "What does monitoring in Microsoft Fabric fundamentally provide?",
+      "question": "What is the primary purpose of a fact table in a data warehouse?",
       "options": {
-        "A": "A way to reduce the capacity units a workspace consumes.",
-        "B": "Data about whether activities succeed, fail, or degrade over time.",
-        "C": "Automatic correction of failed pipeline activities.",
-        "D": "A replacement for source control on Fabric items."
+        "A": "To store descriptive attributes with few rows",
+        "B": "To store the numerical data you want to analyze, typically with a large number of rows",
+        "C": "To define workspace security roles",
+        "D": "To store raw unmodified source files"
       },
       "correct": "B",
-      "explanation": "Monitoring is the collection of activity data so you can judge outcomes. Without it, failures go undetected, reports show stale data, and troubleshooting becomes guesswork."
+      "explanation": "Fact tables are the primary source of data for analysis — like total amounts paid for sales orders — with dimension tables providing the descriptive context around them."
     }
   },
   {
-    "id": "5baa2721-6eec-548b-b418-6d72dc681188",
+    "id": "eb08d2e5-114e-51d3-b2cc-88120826b13c",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "A data pipeline reports an overall status of Succeeded, yet downstream reports show stale data. What should you check first?",
+      "question": "What is a surrogate key?",
       "options": {
-        "A": "The capacity metrics app for throttling events.",
-        "B": "The status of each individual activity inside the pipeline.",
-        "C": "The workspace sensitivity labels.",
-        "D": "The semantic model's row-level security rules."
+        "A": "A natural business key from the source system, like a product code",
+        "B": "A unique identifier generated automatically by the database for each dimension row",
+        "C": "A column used only in fact tables",
+        "D": "A column that masks sensitive data"
       },
       "correct": "B",
-      "explanation": "A pipeline can report Succeeded overall even when an optional activity inside it failed, so the rolled-up status alone can hide the break that left the data stale."
+      "explanation": "Surrogate keys are specific to the data warehouse itself, typically auto-generated integers, and help maintain internal consistency."
     }
   },
   {
-    "id": "91de2f5b-815a-51e4-8cf6-c5c765f69fb3",
+    "id": "2b8e8755-529c-5bcb-883f-47eeaf68a900",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "A semantic model refresh succeeds, but its retry count has been climbing week over week. What does this most likely indicate?",
+      "question": "What is an alternate key used for in a dimension table?",
       "options": {
-        "A": "The model is too small to refresh reliably.",
-        "B": "An emerging problem with the data source connection.",
-        "C": "The refresh schedule is set too infrequently.",
-        "D": "The workspace has exceeded its item limit."
+        "A": "It replaces the need for a surrogate key entirely",
+        "B": "It maintains traceability between the data warehouse and the source transactional system",
+        "C": "It defines row-level security",
+        "D": "It's only used in snowflake schemas"
       },
       "correct": "B",
-      "explanation": "A refresh that retries before succeeding points to a transient issue. When the retry count rises over time, investigate the source connection before the refresh starts failing outright."
+      "explanation": "Alternate keys are the natural/business keys (like a product code or customer ID) from the source system — you need both surrogate and alternate keys because they serve different purposes."
     }
   },
   {
-    "id": "bb75946c-9c52-55bf-a08a-b2127115d31b",
+    "id": "3bbff8c4-8adb-55a0-b1b2-97a67f617cf6",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "How do eventstreams differ from batch activities when it comes to monitoring?",
+      "question": "What do slowly changing dimensions specifically track?",
       "options": {
-        "A": "They run continuously, so you monitor throughput, latency, and error rates.",
-        "B": "They cannot be monitored from the monitoring hub at all.",
-        "C": "They only need monitoring when a pipeline invokes them.",
-        "D": "They report a single duration value at completion like any other job."
-      },
-      "correct": "A",
-      "explanation": "Batch activities run and complete, producing a duration and a final status. Eventstreams are designed to run without stopping, so the useful signals are continuous ones."
-    }
-  },
-  {
-    "id": "013cb7b6-c61e-575d-a255-98b4efb388e6",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "Where do you open the monitoring hub in the Fabric portal?",
-      "options": {
-        "A": "From the workspace settings under the Monitoring tab.",
-        "B": "By selecting Monitor in the left navigation pane.",
-        "C": "From the Real-Time hub's Fabric events page.",
-        "D": "From the OneLake catalog."
+        "A": "Real-time streaming events",
+        "B": "Changes to dimension attributes over time, like a customer's address or a product's price",
+        "C": "Query performance metrics",
+        "D": "Workspace role assignments"
       },
       "correct": "B",
-      "explanation": "That opens the hub's main view, a table of recent activities with columns for name, status, item type, and start time."
+      "explanation": "Slowly changing dimensions let you analyze and understand how data has changed over time, which matters for accurate historical reporting."
     }
   },
   {
-    "id": "b2464063-98a2-582e-8a8e-61dffeb839cb",
+    "id": "8a6d58d5-67d0-5ad1-9361-a28ce3d7205c",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "An activity in the monitoring hub shows a status of Cancelled. What does that mean?",
+      "question": "In a star schema, how does the fact table relate to dimension tables?",
       "options": {
-        "A": "The activity completed but produced no rows.",
-        "B": "The activity failed validation before it started.",
-        "C": "Something stopped the activity before it finished.",
-        "D": "The activity is queued behind a higher-priority job."
+        "A": "Dimension tables are normalized into further sub-tables",
+        "B": "The fact table relates directly to the dimension tables",
+        "C": "There is no direct relationship; a bridge table is required",
+        "D": "Fact tables are not used in a star schema"
+      },
+      "correct": "B",
+      "explanation": "This direct relationship, without further normalization of the dimensions, is exactly what defines a star schema — dimension data is denormalized to reduce the number of joins needed."
+    }
+  },
+  {
+    "id": "66d8fada-b9d7-5ae4-91cb-5943ffab2f3a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What distinguishes a snowflake schema from a star schema?",
+      "options": {
+        "A": "Snowflake schemas have no fact table",
+        "B": "Dimension tables in a snowflake schema are further normalized into additional related tables",
+        "C": "Snowflake schemas cannot be queried with T-SQL",
+        "D": "Star schemas only support one dimension table"
+      },
+      "correct": "B",
+      "explanation": "For example, DimProduct might split into separate DimCategory and DimSupplier tables — useful when there are many shared levels or attributes across dimensions."
+    }
+  },
+  {
+    "id": "c60eb247-8e22-580c-a101-ec53fe4cc8e1",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What format is data stored in for a Fabric data warehouse?",
+      "options": {
+        "A": "CSV",
+        "B": "Open Delta format on OneLake",
+        "C": "Proprietary binary format",
+        "D": "JSON"
+      },
+      "correct": "B",
+      "explanation": "This is what allows other Fabric workloads to access the same warehouse data without duplicating it — consistent with everything else you've learned about how Fabric stores tabular data."
+    }
+  },
+  {
+    "id": "8fd0afde-029b-534d-aef2-c73c9fece7de",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What capability does a Fabric warehouse have that the SQL analytics endpoint does NOT?",
+      "options": {
+        "A": "Reading data",
+        "B": "Creating views and stored procedures",
+        "C": "Writing data (INSERT, UPDATE, DELETE, MERGE) and creating tables (DDL)",
+        "D": "Being queried with T-SQL"
       },
       "correct": "C",
-      "explanation": "Check whether the cancellation was deliberate or the result of a timeout or a capacity limit."
+      "explanation": "The SQL analytics endpoint is read-only over lakehouse data; a warehouse gives full read/write T-SQL capability over its own native tables. Both support reading data and creating views/stored procedures."
     }
   },
   {
-    "id": "9d9eae93-d002-5afa-a58f-b1438d4885bd",
+    "id": "0e3e14b5-b34f-55bd-a218-8a9af603d884",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "An activity has a status of In progress far longer than usual. What is the reasonable interpretation?",
+      "question": "Which T-SQL command would you use to bulk load data from CSV or Parquet files in Azure storage directly into warehouse tables?",
       "options": {
-        "A": "The status is cosmetic and always clears on the next refresh.",
-        "B": "The job has already failed and the status is stale.",
-        "C": "It might be stuck, or processing an unusually large dataset.",
-        "D": "The activity was cancelled but the hub has not updated."
+        "A": "OPENROWSET",
+        "B": "COPY INTO",
+        "C": "CREATE TABLE ... AS CLONE OF",
+        "D": "MERGE"
+      },
+      "correct": "B",
+      "explanation": "This T-SQL command bulk loads data directly from external files (CSV, Parquet) in Azure storage into warehouse tables. OPENROWSET, by contrast, queries files directly without first creating tables — useful for ad hoc analysis rather than bulk loading."
+    }
+  },
+  {
+    "id": "5f7c0b2f-100a-5e53-a543-6f7519faa9d5",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What is the purpose of a staging table in the warehouse loading pattern?",
+      "options": {
+        "A": "To permanently replace dimension tables",
+        "B": "To act as a temporary holding area for raw source data before transformation into the dimensional model",
+        "C": "To store query performance metrics",
+        "D": "To define row-level security policies"
+      },
+      "correct": "B",
+      "explanation": "Staging tables mirror the source data's structure, keeping it intact while you apply business rules and key lookups during the load into final fact/dimension tables."
+    }
+  },
+  {
+    "id": "427a1aa1-08fc-5b1f-8244-56c958e98462",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What is a key characteristic of a table clone created with CREATE TABLE ... AS CLONE OF in a Fabric warehouse?",
+      "options": {
+        "A": "It fully duplicates the underlying data files, doubling storage",
+        "B": "It copies table metadata while referencing the same underlying data files, with no data duplication",
+        "C": "It only works across different warehouses, never within the same one",
+        "D": "It requires a manual data copy afterward"
+      },
+      "correct": "B",
+      "explanation": "This \"zero-copy\" clone keeps storage costs low, and is useful for development/testing, recovery after a failed release, or preserving point-in-time snapshots for historical reporting."
+    }
+  },
+  {
+    "id": "3befede3-f232-53e5-8993-9051492bb70a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which tool provides a no-code, diagram-style experience for building queries by dragging tables onto a canvas?",
+      "options": {
+        "A": "SQL query editor",
+        "B": "Visual query editor",
+        "C": "KQL Queryset",
+        "D": "Query insights"
+      },
+      "correct": "B",
+      "explanation": "It offers a diagram-view experience similar to Power Query Online — drag a table onto the canvas, then use the Transform menu or the (+) button to add columns, filters, and other transformations, no code required."
+    }
+  },
+  {
+    "id": "29dacc6c-9792-5daa-8c1d-9ae984cbe9c9",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What do views and stored procedures both help with, beyond standardizing human access to data?",
+      "options": {
+        "A": "They eliminate the need for security policies",
+        "B": "They improve the accuracy of Copilot and Fabric IQ data agents, which can query views like tables",
+        "C": "They automatically create semantic models",
+        "D": "They replace the need for dimensional modeling"
+      },
+      "correct": "B",
+      "explanation": "Standardizing data access through well-named views (and stored procedures for repeatable logic) makes natural-language AI tools more accurate, not just human analysts."
+    }
+  },
+  {
+    "id": "71e6aba6-f6d4-5be9-8cff-b55b9f3a3b2a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
+      "level-1",
+      "order:17",
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What mode do semantic models created from a Fabric warehouse use by default for Power BI reporting?",
+      "options": {
+        "A": "Import mode",
+        "B": "DirectQuery mode",
+        "C": "Direct Lake mode",
+        "D": "Composite mode"
       },
       "correct": "C",
-      "explanation": "In progress simply means the activity is still running. Staying there far longer than the baseline is the signal worth investigating."
+      "explanation": "This reads data directly from OneLake Parquet files rather than importing a copy, meaning reports reflect current warehouse data without requiring scheduled refreshes — the same behavior you've seen with lakehouse semantic models."
     }
   },
   {
-    "id": "145a473f-360d-5d2b-948f-68a2cf330a2d",
+    "id": "ffd4dcd6-9bd9-5526-83f3-831abfec1afd",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "How far back does the monitoring hub display run history for an item?",
-      "options": {
-        "A": "7 days",
-        "B": "30 days",
-        "C": "90 days",
-        "D": "The full lifetime of the item"
-      },
-      "correct": "B",
-      "explanation": "Historical runs show up to 30 days of run history for the selected item, reached through More options on the activity."
-    }
-  },
-  {
-    "id": "3eed15e9-c36a-5d75-866d-8165c8294f45",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "Which question is the historical runs view best suited to answering?",
-      "options": {
-        "A": "Which users currently have Contributor access to the workspace.",
-        "B": "How many capacity units the workspace has left this month.",
-        "C": "When an activity started failing, and whether it is getting slower.",
-        "D": "Which columns a lakehouse table contains."
-      },
-      "correct": "C",
-      "explanation": "A single run tells you what happened now. History tells you when a pattern began, whether durations are drifting, and whether retries recur."
-    }
-  },
-  {
-    "id": "3310f6f9-fca3-5f3f-9756-16ec50a2e39b",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "In a busy workspace the activity list is long. Which two filters does the monitoring hub offer to narrow it?",
-      "options": {
-        "A": "Status and item type",
-        "B": "Sensitivity label and endorsement",
-        "C": "Owner and capacity region",
-        "D": "Table name and row count"
-      },
-      "correct": "A",
-      "explanation": "Filter to failures to focus on problems, or to a single item type such as Dataflow Gen2 when troubleshooting one part of the chain."
-    }
-  },
-  {
-    "id": "ca007ab1-6aea-5208-95ef-78f3860958bb",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "Which monitoring hub column tells you whether a run was started by a user, a schedule, or a pipeline?",
-      "options": {
-        "A": "Location",
-        "B": "Duration",
-        "C": "Submitted by",
-        "D": "End time"
-      },
-      "correct": "C",
-      "explanation": "It identifies who or what triggered the run: a user, a schedule, or a pipeline. Location gives the workspace, and Refresh type distinguishes scheduled from manual runs."
-    }
-  },
-  {
-    "id": "4241ac70-2da6-5a5d-925f-d500a41765cd",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "What role do you need in a workspace to configure failure notifications on the Schedule failures page?",
-      "options": {
-        "A": "Viewer",
-        "B": "Contributor",
-        "C": "Tenant administrator",
-        "D": "Capacity administrator"
-      },
-      "correct": "B",
-      "explanation": "Configuring notifications on the Schedule failures page requires at least the Contributor role in the workspace."
-    }
-  },
-  {
-    "id": "7e393fda-cb9c-5f17-98d7-4c003c30f55a",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "What does Fabric create in your workspace when you enable workspace monitoring?",
-      "options": {
-        "A": "A lakehouse with a Delta table of activity logs.",
-        "B": "An Eventhouse database that collects diagnostic logs and metrics.",
-        "C": "A deployment pipeline linked to the workspace.",
-        "D": "A Power BI dashboard of capacity metrics."
-      },
-      "correct": "B",
-      "explanation": "It continuously gathers logs from your Fabric items, retains them for 30 days, and is enabled in workspace settings under the Monitoring tab."
-    }
-  },
-  {
-    "id": "6c095df5-796c-56ab-86bb-a25ebbaaaa78",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "Which capability makes Activator different from the Schedule failures notification page?",
-      "options": {
-        "A": "It can email a list of recipients when a scheduled item fails.",
-        "B": "It can run a Fabric activity such as a notebook or pipeline in response to an event.",
-        "C": "It retains diagnostic logs for 30 days.",
-        "D": "It centrally manages notification recipients for every scheduled item."
-      },
-      "correct": "B",
-      "explanation": "Schedule failures sends email; Activator can also act, triggering a follow-up job rather than waiting for a human to respond."
-    }
-  },
-  {
-    "id": "8158c968-7593-5137-bd5a-51687de68661",
-    "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
-    "difficulty": 1,
-    "source": "bank",
-    "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
-      "level-1",
-      "order:17",
-      "module:monitor-fabric-items"
-    ],
-    "content": {
-      "question": "True or false? Workspace monitoring stores raw log data that you can query with KQL or SQL, unlike the monitoring hub's visual view of recent activity.",
+      "question": "True or false? Cross-filter direction in a warehouse relationship determines which way filters propagate between tables, and single direction (dimension filters fact) is the standard for most star schema designs.",
       "options": {
         "A": "True",
         "B": "False"
       },
       "correct": "A",
-      "explanation": "The monitoring hub is a visual dashboard for recent activity. Workspace monitoring keeps the raw log data, which you query with KQL or SQL for trend analysis and custom dashboards."
+      "explanation": "Cross-filter direction governs how filters flow between related tables, and single direction (dimension → fact) is the standard because it keeps filter behavior predictable and performant — the typical setup for fact-to-dimension relationships in a star schema."
     }
   },
   {
-    "id": "0c6fd01c-8fb9-5c29-af95-bf8d8ffa1eba",
+    "id": "dc874e6f-2ca2-5b18-9b77-00fe4fa1e696",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "True or false? Establishing a monitoring baseline means recording duration and status over time so you can tell when a run has deviated from normal.",
+      "question": "True or false? The ReadAll item permission allows a user to read raw Parquet files in OneLake directly.",
       "options": {
         "A": "True",
         "B": "False"
       },
       "correct": "A",
-      "explanation": "If you do not know that a dataflow normally finishes in four minutes, a twenty-minute run does not read as an anomaly. Baselines are what make deviation meaningful."
+      "explanation": "ReadAll specifically allows a user to read the raw Parquet files in OneLake directly, distinct from Read (SQL analytics endpoint connection only) and ReadData (read data from tables/views without accessing raw files)."
     }
   },
   {
-    "id": "b9ff5ebe-b525-5f25-a9f2-92928171b482",
+    "id": "64c7b428-02f0-575f-9f36-bc77861625ce",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "True or false? Activator can react only to job failures, not to jobs that succeed.",
+      "question": "True or false? A user can connect to the SQL analytics endpoint without being granted at least Read permission on the warehouse.",
       "options": {
         "A": "True",
         "B": "False"
       },
       "correct": "B",
-      "explanation": "Activator responds to job created, job failed, job succeeded, and job status changed events. Reacting to success is how you chain a downstream refresh onto an upstream completion."
+      "explanation": "A connection to the SQL analytics endpoint explicitly fails without at minimum Read permission on the warehouse — this permission is a hard prerequisite, not optional."
     }
   },
   {
-    "id": "2682cd5c-e90e-5f7e-a08e-57c4f0385088",
+    "id": "4f136f27-5b9c-5bc0-8f86-778591549a2f",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 1,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-1",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "True or false? Automatically re-running a pipeline through Activator is the recommended response to any failed job. ---",
+      "question": "True or false? Only workspace Admins can run the KILL command to terminate long-running sessions in a Fabric warehouse. ---",
       "options": {
         "A": "True",
         "B": "False"
       },
-      "correct": "B",
-      "explanation": "If a job failed on a code error or a changed source schema, re-running it just fails again. Activator suits automated coordination — chaining jobs, cleanup, routing notifications — not substituting for a root-cause fix."
+      "correct": "A",
+      "explanation": "The module states this directly — only workspace Admins can run KILL to terminate long-running sessions; Members, Contributors, and Viewers can see their own query results but can't see other users' queries or terminate sessions."
     }
   },
   {
-    "id": "6b67d3e3-9b70-525f-ba02-a8f9d183f6ae",
+    "id": "4b248e25-9f7a-5c4d-88f2-89949676a5f0",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 2,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-2",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "A nightly load fails partway through and leaves partial data behind. The on-call team needs an immediate Teams message in their channel, and the partial rows must be cleaned up without waiting for someone to read an email. What should you configure?",
+      "question": "Your organization needs analysts to reliably calculate \"Total Sales\" the same way every time across all their reports, regardless of which team builds the report, and you want a single place to update the calculation logic if the business definition changes. What should you create?",
       "options": {
-        "A": "The Schedule failures page, adding the on-call team as recipients.",
-        "B": "An Activator rule on the job failed event that posts to Teams and runs a cleanup notebook.",
-        "C": "A semantic model refresh schedule that runs after the load.",
-        "D": "Workspace monitoring with a KQL query over the failure logs."
+        "A": "A staging table",
+        "B": "A measure defined once in the warehouse model view",
+        "C": "A table clone",
+        "D": "A dynamic management view"
       },
       "correct": "B",
-      "explanation": "Two requirements rule out the alternatives: a Teams channel rather than email, and an automatic follow-up action. The Schedule failures page delivers centrally managed email only, and neither a refresh schedule nor a KQL query removes the partial rows."
+      "explanation": "This matches the described need precisely: a single, reusable DAX calculation that becomes the source of truth for that metric, updated in one place rather than duplicated (and potentially inconsistently redefined) across every report."
     }
   },
   {
-    "id": "205f4233-91ed-542b-bb27-534f274f1fc6",
+    "id": "0a78b3b7-cf6d-57fb-9454-cbf277f22cad",
     "type": "mcq",
-    "domain": "monitor-optimize",
-    "topic": "Monitor activities in Microsoft Fabric",
+    "domain": "ingest-transform",
+    "topic": "Get started with data warehouses in Microsoft Fabric",
     "difficulty": 2,
     "source": "bank",
     "tags": [
-      "monitor-optimize",
-      "monitor-activities-in-microsoft-fabric",
+      "ingest-transform",
+      "get-started-with-data-warehouses-in-microsoft-fabric",
       "level-2",
       "order:17",
-      "module:monitor-fabric-items"
+      "module:get-started-data-warehouse",
+      "path:lp1",
+      "path:lp5",
+      "primary-path:lp5"
     ],
     "content": {
-      "question": "A notebook that used to finish in two minutes now takes eight, though every run still reports Succeeded. You need to establish when the slowdown began. What is the most direct way to find out?",
+      "question": "You need to investigate why a specific warehouse query has been running unusually long for the past 20 minutes, and you want to see it in real time as it's currently executing. Which tool should you use?",
       "options": {
-        "A": "Open historical runs for the notebook and compare durations across runs.",
-        "B": "Filter the monitoring hub to show only failed activities.",
-        "C": "Enable workspace monitoring and wait 30 days for data to accumulate.",
-        "D": "Re-run the notebook manually and time it."
+        "A": "Query insights (queryinsights.long_running_queries)",
+        "B": "A dynamic management view like sys.dm_exec_requests",
+        "C": "A table clone",
+        "D": "The Visual query editor"
+      },
+      "correct": "B",
+      "explanation": "DMVs monitor active connections, sessions, and requests in real time, which is what's needed to inspect a query that is currently running. Query insights (A) is the right tool for historical analysis over the past 30 days, not live in-progress monitoring."
+    }
+  },
+  {
+    "id": "dcd0ad0c-03b1-5278-bcef-9fd03148b72c",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What does a full load do?",
+      "options": {
+        "A": "Loads only rows changed since the last run",
+        "B": "Truncates and reloads all tables, replacing old data entirely",
+        "C": "Only loads dimension tables, never fact tables",
+        "D": "Requires change-tracking mechanisms in the source"
+      },
+      "correct": "B",
+      "explanation": "Full loads are simpler to implement since you don't track history, and are typical for initial warehouse setup or when you need a complete refresh."
+    }
+  },
+  {
+    "id": "079ab039-c1ad-59ae-8f6b-5258e6a6f8ca",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What does an incremental load require that a full load does not?",
+      "options": {
+        "A": "A larger warehouse",
+        "B": "Change-tracking mechanisms in the source data",
+        "C": "A surrogate key",
+        "D": "A Dataflow Gen2"
+      },
+      "correct": "B",
+      "explanation": "Incremental loads are faster and preserve history, but they depend on being able to identify what's actually changed since the last run — which full loads don't need to worry about."
+    }
+  },
+  {
+    "id": "21765cbf-d339-5b32-97cb-633b80d48182",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What are the two purposes of staging data before loading it into a warehouse?",
+      "options": {
+        "A": "To permanently store historical data and to replace fact tables",
+        "B": "To apply business rules/transformations without affecting production tables, and to act as a buffer keeping the warehouse responsive",
+        "C": "To define row-level security and column-level security",
+        "D": "To automatically generate surrogate keys"
+      },
+      "correct": "B",
+      "explanation": "Staging gives you a safe workspace to clean and validate data before it touches production tables, while large loads process in the background."
+    }
+  },
+  {
+    "id": "5761d36b-da48-5e77-b1e3-045ae5da29d6",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What is a business key (natural key)?",
+      "options": {
+        "A": "A system-generated integer with no business meaning",
+        "B": "A key from the source system that carries meaning, like a product SKU or customer ID",
+        "C": "A key used only for row-level security",
+        "D": "A key that changes automatically on every load"
+      },
+      "correct": "B",
+      "explanation": "Business keys (natural keys) let you trace warehouse records back to their origin in the source system."
+    }
+  },
+  {
+    "id": "f8c99d34-91a9-5555-af46-da83cfd0891f",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Why are surrogate keys used instead of relying solely on business keys?",
+      "options": {
+        "A": "They're faster to type",
+        "B": "They protect the warehouse from changes in source systems, since they have no business meaning",
+        "C": "They automatically enforce data type conversions",
+        "D": "They eliminate the need for dimension tables"
+      },
+      "correct": "B",
+      "explanation": "If a source system reuses or modifies a product code, the surrogate key keeps warehouse relationships intact regardless — the business key can change, but the surrogate key stays stable."
+    }
+  },
+  {
+    "id": "49175e82-fede-571c-8932-f81c705d85a5",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Why are dimension tables loaded before fact tables?",
+      "options": {
+        "A": "Dimension tables are always smaller and load faster",
+        "B": "Fact tables reference dimension tables through surrogate keys",
+        "C": "Fact tables cannot be created until dimensions exist in the schema",
+        "D": "There is no required order"
+      },
+      "correct": "B",
+      "explanation": "Loading dimensions first ensures those surrogate keys already exist and are available for the fact table load's lookup logic to reference."
+    }
+  },
+  {
+    "id": "3397249b-81c6-582a-8dbc-601b818707cd",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which SCD type overwrites the existing value with no history kept?",
+      "options": {
+        "A": "Type 0",
+        "B": "Type 1",
+        "C": "Type 2",
+        "D": "Type 3"
+      },
+      "correct": "B",
+      "explanation": "Type 1 overwrites the existing value with no history kept — appropriate for things like fixing a data entry error where you don't need to preserve the old, incorrect value."
+    }
+  },
+  {
+    "id": "917aa80d-8838-5de8-b5b2-5388909305e4",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which SCD type adds a new row for each change and marks the old row as expired, preserving full history?",
+      "options": {
+        "A": "Type 1",
+        "B": "Type 2",
+        "C": "Type 3",
+        "D": "Type 4"
+      },
+      "correct": "B",
+      "explanation": "Type 2 adds a new row for each change and marks the old row as expired, giving you full history — for example, tracking a customer's address at the exact time of each sale."
+    }
+  },
+  {
+    "id": "99118be4-4861-50a1-83eb-d39b902effa6",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "In a type 2 SCD fact table load, why might you use MAX() when looking up a dimension's surrogate key?",
+      "options": {
+        "A": "To calculate the total sales amount",
+        "B": "To retrieve the most recently added (current) version of the dimension record, assuming incrementing surrogate keys",
+        "C": "To find the maximum possible value allowed by the column's data type",
+        "D": "To identify duplicate business keys"
+      },
+      "correct": "B",
+      "explanation": "Since type 2 SCD can have multiple rows for the same business key (one per historical version), MAX() on an incrementing surrogate key reliably picks out the current, most recent version."
+    }
+  },
+  {
+    "id": "d706f933-6c7d-532f-8976-2c34d6ae3a1d",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "In a Fabric Copy job, what is the difference between \"Full copy\" and \"Incremental\" modes?",
+      "options": {
+        "A": "Full copy only works with CSV files; Incremental only works with Parquet",
+        "B": "Full copy loads all source data every run; Incremental loads only rows changed since the previous run",
+        "C": "There is no functional difference",
+        "D": "Incremental mode requires T-SQL; Full copy does not"
+      },
+      "correct": "B",
+      "explanation": "This mirrors the same full-vs-incremental distinction from load strategy, but applied specifically as a configurable mode within the Copy job wizard."
+    }
+  },
+  {
+    "id": "54af7104-f48b-59e8-b60f-82814779e861",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "When authenticating a T-SQL COPY INTO statement against an Azure Blob Storage source, what must you provide?",
+      "options": {
+        "A": "Nothing; authentication is automatic",
+        "B": "A Shared Access Signature (SAS) or Storage Account Key via the CREDENTIAL parameter",
+        "C": "A workspace identity token only",
+        "D": "An Azure Active Directory group membership"
+      },
+      "correct": "B",
+      "explanation": "This is required specifically for Azure storage account sources; by contrast, OneLake lakehouse folders authenticate automatically using your workspace identity, with no credential needed."
+    }
+  },
+  {
+    "id": "89589d7b-ce01-57e7-90a3-9fe5854f84a6",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What does the REJECTED_ROW_LOCATION option do in a COPY INTO statement, and what file type does it apply to?",
+      "options": {
+        "A": "It stops the entire load if any row fails; applies to all file types",
+        "B": "It sends failed rows to a separate storage location instead of failing the whole load; applies only to CSV files",
+        "C": "It automatically retries failed rows; applies only to Parquet files",
+        "D": "It deletes rejected rows permanently with no logging"
+      },
+      "correct": "B",
+      "explanation": "This lets the bulk of a load succeed while you investigate problem rows separately afterward, rather than the entire COPY INTO operation failing over a handful of bad rows."
+    }
+  },
+  {
+    "id": "e5c16789-8fb0-5d1f-8c88-ba52c20a0d48",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What is the key difference between CREATE TABLE AS SELECT (CTAS) and INSERT...SELECT?",
+      "options": {
+        "A": "CTAS creates a new table from a query result; INSERT...SELECT adds rows to an existing table",
+        "B": "INSERT...SELECT creates a new table; CTAS only works on existing tables",
+        "C": "They are functionally identical",
+        "D": "CTAS cannot join data across a warehouse and a lakehouse"
       },
       "correct": "A",
-      "explanation": "Duration drift on succeeded runs is exactly what the history view exposes, and it is already there for the last 30 days. Filtering to failures hides these runs entirely, and enabling workspace monitoring now collects nothing about the past."
+      "explanation": "Use CTAS when you need a brand-new table built from transformed or combined data; use INSERT...SELECT when the target table already exists and you're just adding to it."
+    }
+  },
+  {
+    "id": "8d1fb0dc-a08c-506e-953e-419359ccd37a",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "When Dataflow Gen2 targets a Fabric Warehouse as its destination, which update method should you use for a table that accumulates daily transaction logs over time?",
+      "options": {
+        "A": "Replace",
+        "B": "Append",
+        "C": "Full copy",
+        "D": "Incremental"
+      },
+      "correct": "B",
+      "explanation": "Append adds new rows to the existing table, which is exactly right for accumulating data over time like daily transaction logs. Replace would be appropriate instead for reference data that gets fully refreshed each run, like a product catalog."
+    }
+  },
+  {
+    "id": "9547aed2-9343-5b15-88d5-26d3f4be0a2d",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? All warehouses within the same Fabric workspace share a single SQL connection endpoint, enabling cross-database queries using three-part naming.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The module states this directly — all warehouses in the same workspace share a single SQL connection endpoint, letting you reference any of them by name (via database.schema.table) just like databases on a SQL Server instance."
+    }
+  },
+  {
+    "id": "cfb24f97-25a6-5658-b2c5-cf62f65a1f70",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? When loading data from a OneLake lakehouse folder using COPY INTO, you must still provide a Shared Access Signature or Storage Account Key.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "OneLake lakehouse folders authenticate automatically using your workspace identity — no credential parameter is needed for that source type, unlike Azure storage accounts which do require a SAS token or storage account key."
+    }
+  },
+  {
+    "id": "798d991e-c633-55ee-a48f-15e491ed4ebb",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? Append is the only supported update method for KQL database and Azure Data Explorer destinations in Dataflow Gen2 — Replace is not available.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The module states this explicitly: Append is the only update method supported for KQL database and Azure Data Explorer destinations — Replace is not an option for those two destination types specifically (though it is available for other destinations like Fabric Warehouse)."
+    }
+  },
+  {
+    "id": "35aa7da2-0acc-5745-9c16-b25167c429c0",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? Changes made to a Dataflow Gen2 take effect immediately as you build, even before publishing. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Dataflow Gen2 automatically saves your work as a draft while you build, but changes only actually take effect once you select Publish — building alone doesn't activate anything."
+    }
+  },
+  {
+    "id": "63742d51-01a6-5ab7-8286-748e41c69012",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-2",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "You're loading a Dim_Customer table using a type 2 SCD approach, and a customer's address has changed since the last load. What should happen to the existing record for that customer?",
+      "options": {
+        "A": "It should be deleted permanently",
+        "B": "It should be overwritten with the new address, with no history retained",
+        "C": "It should be marked as expired/inactive, and a new row should be inserted with the updated address",
+        "D": "It should be moved to a separate dimension table entirely"
+      },
+      "correct": "C",
+      "explanation": "This is exactly how type 2 SCD works: the existing record gets its ValidTo/IsActive status updated to mark it expired, and a brand-new row is inserted representing the current, updated version — preserving full history rather than losing the old address."
+    }
+  },
+  {
+    "id": "72948ea5-dcb1-5346-af61-c89f7718d63b",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Load data into a Microsoft Fabric data warehouse",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "load-data-into-a-microsoft-fabric-data-warehouse",
+      "level-2",
+      "order:18",
+      "module:load-data-into-microsoft-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "You need to combine data from a sales warehouse and a social media lakehouse into a brand-new, permanent table for downstream analysis, joining on product_id. Which T-SQL approach fits this need?",
+      "options": {
+        "A": "COPY INTO",
+        "B": "CREATE TABLE AS SELECT (CTAS), joining across the warehouse and lakehouse using three-part naming",
+        "C": "Dataflow Gen2 with Replace update method",
+        "D": "A Copy job with Incremental mode"
+      },
+      "correct": "B",
+      "explanation": "This matches the scenario precisely: a brand-new table (which is what CTAS is for, versus INSERT...SELECT needing an existing table), built by joining data across a warehouse and a lakehouse using the database.schema.table naming pattern."
+    }
+  },
+  {
+    "id": "dcfe17cc-d0db-5ca6-8a6f-456784b594c1",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "In a snowflake schema, why might a query need to join through an intermediate dimension table (like DimProduct) to reach a further-normalized table (like DimCategory), even if no columns from the intermediate table appear in the SELECT list?",
+      "options": {
+        "A": "It's optional; you could skip the intermediate join",
+        "B": "Both joins are required to traverse the relationship chain connecting the fact table to the final dimension table",
+        "C": "T-SQL requires listing every table in the FROM clause",
+        "D": "Snowflake schemas don't support this kind of aggregation"
+      },
+      "correct": "B",
+      "explanation": "In a snowflake schema, DimCategory only connects to FactSales through DimProduct — even with zero columns from DimProduct in the SELECT list, the join is structurally necessary to reach DimCategory at all."
+    }
+  },
+  {
+    "id": "b71bd1e2-575c-5073-80bf-c6443199a8be",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which ranking function returns the ordinal position of each row within a partition, with no ties (1, 2, 3, 4...)?",
+      "options": {
+        "A": "RANK",
+        "B": "DENSE_RANK",
+        "C": "ROW_NUMBER",
+        "D": "NTILE"
+      },
+      "correct": "C",
+      "explanation": "It assigns a strictly sequential position (1, 2, 3, 4...) within each partition, with no accommodation for ties — even identical values get different numbers."
+    }
+  },
+  {
+    "id": "0b3ae2b6-fe0b-592a-b8a6-9f85ca0c0bf8",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "When two rows tie for 3rd place using RANK, what rank does the next (4th positioned) row receive?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "3",
+        "D": "1"
+      },
+      "correct": "B",
+      "explanation": "RANK counts ties as consuming positions: two rows tied for 3rd mean the next distinct value is ranked 5th (since two rows occupy \"3rd\"), reflecting that four rows total rank higher or equal."
+    }
+  },
+  {
+    "id": "e673d57d-d5aa-5373-869f-99d6995e7927",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "When two rows tie for 3rd place using DENSE_RANK, what rank does the next row receive?",
+      "options": {
+        "A": "5",
+        "B": "4",
+        "C": "3",
+        "D": "6"
+      },
+      "correct": "B",
+      "explanation": "DENSE_RANK doesn't leave gaps — after a tie at 3rd, the next distinct value is simply 4th, regardless of how many rows shared the previous rank."
+    }
+  },
+  {
+    "id": "8fdaee32-c50f-52da-a4ac-655dea3f7c00",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What does the NTILE(4) function return for each row in a partition?",
+      "options": {
+        "A": "The exact rank of the row",
+        "B": "The quartile in which the row's value places it",
+        "C": "The total count of rows in the partition",
+        "D": "A boolean true/false value"
+      },
+      "correct": "B",
+      "explanation": "NTILE(4) divides the partition into four roughly equal groups and returns which group (1–4) each row falls into — useful for percentile-style analysis like identifying top/bottom performers."
+    }
+  },
+  {
+    "id": "7fd8631c-f61e-57dc-849a-9030f78b0233",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What algorithm does APPROX_COUNT_DISTINCT use to calculate an approximate distinct count?",
+      "options": {
+        "A": "B-tree indexing",
+        "B": "HyperLogLog",
+        "C": "Bloom filter hashing",
+        "D": "Round-robin sampling"
+      },
+      "correct": "B",
+      "explanation": "This probabilistic algorithm is what powers APPROX_COUNT_DISTINCT's fast approximate counting, trading some precision for significant speed on large datasets."
+    }
+  },
+  {
+    "id": "35674833-e04f-5792-ac5f-5209ff277455",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What is the guaranteed maximum error rate for APPROX_COUNT_DISTINCT, and with what probability?",
+      "options": {
+        "A": "2% error with 97% probability",
+        "B": "10% error with 90% probability",
+        "C": "0% error, fully guaranteed accurate",
+        "D": "50% error with 100% probability"
+      },
+      "correct": "A",
+      "explanation": "This is the specific guarantee stated for APPROX_COUNT_DISTINCT — a bounded, known trade-off rather than an unpredictable one, which is what makes it usable for exploratory analysis."
+    }
+  },
+  {
+    "id": "01768932-cdee-5ab4-b1c4-c3407406f70c",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "When you run a query in the Fabric SQL query editor, how many rows does the Results preview show at most?",
+      "options": {
+        "A": "100",
+        "B": "1,000",
+        "C": "10,000",
+        "D": "Unlimited"
+      },
+      "correct": "C",
+      "explanation": "The Results preview in the SQL query editor is capped at this many rows if the actual result set exceeds it."
+    }
+  },
+  {
+    "id": "9cc1ebaa-2e9e-5bf8-9b70-2dbfa2d37eed",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which results toolbar option in the SQL query editor does NOT support queries containing an ORDER BY clause?",
+      "options": {
+        "A": "Open in Excel",
+        "B": "Explore this data",
+        "C": "Visualize results",
+        "D": "Copy"
+      },
+      "correct": "C",
+      "explanation": "This option explicitly doesn't support queries with an ORDER BY clause — a specific limitation worth remembering, since the other toolbar options (Open in Excel, Explore this data, Copy) don't have this restriction."
+    }
+  },
+  {
+    "id": "4f1684cf-f299-5b5a-94ad-447182183f72",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What is required before most of the SQL query editor's results toolbar options (like Open in Excel or Visualize results) become available?",
+      "options": {
+        "A": "Publishing the warehouse",
+        "B": "Highlighting a SELECT statement in the editor",
+        "C": "Enabling Copilot",
+        "D": "Saving the query as a view first"
+      },
+      "correct": "B",
+      "explanation": "Most results toolbar options require you to select the specific SELECT statement first, especially relevant when your editor contains multiple queries or statements."
+    }
+  },
+  {
+    "id": "be781c35-ce02-5c75-971b-e0e010b5e8b6",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What capacity requirement applies to using Copilot in the Fabric Data Warehouse SQL query editor?",
+      "options": {
+        "A": "Any SKU, including trial",
+        "B": "F2 or P1 capacity or higher; not available on trial SKUs",
+        "C": "Only P-series SKUs; F-series is not supported",
+        "D": "No capacity requirement"
+      },
+      "correct": "B",
+      "explanation": "This matches the requirement from the dedicated Copilot module — trial SKUs specifically don't support Copilot in Data Warehouse."
+    }
+  },
+  {
+    "id": "7d9eed08-2bf4-5caf-b5be-29ffe1f8fa0b",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "In the visual query editor, what action lets you join two tables you've dragged onto the canvas?",
+      "options": {
+        "A": "Selecting Save as view",
+        "B": "Right-clicking a table and selecting Merge queries",
+        "C": "Using the /generate-sql Copilot command",
+        "D": "Selecting Download Excel file"
+      },
+      "correct": "B",
+      "explanation": "This opens the Merge dialog where you pick the common key column in each table and choose a join type — the visual equivalent of writing a JOIN clause by hand."
+    }
+  },
+  {
+    "id": "c98461c6-5c3b-5b4f-ba32-4b66bdbf0650",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "In the visual query editor, what happens to the T-SQL as you build your query visually?",
+      "options": {
+        "A": "Nothing; you must write it manually afterward",
+        "B": "It is generated automatically and can be viewed or edited",
+        "C": "It is hidden and inaccessible",
+        "D": "It only becomes visible after publishing"
+      },
+      "correct": "B",
+      "explanation": "You can select View SQL to inspect the generated T-SQL, or Edit SQL script to open it directly in the SQL query editor for further manual refinement."
+    }
+  },
+  {
+    "id": "7caf0385-9935-5acd-9ce0-f1543ed8669b",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What authentication method does Microsoft Fabric support for connecting to a warehouse via SSMS or other client tools?",
+      "options": {
+        "A": "SQL authentication only",
+        "B": "Microsoft Entra ID authentication only; SQL authentication isn't supported",
+        "C": "Both SQL authentication and Entra ID, with SQL preferred",
+        "D": "Anonymous access only"
+      },
+      "correct": "B",
+      "explanation": "This is stated explicitly and applies uniformly — whether connecting via SSMS or any other client tool."
+    }
+  },
+  {
+    "id": "422119e7-defb-56f7-ba1e-abe0a7e0d858",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? When connecting to a Fabric warehouse from SSMS, leaving the Database Name field blank is fine as long as authentication succeeds.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "The Database Name field is explicitly required — leaving it blank can cause the connection to fail even if Entra ID authentication itself succeeds."
+    }
+  },
+  {
+    "id": "2f40add6-3f88-5d82-a628-220f76b67a11",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? TCP port 1433 must be open in your network firewall to connect to a Fabric warehouse from external client tools.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "TCP port 1433 needs to be open in your network firewall for external client tool connectivity to a Fabric warehouse to work."
+    }
+  },
+  {
+    "id": "d8e0d84a-0f14-5766-82a6-80a4a170db46",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? The SQL query editor in Fabric requires you to manually enter a connection string to connect to your warehouse.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "The SQL query editor connects automatically when you select your warehouse from the workspace — no connection string or manual connection info is required, unlike external tools like SSMS which do need one."
+    }
+  },
+  {
+    "id": "63c4ad61-f6dc-5c82-964a-a3cc3ce5aedb",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-1",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? Third-party tools can connect to a Fabric Warehouse or SQL analytics endpoint using ODBC or OLE DB drivers with Microsoft Entra ID authentication. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Any third-party tool can connect via ODBC or OLE DB drivers using the SQL connection string, authenticating with Microsoft Entra ID — the same authentication requirement that applies across all client tool connections to Fabric."
+    }
+  },
+  {
+    "id": "cf66c723-9714-5609-9991-c1570963d95c",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-2",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "You want to rank stores by sales revenue each year, but you specifically need ties to NOT create gaps in the ranking sequence (e.g., two stores tied for 2nd should be followed by a store ranked 3rd, not 4th). Which ranking function should you use?",
+      "options": {
+        "A": "ROW_NUMBER",
+        "B": "RANK",
+        "C": "DENSE_RANK",
+        "D": "NTILE"
+      },
+      "correct": "C",
+      "explanation": "This is exactly the behavior needed: ties don't consume extra rank positions, so the ranking sequence continues without gaps after a tie — unlike RANK, which would skip ahead based on how many rows tied."
+    }
+  },
+  {
+    "id": "0105ae68-b33a-53c1-a4fa-3515c9199dd5",
+    "type": "mcq",
+    "domain": "ingest-transform",
+    "topic": "Query a data warehouse in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "ingest-transform",
+      "query-a-data-warehouse-in-microsoft-fabric",
+      "level-2",
+      "order:19",
+      "module:query-data-warehouse-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "You need to quickly estimate the number of distinct customers who placed orders last year across a very large FactSales table, and exact precision isn't critical for this initial exploration — query speed matters more. What should you use?",
+      "options": {
+        "A": "COUNT(DISTINCT CustomerKey)",
+        "B": "APPROX_COUNT_DISTINCT(CustomerKey)",
+        "C": "ROW_NUMBER() OVER (PARTITION BY CustomerKey)",
+        "D": "NTILE(100)"
+      },
+      "correct": "B",
+      "explanation": "This matches the scenario precisely: fast, approximate counting for large-scale exploratory analysis where exact precision isn't the priority — trading a small, bounded error rate (2% at 97% probability) for significantly better performance than a precise COUNT(DISTINCT ...)."
     }
   },
   {
@@ -4031,6 +5195,1970 @@
       },
       "correct": "B",
       "explanation": "The module is explicit: for transformations during ingestion or merging multiple sources, use a Data Flow activity running a Dataflow Gen2, rather than Copy Data (which doesn't transform) or a standalone Notebook (more coding overhead for a task Power Query already handles visually)."
+    }
+  },
+  {
+    "id": "f898cb03-a779-568a-aac0-3226518abb59",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "What prerequisite is required to use Copilot in Fabric Data Warehouse, regarding capacity SKU?",
+      "options": {
+        "A": "Any SKU, including trial",
+        "B": "A paid SKU (F2 or higher, or a P SKU) — trial SKUs aren't supported",
+        "C": "Only P SKUs are supported, F SKUs are not",
+        "D": "No SKU requirement exists"
+      },
+      "correct": "B",
+      "explanation": "This is an explicit prerequisite, along with your capacity being in a supported region and the Copilot tenant switch being enabled by an administrator."
+    }
+  },
+  {
+    "id": "715e7a73-b8d6-5f19-b8f8-3d0770c56b6f",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "In the SQL query editor, how does Copilot present inline code completion suggestions?",
+      "options": {
+        "A": "As a popup dialog box",
+        "B": "As dimmed \"ghost text\" that can be accepted or dismissed",
+        "C": "As a separate chat window only",
+        "D": "As an automatically inserted comment"
+      },
+      "correct": "B",
+      "explanation": "As you type, Copilot shows real-time suggestions this way, similar to code completion tools in modern IDEs."
+    }
+  },
+  {
+    "id": "b5eb4157-3575-55b4-9e19-00a4bf1a38ca",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Which keyboard shortcut accepts an entire Copilot code completion suggestion?",
+      "options": {
+        "A": "Ctrl+Right",
+        "B": "Tab",
+        "C": "Ctrl+Enter",
+        "D": "Esc"
+      },
+      "correct": "B",
+      "explanation": "Pressing Tab accepts the full suggestion; continuing to type instead dismisses it."
+    }
+  },
+  {
+    "id": "4c5a10e9-86c4-53b0-8535-0e688117dc42",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Which shortcut lets you accept only the next word of a Copilot suggestion rather than the whole thing?",
+      "options": {
+        "A": "Tab",
+        "B": "Ctrl+Right (Cmd+Right on macOS)",
+        "C": "Shift+Tab",
+        "D": "Alt+Right"
+      },
+      "correct": "B",
+      "explanation": "This lets you accept the suggestion incrementally, one word at a time, rather than all at once."
+    }
+  },
+  {
+    "id": "9f93231f-144c-508c-be4c-575711c507be",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "How can you guide Copilot's code completion by writing a specific request directly in the SQL editor?",
+      "options": {
+        "A": "By using a slash command",
+        "B": "By writing a comment using --",
+        "C": "By opening the chat pane only",
+        "D": "By using the Explain quick action"
+      },
+      "correct": "B",
+      "explanation": "A comment like -- What is the distribution of trips by hour on working days (non-holiday weekdays)? prompts Copilot to generate a corresponding query directly in the editor — no need to switch to the chat pane."
+    }
+  },
+  {
+    "id": "f2bb565d-474d-58de-a828-5a69ed2f63c5",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Which Copilot chat command generates a SQL query directly from a natural language prompt?",
+      "options": {
+        "A": "/explain",
+        "B": "/fix",
+        "C": "/generate-sql",
+        "D": "/question"
+      },
+      "correct": "C",
+      "explanation": "This command converts a natural language prompt into a T-SQL query, directly in the chat pane."
+    }
+  },
+  {
+    "id": "1861a8d8-88dc-5b16-b76f-bbc5b6456b75",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Which Copilot chat command provides a natural language explanation of the query in the active query tab?",
+      "options": {
+        "A": "/generate-sql",
+        "B": "/explain",
+        "C": "/fix",
+        "D": "/help"
+      },
+      "correct": "B",
+      "explanation": "This provides a natural language explanation specifically of the query currently in the active query tab."
+    }
+  },
+  {
+    "id": "5c1442ec-75ae-552c-87cb-bb6d09e93202",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Which Copilot chat command resolves errors in the query in the active query tab, optionally with added context?",
+      "options": {
+        "A": "/question",
+        "B": "/generate-sql",
+        "C": "/fix",
+        "D": "/explain"
+      },
+      "correct": "C",
+      "explanation": "This resolves errors in the active query tab's query, and you can optionally add context (like \"using CTAS instead of ALTER TABLE\") to guide the fix."
+    }
+  },
+  {
+    "id": "02a6f7f7-89d1-53e9-80a7-cb1d21e4fe86",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Does the Copilot chat pane retain context across multiple prompts within the same session?",
+      "options": {
+        "A": "No, every prompt is treated independently",
+        "B": "Yes, allowing follow-up messages to reference earlier queries without repeating full context",
+        "C": "Only if you manually save the conversation",
+        "D": "Only within a single message, not across messages"
+      },
+      "correct": "B",
+      "explanation": "This multi-turn interaction is what makes iterative query development faster — you can generate a query, then follow up with something like /fix using CTAS instead of ALTER TABLE without restating everything."
+    }
+  },
+  {
+    "id": "b4ae42a0-277c-5023-9d95-42f1a7676636",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Where are the Explain and Fix quick actions located in the Fabric Data Warehouse interface?",
+      "options": {
+        "A": "In the Copilot chat pane only",
+        "B": "At the top of the SQL query editor, near the Run button",
+        "C": "In the warehouse Settings pane",
+        "D": "In the Visual query editor only"
+      },
+      "correct": "B",
+      "explanation": "These are separate from the chat pane — a quicker, more targeted way to explain or fix code you're actively looking at."
+    }
+  },
+  {
+    "id": "58b41208-4cc2-519a-831f-b206925afd2c",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "Under what condition does the Fix quick action become enabled?",
+      "options": {
+        "A": "It is always enabled by default",
+        "B": "Only after you run a query that returns an error",
+        "C": "Only when you highlight a portion of the query",
+        "D": "Only within the Copilot chat pane"
+      },
+      "correct": "B",
+      "explanation": "Fix uses that error message as context automatically, so it isn't available until there's actually an error to work with."
+    }
+  },
+  {
+    "id": "565fab9e-2373-58c4-8d4b-9bf5e1d86cb1",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "What does the Explain quick action add to your query?",
+      "options": {
+        "A": "A completely rewritten, optimized version of the query",
+        "B": "A summary at the top of the query and inline comments describing its functionality",
+        "C": "A list of all tables referenced, with no other detail",
+        "D": "An automatic fix for any detected errors"
+      },
+      "correct": "B",
+      "explanation": "Explain doesn't rewrite or fix anything — it purely documents what the existing query does, and you can edit or delete the generated comments afterward."
+    }
+  },
+  {
+    "id": "ec8f5ad1-7812-5c0b-98f3-dabac367708a",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "True or false? Using meaningful, descriptive table and column names improves the accuracy of Copilot-generated queries.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Descriptive, meaningful names help Copilot understand your schema, which directly improves the accuracy of the queries it generates."
+    }
+  },
+  {
+    "id": "ee56afcf-1f05-5a90-b93e-4b2bbe4d2f61",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "True or false? Establishing schema relationships in the model view of your warehouse has no effect on the accuracy of Copilot-generated JOIN statements.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "The opposite is true — establishing schema relationships in the model view specifically enhances the accuracy of Copilot-generated JOIN statements, since a well-structured schema with defined relationships lets Copilot infer connections between tables effectively."
+    }
+  },
+  {
+    "id": "94855c23-f664-5f9d-a0c2-a2add0e3dc54",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "True or false? Copilot's natural language to SQL feature currently supports prompts written in any language equally well.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Natural language to SQL currently supports English to T-SQL specifically — prompts should be written in English to take full advantage of the feature."
+    }
+  },
+  {
+    "id": "d6747fa1-2096-526b-8620-d675d50fb1a3",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-1",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "True or false? The Explain quick action requires you to highlight the query or the specific portion you want explained before selecting it. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "You need to highlight the query or the portion you want explained before selecting the Explain button — it doesn't work on an unselected query."
+    }
+  },
+  {
+    "id": "4ed0464f-b1f4-5e70-9a19-6eb4e1c6b490",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-2",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "You want Copilot's inline code completion to generate a query analyzing \"the distribution of trips by hour on working days (non-holiday weekdays)\" without opening the chat pane. What should you do?",
+      "options": {
+        "A": "Use the /generate-sql command in the chat pane",
+        "B": "Write a comment describing the request directly in the SQL editor using --",
+        "C": "Highlight existing code and select Explain",
+        "D": "Wait for a query error and select Fix"
+      },
+      "correct": "B",
+      "explanation": "This is exactly the code-completion-guided pattern from the module — a -- comment describing your analytical question prompts Copilot to generate the corresponding query inline, without needing the chat pane at all."
+    }
+  },
+  {
+    "id": "a7334738-7580-5808-a1cb-fd7ac15767b3",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Get started with Copilot in Microsoft Fabric for data warehouses",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "get-started-with-copilot-in-microsoft-fabric-for-data-warehouses",
+      "level-2",
+      "order:20",
+      "module:get-started-copilot-fabric-data-warehouse"
+    ],
+    "content": {
+      "question": "You've just run a query that returned a syntax error, and you want Copilot to resolve it using the error message as context, without typing out an explanation yourself. What should you do?",
+      "options": {
+        "A": "Open the chat pane and type /question",
+        "B": "Select the Fix quick action button near the Run button",
+        "C": "Rewrite the query manually using ghost text",
+        "D": "Use Ctrl+Right to accept a suggestion"
+      },
+      "correct": "B",
+      "explanation": "Fix is specifically designed for this scenario: it becomes enabled after a query error and automatically uses that error message as context, requiring no extra typed explanation from you."
+    }
+  },
+  {
+    "id": "2b2dfc76-d229-568a-bd26-495a923560eb",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What determines the capacity available to an organization in Microsoft Fabric?",
+      "options": {
+        "A": "The number of workspaces created",
+        "B": "The license used to purchase the service",
+        "C": "The number of registered users",
+        "D": "The region selected during setup"
+      },
+      "correct": "B",
+      "explanation": "A capacity is a pool of resources tied to your organization's Fabric license, and it determines what's available to implement Fabric capabilities."
+    }
+  },
+  {
+    "id": "d413ff2c-e00d-5d93-86b5-3e0ef30022e4",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What are Capacity Units (CUs) used to measure?",
+      "options": {
+        "A": "Storage space only",
+        "B": "The cost/consumption of actions performed in Fabric resources, billed to the organization",
+        "C": "The number of DMVs available",
+        "D": "The number of concurrent users"
+      },
+      "correct": "B",
+      "explanation": "Every action you take in a Fabric resource can consume CUs, which is how usage translates into billing."
+    }
+  },
+  {
+    "id": "e9070643-ceae-5c09-a776-0cbf3c6f3877",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "In data warehouse workloads specifically, what activities are the most significant factor in CU consumption?",
+      "options": {
+        "A": "Workspace role assignments",
+        "B": "Data read and write activities — queries and underlying OneLake file operations",
+        "C": "Dashboard tile rendering",
+        "D": "Git commits"
+      },
+      "correct": "B",
+      "explanation": "For data warehouses specifically, this is called out as the significant factor in cost, since every query touches data stored in OneLake."
+    }
+  },
+  {
+    "id": "995ca9cb-d260-59a3-afa8-2e33782dd06c",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Who installs the Microsoft Fabric Capacity Metrics app?",
+      "options": {
+        "A": "Any workspace Viewer",
+        "B": "An administrator",
+        "C": "It's installed automatically with every warehouse",
+        "D": "Only Microsoft support can install it"
+      },
+      "correct": "B",
+      "explanation": "The Capacity Metrics app is something an administrator installs in the Fabric environment to monitor capacity utilization across the organization."
+    }
+  },
+  {
+    "id": "8c891032-1863-5ff2-8b7e-d8b9b6d7f7b4",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What does \"throttling\" indicate, as identified using the Capacity Metrics app?",
+      "options": {
+        "A": "A query has a syntax error",
+        "B": "Your processes require more capacity than is available within your purchased capacity license",
+        "C": "A user lacks sufficient item permissions",
+        "D": "A table has too many small files"
+      },
+      "correct": "B",
+      "explanation": "Throttling is the signal that your workloads have outgrown what your current capacity license supports — useful for deciding whether to optimize processes or upgrade capacity."
+    }
+  },
+  {
+    "id": "03e00aff-3525-558d-9696-42201fae70ca",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which DMV returns information specifically about data warehouse connections?",
+      "options": {
+        "A": "sys.dm_exec_sessions",
+        "B": "sys.dm_exec_requests",
+        "C": "sys.dm_exec_connections",
+        "D": "queryinsights.exec_requests_history"
+      },
+      "correct": "C",
+      "explanation": "This DMV returns information specifically about data warehouse connections — the network/connection layer, distinct from sessions or requests."
+    }
+  },
+  {
+    "id": "ec549805-f456-5a0a-848b-239d67912c67",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which DMV returns information about authenticated sessions?",
+      "options": {
+        "A": "sys.dm_exec_connections",
+        "B": "sys.dm_exec_sessions",
+        "C": "sys.dm_exec_requests",
+        "D": "queryinsights.long_running_queries"
+      },
+      "correct": "B",
+      "explanation": "This returns information about authenticated sessions — the logged-in user layer, sitting between connections and requests."
+    }
+  },
+  {
+    "id": "8c508186-eb83-5b84-9ff6-28f2490bbf04",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which DMV returns information about active requests currently running?",
+      "options": {
+        "A": "sys.dm_exec_connections",
+        "B": "sys.dm_exec_sessions",
+        "C": "sys.dm_exec_requests",
+        "D": "queryinsights.frequently_run_queries"
+      },
+      "correct": "C",
+      "explanation": "This returns information about active requests — the actual queries/commands currently executing."
+    }
+  },
+  {
+    "id": "f3852e57-4792-5e22-beee-6b4d4e60cd95",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which query insights view provides details of each completed SQL query?",
+      "options": {
+        "A": "queryinsights.long_running_queries",
+        "B": "queryinsights.frequently_run_queries",
+        "C": "queryinsights.exec_requests_history",
+        "D": "sys.dm_exec_requests"
+      },
+      "correct": "C",
+      "explanation": "This view provides details of each completed SQL query, giving you a historical record to query against — e.g., filtering to queries run in the last hour."
+    }
+  },
+  {
+    "id": "5c1a2a13-c008-51c5-a22a-1b20e3293788",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which query insights view specifically helps identify commonly used queries, including their success/failure counts?",
+      "options": {
+        "A": "queryinsights.exec_requests_history",
+        "B": "queryinsights.long_running_queries",
+        "C": "queryinsights.frequently_run_queries",
+        "D": "sys.dm_exec_sessions"
+      },
+      "correct": "C",
+      "explanation": "This view specifically surfaces commonly used queries along with their run counts and success/failure breakdowns — distinct from long_running_queries, which focuses on execution time rather than frequency."
+    }
+  },
+  {
+    "id": "8d0ae540-f9c7-5296-b43f-9390f0a4ede8",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? Query insights data can take up to 15 minutes to be reflected in the views, depending on concurrent workloads.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The module notes this explicitly — depending on concurrent workloads, it can take up to 15 minutes for queries to show up in the query insights views, so don't expect instant reflection of very recent activity."
+    }
+  },
+  {
+    "id": "8259c455-99fe-5c76-9425-a0715d2c4a57",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? Queries with different literal predicate values (e.g., different date filters) are always treated as completely separate, unrelated queries in the frequently_run_queries and long_running_queries views.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Queries with predicates are parameterized, and if the parameterized statements are an exact match, they're treated as the same command for aggregation purposes — e.g., WHERE orderdate > '01/01/2023' and WHERE orderdate > '12/31/2021' count as the same query with different parameter values, not two unrelated queries."
+    }
+  },
+  {
+    "id": "89963b97-e168-5f77-9e61-8c508ee188cd",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? DMVs like sys.dm_exec_requests show the current, real-time state of the data warehouse, while query insights views show historical, aggregated data.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "DMVs reflect the current, real-time state (active connections, sessions, running requests), while query insights views are built for historical, aggregated analysis of queries that have already completed — two different monitoring purposes for two different timeframes."
+    }
+  },
+  {
+    "id": "c1bda53c-10fe-54a1-bd20-6e54804678c6",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? The Microsoft Fabric Capacity Metrics app can be filtered to show only warehouse-specific activity. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The Capacity Metrics app interface can be filtered to show only warehouse activity specifically, letting you isolate warehouse-related CU consumption from other Fabric workloads."
+    }
+  },
+  {
+    "id": "9c5cc31c-6512-5e78-bdd7-d6cec36bc485",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-2",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "You want to identify which currently-running query in your warehouse has been executing the longest, so you can investigate a possible performance issue happening right now. Which approach should you use?",
+      "options": {
+        "A": "Query queryinsights.long_running_queries",
+        "B": "Join sys.dm_exec_connections, sys.dm_exec_sessions, and sys.dm_exec_requests, filtering to status = 'running', ordered by total_elapsed_time",
+        "C": "Open the Fabric Capacity Metrics app",
+        "D": "Query queryinsights.frequently_run_queries"
+      },
+      "correct": "B",
+      "explanation": "This is exactly the module's worked example — DMVs show real-time active state, which is what you need for a query that's happening right now, as opposed to query insights (A), which is historical and can lag up to 15 minutes behind."
+    }
+  },
+  {
+    "id": "dceedf98-00ab-560a-a29b-b0018cefddf9",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor a Microsoft Fabric data warehouse",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-a-microsoft-fabric-data-warehouse",
+      "level-2",
+      "order:21",
+      "module:monitor-fabric-data-warehouse",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Your organization suspects it may need to upgrade its Fabric capacity license because certain warehouse workloads seem to be getting throttled during peak hours. What tool should you use to confirm this and observe capacity utilization trends over time?",
+      "options": {
+        "A": "sys.dm_exec_requests",
+        "B": "The Microsoft Fabric Capacity Metrics app",
+        "C": "queryinsights.exec_requests_history",
+        "D": "The Visual query editor"
+      },
+      "correct": "B",
+      "explanation": "This is purpose-built for observing capacity utilization trends and identifying throttling, giving you the evidence needed to decide whether to optimize processes or upgrade the capacity license."
+    }
+  },
+  {
+    "id": "4b55c430-97bb-560a-95d1-ba92e787011b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What does dynamic data masking do?",
+      "options": {
+        "A": "Physically deletes sensitive data from storage",
+        "B": "Obscures column values in query results without changing the underlying stored data",
+        "C": "Encrypts data at rest only",
+        "D": "Prevents any user from querying a masked column"
+      },
+      "correct": "B",
+      "explanation": "Masking happens at query time, not storage — nonprivileged users see a masked version, while the real values stay fully intact underneath."
+    }
+  },
+  {
+    "id": "298f9c77-7bf9-530a-89da-2d538a20746e",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which masking type replaces a value entirely based on its data type (e.g., numbers become 0, strings become XXXX)?",
+      "options": {
+        "A": "Email masking",
+        "B": "Default masking",
+        "C": "Custom text masking",
+        "D": "Random masking"
+      },
+      "correct": "B",
+      "explanation": "This fully replaces the value based on its data type: numbers become 0, strings become XXXX, dates become 1900-01-01 — a complete, type-aware substitution."
+    }
+  },
+  {
+    "id": "a620ed38-c499-5137-b046-b5e53e6eafa7",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which masking function shows only the first character of an email and appends a fixed .com suffix?",
+      "options": {
+        "A": "default()",
+        "B": "email()",
+        "C": "partial()",
+        "D": "random()"
+      },
+      "correct": "B",
+      "explanation": "This shows the first character and appends a fixed .com suffix, e.g., johndoe@contoso.com becomes j*@contoso.com."
+    }
+  },
+  {
+    "id": "ac6fe724-6e8a-53cd-abf0-ac92f3f21177",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which masking function is best suited for showing only the last four digits of a credit card number?",
+      "options": {
+        "A": "default()",
+        "B": "email()",
+        "C": "partial(prefix, padding, suffix)",
+        "D": "random(low, high)"
+      },
+      "correct": "C",
+      "explanation": "This custom text masking function exposes a specified number of characters at the start and end with custom padding in between — exactly suited for partial identifiers like the last four digits of a credit card."
+    }
+  },
+  {
+    "id": "8fb5781c-d112-52ab-95fb-c0672c698566",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "By default, which users can see unmasked data in a table with dynamic data masking applied?",
+      "options": {
+        "A": "All authenticated users",
+        "B": "Only users with the CONTROL permission (Admins, Members, Contributors)",
+        "C": "No one; masking cannot be bypassed",
+        "D": "Only the original data owner"
+      },
+      "correct": "B",
+      "explanation": "These roles always see unmasked values by default; anyone else sees the masked version unless explicitly granted otherwise."
+    }
+  },
+  {
+    "id": "6b6f9052-7468-5646-890d-96280d14a8e4",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What permission would you grant to allow a specific non-admin user to see unmasked values in a masked column?",
+      "options": {
+        "A": "ALTER ANY MASK",
+        "B": "CONTROL",
+        "C": "UNMASK",
+        "D": "EXECUTE"
+      },
+      "correct": "C",
+      "explanation": "This permission gives fine-grained control, letting a specific non-admin user see real data without needing to grant them full admin or table ownership rights."
+    }
+  },
+  {
+    "id": "22db52d8-24c0-512f-a371-8922e5be1bab",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What permission is needed to add or remove masking rules from columns, without granting full admin rights?",
+      "options": {
+        "A": "UNMASK",
+        "B": "ALTER ANY MASK",
+        "C": "SELECT",
+        "D": "CONTROL"
+      },
+      "correct": "B",
+      "explanation": "This lets someone (like a data engineer) manage masking rules — add or remove masks — without needing broader admin rights."
+    }
+  },
+  {
+    "id": "f56f10f0-000c-5ef8-a84f-3f06d407ca71",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What is a key limitation/risk of dynamic data masking?",
+      "options": {
+        "A": "It requires schema changes to implement",
+        "B": "It's vulnerable to inference attacks, since it hides values but doesn't prevent the column from being queried at all",
+        "C": "It only works on numeric columns",
+        "D": "It cannot be applied to email columns"
+      },
+      "correct": "B",
+      "explanation": "The module's example: a user can write a query that divides by a masked salary column, triggering a divide-by-zero error only when their guess matches the hidden value — revealing the real data without ever directly seeing it."
+    }
+  },
+  {
+    "id": "f7a1e9e3-b7ef-57b8-b840-2a6c186c4b6b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What are the two components that work together to implement row-level security?",
+      "options": {
+        "A": "Masking rules and workspace roles",
+        "B": "Filter predicates and security policies",
+        "C": "GRANT and DENY statements only",
+        "D": "Column permissions and stored procedures"
+      },
+      "correct": "B",
+      "explanation": "A filter predicate is an inline table-valued function evaluating each row as true/false; a security policy binds that predicate to a specific table so it applies automatically."
+    }
+  },
+  {
+    "id": "92eaf235-7ce6-5220-9e23-a19416f6b67b",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Which SQL operations are affected by an RLS filter predicate?",
+      "options": {
+        "A": "Only SELECT",
+        "B": "SELECT, UPDATE, and DELETE — but NOT INSERT",
+        "C": "Only INSERT and UPDATE",
+        "D": "All operations equally, including INSERT"
+      },
+      "correct": "B",
+      "explanation": "Filter predicates make rows invisible for these three operations; INSERT isn't affected by filter predicates at all, per the module's explicit statement."
+    }
+  },
+  {
+    "id": "60ddf362-855e-5ab7-a7a3-16d64a080044",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What happens if an RLS filter predicate isn't explicitly written to include admin-level users?",
+      "options": {
+        "A": "Admins automatically bypass RLS regardless of the predicate",
+        "B": "Admins will have rows filtered from their results just like any other user",
+        "C": "RLS cannot be applied at all",
+        "D": "The security policy fails to activate"
+      },
+      "correct": "B",
+      "explanation": "RLS predicates apply to all users, including workspace Admins, Members, and Contributors — you have to explicitly write the predicate to include admin-level access if full visibility is required (as shown with the OR USER_NAME() = 'salesadmin@contoso.com' clause in the module's example)."
+    }
+  },
+  {
+    "id": "0af5ecf7-5f9f-5eab-94f1-05cdd6d7251d",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "In column-level security, what happens when a user without permission tries to SELECT a restricted column?",
+      "options": {
+        "A": "The entire query fails silently with no data returned at all, including other columns",
+        "B": "They receive a permission error for that column, while the rest of the table remains accessible",
+        "C": "The column is automatically masked instead of blocked",
+        "D": "The user is automatically granted temporary access"
+      },
+      "correct": "B",
+      "explanation": "This is what makes CLS a \"clean\" solution — it doesn't block the whole table, just the specific restricted column."
+    }
+  },
+  {
+    "id": "64052f21-5bcc-5a2d-889d-664bbf929504",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "What happens to Power BI query performance when a warehouse table has column-level security applied and is accessed in Direct Lake mode?",
+      "options": {
+        "A": "Nothing changes; Direct Lake continues as normal",
+        "B": "Queries automatically fall back to DirectQuery mode",
+        "C": "The table becomes completely inaccessible from Power BI",
+        "D": "Direct Lake mode is disabled tenant-wide"
+      },
+      "correct": "B",
+      "explanation": "Security is still enforced, but you trade away the Direct Lake performance baseline when CLS is applied to a table being accessed that way."
+    }
+  },
+  {
+    "id": "94fdb978-a143-5973-82bd-49d35abf86b2",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "If a user has both a GRANT and a DENY on the same permission (from different roles), which one takes effect?",
+      "options": {
+        "A": "GRANT always wins",
+        "B": "DENY always wins",
+        "C": "Whichever was applied most recently",
+        "D": "Neither applies; the permission defaults to denied without explicit conflict resolution"
+      },
+      "correct": "B",
+      "explanation": "This is explicitly stated — when a GRANT and DENY conflict on the same permission from different roles, DENY takes precedence regardless of source."
+    }
+  },
+  {
+    "id": "b94ab6ce-ff46-53f0-801f-089016f4fdb8",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? EXECUTE, ALTER, and CONTROL are permissions that apply to functions and stored procedures.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "EXECUTE (run the function/procedure), ALTER (modify its definition), and CONTROL (full ownership rights) are the permission set specific to functions and stored procedures, distinct from the SELECT/INSERT/UPDATE/DELETE set for tables and views."
+    }
+  },
+  {
+    "id": "71df4a46-a716-59d2-a1e6-e2af7e37904e",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? A common secure architecture pattern is granting EXECUTE on stored procedures while denying direct SELECT access to the underlying tables.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "This is an explicitly recommended pattern for enforcing a controlled data access model — users interact with data only through the procedure's defined logic, never with arbitrary direct queries against the table."
+    }
+  },
+  {
+    "id": "6a1d55c5-de9d-51b2-ac9d-0e85911515ae",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? Row-level security and dynamic data masking are both completely immune to side-channel attacks like divide-by-zero inference techniques.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Both RLS and dynamic data masking are explicitly called out as vulnerable to side-channel attacks — a carefully crafted query (like one causing a divide-by-zero only under specific hidden conditions) can leak information without ever directly reading the protected value. The module recommends combining multiple layers (RLS + CLS + DDM) specifically because no single layer is immune."
+    }
+  },
+  {
+    "id": "423477f0-8450-588e-b065-d4e3047d8fd0",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-1",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "True or false? The principle of least privilege means giving users or applications only the permissions they need to do their job, nothing more. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "Least privilege means giving each user or application exactly what it needs to do its job — nothing more — which limits the blast radius if a credential is compromised or a query goes wrong."
+    }
+  },
+  {
+    "id": "f407cf31-d0dc-53f2-9a66-11a342e7dcbf",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-2",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "A healthcare organization needs receptionists to view patient names and appointment details, but not the MedicalHistory column, while doctors need full access including MedicalHistory. Both roles query the same Patients table. Which security feature should be configured?",
+      "options": {
+        "A": "Dynamic data masking on the entire table",
+        "B": "Column-level security, granting SELECT broadly and denying SELECT on MedicalHistory to the Receptionist role",
+        "C": "Row-level security filtering by PatientID",
+        "D": "A separate warehouse for each role"
+      },
+      "correct": "B",
+      "explanation": "This matches the module's own healthcare example precisely: broad table access granted to all relevant roles, with an explicit DENY on the one sensitive column for roles that shouldn't see it — while doctors keep full access."
+    }
+  },
+  {
+    "id": "4ad36254-6d81-5cc9-bdb7-d9bbf81a48e9",
+    "type": "mcq",
+    "domain": "implement-manage",
+    "topic": "Secure a Microsoft Fabric data warehouse",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "implement-manage",
+      "secure-a-microsoft-fabric-data-warehouse",
+      "level-2",
+      "order:22",
+      "module:secure-data-warehouse-in-microsoft-fabric",
+      "path:lp5",
+      "primary-path:lp5"
+    ],
+    "content": {
+      "question": "Your data engineering team wants an application to read sales data only through a controlled stored procedure, never directly from the underlying Sales table, to enforce a specific access pattern and prevent arbitrary queries. What permission configuration achieves this?",
+      "options": {
+        "A": "GRANT SELECT on the Sales table only",
+        "B": "GRANT EXECUTE on the stored procedure, and DENY (or don't grant) SELECT on the underlying Sales table",
+        "C": "GRANT CONTROL on the Sales table",
+        "D": "Apply dynamic data masking to all columns in Sales"
+      },
+      "correct": "B",
+      "explanation": "This is the explicit least-privilege pattern from the module: the application gets exactly the access it needs (running the procedure) without broader table-level access that could enable arbitrary, uncontrolled queries."
+    }
+  },
+  {
+    "id": "d8d984f2-67ef-5e8f-bab1-766b185ea48b",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "What does monitoring in Microsoft Fabric fundamentally provide?",
+      "options": {
+        "A": "A way to reduce the capacity units a workspace consumes.",
+        "B": "Data about whether activities succeed, fail, or degrade over time.",
+        "C": "Automatic correction of failed pipeline activities.",
+        "D": "A replacement for source control on Fabric items."
+      },
+      "correct": "B",
+      "explanation": "Monitoring is the collection of activity data so you can judge outcomes. Without it, failures go undetected, reports show stale data, and troubleshooting becomes guesswork."
+    }
+  },
+  {
+    "id": "007a6812-e404-5c96-9011-f51f96e6de3a",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A data pipeline reports an overall status of Succeeded, yet downstream reports show stale data. What should you check first?",
+      "options": {
+        "A": "The capacity metrics app for throttling events.",
+        "B": "The status of each individual activity inside the pipeline.",
+        "C": "The workspace sensitivity labels.",
+        "D": "The semantic model's row-level security rules."
+      },
+      "correct": "B",
+      "explanation": "A pipeline can report Succeeded overall even when an optional activity inside it failed, so the rolled-up status alone can hide the break that left the data stale."
+    }
+  },
+  {
+    "id": "be592348-a1c6-56b5-a68b-4f5263bc9e59",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A semantic model refresh succeeds, but its retry count has been climbing week over week. What does this most likely indicate?",
+      "options": {
+        "A": "The model is too small to refresh reliably.",
+        "B": "An emerging problem with the data source connection.",
+        "C": "The refresh schedule is set too infrequently.",
+        "D": "The workspace has exceeded its item limit."
+      },
+      "correct": "B",
+      "explanation": "A refresh that retries before succeeding points to a transient issue. When the retry count rises over time, investigate the source connection before the refresh starts failing outright."
+    }
+  },
+  {
+    "id": "d26a3fb7-7b79-5b40-b892-ab3aaeab22e7",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "How do eventstreams differ from batch activities when it comes to monitoring?",
+      "options": {
+        "A": "They run continuously, so you monitor throughput, latency, and error rates.",
+        "B": "They cannot be monitored from the monitoring hub at all.",
+        "C": "They only need monitoring when a pipeline invokes them.",
+        "D": "They report a single duration value at completion like any other job."
+      },
+      "correct": "A",
+      "explanation": "Batch activities run and complete, producing a duration and a final status. Eventstreams are designed to run without stopping, so the useful signals are continuous ones."
+    }
+  },
+  {
+    "id": "1aafe008-675d-5471-8ff3-3ce0cec35714",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Where do you open the monitoring hub in the Fabric portal?",
+      "options": {
+        "A": "From the workspace settings under the Monitoring tab.",
+        "B": "By selecting Monitor in the left navigation pane.",
+        "C": "From the Real-Time hub's Fabric events page.",
+        "D": "From the OneLake catalog."
+      },
+      "correct": "B",
+      "explanation": "That opens the hub's main view, a table of recent activities with columns for name, status, item type, and start time."
+    }
+  },
+  {
+    "id": "f3361e02-211c-530a-939f-54289ec2ff37",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "An activity in the monitoring hub shows a status of Cancelled. What does that mean?",
+      "options": {
+        "A": "The activity completed but produced no rows.",
+        "B": "The activity failed validation before it started.",
+        "C": "Something stopped the activity before it finished.",
+        "D": "The activity is queued behind a higher-priority job."
+      },
+      "correct": "C",
+      "explanation": "Check whether the cancellation was deliberate or the result of a timeout or a capacity limit."
+    }
+  },
+  {
+    "id": "6883ec61-5d86-5805-9f70-ce2565552773",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "An activity has a status of In progress far longer than usual. What is the reasonable interpretation?",
+      "options": {
+        "A": "The status is cosmetic and always clears on the next refresh.",
+        "B": "The job has already failed and the status is stale.",
+        "C": "It might be stuck, or processing an unusually large dataset.",
+        "D": "The activity was cancelled but the hub has not updated."
+      },
+      "correct": "C",
+      "explanation": "In progress simply means the activity is still running. Staying there far longer than the baseline is the signal worth investigating."
+    }
+  },
+  {
+    "id": "03214765-5b11-5bd7-8826-132c388d482a",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "How far back does the monitoring hub display run history for an item?",
+      "options": {
+        "A": "7 days",
+        "B": "30 days",
+        "C": "90 days",
+        "D": "The full lifetime of the item"
+      },
+      "correct": "B",
+      "explanation": "Historical runs show up to 30 days of run history for the selected item, reached through More options on the activity."
+    }
+  },
+  {
+    "id": "ced5b855-aeba-5dae-b7ce-270d0a20a8e4",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Which question is the historical runs view best suited to answering?",
+      "options": {
+        "A": "Which users currently have Contributor access to the workspace.",
+        "B": "How many capacity units the workspace has left this month.",
+        "C": "When an activity started failing, and whether it is getting slower.",
+        "D": "Which columns a lakehouse table contains."
+      },
+      "correct": "C",
+      "explanation": "A single run tells you what happened now. History tells you when a pattern began, whether durations are drifting, and whether retries recur."
+    }
+  },
+  {
+    "id": "51d7ace6-0bce-590a-a9c1-f5aa52f7ccad",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "In a busy workspace the activity list is long. Which two filters does the monitoring hub offer to narrow it?",
+      "options": {
+        "A": "Status and item type",
+        "B": "Sensitivity label and endorsement",
+        "C": "Owner and capacity region",
+        "D": "Table name and row count"
+      },
+      "correct": "A",
+      "explanation": "Filter to failures to focus on problems, or to a single item type such as Dataflow Gen2 when troubleshooting one part of the chain."
+    }
+  },
+  {
+    "id": "f5a3c91e-d00c-5384-924f-c1bd98828b37",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Which monitoring hub column tells you whether a run was started by a user, a schedule, or a pipeline?",
+      "options": {
+        "A": "Location",
+        "B": "Duration",
+        "C": "Submitted by",
+        "D": "End time"
+      },
+      "correct": "C",
+      "explanation": "It identifies who or what triggered the run: a user, a schedule, or a pipeline. Location gives the workspace, and Refresh type distinguishes scheduled from manual runs."
+    }
+  },
+  {
+    "id": "6a8c944c-b1ef-563c-829c-408f1d65feb2",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "What role do you need in a workspace to configure failure notifications on the Schedule failures page?",
+      "options": {
+        "A": "Viewer",
+        "B": "Contributor",
+        "C": "Tenant administrator",
+        "D": "Capacity administrator"
+      },
+      "correct": "B",
+      "explanation": "Configuring notifications on the Schedule failures page requires at least the Contributor role in the workspace."
+    }
+  },
+  {
+    "id": "812b364c-0d0f-50db-bfa1-019a64423ee7",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "What does Fabric create in your workspace when you enable workspace monitoring?",
+      "options": {
+        "A": "A lakehouse with a Delta table of activity logs.",
+        "B": "An Eventhouse database that collects diagnostic logs and metrics.",
+        "C": "A deployment pipeline linked to the workspace.",
+        "D": "A Power BI dashboard of capacity metrics."
+      },
+      "correct": "B",
+      "explanation": "It continuously gathers logs from your Fabric items, retains them for 30 days, and is enabled in workspace settings under the Monitoring tab."
+    }
+  },
+  {
+    "id": "98561dfb-b623-5cc2-8fb9-b8b087d47279",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "Which capability makes Activator different from the Schedule failures notification page?",
+      "options": {
+        "A": "It can email a list of recipients when a scheduled item fails.",
+        "B": "It can run a Fabric activity such as a notebook or pipeline in response to an event.",
+        "C": "It retains diagnostic logs for 30 days.",
+        "D": "It centrally manages notification recipients for every scheduled item."
+      },
+      "correct": "B",
+      "explanation": "Schedule failures sends email; Activator can also act, triggering a follow-up job rather than waiting for a human to respond."
+    }
+  },
+  {
+    "id": "0175a9bb-f482-5c98-b645-f41dee2d99d7",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Workspace monitoring stores raw log data that you can query with KQL or SQL, unlike the monitoring hub's visual view of recent activity.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "The monitoring hub is a visual dashboard for recent activity. Workspace monitoring keeps the raw log data, which you query with KQL or SQL for trend analysis and custom dashboards."
+    }
+  },
+  {
+    "id": "e190608c-e549-5d5c-a7ed-dec1ace7e720",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Establishing a monitoring baseline means recording duration and status over time so you can tell when a run has deviated from normal.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "A",
+      "explanation": "If you do not know that a dataflow normally finishes in four minutes, a twenty-minute run does not read as an anomaly. Baselines are what make deviation meaningful."
+    }
+  },
+  {
+    "id": "3eb3feae-afbc-524f-ac8e-cd186a52276a",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Activator can react only to job failures, not to jobs that succeed.",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "Activator responds to job created, job failed, job succeeded, and job status changed events. Reacting to success is how you chain a downstream refresh onto an upstream completion."
+    }
+  },
+  {
+    "id": "58f573e8-8fd5-55c5-ab20-26a7f07053c4",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 1,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-1",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "True or false? Automatically re-running a pipeline through Activator is the recommended response to any failed job. ---",
+      "options": {
+        "A": "True",
+        "B": "False"
+      },
+      "correct": "B",
+      "explanation": "If a job failed on a code error or a changed source schema, re-running it just fails again. Activator suits automated coordination — chaining jobs, cleanup, routing notifications — not substituting for a root-cause fix."
+    }
+  },
+  {
+    "id": "1882fc5d-5aa1-547f-9738-6dbdc991ae7a",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-2",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A nightly load fails partway through and leaves partial data behind. The on-call team needs an immediate Teams message in their channel, and the partial rows must be cleaned up without waiting for someone to read an email. What should you configure?",
+      "options": {
+        "A": "The Schedule failures page, adding the on-call team as recipients.",
+        "B": "An Activator rule on the job failed event that posts to Teams and runs a cleanup notebook.",
+        "C": "A semantic model refresh schedule that runs after the load.",
+        "D": "Workspace monitoring with a KQL query over the failure logs."
+      },
+      "correct": "B",
+      "explanation": "Two requirements rule out the alternatives: a Teams channel rather than email, and an automatic follow-up action. The Schedule failures page delivers centrally managed email only, and neither a refresh schedule nor a KQL query removes the partial rows."
+    }
+  },
+  {
+    "id": "7c7f48cd-134f-5cb1-941b-f8ea8db70b21",
+    "type": "mcq",
+    "domain": "monitor-optimize",
+    "topic": "Monitor activities in Microsoft Fabric",
+    "difficulty": 2,
+    "source": "bank",
+    "tags": [
+      "monitor-optimize",
+      "monitor-activities-in-microsoft-fabric",
+      "level-2",
+      "order:24",
+      "module:monitor-fabric-items"
+    ],
+    "content": {
+      "question": "A notebook that used to finish in two minutes now takes eight, though every run still reports Succeeded. You need to establish when the slowdown began. What is the most direct way to find out?",
+      "options": {
+        "A": "Open historical runs for the notebook and compare durations across runs.",
+        "B": "Filter the monitoring hub to show only failed activities.",
+        "C": "Enable workspace monitoring and wait 30 days for data to accumulate.",
+        "D": "Re-run the notebook manually and time it."
+      },
+      "correct": "A",
+      "explanation": "Duration drift on succeeded runs is exactly what the history view exposes, and it is already there for the last 30 days. Filtering to failures hides these runs entirely, and enabling workspace monitoring now collects nothing about the past."
     }
   },
   {
@@ -5076,6 +8204,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5105,6 +8234,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5134,6 +8264,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5163,6 +8294,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5192,6 +8324,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5221,6 +8354,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5250,6 +8384,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5279,6 +8414,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5308,6 +8444,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5337,6 +8474,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5366,6 +8504,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5395,6 +8534,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5424,6 +8564,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5451,6 +8592,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5478,6 +8620,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5505,6 +8648,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5532,6 +8676,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {
@@ -5561,6 +8706,7 @@
       "module:introduction-end-analytics-use-microsoft-fabric",
       "path:lp1",
       "path:lp2",
+      "path:lp5",
       "primary-path:lp2"
     ],
     "content": {

@@ -90,6 +90,13 @@
           "url": "https://learn.microsoft.com/en-us/training/paths/explore-real-time-analytics-microsoft-fabric/",
           "moduleCount": 5,
           "domains": ["ingest-transform", "monitor-optimize"]
+        },
+        {
+          "id": "lp5",
+          "title": "Implement a data warehouse with Microsoft Fabric",
+          "url": "https://learn.microsoft.com/en-us/training/paths/work-with-data-warehouses-using-microsoft-fabric/",
+          "moduleCount": 6,
+          "domains": ["ingest-transform", "implement-manage", "monitor-optimize"]
         }
       ],
 
