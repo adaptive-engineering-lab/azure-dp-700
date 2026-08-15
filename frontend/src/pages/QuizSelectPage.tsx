@@ -47,13 +47,13 @@ export default function QuizSelectPage() {
 
       <Fieldset legend="Module">
         <div className="grid grid-cols-1 gap-2">
-          {modules.map((m, i) => (
-            // A heading whenever the learning path changes. Modules are sorted
-            // by study order and each path's modules are numbered
-            // consecutively, so this labels each run without reordering
-            // anything or nesting the list.
+          {modules.map((m) => (
+            // A heading on the module that opens each learning path's run.
+            // Modules are sorted by study order and each path's modules are
+            // numbered consecutively, so this labels each run without
+            // reordering anything or nesting the list.
             <Fragment key={m.topic}>
-              {m.pathTitle && m.pathTitle !== modules[i - 1]?.pathTitle && (
+              {m.startsPath && (
                 <h3 className="mt-3 px-1 text-xs font-semibold uppercase tracking-wide text-fg-muted first:mt-0">
                   {m.pathTitle}
                 </h3>

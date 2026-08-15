@@ -97,6 +97,13 @@
           "url": "https://learn.microsoft.com/en-us/training/paths/work-with-data-warehouses-using-microsoft-fabric/",
           "moduleCount": 6,
           "domains": ["ingest-transform", "implement-manage", "monitor-optimize"]
+        },
+        {
+          "id": "lp6",
+          "title": "Manage a Microsoft Fabric environment",
+          "url": "https://learn.microsoft.com/en-us/training/paths/manage-microsoft-fabric-environment/",
+          "moduleCount": 4,
+          "domains": ["monitor-optimize", "implement-manage"]
         }
       ],
 

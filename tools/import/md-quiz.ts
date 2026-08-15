@@ -141,11 +141,10 @@ const MODULES: Record<string, ModuleInfo> = {
     title: 'Use Activator in Microsoft Fabric',
     paths: [],
   },
-  // Filed under "Manage a Microsoft Fabric environment", which is likewise not
-  // one of lp1-lp4.
   'monitor-fabric-items': {
     title: 'Monitor activities in Microsoft Fabric',
-    paths: [],
+    paths: ['lp6'],
+    primaryPath: 'lp6',
   },
   'get-started-data-warehouse': {
     title: 'Get started with data warehouses in Microsoft Fabric',

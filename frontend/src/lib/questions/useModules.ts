@@ -20,6 +20,29 @@ export interface ModuleOption {
    * belong to several paths; this is the single one worth showing.
    */
   pathTitle?: string;
+  /** True on the module that opens a path's run, i.e. the one to head. */
+  startsPath?: boolean;
+}
+
+/**
+ * Flag the module that opens each learning path's run, in study order.
+ *
+ * Modules with no path at all — standalone ones like Copilot for warehouses,
+ * which Learn files under no path — are skipped rather than treated as a
+ * break. They sit inside another path's numbering, and comparing only against
+ * the immediately preceding module made one of them split its neighbours into
+ * two runs, so the same path heading was drawn twice.
+ *
+ * Mutates and returns the list it is given; callers pass a freshly sorted one.
+ */
+export function markPathSections(sorted: ModuleOption[]): ModuleOption[] {
+  let lastPath: string | undefined;
+  for (const m of sorted) {
+    if (!m.pathTitle) continue;
+    m.startsPath = m.pathTitle !== lastPath;
+    lastPath = m.pathTitle;
+  }
+  return sorted;
 }
 
 /** Read `order:<n>` out of an item's tags. */
@@ -75,8 +98,10 @@ export function useModules(type: Question['type']) {
           }
           // Study order first; unnumbered modules fall to the end, alphabetical.
           setModules(
-            [...tally.values()].sort(
-              (a, b) => (a.order ?? Infinity) - (b.order ?? Infinity) || a.topic.localeCompare(b.topic),
+            markPathSections(
+              [...tally.values()].sort(
+                (a, b) => (a.order ?? Infinity) - (b.order ?? Infinity) || a.topic.localeCompare(b.topic),
+              ),
             ),
           );
           setError(null);

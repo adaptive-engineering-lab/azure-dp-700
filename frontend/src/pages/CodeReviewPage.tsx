@@ -105,10 +105,10 @@ export default function CodeReviewPage() {
 
       <Fieldset legend="Module">
         <div className="grid grid-cols-1 gap-2">
-          {modules.map((m, i) => (
-            // See QuizSelectPage: a heading each time the learning path changes.
+          {modules.map((m) => (
+            // See QuizSelectPage: a heading opening each learning path's run.
             <Fragment key={m.topic}>
-              {m.pathTitle && m.pathTitle !== modules[i - 1]?.pathTitle && (
+              {m.startsPath && (
                 <h3 className="mt-3 px-1 text-xs font-semibold uppercase tracking-wide text-fg-muted first:mt-0">
                   {m.pathTitle}
                 </h3>

@@ -76,6 +76,7 @@ export const LEARNING_PATHS: Record<string, string> = {
   lp3: 'Ingest data with Microsoft Fabric',
   lp4: 'Implement Real-Time Intelligence with Microsoft Fabric',
   lp5: 'Implement a data warehouse with Microsoft Fabric',
+  lp6: 'Manage a Microsoft Fabric environment',
 };
 
 /**

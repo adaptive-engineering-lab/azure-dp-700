@@ -6661,7 +6661,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "What does monitoring in Microsoft Fabric fundamentally provide?",
@@ -6687,7 +6689,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "A data pipeline reports an overall status of Succeeded, yet downstream reports show stale data. What should you check first?",
@@ -6713,7 +6717,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "A semantic model refresh succeeds, but its retry count has been climbing week over week. What does this most likely indicate?",
@@ -6739,7 +6745,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "How do eventstreams differ from batch activities when it comes to monitoring?",
@@ -6765,7 +6773,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "Where do you open the monitoring hub in the Fabric portal?",
@@ -6791,7 +6801,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "An activity in the monitoring hub shows a status of Cancelled. What does that mean?",
@@ -6817,7 +6829,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "An activity has a status of In progress far longer than usual. What is the reasonable interpretation?",
@@ -6843,7 +6857,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "How far back does the monitoring hub display run history for an item?",
@@ -6869,7 +6885,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "Which question is the historical runs view best suited to answering?",
@@ -6895,7 +6913,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "In a busy workspace the activity list is long. Which two filters does the monitoring hub offer to narrow it?",
@@ -6921,7 +6941,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "Which monitoring hub column tells you whether a run was started by a user, a schedule, or a pipeline?",
@@ -6947,7 +6969,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "What role do you need in a workspace to configure failure notifications on the Schedule failures page?",
@@ -6973,7 +6997,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "What does Fabric create in your workspace when you enable workspace monitoring?",
@@ -6999,7 +7025,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "Which capability makes Activator different from the Schedule failures notification page?",
@@ -7025,7 +7053,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "True or false? Workspace monitoring stores raw log data that you can query with KQL or SQL, unlike the monitoring hub's visual view of recent activity.",
@@ -7049,7 +7079,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "True or false? Establishing a monitoring baseline means recording duration and status over time so you can tell when a run has deviated from normal.",
@@ -7073,7 +7105,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "True or false? Activator can react only to job failures, not to jobs that succeed.",
@@ -7097,7 +7131,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-1",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "True or false? Automatically re-running a pipeline through Activator is the recommended response to any failed job. ---",
@@ -7121,7 +7157,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-2",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "A nightly load fails partway through and leaves partial data behind. The on-call team needs an immediate Teams message in their channel, and the partial rows must be cleaned up without waiting for someone to read an email. What should you configure?",
@@ -7147,7 +7185,9 @@
       "monitor-activities-in-microsoft-fabric",
       "level-2",
       "order:24",
-      "module:monitor-fabric-items"
+      "module:monitor-fabric-items",
+      "path:lp6",
+      "primary-path:lp6"
     ],
     "content": {
       "question": "A notebook that used to finish in two minutes now takes eight, though every run still reports Succeeded. You need to establish when the slowdown began. What is the most direct way to find out?",
