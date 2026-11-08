@@ -17,7 +17,7 @@ function builder(table: string) {
   const req: Request = { table, calls: [] };
   requests.push(req);
   const b: Record<string, unknown> = {};
-  for (const m of ['select', 'eq', 'is', 'gte', 'lt', 'order', 'limit', 'in']) {
+  for (const m of ['select', 'eq', 'is', 'gte', 'lt', 'or', 'order', 'limit', 'in']) {
     b[m] = (...args: unknown[]) => {
       req.calls.push([m, ...args]);
       return b;
@@ -149,11 +149,11 @@ describe('HistoryPage (US1)', () => {
     expect(item).toHaveTextContent('Not yet synced');
   });
 
-  it('shows 50 rows, then loads the next page from a completed_at cursor', async () => {
+  it('shows 50 rows, then loads the next page from a (completed_at, id) cursor', async () => {
     currentUser = { id: 'u1' };
     respond = (req) => {
       if (req.table !== 'sessions') return [];
-      const isNextPage = req.calls.some(([m]) => m === 'lt');
+      const isNextPage = req.calls.some(([m]) => m === 'or');
       return isNextPage
         ? [row(100), row(101)]
         : Array.from({ length: 51 }, (_, i) => row(i));
@@ -166,8 +166,13 @@ describe('HistoryPage (US1)', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Load more' }));
     await screen.findByText((_, el) => el?.tagName === 'UL' && el.children.length === 52);
 
-    const next = sessionRequests().find((r) => r.calls.some(([m]) => m === 'lt'))!;
-    expect(next.calls).toContainEqual(['lt', 'completed_at', row(49).completed_at]);
+    const next = sessionRequests().find((r) => r.calls.some(([m]) => m === 'or'))!;
+    const at = `"${row(49).completed_at}"`;
+    expect(next.calls).toContainEqual([
+      'or',
+      `completed_at.lt.${at},and(completed_at.eq.${at},id.lt.s49)`,
+    ]);
+    expect(next.calls).toContainEqual(['order', 'id', { ascending: false }]);
     expect(screen.queryByRole('button', { name: 'Load more' })).toBeNull();
   });
 });
