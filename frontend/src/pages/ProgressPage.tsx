@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppStore } from '../lib/store';
+import { useAuth } from '../lib/auth/AuthProvider';
 import { ROUTES } from '../lib/routes';
 import { supabase } from '../lib/supabase';
 import type { Domain } from '../lib/questions/types';
@@ -14,6 +15,7 @@ export default function ProgressPage() {
   const progress = useAppStore((s) => s.progress);
   const sessions = useAppStore((s) => s.sessions);
   const profile = useAppStore((s) => s.profile);
+  const { user } = useAuth();
 
   const [questionDomains, setQuestionDomains] = useState<Record<string, Domain>>({});
 
@@ -110,6 +112,11 @@ export default function ProgressPage() {
             {' · '}
             <span className="text-fg-muted">{formatRelative(sessions[0].completedAt)}</span>
           </p>
+          {user && (
+            <Link to={ROUTES.history} className="mt-2 inline-block text-sm text-accent underline">
+              View quiz history →
+            </Link>
+          )}
         </div>
       )}
 

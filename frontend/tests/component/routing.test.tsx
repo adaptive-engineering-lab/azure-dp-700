@@ -46,6 +46,7 @@ import LearnIndexPage from '../../src/pages/LearnIndexPage';
 import QuizSelectPage from '../../src/pages/QuizSelectPage';
 import CodeReviewPage from '../../src/pages/CodeReviewPage';
 import ProgressPage from '../../src/pages/ProgressPage';
+import HistoryPage from '../../src/pages/HistoryPage';
 import SettingsPage from '../../src/pages/SettingsPage';
 
 function renderAt(path: string) {
@@ -59,6 +60,7 @@ function renderAt(path: string) {
           { path: ROUTES.quiz, element: <QuizSelectPage /> },
           { path: ROUTES.codeReview, element: <CodeReviewPage /> },
           { path: ROUTES.progress, element: <ProgressPage /> },
+          { path: ROUTES.history, element: <HistoryPage /> },
           { path: ROUTES.settings, element: <SettingsPage /> },
         ],
       },
@@ -98,6 +100,11 @@ describe('Routing (FR-002, FR-003, FR-015)', () => {
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Your progress/i);
   });
 
+  it('renders the history page at /history', () => {
+    renderAt(ROUTES.history);
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/History/i);
+  });
+
   it('renders the settings page at /settings', () => {
     renderAt(ROUTES.settings);
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(/Settings/i);
@@ -106,7 +113,7 @@ describe('Routing (FR-002, FR-003, FR-015)', () => {
   it('every primary route is in the bottom nav', () => {
     renderAt(ROUTES.home);
     const nav = screen.getByRole('navigation', { name: /primary/i });
-    for (const label of ['Home', 'Learn', 'Progress', 'Settings']) {
+    for (const label of ['Home', 'Learn', 'Progress', 'History', 'Settings']) {
       expect(nav).toHaveTextContent(label);
     }
   });

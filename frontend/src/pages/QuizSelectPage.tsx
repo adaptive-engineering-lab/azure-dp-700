@@ -4,11 +4,18 @@ import { MIXED_QUIZ_LENGTH } from '../lib/questions/pick';
 import { useModules } from '../lib/questions/useModules';
 import { ROUTES } from '../lib/routes';
 import { supabase } from '../lib/supabase';
+import { useAuth } from '../lib/auth/AuthProvider';
+import { useQuizSummaries } from '../lib/history/useQuizSummaries';
+import { ALL_MODULES_KEY } from '../lib/history/types';
+import { AttemptCountBadge } from '../components/history/AttemptCountBadge';
 
 export default function QuizSelectPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const { modules, loading: modulesLoading } = useModules('mcq');
+  // Guests get no badges: history is kept for signed-in learners only.
+  const { user } = useAuth();
+  const { summaries } = useQuizSummaries(user?.id);
   // 'all' mixes every module; otherwise the value is a module title (an
   // item's `topic`).
   const [topic, setTopic] = useState<string>(searchParams.get('topic') ?? 'all');
@@ -59,6 +66,7 @@ export default function QuizSelectPage() {
               <Pill active={topic === m.topic} onClick={() => setTopic(m.topic)} align="left">
                 {m.order != null && <span className="opacity-60">{m.order}. </span>}
                 {m.topic} <span className="opacity-70">({m.count})</span>
+                <AttemptCountBadge summary={summaries.get(m.topic)} />
               </Pill>
             </Fragment>
           ))}
@@ -69,6 +77,7 @@ export default function QuizSelectPage() {
               modules are added. */}
           <Pill active={topic === 'all'} onClick={() => setTopic('all')} align="left">
             All modules
+            <AttemptCountBadge summary={summaries.get(ALL_MODULES_KEY)} />
           </Pill>
         </div>
       </Fieldset>

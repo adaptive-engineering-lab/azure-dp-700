@@ -27,7 +27,7 @@ export function MigrationPrompt() {
     if (state.kind !== 'idle') return;
 
     setState({ kind: 'working' });
-    const plan = buildMigrationPlan({ progress, sessions });
+    const plan = buildMigrationPlan({ progress, sessions, userId: user.id });
 
     const run = async () => {
       try {

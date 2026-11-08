@@ -10,6 +10,7 @@
         "http://localhost/learn/code-review",
         "http://localhost/learn/daily-review",
         "http://localhost/progress",
+        "http://localhost/history",
         "http://localhost/settings"
       ],
       "numberOfRuns": 3

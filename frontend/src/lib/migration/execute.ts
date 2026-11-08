@@ -96,9 +96,16 @@ export async function executeMigration(
         score_pct: s.scorePct,
         duration_seconds: s.durationSeconds,
         completed_at: s.completedAt,
+        question_count: s.questionCount ?? null,
+        correct_count: s.correctCount ?? null,
       }));
     if (toInsert.length > 0) {
-      const { error } = await client.from('sessions').insert(toInsert);
+      // The completion-time push (lib/history/sync.ts) writes the same ids,
+      // and may land between the select above and this write. Ignoring
+      // duplicates makes that race harmless instead of a sync error.
+      const { error } = await client
+        .from('sessions')
+        .upsert(toInsert, { onConflict: 'id', ignoreDuplicates: true });
       if (error) throw new Error(`migration sessions insert failed: ${error.message}`);
       sessionsInserted = toInsert.length;
     }
