@@ -1,5 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
+import type { SupabaseClient } from '@supabase/supabase-js';
 import { buildMigrationPlan, migrationIsEmpty } from '../../src/lib/migration/plan';
+import { executeMigration } from '../../src/lib/migration/execute';
 import { mergeProgress } from '../../src/lib/migration/merge';
 import type { GuestProgress, GuestSession } from '../../src/lib/store';
 
@@ -74,5 +76,51 @@ describe('Conflict resolution (FR-010)', () => {
     };
     const merged = mergeProgress(local, remote);
     expect(merged.times_correct).toBeLessThanOrEqual(merged.times_seen);
+  });
+});
+
+describe('Migration ownership and idempotent session writes (feature 014)', () => {
+  const session = (id: string, ownerId?: string): GuestSession => ({
+    id,
+    mode: 'mcq',
+    topic: 'Mod A',
+    scorePct: 80,
+    durationSeconds: 60,
+    completedAt: '2026-05-11T00:00:00Z',
+    questionCount: 10,
+    correctCount: 8,
+    ...(ownerId ? { ownerId } : {}),
+  });
+
+  it("leaves out another account's sessions but keeps guest and own ones", () => {
+    const plan = buildMigrationPlan({
+      progress: {},
+      sessions: [session('guest'), session('mine', 'u1'), session('theirs', 'u2')],
+      userId: 'u1',
+    });
+    expect(plan.sessions.map((s) => s.id)).toEqual(['guest', 'mine']);
+    expect(plan.sessionCount).toBe(2);
+  });
+
+  it('writes sessions with ignoreDuplicates and the count columns', async () => {
+    const upsert = vi.fn().mockResolvedValue({ error: null });
+    const client = {
+      from: (table: string) => {
+        if (table !== 'sessions') throw new Error(`unexpected table ${table}`);
+        return {
+          select: () => ({ in: () => Promise.resolve({ data: [], error: null }) }),
+          upsert,
+        };
+      },
+    } as unknown as SupabaseClient;
+
+    const plan = buildMigrationPlan({ progress: {}, sessions: [session('s1', 'u1')], userId: 'u1' });
+    const result = await executeMigration(client, 'u1', plan);
+
+    expect(result.sessionsInserted).toBe(1);
+    expect(upsert).toHaveBeenCalledWith(
+      [expect.objectContaining({ id: 's1', user_id: 'u1', question_count: 10, correct_count: 8 })],
+      { onConflict: 'id', ignoreDuplicates: true },
+    );
   });
 });

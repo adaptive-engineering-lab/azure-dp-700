@@ -25,6 +25,8 @@ interface SessionRow {
   score_pct: number | null;
   duration_seconds: number | null;
   completed_at: string;
+  question_count: number | null;
+  correct_count: number | null;
 }
 
 export async function hydrateStoreFromServer(
@@ -38,7 +40,7 @@ export async function hydrateStoreFromServer(
       .eq('user_id', userId),
     client
       .from('sessions')
-      .select('id, mode, topic, score_pct, duration_seconds, completed_at')
+      .select('id, mode, topic, score_pct, duration_seconds, completed_at, question_count, correct_count')
       .eq('user_id', userId)
       .order('completed_at', { ascending: false })
       .limit(SESSIONS_CAP),
@@ -66,9 +68,11 @@ export async function hydrateStoreFromServer(
     scorePct: r.score_pct,
     durationSeconds: r.duration_seconds,
     completedAt: r.completed_at,
+    questionCount: r.question_count,
+    correctCount: r.correct_count,
   }));
 
-  useAppStore.getState().hydrateFromServer({ progress, sessions, profile });
+  useAppStore.getState().hydrateFromServer({ userId, progress, sessions, profile });
 
   return { progressCount: Object.keys(progress).length, sessionCount: sessions.length };
 }

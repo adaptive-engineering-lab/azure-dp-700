@@ -4,6 +4,7 @@ export const ROUTES = {
   quiz: '/learn/quiz',
   codeReview: '/learn/code-review',
   progress: '/progress',
+  history: '/history',
   settings: '/settings',
   signIn: '/sign-in',
   authCallback: '/auth/callback',

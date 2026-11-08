@@ -99,6 +99,17 @@ describe('RLS isolation between two users', () => {
     expect(error).not.toBeNull(); // RLS blocks the cross-user write
   });
 
+  it('quiz_attempt_summaries shows each user only their own rollup', async () => {
+    const onA = await clientA.from('quiz_attempt_summaries').select('user_id');
+    const onB = await clientB.from('quiz_attempt_summaries').select('user_id');
+    expect(onA.error).toBeNull();
+    expect(onB.error).toBeNull();
+    expect(onA.data!.every((r) => r.user_id === userA.id)).toBe(true);
+    expect(onB.data!.every((r) => r.user_id === userB.id)).toBe(true);
+    expect(onA.data).toHaveLength(1);
+    expect(onB.data).toHaveLength(1);
+  });
+
   it('each user can read their own profile and not the other', async () => {
     const aOnA = await clientA.from('profiles').select('id').eq('id', userA.id);
     const aOnB = await clientA.from('profiles').select('id').eq('id', userB.id);

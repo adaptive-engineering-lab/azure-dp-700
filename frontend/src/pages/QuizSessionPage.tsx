@@ -7,6 +7,7 @@ import { useAppStore } from '../lib/store';
 import { computeNextReview } from '../lib/spacing';
 import { ROUTES } from '../lib/routes';
 import { SourceLine } from '../components/SourceLine';
+import { useAuth } from '../lib/auth/AuthProvider';
 
 const ALL_OPTIONS = ['A', 'B', 'C', 'D'] as const;
 type Letter = OptionLetter;
@@ -47,6 +48,7 @@ export default function QuizSessionPage() {
   const recordSession = useAppStore((s) => s.recordSession);
   const addXp = useAppStore((s) => s.addXp);
   const bumpStreak = useAppStore((s) => s.bumpStreakIfDue);
+  const { user } = useAuth();
 
   useEffect(() => {
     let cancelled = false;
@@ -123,7 +125,15 @@ export default function QuizSessionPage() {
       const scorePct = Math.round((correctCount / questions!.length) * 100);
       const durationSeconds = Math.round((Date.now() - startedAt) / 1000);
       addXp(correctCount * 10 + 50);
-      recordSession({ mode: 'mcq', topic, scorePct, durationSeconds });
+      recordSession({
+        mode: 'mcq',
+        topic,
+        scorePct,
+        durationSeconds,
+        questionCount: questions!.length,
+        correctCount,
+        ownerId: user?.id ?? null,
+      });
       bumpStreak();
       setIdx(idx + 1);
     }

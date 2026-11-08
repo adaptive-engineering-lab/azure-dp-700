@@ -10,13 +10,18 @@ export interface MigrationPlan {
 export function buildMigrationPlan(input: {
   progress: Record<string, GuestProgress>;
   sessions: GuestSession[];
+  /** The account being migrated into. */
+  userId?: string;
 }): MigrationPlan {
   const progress = Object.values(input.progress);
+  // On a shared device the local list can still hold another account's
+  // sessions. Guest sessions (no owner) migrate; someone else's never do.
+  const sessions = input.sessions.filter((s) => !s.ownerId || s.ownerId === input.userId);
   return {
     progressCount: progress.length,
-    sessionCount: input.sessions.length,
+    sessionCount: sessions.length,
     progress,
-    sessions: input.sessions,
+    sessions,
   };
 }
 

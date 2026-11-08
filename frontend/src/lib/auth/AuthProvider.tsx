@@ -3,6 +3,7 @@ import type { Session, User } from '@supabase/supabase-js';
 import { supabase } from '../supabase';
 import { useAppStore } from '../store';
 import { pushProfileToServer } from '../migration/syncProfile';
+import { useAttemptSync } from '../history/sync';
 
 interface AuthContextValue {
   user: User | null;
@@ -58,6 +59,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       unsub();
     };
   }, [session?.user?.id]);
+
+  // Push finished quizzes to the account as they happen, not just on the
+  // next app load (feature 014).
+  useAttemptSync(session?.user?.id);
 
   const value: AuthContextValue = {
     user: session?.user ?? null,

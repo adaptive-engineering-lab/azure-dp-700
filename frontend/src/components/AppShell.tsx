@@ -11,6 +11,7 @@ const NAV = [
   { to: ROUTES.home, label: 'Home' },
   { to: ROUTES.learn, label: 'Learn' },
   { to: ROUTES.progress, label: 'Progress' },
+  { to: ROUTES.history, label: 'History' },
   { to: ROUTES.settings, label: 'Settings' },
 ] as const;
 
@@ -47,7 +48,7 @@ export function AppShell() {
         aria-label="Primary"
         className="sticky bottom-0 border-t border-divider bg-bg-elevated"
       >
-        <ul className="mx-auto max-w-screen-md xl:max-w-6xl grid grid-cols-4">
+        <ul className="mx-auto max-w-screen-md xl:max-w-6xl grid grid-cols-5">
           {NAV.map((item) => (
             <li key={item.to} className="contents">
               <NavLink

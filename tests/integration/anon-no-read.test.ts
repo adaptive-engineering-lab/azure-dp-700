@@ -21,6 +21,12 @@ describe('Anonymous clients cannot read or write user data tables', () => {
     expect(data).toEqual([]);
   });
 
+  it('returns zero rows from quiz_attempt_summaries', async () => {
+    const { data, error } = await anon.from('quiz_attempt_summaries').select('user_id');
+    expect(error).toBeNull();
+    expect(data).toEqual([]);
+  });
+
   it('returns zero rows from profiles', async () => {
     const { data, error } = await anon.from('profiles').select('id');
     expect(error).toBeNull();

@@ -15,6 +15,7 @@ const QuizSessionPage = lazy(() => import('./pages/QuizSessionPage'));
 const CodeReviewPage = lazy(() => import('./pages/CodeReviewPage'));
 const CodeReviewSessionPage = lazy(() => import('./pages/CodeReviewSessionPage'));
 const ProgressPage = lazy(() => import('./pages/ProgressPage'));
+const HistoryPage = lazy(() => import('./pages/HistoryPage'));
 const SettingsPage = lazy(() => import('./pages/SettingsPage'));
 const SignInPage = lazy(() => import('./pages/SignInPage'));
 const AuthCallbackPage = lazy(() => import('./pages/AuthCallbackPage'));
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       { path: ROUTES.codeReview, element: lazyPage(<CodeReviewPage />) },
       { path: `${ROUTES.codeReview}/session`, element: lazyPage(<CodeReviewSessionPage />) },
       { path: ROUTES.progress, element: lazyPage(<ProgressPage />) },
+      { path: ROUTES.history, element: lazyPage(<HistoryPage />) },
       { path: ROUTES.settings, element: lazyPage(<SettingsPage />) },
       { path: ROUTES.signIn, element: lazyPage(<SignInPage />) },
       { path: ROUTES.authCallback, element: lazyPage(<AuthCallbackPage />) },
