@@ -4,7 +4,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import { userClient } from '../../tools/test-helpers/clients.js';
 import { createTestUser, cleanupTestUsers, type TestUser } from '../../tools/test-helpers/users.js';
 import { fetchAttemptPage } from '../../frontend/src/lib/history/query.js';
-import type { HistoryFilters } from '../../frontend/src/lib/history/types.js';
+import { HISTORY_PAGE_SIZE, type HistoryFilters } from '../../frontend/src/lib/history/types.js';
 
 /**
  * Feature 014 SC-006: every combination of History filters returns exactly the
@@ -79,7 +79,13 @@ describe('Quiz history filters against the database', () => {
         if (r.score_pct === null) return false;
         return f.result === 'passed' ? r.score_pct >= 70 : r.score_pct < 70;
       })
-      .sort((a, b) => Date.parse(b.completed_at) - Date.parse(a.completed_at))
+      // Several fixture rows share an instant on purpose; the server breaks
+      // those ties by id, descending.
+      .sort(
+        (a, b) =>
+          Date.parse(b.completed_at) - Date.parse(a.completed_at) ||
+          (a.id < b.id ? 1 : a.id > b.id ? -1 : 0),
+      )
       .map((r) => r.id);
   }
 
@@ -94,9 +100,55 @@ describe('Quiz history filters against the database', () => {
     const filters: HistoryFilters = { view: 'list', ...combo };
     const page = await fetchAttemptPage(client, user.id, filters, null, now);
     const got = page.rows.map((r) => r.id);
-    // Same instant can't tie here, but compare as sets and then order.
+    // Membership first, so a wrong filter reads differently from a wrong order.
     expect(new Set(got)).toEqual(new Set(expected(filters)));
     expect(got).toEqual(expected(filters));
     expect(page.hasMore).toBe(false);
+  });
+});
+
+describe('Quiz history paging across attempts finished at the same instant', () => {
+  let user: TestUser;
+  let client: SupabaseClient;
+  const at = new Date(Date.now() - 60_000).toISOString();
+  // More than one page, every row tied on completed_at: a completed_at-only
+  // cursor would return page one and then nothing.
+  const ids = Array.from({ length: HISTORY_PAGE_SIZE + 5 }, () => randomUUID());
+
+  beforeAll(async () => {
+    await cleanupTestUsers();
+    user = await createTestUser('quiz-history-ties');
+    client = await userClient(user.email, user.password);
+    const { error } = await client.from('sessions').insert(
+      ids.map((id) => ({
+        id,
+        user_id: user.id,
+        mode: 'mcq',
+        topic: 'Mod A',
+        score_pct: 80,
+        question_count: 10,
+        correct_count: 8,
+        duration_seconds: 60,
+        completed_at: at,
+      })),
+    );
+    if (error) throw new Error(`fixture insert failed: ${error.message}`);
+  });
+
+  afterAll(async () => {
+    await cleanupTestUsers();
+  });
+
+  it('returns every attempt exactly once, in id order', async () => {
+    const filters: HistoryFilters = { view: 'list', quiz: undefined, range: 'all', result: 'all' };
+    const first = await fetchAttemptPage(client, user.id, filters, null);
+    expect(first.rows).toHaveLength(HISTORY_PAGE_SIZE);
+    expect(first.hasMore).toBe(true);
+
+    const second = await fetchAttemptPage(client, user.id, filters, first.nextCursor);
+    expect(second.hasMore).toBe(false);
+
+    const got = [...first.rows, ...second.rows].map((r) => r.id);
+    expect(got).toEqual([...ids].sort().reverse());
   });
 });

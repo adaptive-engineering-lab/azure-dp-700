@@ -50,12 +50,15 @@ else if (filters.quiz !== undefined) q = q.eq('topic', filters.quiz);
 if (since)                          q = q.gte('completed_at', since); // rangeStart()
 if (filters.result === 'passed')    q = q.gte('score_pct', 70);
 if (filters.result === 'failed')    q = q.lt('score_pct', 70);
-if (cursor)                         q = q.lt('completed_at', cursor); // last row's completed_at
+if (cursor)                         q = q.or(                         // last row's (completed_at, id)
+  `completed_at.lt."${cursor.completedAt}",and(completed_at.eq."${cursor.completedAt}",id.lt.${cursor.id})`);
 
-q.order('completed_at', { ascending: false }).limit(HISTORY_PAGE_SIZE + 1);
+q.order('completed_at', { ascending: false })
+ .order('id', { ascending: false })
+ .limit(HISTORY_PAGE_SIZE + 1);
 ```
 
-- If 51 rows come back, `hasMore = true` and the 51st is dropped. The next cursor is the 50th row's `completed_at`.
+- If 51 rows come back, `hasMore = true` and the 51st is dropped. The next cursor is the 50th row's `{ completedAt, id }`. The id breaks ties: with a `completed_at`-only cursor, attempts finished at the same instant on both sides of a page break would lose the later ones.
 - Rows with `score_pct IS NULL` never match `gte` or `lt`, so they're left out under Passed or Failed. That's intended (data-model §4).
 
 ## C3. Per-quiz summaries

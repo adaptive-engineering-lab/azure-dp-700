@@ -2,7 +2,7 @@
 
 **Feature Branch**: `014-quiz-history`
 **Created**: 2026-11-07
-**Status**: Draft
+**Status**: Implemented
 **Input**: User description: "Quiz history for signed-in learners. Each completed MCQ quiz (one module or the mixed all-modules quiz) is saved to the learner's account as an attempt, with quiz identity, completed-at time, score %, correct count / question count, duration and pass/fail against a 70% pass mark. Attempts are saved to the server when the quiz finishes, so history shows on every device. A history page, per-module attempt counts with a badge in the quiz picker, and filters by module, date range and pass/fail."
 
 ## Background

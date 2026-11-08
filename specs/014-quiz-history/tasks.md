@@ -130,7 +130,7 @@ description: "Task list for feature 014: Quiz History & Attempt Counts"
   - signed in with 0 rows → empty state with a "Start a quiz" link to `/learn/quiz`;
   - 3 rows → 3 list items in order, showing "Passed"/"Failed" as text and "—" for null counts;
   - a pending store session → "Not yet synced";
-  - 51 stub rows → 50 items plus "Load more", and clicking it requests a second page with an `lt('completed_at', …)` cursor.
+  - 51 stub rows → 50 items plus "Load more", and clicking it requests a second page with a `(completed_at, id)` cursor.
   Mock `useAuth` to switch between guest and signed in.
 
 ### Implementation for User Story 1
@@ -241,10 +241,10 @@ description: "Task list for feature 014: Quiz History & Attempt Counts"
 ## Phase 6: Polish & Cross-Cutting
 
 - [X] T049 [P] Check `frontend/src/components/AppShell.tsx` at 320 px and 375 px widths in DevTools. If the five nav labels wrap or truncate, change the NavLink class from `text-sm` to `text-xs sm:text-sm`. — **Checked 2026-11-07**: at 320 px all five labels sit on one line (64 px each, 44 px tall) with no horizontal scroll, so no class change was needed.
-- [ ] T050 [P] Keyboard and screen-reader pass on `/history`, the filters and the picker badges: tab order, visible focus, select labels, and Passed/Failed and "Not yet synced" read as text. Fix anything found in the components from T028–T029, T041–T043 and T047. — **Partly done**: component tests cover the select labels, `aria-pressed` on the view switch, the badge's accessible name and Passed/Failed as text. A manual keyboard and screen-reader pass of the signed-in page is still to do.
-- [ ] T051 Run `cd frontend && pnpm lint && pnpm build && pnpm test` and `cd tools && pnpm test` against a fresh `supabase db reset`. Fix any failures. — **Partly done**: frontend `pnpm test` (136 passing), `tsc` and `pnpm build` pass. `pnpm lint` can't run because eslint isn't installed in `frontend/` (already the case on `main`). `cd tools && pnpm test` hasn't run because there's no local Supabase.
-- [ ] T052 Run the full manual walkthrough in `specs/014-quiz-history/quickstart.md` (steps 1–11) and record any deviation in this file. — **Not done**: needs a stack with migration 0020 applied and a signed-in account.
-- [ ] T053 [P] Set `**Status**: Implemented` in `specs/014-quiz-history/spec.md` once T051–T052 pass. — **Blocked** on T050–T052.
+- [X] T050 [P] Keyboard and screen-reader pass on `/history`, the filters and the picker badges: tab order, visible focus, select labels, and Passed/Failed and "Not yet synced" read as text. Fix anything found in the components from T028–T029, T041–T043 and T047. — **Done 2026-11-08** (Playwright against the dev server and the live project, with a throwaway test user). The tab order is logical: skip link, sign out, view switch, three selects, Load more, nav. Every stop has a visible 2px focus outline, and rows aren't tab stops. Space toggles the view switch (`aria-pressed`), and Enter on a summary link opens the filtered list. The ✓/✕ glyphs are `aria-hidden`, so "Passed"/"Failed" are read as text, with sr-only "Correct:"/"Duration:" labels and a `<time>`. The picker badge is part of the module button's accessible name ("… (20) Taken 3× · best 85%"). Nothing needed fixing.
+- [X] T051 Run `cd frontend && pnpm lint && pnpm build && pnpm test` and `cd tools && pnpm test` against a fresh `supabase db reset`. Fix any failures. — **Done**: frontend `pnpm test` 136/136, `tsc` and `pnpm build` pass, and `cd tools && ALLOW_LIVE_TESTS=1 pnpm test` gives 93/93 against the hosted project with the user's OK (bank unchanged, no residue). The run caught and fixed the tie-break bug (see notes). **Exception**: `pnpm lint` can't run because eslint isn't installed in `frontend/`. That was already the case on `main` and isn't addressed here.
+- [X] T052 Run the full manual walkthrough in `specs/014-quiz-history/quickstart.md` (steps 1–11) and record any deviation in this file. — **Done 2026-11-08**: all 11 steps pass. See "Walkthrough results" below.
+- [X] T053 [P] Set `**Status**: Implemented` in `specs/014-quiz-history/spec.md` once T051–T052 pass. — **Done**.
 
 ---
 
@@ -307,6 +307,29 @@ T035 / T036 / T037 tests, then T041 QuizSummaryRow.tsx ∥ T043 AttemptCountBadg
 - **New file not in the plan**: `frontend/src/lib/history/usePendingAttempts.ts`. It's the store selector and "pending cleared → refetch" logic shared by `useAttemptHistory` and `useQuizSummaries`.
 - **Sync API**: the logic lives in `startAttemptSync(userId, getClient)`, which returns a stop function. `useAttemptSync` is a thin `useEffect` around it, so the tests drive it with fake timers and no React.
 - **Test harness**: `history-page.test.tsx` uses `<MemoryRouter>` instead of `createMemoryRouter`. In jsdom, data-router navigations build a `Request` whose `AbortSignal` undici rejects.
-- **Deploy order**: apply `0020_sessions_attempt_counts.sql` to the hosted project **before** deploying the frontend. The new client reads and writes `question_count` and `correct_count`. Without the columns, PostgREST returns PGRST204 and both the app-load migration and the completion-time push fail.
+- **Deploy order**: apply `0020_sessions_attempt_counts.sql` to the hosted project **before** deploying the frontend. *Done 2026-11-08 via `supabase db push --linked`, so the frontend can now ship.* The new client reads and writes `question_count` and `correct_count`. Without the columns, PostgREST returns PGRST204 and both the app-load migration and the completion-time push fail.
 - **Integration tests**: T005–T007 and T046 are written but haven't run against a database with 0020 applied. Run them on a local stack (`supabase start`, `supabase db reset`, `cd tools && pnpm test`).
 - **Incident**: while trying to check that the integration files load, I ran two of them through a throwaway vitest config that skipped `globalSetup`, and with it the `assertSafeTarget()` guard. `tools/.env.local` points at the hosted project, so the run reached it. The run's own cleanup deleted the `test+…@dp700game.test` users it created, and also any other leftover users matching that pattern. The inserts mostly failed on the missing columns. A read-only `findResidue()` check afterwards found 0 test users and 0 fixture rows. No schema was changed and no real user data was touched.
+- **Live integration run (2026-11-08)**: the first run had 3 failures in `quiz-history-filters`. The right rows came back in the wrong order: fixture rows share a `completed_at`, and the query had no tie-break. That exposed a real bug. A `completed_at`-only keyset cursor drops attempts that are tied across a page break. Fixed by ordering `completed_at desc, id desc` and paging on `(completed_at, id)` in `query.ts` and in the `merge.ts` sort. Covered by a new 55-row tied-timestamp paging test. Re-run: 93/93.
+
+## Walkthrough results (2026-11-08)
+
+Run with Playwright against `pnpm dev`, pointed at the hosted project. Sign-in used a throwaway `test+walkthrough@dp700game.test` user, whose session was put into localStorage because sign-in is a magic link. The user and all its rows were deleted afterwards, and `findResidue()` reported `{rollbackRows:0, testUsers:0}`.
+
+| Step | Result |
+|------|--------|
+| 1 Guest prompt | Pass. Sign-in prompt shown, no list, no session request. |
+| 2 Record | Pass. Row shows module, Failed, 15%, 3/20, 0:05 and the time. The server row has `question_count` 20 and `correct_count` 3. |
+| 3 Pass boundary | Pass. 14/20 = 70% shows **Passed**. |
+| 4 Mid-quiz exit | Pass. Leaving after 2 answers records nothing, locally or on the server. |
+| 5 Counts | Pass. Picker reads "Taken 3× · best 85%". By quiz shows 3×, best 85%, latest 85%. All modules is separate (1×, best 20%). |
+| 6 Cross-device | Pass. A fresh isolated context, signed in as the same user with no local quiz data, lists all 4 attempts. |
+| 7 Offline | Pass. The quiz finished offline, results showed at once, and the row read "Not yet synced". After reconnecting it cleared within 0.8 s. A fresh device shows it exactly once, and the server has exactly 5 rows. |
+| 8 Reload while pending | Pass. Reloaded with Supabase unreachable: the row is still pending and listed, then syncs. |
+| 9 Filters | Pass. Delta Lake + 7 days + Failed gives the single 15% row. The filters persist in the URL across a reload. A no-match combination shows the message, and Clear filters resets the URL to `/history`. |
+| 10 Load more | Pass. With 61 attempts, 50 show first, then Load more brings exactly 61 and hides. |
+| 11 Legacy rows | Pass. A row with NULL counts shows "—" for X/Y and counts toward its quiz (Taken 1×). |
+
+**Deviations**:
+- Step 7 cut the network with `context.setOffline`. Step 8 blocked only `*.supabase.co`, so the page could still reload from the dev server.
+- In dev, opening `/history` for the first time while offline shows the router's error screen, because the lazy chunk can't be fetched and dev has no service worker. Production isn't affected: the PWA precache includes `HistoryPage-*.js`, like every other lazy route.

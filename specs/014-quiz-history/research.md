@@ -73,7 +73,7 @@ Add nullable `question_count` and `correct_count` to `public.sessions`, plus a c
 
 ### D4. Reading History: from the server, with local pending merged in
 
-- **Attempt list**: `sessions` filtered to `mode = 'mcq'` plus the optional filters. Ordered `completed_at desc`, with keyset pagination on `completed_at` (`lt` cursor). Each page fetches 51 rows to learn whether a next page exists and shows 50. Local pending attempts are merged by id. The ones that pass the active filters are inserted in order and marked "Not yet synced" (FR-016).
+- **Attempt list**: `sessions` filtered to `mode = 'mcq'` plus the optional filters. Ordered `completed_at desc, id desc`, with keyset pagination on `(completed_at, id)`, so that attempts with the same finish time are neither skipped nor repeated at a page break. Each page fetches 51 rows to learn whether a next page exists and shows 50. Local pending attempts are merged by id. The ones that pass the active filters are inserted in order and marked "Not yet synced" (FR-016).
   - **Rationale**: reading from the server is what makes a second device current without a reload (SC-001). Reading only the store is capped at 500 and only as fresh as the last app load.
   - **Rejected**: offset pagination with `.range()`. Rows added while scrolling would shift pages and cause duplicates.
 - **Summaries (By quiz + picker badges)**: a new view, `public.quiz_attempt_summaries`, created `with (security_invoker = on)` so the base table's RLS applies to the caller. It returns one row per `(user_id, topic)` with `attempt_count`, `best_score_pct`, `latest_score_pct` and `last_taken_at`. Local pending attempts are folded in client-side.

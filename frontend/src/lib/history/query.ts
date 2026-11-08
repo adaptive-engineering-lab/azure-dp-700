@@ -17,11 +17,17 @@ interface AttemptRow {
   completed_at: string;
 }
 
+/** The last row of a page. `id` breaks ties between attempts finished at the same instant. */
+export interface AttemptCursor {
+  completedAt: string;
+  id: string;
+}
+
 export interface AttemptPage {
   rows: QuizAttempt[];
   hasMore: boolean;
   /** Pass back to fetch the next page; null when there is none. */
-  nextCursor: string | null;
+  nextCursor: AttemptCursor | null;
 }
 
 /** One page of the learner's MCQ attempts, newest first. */
@@ -29,7 +35,7 @@ export async function fetchAttemptPage(
   client: SupabaseClient,
   userId: string,
   filters: HistoryFilters,
-  cursor: string | null,
+  cursor: AttemptCursor | null,
   now: Date = new Date(),
 ): Promise<AttemptPage> {
   let q = client
@@ -46,11 +52,17 @@ export async function fetchAttemptPage(
   if (filters.result === 'passed') q = q.gte('score_pct', PASS_MARK_PCT);
   if (filters.result === 'failed') q = q.lt('score_pct', PASS_MARK_PCT);
   // Keyset, not offset: attempts finished while paging would shift an offset
-  // and repeat rows.
-  if (cursor) q = q.lt('completed_at', cursor);
+  // and repeat rows. The cursor is (completed_at, id), not completed_at alone:
+  // two attempts finished at the same instant either side of a page break
+  // would otherwise lose the second one.
+  if (cursor) {
+    const at = `"${cursor.completedAt}"`;
+    q = q.or(`completed_at.lt.${at},and(completed_at.eq.${at},id.lt.${cursor.id})`);
+  }
 
   const { data, error } = await q
     .order('completed_at', { ascending: false })
+    .order('id', { ascending: false })
     .limit(HISTORY_PAGE_SIZE + 1);
   if (error) throw new Error(`load history failed: ${error.message}`);
 
@@ -68,7 +80,12 @@ export async function fetchAttemptPage(
       pending: false,
     }),
   );
-  return { rows, hasMore, nextCursor: hasMore ? rows[rows.length - 1]!.completedAt : null };
+  const last = rows[rows.length - 1];
+  return {
+    rows,
+    hasMore,
+    nextCursor: hasMore && last ? { completedAt: last.completedAt, id: last.id } : null,
+  };
 }
 
 interface SummaryRow {

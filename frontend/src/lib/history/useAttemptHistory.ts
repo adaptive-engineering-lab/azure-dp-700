@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { supabase } from '../supabase';
 import { mergePendingAttempts } from './merge';
-import { fetchAttemptPage } from './query';
+import { fetchAttemptPage, type AttemptCursor } from './query';
 import { usePendingAttempts } from './usePendingAttempts';
 import type { HistoryFilters, QuizAttempt } from './types';
 
 interface State {
   rows: QuizAttempt[];
   hasMore: boolean;
-  cursor: string | null;
+  cursor: AttemptCursor | null;
   loading: boolean;
   error: string | null;
 }

@@ -50,7 +50,12 @@ export function mergePendingAttempts(
     if (hasMore && lowerBound && Date.parse(p.completedAt) < Date.parse(lowerBound)) continue;
     merged.push(p);
   }
-  return merged.sort((a, b) => Date.parse(b.completedAt) - Date.parse(a.completedAt));
+  // Same order as the server: newest first, then id descending on a tie.
+  return merged.sort(
+    (a, b) =>
+      Date.parse(b.completedAt) - Date.parse(a.completedAt) ||
+      (a.id < b.id ? 1 : a.id > b.id ? -1 : 0),
+  );
 }
 
 /**
